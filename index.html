@@ -1,15 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siam Royal Journey — Premium Private Tours Thailand</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a0a;color:#e8dcc8;font-family:'DM Sans',sans-serif;overflow-x:hidden}
 :root{--gold:#c9a96e;--gold-light:#e8d5a3;--gold-dark:#8a6b3a;--dark:#0a0a0a;--dark2:#111111;--dark3:#1a1a1a;--cream:#e8dcc8;--muted:#b8a990;--green:#4caf7d;--red:#e05c5c;--blue:#5b9bd5}
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+SC:wght@400;500&display=swap');
-
-nav{background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(201,169,110,0.2);padding:0 4%;display:flex;justify-content:space-between;align-items:center;height:68px}
+nav{background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(201,169,110,0.2);padding:0 4%;display:flex;justify-content:space-between;align-items:center;height:68px;position:sticky;top:0;z-index:100}
 .logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);letter-spacing:2px;cursor:pointer}
 .logo span{color:var(--cream);font-weight:400;font-style:italic}
 .nav-center{display:flex;gap:24px;list-style:none}
 .nav-center a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:1px;cursor:pointer;transition:color 0.2s}
-.nav-center a:hover,.nav-center a.active{color:var(--gold)}
+.nav-center a:hover{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:12px}
 .lang-sw{display:flex;border:1px solid rgba(201,169,110,0.3)}
 .lb{background:transparent;border:none;color:var(--muted);padding:7px 12px;font-size:11px;letter-spacing:1px;cursor:pointer;font-family:inherit;border-right:1px solid rgba(201,169,110,0.2);transition:all 0.2s}
@@ -18,12 +23,8 @@ nav{background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(201,169,110,0.2)
 .lb:not(.active):hover{color:var(--gold)}
 .nav-book{background:var(--gold);border:none;color:#0a0a0a;padding:9px 18px;font-size:11px;letter-spacing:1.5px;cursor:pointer;font-weight:500;font-family:inherit;transition:all 0.3s}
 .nav-book:hover{background:var(--gold-light)}
-.admin-btn{background:transparent;border:1px solid rgba(201,169,110,0.3);color:var(--muted);padding:9px 16px;font-size:11px;cursor:pointer;font-family:inherit;transition:all 0.2s}
-.admin-btn:hover{color:var(--gold);border-color:var(--gold)}
-
 .page{display:none}
 .page.active{display:block}
-
 .hero{padding:72px 4% 52px;text-align:center;background:#0a0a0a;position:relative;overflow:hidden}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,169,110,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,0.03) 1px,transparent 1px);background-size:56px 56px}
 .hero-ring{position:absolute;border:1px solid rgba(201,169,110,0.05);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
@@ -43,7 +44,6 @@ h1.ht em{color:var(--gold);font-style:italic}
 .stat:last-child{border-right:none}
 .sn{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold);font-weight:600}
 .sl{font-size:10px;color:var(--muted);letter-spacing:1.5px;margin-top:3px}
-
 .sbar-wrap{background:var(--dark2);padding:0 4%}
 .sbar{background:var(--dark3);border:1px solid rgba(201,169,110,0.18);padding:7px 7px 7px 18px;display:flex;align-items:center;gap:8px;max-width:780px;margin:0 auto;transform:translateY(-24px)}
 .sf{flex:1;background:none;border:none;outline:none;color:var(--cream);font-size:12px;font-family:inherit;min-width:0}
@@ -51,20 +51,17 @@ h1.ht em{color:var(--gold);font-style:italic}
 select.sf{cursor:pointer}
 .ssep{width:1px;height:26px;background:rgba(201,169,110,0.18);flex-shrink:0}
 .sbtn{background:var(--gold);border:none;color:#0a0a0a;padding:11px 20px;font-size:10px;letter-spacing:2px;cursor:pointer;font-weight:500;font-family:inherit;flex-shrink:0}
-
 .sec{padding:72px 4%}
 .sh{text-align:center;margin-bottom:48px}
 .ey{font-size:10px;letter-spacing:4px;color:var(--gold);margin-bottom:10px}
 .st{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,44px);font-weight:400;color:var(--cream);line-height:1.2}
 .st em{color:var(--gold);font-style:italic}
 .dv{width:44px;height:1px;background:var(--gold);margin:16px auto 0}
-
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .pc{background:var(--dark3);cursor:pointer;transition:transform 0.25s;overflow:hidden}
 .pc:hover{transform:translateY(-3px)}
 .pi{height:200px;display:flex;align-items:center;justify-content:center;position:relative}
 .pb{position:absolute;top:14px;left:14px;background:var(--gold);color:#0a0a0a;padding:4px 10px;font-size:9px;letter-spacing:2px;font-weight:500}
-.pb2{background:rgba(201,169,110,0.1);color:var(--gold);border:1px solid rgba(201,169,110,0.25)}
 .pbody{padding:20px}
 .pdest{font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:5px}
 .pname{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:8px;line-height:1.3}
@@ -81,14 +78,12 @@ select.sf{cursor:pointer}
 .ci{width:46px;height:46px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .ct{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:8px}
 .cd{font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:20px}
-
 .steps-g{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
 .steps-g::before{content:'';position:absolute;top:26px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,110,0.25),transparent)}
 .step{text-align:center;padding:36px 20px}
 .snum{width:52px;height:52px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);background:var(--dark2);position:relative;z-index:1}
 .stit{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);margin-bottom:8px}
 .sdesc{font-size:11px;color:var(--muted);line-height:1.7}
-
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .tc{background:var(--dark3);border:1px solid rgba(201,169,110,0.1);padding:24px}
 .tstar{color:var(--gold);font-size:12px;letter-spacing:2px;margin-bottom:12px}
@@ -97,14 +92,12 @@ select.sf{cursor:pointer}
 .tav{width:34px;height:34px;border-radius:50%;background:var(--gold-dark);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold-light);font-weight:500;flex-shrink:0}
 .tn{font-size:12px;color:var(--cream);font-weight:500}
 .tt{font-size:10px;color:var(--muted);margin-top:2px}
-
 .cta-s{background:var(--dark3);border-top:1px solid rgba(201,169,110,0.12);border-bottom:1px solid rgba(201,169,110,0.12);text-align:center;padding:72px 4%}
 .cta-deco{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px}
 .cta-deco::before,.cta-deco::after{content:'';flex:1;max-width:60px;height:1px;background:var(--gold-dark)}
 .cta-ic{width:32px;height:32px;border:1px solid var(--gold-dark);display:flex;align-items:center;justify-content:center}
 .cta-t{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,42px);color:var(--cream);margin-bottom:12px}
 .cta-s2{font-size:13px;color:var(--muted);margin-bottom:32px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7}
-
 .contact-float{display:flex;gap:8px;justify-content:center;padding:20px 4% 0;flex-wrap:wrap}
 .cf-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(201,169,110,0.25);cursor:pointer;font-size:12px;font-family:inherit;transition:all 0.25s;letter-spacing:0.5px;background:var(--dark3)}
 .cf-btn.line{color:#06c755;border-color:rgba(6,199,85,0.3)}
@@ -115,7 +108,6 @@ select.sf{cursor:pointer}
 .cf-btn.wa:hover{background:rgba(37,211,102,0.08)}
 .cf-btn.tel{color:var(--gold);border-color:rgba(201,169,110,0.3)}
 .cf-btn.tel:hover{background:rgba(201,169,110,0.06)}
-
 .foot{background:var(--dark);border-top:1px solid rgba(201,169,110,0.08);padding:48px 4% 24px}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
 .fd{font-size:11px;color:var(--muted);line-height:1.7;margin-top:10px}
@@ -125,8 +117,6 @@ select.sf{cursor:pointer}
 .flinks a:hover{color:var(--gold)}
 .fb{border-top:1px solid rgba(201,169,110,0.08);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .fc{font-size:10px;color:var(--muted)}
-
-/* BOOKING PAGE */
 .bk-page{background:var(--dark2);padding:48px 4%}
 .bk-header{text-align:center;margin-bottom:40px}
 .bk-steps{display:flex;justify-content:center;gap:0;margin-bottom:40px}
@@ -170,14 +160,14 @@ select.finput{cursor:pointer}
 .booking-ref{background:var(--dark2);border:1px solid rgba(201,169,110,0.2);padding:14px 24px;display:inline-block;margin-bottom:28px}
 .ref-label{font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:4px}
 .ref-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream)}
-
-/* ADMIN */
 .adm{background:#0d0d0d;min-height:600px;display:flex}
 .adm-sidebar{width:200px;background:#111;border-right:1px solid rgba(201,169,110,0.1);padding:24px 0;flex-shrink:0}
 .adm-logo{padding:0 20px 20px;border-bottom:1px solid rgba(201,169,110,0.1);margin-bottom:16px}
 .adm-logo span{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold)}
 .adm-nav a{display:block;padding:10px 20px;font-size:12px;color:var(--muted);cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;border-left:2px solid transparent}
 .adm-nav a:hover,.adm-nav a.active{color:var(--gold);border-left-color:var(--gold);background:rgba(201,169,110,0.04)}
+.adm-logout{display:block;padding:10px 20px;font-size:12px;color:var(--red);cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;border-left:2px solid transparent;border-top:1px solid rgba(201,169,110,0.08);margin-top:8px;background:none;border-right:none;border-bottom:none;width:100%;text-align:left;font-family:inherit}
+.adm-logout:hover{background:rgba(224,92,92,0.05);border-left-color:var(--red)}
 .adm-content{flex:1;padding:28px;overflow:auto;min-width:0}
 .adm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
 .adm-title{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--cream)}
@@ -223,7 +213,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 .chart-title{font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:16px}
 .bar-chart{display:flex;align-items:flex-end;gap:8px;height:100px}
 .bar-col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
-.bar{background:var(--gold-dark);width:100%;border-radius:2px 2px 0 0;transition:height 0.5s;position:relative;cursor:pointer}
+.bar{background:var(--gold-dark);width:100%;border-radius:2px 2px 0 0;transition:height 0.5s;cursor:pointer}
 .bar:hover{background:var(--gold)}
 .bar-label{font-size:9px;color:var(--muted);letter-spacing:0.5px}
 .bar-val{font-size:9px;color:var(--gold)}
@@ -232,17 +222,36 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 .modal-overlay{display:none;background:rgba(0,0,0,0.75);padding:40px 16px;min-height:300px;align-items:center;justify-content:center}
 .modal-overlay.open{display:flex}
 .modal-box{background:var(--dark3);border:1px solid rgba(201,169,110,0.2);padding:32px;max-width:460px;width:100%}
-.modal-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:20px}
 .modal-close{float:right;background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;font-family:inherit}
 .modal-close:hover{color:var(--gold)}
-</style>
 
+/* === ADMIN LOGIN MODAL === */
+.adm-login-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.adm-login-bg.open{display:flex}
+.adm-login-box{background:var(--dark3);border:1px solid rgba(201,169,110,0.25);padding:44px 40px;width:100%;max-width:360px;position:relative}
+.adm-login-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;font-family:inherit;line-height:1}
+.adm-login-x:hover{color:var(--gold)}
+.adm-login-logo{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);letter-spacing:2px;text-align:center;margin-bottom:4px}
+.adm-login-sub{font-size:9px;color:var(--muted);text-align:center;letter-spacing:2px;margin-bottom:6px}
+.adm-login-deco{width:36px;height:1px;background:var(--gold-dark);margin:16px auto 24px}
+.adm-lbl{font-size:9px;letter-spacing:2px;color:var(--gold);display:block;margin-bottom:6px}
+.adm-inp{background:var(--dark2);border:1px solid rgba(201,169,110,0.2);color:var(--cream);padding:12px 14px;font-size:13px;font-family:inherit;outline:none;width:100%;margin-bottom:14px;transition:border-color 0.2s}
+.adm-inp:focus{border-color:rgba(201,169,110,0.5)}
+.adm-inp::placeholder{color:var(--muted)}
+.adm-login-btn{background:var(--gold);border:none;color:#0a0a0a;padding:13px;font-size:11px;letter-spacing:2px;cursor:pointer;font-weight:500;font-family:inherit;width:100%;transition:all 0.3s}
+.adm-login-btn:hover{background:var(--gold-light)}
+.adm-login-err{color:var(--red);font-size:11px;text-align:center;margin-top:12px;min-height:16px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<!-- NAV — ไม่มีปุ่ม Admin ให้ลูกค้าเห็น -->
 <nav>
   <div class="logo" onclick="showPage('home')">SIAM<span> Royal Journey</span></div>
   <ul class="nav-center">
     <li><a data-key="nav_tours" onclick="showPage('home')">Tours</a></li>
     <li><a data-key="nav_book" onclick="showPage('booking')">Book Now</a></li>
-    <li><a data-key="nav_contact_lnk">Contact</a></li>
+    <li><a data-key="nav_contact_lnk" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">Contact</a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-sw">
@@ -251,7 +260,6 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <button class="lb" onclick="setLang('zh')">中文</button>
     </div>
     <button class="nav-book" onclick="showPage('booking')" data-key="nav_book_btn">Book Now</button>
-    <button class="admin-btn" onclick="showPage('admin')" data-key="nav_admin">Admin</button>
   </div>
 </nav>
 
@@ -270,14 +278,13 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <button class="bo" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})" data-key="cta_consult">Free Consultation</button>
       </div>
       <div class="stats">
-        <div class="stat"><div class="sn" id="stat-trips">1,200+</div><div class="sl" data-key="stat1">Trips Completed</div></div>
+        <div class="stat"><div class="sn">1,200+</div><div class="sl" data-key="stat1">Trips Completed</div></div>
         <div class="stat"><div class="sn">98%</div><div class="sl" data-key="stat2">Satisfaction Rate</div></div>
         <div class="stat"><div class="sn">45+</div><div class="sl" data-key="stat3">Routes Across Thailand</div></div>
         <div class="stat"><div class="sn">10<span style="font-size:18px" data-key="stat4_unit"> yrs</span></div><div class="sl" data-key="stat4">Experience</div></div>
       </div>
     </div>
   </section>
-
   <div class="sbar-wrap">
     <div class="sbar">
       <input class="sf" data-pk="search_ph" placeholder="Where do you want to go? e.g. Chiang Mai, Phuket...">
@@ -288,12 +295,10 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <button class="sbtn" data-key="search_btn" onclick="showPage('booking')">Search</button>
     </div>
   </div>
-
   <section class="sec" style="background:var(--dark2)">
     <div class="sh"><div class="ey" data-key="pkg_ey">Featured Packages</div><h2 class="st" data-key="pkg_st">Curated <em>Experiences for You</em></h2><div class="dv"></div></div>
     <div class="pgrid" id="pkg-grid-home"></div>
   </section>
-
   <section class="sec" style="background:var(--dark)">
     <div class="sh"><div class="ey" data-key="steps_ey">How to Book</div><h2 class="st" data-key="steps_st">Ready in <em>4 Simple Steps</em></h2><div class="dv"></div></div>
     <div class="steps-g">
@@ -303,7 +308,6 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <div class="step"><div class="snum">04</div><div class="stit" data-key="s4t">Enjoy Journey</div><p class="sdesc" data-key="s4d">Driver picks you up at hotel. Relax and explore.</p></div>
     </div>
   </section>
-
   <section class="sec" style="background:var(--dark2)">
     <div class="sh"><div class="ey" data-key="testy_ey">Guest Reviews</div><h2 class="st" data-key="testy_st">Trusted by <em>Travelers Worldwide</em></h2><div class="dv"></div></div>
     <div class="tgrid">
@@ -312,7 +316,6 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <div class="tc"><div class="tstar">★★★★★</div><p class="tq" data-key="t3q">"Very flexible, changed itinerary mid-trip, driver always smiling. Truly impressive service."</p><div class="tau"><div class="tav">TK</div><div><div class="tn">Tanaka K.</div><div class="tt" data-key="t3trip">Ayutthaya · Day Trip</div></div></div></div>
     </div>
   </section>
-
   <div class="cta-s">
     <div class="cta-deco"><div class="cta-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.8 6.2H14L10.6 8.8L11.8 13L8 10.4L4.2 13L5.4 8.8L2 6.2H6.2Z" fill="var(--gold)" opacity="0.7"/></svg></div></div>
     <div class="cta-t" data-key="cta_t">Ready to Start Your Journey?</div>
@@ -322,32 +325,18 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <button class="bo" data-key="cta_chat">Chat With Us</button>
     </div>
   </div>
-
   <div id="contact-section" style="background:var(--dark3);padding:36px 4%;border-top:1px solid rgba(201,169,110,0.12)">
     <div style="text-align:center;margin-bottom:24px">
       <div class="ey" data-key="contact_ey">Contact Us</div>
       <h2 class="st" data-key="contact_st">Chat with Us <em>Directly</em></h2>
     </div>
     <div class="contact-float">
-      <div class="cf-btn line" onclick="alert('Line: @siamroyaljourney')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61V9.86h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        LINE
-      </div>
-      <div class="cf-btn wechat" onclick="alert('WeChat ID: SiamRoyalJourney')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c-.2-.54-.314-1.1-.314-1.689 0-3.754 3.622-6.8 8.087-6.8.212 0 .42.009.625.025C15.934 4.728 12.614 2.188 8.69 2.188zm-2.35 3.836a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.697 0a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.194 3.95c-3.79 0-6.864 2.618-6.864 5.847 0 3.23 3.075 5.846 6.864 5.846.807 0 1.584-.107 2.307-.3a.7.7 0 0 1 .575.08l1.53.9a.262.262 0 0 0 .134.044.237.237 0 0 0 .236-.236.34.34 0 0 0-.038-.172l-.314-1.19a.473.473 0 0 1 .172-.534C21.22 19.047 22.1 17.5 22.1 15.82c0-3.229-3.075-5.847-6.867-5.847zm-2.432 3.03a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72zm4.864 0a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72z"/></svg>
-        WeChat
-      </div>
-      <div class="cf-btn wa" onclick="alert('WhatsApp: +66 81 234 5678')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        WhatsApp
-      </div>
-      <div class="cf-btn tel" onclick="alert('Tel: +66 2 123 4567')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span data-key="tel_label">Call Us</span>
-      </div>
+      <div class="cf-btn line" onclick="alert('Line: @siamroyaljourney')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61V9.86h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg> LINE</div>
+      <div class="cf-btn wechat" onclick="alert('WeChat ID: SiamRoyalJourney')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c-.2-.54-.314-1.1-.314-1.689 0-3.754 3.622-6.8 8.087-6.8.212 0 .42.009.625.025C15.934 4.728 12.614 2.188 8.69 2.188zm-2.35 3.836a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.697 0a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.194 3.95c-3.79 0-6.864 2.618-6.864 5.847 0 3.23 3.075 5.846 6.864 5.846.807 0 1.584-.107 2.307-.3a.7.7 0 0 1 .575.08l1.53.9a.262.262 0 0 0 .134.044.237.237 0 0 0 .236-.236.34.34 0 0 0-.038-.172l-.314-1.19a.473.473 0 0 1 .172-.534C21.22 19.047 22.1 17.5 22.1 15.82c0-3.229-3.075-5.847-6.867-5.847zm-2.432 3.03a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72zm4.864 0a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72z"/></svg> WeChat</div>
+      <div class="cf-btn wa" onclick="alert('WhatsApp: +66 81 234 5678')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</div>
+      <div class="cf-btn tel" onclick="alert('Tel: +66 2 123 4567')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span data-key="tel_label">Call Us</span></div>
     </div>
   </div>
-
   <footer class="foot">
     <div class="fg">
       <div>
@@ -378,7 +367,6 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
     <div class="bk-line"></div>
     <div class="bk-step"><div class="bk-step-num" id="bsn4">4</div><div class="bk-step-label" data-key="bs4">Confirmed!</div></div>
   </div>
-
   <div class="bk-form">
     <div id="bk-step-1">
       <div class="ey" style="margin-bottom:14px" data-key="choose_pkg">Choose Your Package</div>
@@ -391,7 +379,6 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       </div>
       <div class="form-nav"><span></span><button class="fbk" onclick="bkNext(1)" data-key="btn_next">Continue</button></div>
     </div>
-
     <div id="bk-step-2" style="display:none">
       <div class="ey" style="margin-bottom:14px" data-key="your_details">Your Details</div>
       <div class="form-row">
@@ -423,7 +410,6 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <button class="fbk" onclick="bkNext(2)" data-key="btn_next">Continue</button>
       </div>
     </div>
-
     <div id="bk-step-3" style="display:none">
       <div class="ey" style="margin-bottom:14px" data-key="review_pay">Review & Payment</div>
       <div class="bk-summary" id="bk-summary"></div>
@@ -447,16 +433,12 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <button class="fbk" onclick="bkNext(3)" data-key="btn_confirm">Confirm Booking</button>
       </div>
     </div>
-
     <div id="bk-step-4" style="display:none">
       <div class="success-box">
         <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
         <div class="success-t" data-key="success_t">Booking Confirmed!</div>
         <p class="success-s" data-key="success_s">Thank you for choosing Siam Royal Journey. Our team will contact you within 24 hours with payment details and full itinerary.</p>
-        <div class="booking-ref">
-          <div class="ref-label" data-key="ref_label">Booking Reference</div>
-          <div class="ref-num" id="bk-ref">SRJ-2026-0001</div>
-        </div>
+        <div class="booking-ref"><div class="ref-label" data-key="ref_label">Booking Reference</div><div class="ref-num" id="bk-ref">SRJ-2026-0001</div></div>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
           <button class="bp" onclick="showPage('home')" data-key="back_home">Back to Home</button>
           <button class="bo" data-key="view_all_pkg">View More Packages</button>
@@ -477,384 +459,233 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <a onclick="admView('packages')" data-key="adm_pkg">Packages</a>
         <a onclick="admView('customers')" data-key="adm_cust">Customers</a>
         <a onclick="showPage('home')" data-key="adm_back">Back to Site</a>
+        <button class="adm-logout" onclick="adminLogout()">Logout</button>
       </div>
     </div>
     <div class="adm-content">
       <div class="adm-view active" id="adm-dashboard">
-        <div class="adm-header">
-          <div><div class="adm-title" data-key="adm_title">Dashboard</div><div class="adm-sub" data-key="adm_sub">Welcome back — here's your overview</div></div>
-        </div>
+        <div class="adm-header"><div><div class="adm-title" data-key="adm_title">Dashboard</div><div class="adm-sub" data-key="adm_sub">Welcome back</div></div></div>
         <div class="metrics">
           <div class="metric"><div class="metric-label" data-key="m1">TOTAL BOOKINGS</div><div class="metric-val" id="m-total">0</div><div class="metric-change up" data-key="m1c">+12% this month</div></div>
           <div class="metric"><div class="metric-label" data-key="m2">CONFIRMED</div><div class="metric-val" id="m-conf">0</div><div class="metric-change up" data-key="m2c">+8% this month</div></div>
           <div class="metric"><div class="metric-label" data-key="m3">REVENUE (฿)</div><div class="metric-val" id="m-rev">0</div><div class="metric-change up" data-key="m3c">+15% this month</div></div>
-          <div class="metric"><div class="metric-label" data-key="m4">PENDING</div><div class="metric-val" id="m-pend">0</div><div class="metric-change dn" data-key="m4c">2 need action</div></div>
+          <div class="metric"><div class="metric-label" data-key="m4">PENDING</div><div class="metric-val" id="m-pend">0</div><div class="metric-change dn" data-key="m4c">Need action</div></div>
         </div>
         <div class="adm-table-wrap">
           <div class="adm-table-head"><span class="adm-table-title" data-key="recent_bk">Recent Bookings</span><button class="adm-add-btn" onclick="admView('bookings')" data-key="view_all">View All</button></div>
-          <table class="bt">
-            <thead><tr><th data-key="th_ref">REF</th><th data-key="th_guest">GUEST</th><th data-key="th_pkg">PACKAGE</th><th data-key="th_date">DATE</th><th data-key="th_amt">AMOUNT</th><th data-key="th_status">STATUS</th></tr></thead>
-            <tbody id="dash-table"></tbody>
-          </table>
+          <table class="bt"><thead><tr><th data-key="th_ref">REF</th><th data-key="th_guest">GUEST</th><th data-key="th_pkg">PACKAGE</th><th data-key="th_date">DATE</th><th data-key="th_amt">AMOUNT</th><th data-key="th_status">STATUS</th></tr></thead><tbody id="dash-table"></tbody></table>
         </div>
-        <div class="chart-bar-wrap">
-          <div class="chart-title" data-key="monthly_chart">MONTHLY BOOKINGS</div>
-          <div class="bar-chart" id="bar-chart"></div>
-        </div>
+        <div class="chart-bar-wrap"><div class="chart-title" data-key="monthly_chart">MONTHLY BOOKINGS</div><div class="bar-chart" id="bar-chart"></div></div>
       </div>
-
       <div class="adm-view" id="adm-bookings">
-        <div class="adm-header"><div><div class="adm-title" data-key="adm_bk_title">All Bookings</div><div class="adm-sub" id="bk-count-label">0 total bookings</div></div>
-          <div style="display:flex;gap:8px">
-            <select class="finput" style="padding:8px 12px;font-size:11px;width:auto" id="filter-status" onchange="renderBookingTable()">
-              <option value="">All Status</option><option value="confirmed">Confirmed</option><option value="pending">Pending</option><option value="cancelled">Cancelled</option>
-            </select>
-          </div>
+        <div class="adm-header"><div><div class="adm-title" data-key="adm_bk_title">All Bookings</div><div class="adm-sub" id="bk-count-label">0 total</div></div>
+          <select class="finput" style="padding:8px 12px;font-size:11px;width:auto" id="filter-status" onchange="renderBookingTable()"><option value="">All Status</option><option value="confirmed">Confirmed</option><option value="pending">Pending</option><option value="cancelled">Cancelled</option></select>
         </div>
-        <div class="adm-table-wrap">
-          <table class="bt">
-            <thead><tr><th>REF</th><th>GUEST</th><th>PACKAGE</th><th>DATE</th><th>GUESTS</th><th>AMOUNT</th><th>CONTACT</th><th>STATUS</th><th>ACTION</th></tr></thead>
-            <tbody id="full-bk-table"></tbody>
-          </table>
-        </div>
+        <div class="adm-table-wrap"><table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>PACKAGE</th><th>DATE</th><th>GUESTS</th><th>AMOUNT</th><th>CONTACT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="full-bk-table"></tbody></table></div>
       </div>
-
       <div class="adm-view" id="adm-packages">
         <div class="adm-header"><div class="adm-title" data-key="adm_pkg_title">Manage Packages</div><button class="adm-add-btn" onclick="openAddPkg()" data-key="add_pkg">+ Add Package</button></div>
         <div class="pkg-mgmt" id="pkg-mgmt-grid"></div>
         <div class="adm-pkg-form" id="add-pkg-form" style="display:none">
           <h4 data-key="add_pkg_title">Add New Package</h4>
-          <div class="form-row">
-            <div class="fgroup"><label class="flabel">Package Name (EN)</label><input class="finput" id="npkg-name" placeholder="e.g. Northern Highlands Tour"></div>
-            <div class="fgroup"><label class="flabel">Destination</label><input class="finput" id="npkg-dest" placeholder="e.g. Chiang Mai · Pai"></div>
-          </div>
-          <div class="form-row">
-            <div class="fgroup"><label class="flabel">Price (THB)</label><input class="finput" id="npkg-price" type="number" placeholder="25000"></div>
-            <div class="fgroup"><label class="flabel">Duration</label><input class="finput" id="npkg-dur" placeholder="e.g. 3 Days 2 Nights"></div>
-          </div>
-          <div class="form-row full">
-            <div class="fgroup"><label class="flabel">Description</label><textarea class="finput" id="npkg-desc" rows="2" placeholder="Short description of this tour package..."></textarea></div>
-          </div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">Package Name (EN)</label><input class="finput" id="npkg-name" placeholder="e.g. Northern Highlands Tour"></div><div class="fgroup"><label class="flabel">Destination</label><input class="finput" id="npkg-dest" placeholder="e.g. Chiang Mai · Pai"></div></div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">Price (THB)</label><input class="finput" id="npkg-price" type="number" placeholder="25000"></div><div class="fgroup"><label class="flabel">Duration</label><input class="finput" id="npkg-dur" placeholder="e.g. 3 Days 2 Nights"></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Description</label><textarea class="finput" id="npkg-desc" rows="2" placeholder="Short description of this tour package..."></textarea></div></div>
           <div class="form-nav"><button class="fbk-out" onclick="closeAddPkg()">Cancel</button><button class="fbk" onclick="saveNewPkg()">Save Package</button></div>
         </div>
       </div>
-
       <div class="adm-view" id="adm-customers">
         <div class="adm-header"><div class="adm-title" data-key="adm_cust_title">Customers</div></div>
-        <div class="adm-table-wrap">
-          <table class="bt">
-            <thead><tr><th>NAME</th><th>EMAIL</th><th>NATIONALITY</th><th>PHONE</th><th>BOOKINGS</th><th>TOTAL SPENT</th></tr></thead>
-            <tbody id="cust-table"></tbody>
-          </table>
-        </div>
+        <div class="adm-table-wrap"><table class="bt"><thead><tr><th>NAME</th><th>EMAIL</th><th>NATIONALITY</th><th>PHONE</th><th>BOOKINGS</th><th>TOTAL SPENT</th></tr></thead><tbody id="cust-table"></tbody></table></div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <div id="modal-content"></div>
+  <div class="modal-box"><button class="modal-close" onclick="closeModal()">×</button><div id="modal-content"></div></div>
+</div>
+
+<!-- ADMIN LOGIN MODAL — ซ่อนจากลูกค้า เปิดด้วย Ctrl+Shift+A -->
+<div class="adm-login-bg" id="adm-login-bg">
+  <div class="adm-login-box">
+    <button class="adm-login-x" onclick="closeAdminLogin()">×</button>
+    <div class="adm-login-logo">SIAM ROYAL JOURNEY</div>
+    <div class="adm-login-sub">ADMIN ACCESS</div>
+    <div class="adm-login-deco"></div>
+    <label class="adm-lbl">USERNAME</label>
+    <input class="adm-inp" id="adm-user" placeholder="admin" autocomplete="username">
+    <label class="adm-lbl">PASSWORD</label>
+    <input class="adm-inp" id="adm-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()">
+    <button class="adm-login-btn" onclick="doAdminLogin()">ACCESS ADMIN PANEL</button>
+    <div class="adm-login-err" id="adm-err"></div>
   </div>
 </div>
 
 <script>
-const PACKAGES = [
+var isAdmin=false, adminTry=0;
+var ADMINS=[{u:'admin',p:'admin1234'},{u:'manager',p:'manager2026'}];
+
+function openAdminLogin(){
+  document.getElementById('adm-login-bg').classList.add('open');
+  setTimeout(function(){document.getElementById('adm-user').focus();},100);
+}
+function closeAdminLogin(){document.getElementById('adm-login-bg').classList.remove('open');}
+
+function doAdminLogin(){
+  var u=document.getElementById('adm-user').value.trim();
+  var p=document.getElementById('adm-pass').value;
+  var ok=ADMINS.find(function(c){return c.u===u&&c.p===p;});
+  if(ok){
+    isAdmin=true; adminTry=0;
+    closeAdminLogin();
+    document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
+    document.getElementById('page-admin').classList.add('active');
+    renderAdmin(); window.scrollTo(0,0);
+  } else {
+    adminTry++;
+    document.getElementById('adm-pass').value='';
+    var left=5-adminTry;
+    if(left<=0){
+      document.getElementById('adm-err').textContent='Too many attempts. Locked for 5 minutes.';
+      document.getElementById('adm-user').disabled=true;
+      document.getElementById('adm-pass').disabled=true;
+      setTimeout(function(){
+        adminTry=0;
+        document.getElementById('adm-user').disabled=false;
+        document.getElementById('adm-pass').disabled=false;
+        document.getElementById('adm-err').textContent='';
+      },300000);
+    } else {
+      document.getElementById('adm-err').textContent='Invalid credentials. '+left+' attempt'+(left===1?'':'s')+' remaining.';
+    }
+  }
+}
+
+function adminLogout(){
+  isAdmin=false;
+  document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
+  document.getElementById('page-home').classList.add('active');
+  document.getElementById('adm-user').value='';
+  document.getElementById('adm-pass').value='';
+  document.getElementById('adm-err').textContent='';
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey&&e.shiftKey&&e.key==='A'){
+    e.preventDefault();
+    if(!isAdmin) openAdminLogin();
+    else{
+      document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
+      document.getElementById('page-admin').classList.add('active');
+      renderAdmin();
+    }
+  }
+  if(e.key==='Escape') closeAdminLogin();
+});
+
+const PACKAGES=[
   {id:'p1',name:'Lanna Premium Circuit',nameT:'ล้านนา ไพรีเมียม เซอร์กิต',nameZ:'兰纳高端环线游',dest:'Chiang Mai · Chiang Rai',price:28500,dur:'5 Days 4 Nights',durT:'5 วัน 4 คืน',durZ:'5天4夜',desc:'Explore northern Thai culture, stunning temples, night markets, and highland peaks.',active:true},
   {id:'p2',name:'Andaman Luxury Tour',nameT:'อันดามัน ลักชัวรี่ ทัวร์',nameZ:'安达曼奢华游',dest:'Krabi · Koh Lanta',price:22000,dur:'4 Days 3 Nights',durT:'4 วัน 3 คืน',durZ:'4天3夜',desc:'Crystal waters, white sands, and a slow coastal life along the Andaman Sea.',active:true},
   {id:'p3',name:'World Heritage Day Trip',nameT:'มรดกโลก วันเดย์ ทริป',nameZ:'世界遗产一日游',dest:'Ayutthaya · Suphanburi',price:6500,dur:'1 Day',durT:'1 วัน',durZ:'1天',desc:'Journey through ancient Thai kingdoms with an expert heritage guide.',active:true},
-  {id:'p4',name:'Phuket Island Escape',nameT:'ภูเก็ต ไอส์แลนด์ เอสเคป',nameZ:'普吉岛度假游',dest:'Phuket · Phang Nga',price:18500,dur:'3 Days 2 Nights',durT:'3 วัน 2 คืน',durZ:'3天2夜',desc:'Iconic beaches, hidden lagoons, and vibrant nightlife on Thailand\'s pearl island.',active:true}
+  {id:'p4',name:'Phuket Island Escape',nameT:'ภูเก็ต ไอส์แลนด์ เอสเคป',nameZ:'普吉岛度假游',dest:'Phuket · Phang Nga',price:18500,dur:'3 Days 2 Nights',durT:'3 วัน 2 คืน',durZ:'3天2夜',desc:"Iconic beaches, hidden lagoons, and vibrant nightlife on Thailand's pearl island.",active:true}
 ];
 
-let BOOKINGS = [];
-let currentLang = 'en';
-let bkSelected = null;
-let bkStep = 1;
+let BOOKINGS=[],currentLang='en',bkSelected=null,bkStep=1;
 
-const T = {
-  en:{nav_tours:'Tours',nav_book:'Book Now',nav_contact_lnk:'Contact',nav_book_btn:'Book Now',nav_admin:'Admin Panel',hero_badge:'Premium Private Tours Thailand','hero_h1':'Explore Thailand <em>in Luxury</em>',hero_sub:'Private tours with professional car and driver — crafted exclusively for you.',cta_packages:'View Tour Packages',cta_consult:'Free Consultation',stat1:'Trips Completed',stat2:'Satisfaction Rate',stat3:'Routes Across Thailand',stat4:'Experience',stat4_unit:' yrs',search_ph:'Where do you want to go? e.g. Chiang Mai, Phuket...',dur_l:'Duration',d1:'1 Day',d2:'2-3 Days',d3:'4-7 Days',d4:'7+ Days',pax_l:'Guests',search_btn:'Search',pkg_ey:'Featured Packages','pkg_st':'Curated <em>Experiences for You</em>',steps_ey:'How to Book','steps_st':'Ready in <em>4 Simple Steps</em>',s1t:'Choose Package',s1d:'Pick a ready-made package or design your own route.',s2t:'Select Date',s2d:'Choose travel dates and number of travelers.',s3t:'Confirm & Pay',s3d:'30% deposit secures booking. Balance 7 days before.',s4t:'Enjoy Journey',s4d:'Driver picks you up at hotel. Relax and explore.',testy_ey:'Guest Reviews','testy_st':'Trusted by <em>Travelers Worldwide</em>',t1q:'"Driver spoke excellent English and recommended the best local spots. Will book again!"',t1trip:'Chiang Mai · 5 Days',t2q:'"Easy booking, transparent pricing. Car spotless, service exceeded expectations."',t2trip:'Krabi · Family Trip',t3q:'"Very flexible, changed itinerary mid-trip, driver always smiling. Truly impressive."',t3trip:'Ayutthaya · Day Trip',cta_t:'Ready to Start Your Journey?',cta_s:'Our experts design the perfect experience just for you.',cta_chat:'Chat With Us',contact_ey:'Contact Us','contact_st':'Chat with Us <em>Directly</em>',tel_label:'Call Us',footer_desc:'Premium private tour service with professional car and driver.',footer_pop:'Popular Tours',footer_svc:'Services',footer_con:'Contact',svc1:'Car with Driver',svc2:'Group Tours',svc3:'Custom Itinerary',svc4:'Honeymoon Trip',footer_legal:'Privacy Policy · Terms',bk_ey:'Booking','bk_st':'Reserve Your <em>Perfect Journey</em>',bs1:'Select Package',bs2:'Your Details',bs3:'Review & Pay',bs4:'Confirmed!',choose_pkg:'Choose Your Package',fl_date:'Travel Date',fl_guests:'Number of Guests',your_details:'Your Details',fl_fname:'First Name',fl_lname:'Last Name',fl_email:'Email',fl_phone:'Phone / WhatsApp',fl_nat:'Nationality',fl_hotel:'Hotel / Pickup Location',fl_note:'Special Requests (Optional)',fl_contact:'Preferred Contact',btn_next:'Continue',btn_back:'Back',btn_confirm:'Confirm Booking',review_pay:'Review & Payment',pay_method:'Payment Method',pay_bank:'Bank Transfer',pay_card:'Credit / Debit Card',pay_note:'30% deposit required to confirm booking. Team contacts you within 24 hours.',terms_agree:'I agree to Terms of Service and Cancellation Policy',success_t:'Booking Confirmed!',success_s:'Thank you for choosing Siam Royal Journey. Our team will contact you within 24 hours with payment details.',ref_label:'Booking Reference',back_home:'Back to Home',view_all_pkg:'View More Packages',adm_dash:'Dashboard',adm_bk:'Bookings',adm_pkg:'Packages',adm_cust:'Customers',adm_back:'Back to Site',adm_title:'Dashboard',adm_sub:"Welcome back — here's your overview",m1:'TOTAL BOOKINGS',m1c:'+12% this month',m2:'CONFIRMED',m2c:'+8% this month',m3:'REVENUE (฿)',m3c:'+15% this month',m4:'PENDING',m4c:'2 need action',recent_bk:'Recent Bookings',view_all:'View All',th_ref:'REF',th_guest:'GUEST',th_pkg:'PACKAGE',th_date:'DATE',th_amt:'AMOUNT',th_status:'STATUS',adm_bk_title:'All Bookings',adm_pkg_title:'Manage Packages',add_pkg:'+ Add Package',add_pkg_title:'Add New Package',adm_cust_title:'Customers',monthly_chart:'MONTHLY BOOKINGS',per_group:'/ group',view_detail:'View Details'},
-  th:{nav_tours:'ทัวร์',nav_book:'จองทันที',nav_contact_lnk:'ติดต่อ',nav_book_btn:'จองทันที',nav_admin:'ผู้ดูแล',hero_badge:'ทัวร์ส่วนตัวพรีเมียมในประเทศไทย','hero_h1':'เที่ยวไทย<em>อย่างมีระดับ</em>',hero_sub:'ทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบประสบการณ์เฉพาะคุณ',cta_packages:'ดูแพ็กเกจทัวร์',cta_consult:'ปรึกษาฟรี',stat1:'ทริปสำเร็จ',stat2:'ลูกค้าพอใจ',stat3:'เส้นทางทั่วไทย',stat4:'ประสบการณ์',stat4_unit:' ปี',search_ph:'ต้องการเที่ยวที่ไหน? เช่น เชียงใหม่, ภูเก็ต...',dur_l:'กี่วัน?',d1:'1 วัน',d2:'2-3 วัน',d3:'4-7 วัน',d4:'7+ วัน',pax_l:'จำนวนคน',search_btn:'ค้นหา',pkg_ey:'แพ็กเกจแนะนำ','pkg_st':'ประสบการณ์<em>ที่คัดสรรมาเพื่อคุณ</em>',steps_ey:'ขั้นตอนการจอง','steps_st':'ง่ายแค่ <em>4 ขั้นตอน</em>',s1t:'เลือกแพ็กเกจ',s1d:'เลือกจากแพ็กเกจสำเร็จหรือออกแบบเส้นทางเอง',s2t:'ยืนยันวันเดินทาง',s2d:'เลือกวันและจำนวนผู้เดินทาง',s3t:'ชำระเงิน',s3d:'มัดจำ 30% ส่วนที่เหลือก่อนเดินทาง 7 วัน',s4t:'เริ่มเดินทาง',s4d:'คนขับรับถึงที่พัก ดูแลตลอดทริป',testy_ey:'รีวิวจากลูกค้า','testy_st':'ประสบการณ์ที่<em>ลูกค้าไว้วางใจ</em>',t1q:'"คนขับพูดภาษาอังกฤษดีมาก แนะนำร้านอาหารท้องถิ่นที่อร่อย จะกลับมาใช้บริการอีก"',t1trip:'เชียงใหม่ · 5 วัน',t2q:'"จองง่าย ราคาโปร่งใส ไม่มีค่าใช้จ่ายซ่อนเร้น รถสะอาดมาก"',t2trip:'กระบี่ · ทริปครอบครัว',t3q:'"Flexible มากๆ เปลี่ยนโปรแกรมกลางทางได้ คนขับยิ้มแย้มตลอด"',t3trip:'อยุธยา · ทริปวันเดียว',cta_t:'พร้อมออกเดินทางแล้วหรือยัง?',cta_s:'ทีมผู้เชี่ยวชาญของเราพร้อมออกแบบการเดินทางสำหรับคุณ',cta_chat:'คุยกับเราเลย',contact_ey:'ติดต่อเรา','contact_st':'ติดต่อเรา<em>โดยตรง</em>',tel_label:'โทรหาเรา',footer_desc:'บริการทัวร์ส่วนตัวพรีเมียมพร้อมรถและคนขับมืออาชีพ',footer_pop:'ทัวร์ยอดนิยม',footer_svc:'บริการ',footer_con:'ติดต่อ',svc1:'เช่ารถพร้อมคนขับ',svc2:'ทัวร์กลุ่มใหญ่',svc3:'ออกแบบทริปเอง',svc4:'ทริปฮันนีมูน',footer_legal:'นโยบายความเป็นส่วนตัว · เงื่อนไข',bk_ey:'การจอง','bk_st':'จองการเดินทาง<em>ในฝันของคุณ</em>',bs1:'เลือกแพ็กเกจ',bs2:'ข้อมูลของคุณ',bs3:'ตรวจสอบ & ชำระ',bs4:'ยืนยันแล้ว!',choose_pkg:'เลือกแพ็กเกจทัวร์',fl_date:'วันเดินทาง',fl_guests:'จำนวนผู้เดินทาง',your_details:'ข้อมูลของคุณ',fl_fname:'ชื่อ',fl_lname:'นามสกุล',fl_email:'อีเมล',fl_phone:'โทรศัพท์ / WhatsApp',fl_nat:'สัญชาติ',fl_hotel:'โรงแรม / จุดรับ',fl_note:'ความต้องการพิเศษ (ถ้ามี)',fl_contact:'ช่องทางติดต่อที่ต้องการ',btn_next:'ถัดไป',btn_back:'ย้อนกลับ',btn_confirm:'ยืนยันการจอง',review_pay:'ตรวจสอบ & ชำระเงิน',pay_method:'วิธีการชำระเงิน',pay_bank:'โอนเงินธนาคาร',pay_card:'บัตรเครดิต / เดบิต',pay_note:'ต้องชำระมัดจำ 30% เพื่อยืนยันการจอง ทีมงานจะติดต่อภายใน 24 ชั่วโมง',terms_agree:'ฉันยอมรับเงื่อนไขการให้บริการและนโยบายการยกเลิก',success_t:'จองสำเร็จแล้ว!',success_s:'ขอบคุณที่เลือก Siam Royal Journey ทีมงานจะติดต่อคุณภายใน 24 ชั่วโมง',ref_label:'หมายเลขการจอง',back_home:'กลับหน้าหลัก',view_all_pkg:'ดูแพ็กเกจเพิ่มเติม',adm_dash:'ภาพรวม',adm_bk:'การจอง',adm_pkg:'แพ็กเกจ',adm_cust:'ลูกค้า',adm_back:'กลับหน้าเว็บ',adm_title:'ภาพรวม',adm_sub:'ยินดีต้อนรับกลับ',m1:'การจองทั้งหมด',m1c:'+12% เดือนนี้',m2:'ยืนยันแล้ว',m2c:'+8% เดือนนี้',m3:'รายได้ (฿)',m3c:'+15% เดือนนี้',m4:'รอดำเนินการ',m4c:'2 รายการรอ',recent_bk:'การจองล่าสุด',view_all:'ดูทั้งหมด',th_ref:'รหัส',th_guest:'ผู้เดินทาง',th_pkg:'แพ็กเกจ',th_date:'วันที่',th_amt:'ยอด',th_status:'สถานะ',adm_bk_title:'การจองทั้งหมด',adm_pkg_title:'จัดการแพ็กเกจ',add_pkg:'+ เพิ่มแพ็กเกจ',add_pkg_title:'เพิ่มแพ็กเกจใหม่',adm_cust_title:'ลูกค้า',monthly_chart:'สถิติรายเดือน',per_group:'/ กลุ่ม',view_detail:'ดูรายละเอียด'},
-  zh:{nav_tours:'旅游线路',nav_book:'立即预订',nav_contact_lnk:'联系我们',nav_book_btn:'立即预订',nav_admin:'管理后台',hero_badge:'泰国高端私人定制游','hero_h1':'探索泰国<em>尊享之旅</em>',hero_sub:'专属私人旅游服务，配备专业车辆和司机，为您量身定制难忘旅程。',cta_packages:'查看旅游套餐',cta_consult:'免费咨询',stat1:'行程完成',stat2:'满意度',stat3:'全泰路线',stat4:'服务经验',stat4_unit:' 年',search_ph:'您想去哪里？例如：清迈、普吉、甲米...',dur_l:'天数',d1:'1天',d2:'2-3天',d3:'4-7天',d4:'7天以上',pax_l:'人数',search_btn:'搜索',pkg_ey:'推荐套餐','pkg_st':'专为您<em>精心策划的体验</em>',steps_ey:'预订流程','steps_st':'简单 <em>4步完成</em>',s1t:'选择套餐',s1d:'选择现成套餐或设计专属路线',s2t:'选择日期',s2d:'选定出行日期和旅行人数',s3t:'确认与付款',s3d:'预付30%定金，余款出行前7天支付',s4t:'开始旅程',s4d:'司机直接到酒店接您，全程贴心陪同',testy_ey:'客户评价','testy_st':'深受<em>全球旅客信赖</em>',t1q:'"我们的司机英语非常好，推荐了最地道的当地餐厅，下次一定还来！"',t1trip:'清迈 · 5天',t2q:'"预订简单，价格透明，无隐藏费用。车辆非常干净，服务超出预期。"',t2trip:'甲米 · 家庭游',t3q:'"非常灵活，途中更改行程也没问题，司机始终面带微笑，令人印象深刻。"',t3trip:'大城 · 一日游',cta_t:'准备好出发了吗？',cta_s:'我们的专家团队随时为您设计完美的旅行体验。',cta_chat:'立即联系我们',contact_ey:'联系方式','contact_st':'直接<em>与我们沟通</em>',tel_label:'电话联系',footer_desc:'高端私人旅游服务，配备专业车辆和司机，全程为您贴心服务。',footer_pop:'热门路线',footer_svc:'服务项目',footer_con:'联系方式',svc1:'含司机租车',svc2:'团体旅游',svc3:'定制行程',svc4:'蜜月旅行',footer_legal:'隐私政策 · 服务条款',bk_ey:'预订','bk_st':'预订您的<em>完美旅程</em>',bs1:'选择套餐',bs2:'填写信息',bs3:'确认付款',bs4:'预订成功！',choose_pkg:'选择旅游套餐',fl_date:'出发日期',fl_guests:'旅行人数',your_details:'填写个人信息',fl_fname:'名字',fl_lname:'姓氏',fl_email:'电子邮件',fl_phone:'电话 / WhatsApp',fl_nat:'国籍',fl_hotel:'酒店 / 接送地点',fl_note:'特殊要求（选填）',fl_contact:'首选联系方式',btn_next:'继续',btn_back:'返回',btn_confirm:'确认预订',review_pay:'确认与付款',pay_method:'付款方式',pay_bank:'银行转账',pay_card:'信用卡 / 借记卡',pay_note:'需支付30%定金确认预订。我们的团队将在24小时内通过您的首选渠道与您联系。',terms_agree:'我同意服务条款和取消政策',success_t:'预订成功！',success_s:'感谢您选择 Siam Royal Journey。我们的团队将在24小时内联系您，提供付款详情和完整行程。',ref_label:'预订参考号',back_home:'返回首页',view_all_pkg:'查看更多套餐',adm_dash:'仪表板',adm_bk:'预订管理',adm_pkg:'套餐管理',adm_cust:'客户管理',adm_back:'返回网站',adm_title:'仪表板',adm_sub:'欢迎回来 — 这是您的概览',m1:'总预订数',m1c:'本月+12%',m2:'已确认',m2c:'本月+8%',m3:'收入 (฿)',m3c:'本月+15%',m4:'待处理',m4c:'2条需处理',recent_bk:'最新预订',view_all:'查看全部',th_ref:'参考号',th_guest:'客人',th_pkg:'套餐',th_date:'日期',th_amt:'金额',th_status:'状态',adm_bk_title:'所有预订',adm_pkg_title:'套餐管理',add_pkg:'+ 添加套餐',add_pkg_title:'添加新套餐',adm_cust_title:'客户列表',monthly_chart:'月度预订统计',per_group:'/ 团',view_detail:'查看详情'}
+const T={
+  en:{nav_tours:'Tours',nav_book:'Book Now',nav_contact_lnk:'Contact',nav_book_btn:'Book Now',hero_badge:'Premium Private Tours Thailand','hero_h1':'Explore Thailand <em>in Luxury</em>',hero_sub:'Private tours with professional car and driver — crafted exclusively for you.',cta_packages:'View Tour Packages',cta_consult:'Free Consultation',stat1:'Trips Completed',stat2:'Satisfaction Rate',stat3:'Routes Across Thailand',stat4:'Experience',stat4_unit:' yrs',search_ph:'Where do you want to go? e.g. Chiang Mai, Phuket...',dur_l:'Duration',d1:'1 Day',d2:'2-3 Days',d3:'4-7 Days',d4:'7+ Days',pax_l:'Guests',search_btn:'Search',pkg_ey:'Featured Packages','pkg_st':'Curated <em>Experiences for You</em>',steps_ey:'How to Book','steps_st':'Ready in <em>4 Simple Steps</em>',s1t:'Choose Package',s1d:'Pick a ready-made package or design your own route.',s2t:'Select Date',s2d:'Choose travel dates and number of travelers.',s3t:'Confirm & Pay',s3d:'30% deposit secures booking. Balance 7 days before.',s4t:'Enjoy Journey',s4d:'Driver picks you up at hotel. Relax and explore.',testy_ey:'Guest Reviews','testy_st':'Trusted by <em>Travelers Worldwide</em>',t1q:'"Driver spoke excellent English and recommended the best local spots. Will book again!"',t1trip:'Chiang Mai · 5 Days',t2q:'"Easy booking, transparent pricing. Car spotless, service exceeded expectations."',t2trip:'Krabi · Family Trip',t3q:'"Very flexible, changed itinerary mid-trip, driver always smiling. Truly impressive."',t3trip:'Ayutthaya · Day Trip',cta_t:'Ready to Start Your Journey?',cta_s:'Our experts design the perfect experience just for you.',cta_chat:'Chat With Us',contact_ey:'Contact Us','contact_st':'Chat with Us <em>Directly</em>',tel_label:'Call Us',footer_desc:'Premium private tour service with professional car and driver.',footer_pop:'Popular Tours',footer_svc:'Services',footer_con:'Contact',svc1:'Car with Driver',svc2:'Group Tours',svc3:'Custom Itinerary',svc4:'Honeymoon Trip',footer_legal:'Privacy Policy · Terms',bk_ey:'Booking','bk_st':'Reserve Your <em>Perfect Journey</em>',bs1:'Select Package',bs2:'Your Details',bs3:'Review & Pay',bs4:'Confirmed!',choose_pkg:'Choose Your Package',fl_date:'Travel Date',fl_guests:'Number of Guests',your_details:'Your Details',fl_fname:'First Name',fl_lname:'Last Name',fl_email:'Email',fl_phone:'Phone / WhatsApp',fl_nat:'Nationality',fl_hotel:'Hotel / Pickup Location',fl_note:'Special Requests (Optional)',fl_contact:'Preferred Contact',btn_next:'Continue',btn_back:'Back',btn_confirm:'Confirm Booking',review_pay:'Review & Payment',pay_method:'Payment Method',pay_bank:'Bank Transfer',pay_card:'Credit / Debit Card',pay_note:'30% deposit required to confirm booking. Team contacts you within 24 hours.',terms_agree:'I agree to Terms of Service and Cancellation Policy',success_t:'Booking Confirmed!',success_s:'Thank you for choosing Siam Royal Journey. Our team will contact you within 24 hours with payment details.',ref_label:'Booking Reference',back_home:'Back to Home',view_all_pkg:'View More Packages',adm_dash:'Dashboard',adm_bk:'Bookings',adm_pkg:'Packages',adm_cust:'Customers',adm_back:'Back to Site',adm_title:'Dashboard',adm_sub:"Welcome back — here's your overview",m1:'TOTAL BOOKINGS',m1c:'+12% this month',m2:'CONFIRMED',m2c:'+8% this month',m3:'REVENUE (฿)',m3c:'+15% this month',m4:'PENDING',m4c:'Need action',recent_bk:'Recent Bookings',view_all:'View All',th_ref:'REF',th_guest:'GUEST',th_pkg:'PACKAGE',th_date:'DATE',th_amt:'AMOUNT',th_status:'STATUS',adm_bk_title:'All Bookings',adm_pkg_title:'Manage Packages',add_pkg:'+ Add Package',add_pkg_title:'Add New Package',adm_cust_title:'Customers',monthly_chart:'MONTHLY BOOKINGS',per_group:'/ group',view_detail:'View Details'},
+  th:{nav_tours:'ทัวร์',nav_book:'จองทันที',nav_contact_lnk:'ติดต่อ',nav_book_btn:'จองทันที',hero_badge:'ทัวร์ส่วนตัวพรีเมียมในประเทศไทย','hero_h1':'เที่ยวไทย<em>อย่างมีระดับ</em>',hero_sub:'ทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบประสบการณ์เฉพาะคุณ',cta_packages:'ดูแพ็กเกจทัวร์',cta_consult:'ปรึกษาฟรี',stat1:'ทริปสำเร็จ',stat2:'ลูกค้าพอใจ',stat3:'เส้นทางทั่วไทย',stat4:'ประสบการณ์',stat4_unit:' ปี',search_ph:'ต้องการเที่ยวที่ไหน? เช่น เชียงใหม่, ภูเก็ต...',dur_l:'กี่วัน?',d1:'1 วัน',d2:'2-3 วัน',d3:'4-7 วัน',d4:'7+ วัน',pax_l:'จำนวนคน',search_btn:'ค้นหา',pkg_ey:'แพ็กเกจแนะนำ','pkg_st':'ประสบการณ์<em>ที่คัดสรรมาเพื่อคุณ</em>',steps_ey:'ขั้นตอนการจอง','steps_st':'ง่ายแค่ <em>4 ขั้นตอน</em>',s1t:'เลือกแพ็กเกจ',s1d:'เลือกจากแพ็กเกจสำเร็จหรือออกแบบเส้นทางเอง',s2t:'ยืนยันวันเดินทาง',s2d:'เลือกวันและจำนวนผู้เดินทาง',s3t:'ชำระเงิน',s3d:'มัดจำ 30% ส่วนที่เหลือก่อนเดินทาง 7 วัน',s4t:'เริ่มเดินทาง',s4d:'คนขับรับถึงที่พัก ดูแลตลอดทริป',testy_ey:'รีวิวจากลูกค้า','testy_st':'ประสบการณ์ที่<em>ลูกค้าไว้วางใจ</em>',t1q:'"คนขับพูดภาษาอังกฤษดีมาก แนะนำร้านอาหารท้องถิ่น จะกลับมาใช้บริการอีก"',t1trip:'เชียงใหม่ · 5 วัน',t2q:'"จองง่าย ราคาโปร่งใส รถสะอาดมาก บริการดีเกินคาด"',t2trip:'กระบี่ · ทริปครอบครัว',t3q:'"Flexible มากๆ เปลี่ยนโปรแกรมกลางทางได้ คนขับยิ้มแย้มตลอด"',t3trip:'อยุธยา · ทริปวันเดียว',cta_t:'พร้อมออกเดินทางแล้วหรือยัง?',cta_s:'ทีมผู้เชี่ยวชาญพร้อมออกแบบการเดินทางสำหรับคุณ',cta_chat:'คุยกับเราเลย',contact_ey:'ติดต่อเรา','contact_st':'ติดต่อเรา<em>โดยตรง</em>',tel_label:'โทรหาเรา',footer_desc:'บริการทัวร์ส่วนตัวพรีเมียมพร้อมรถและคนขับมืออาชีพ',footer_pop:'ทัวร์ยอดนิยม',footer_svc:'บริการ',footer_con:'ติดต่อ',svc1:'เช่ารถพร้อมคนขับ',svc2:'ทัวร์กลุ่มใหญ่',svc3:'ออกแบบทริปเอง',svc4:'ทริปฮันนีมูน',footer_legal:'นโยบายความเป็นส่วนตัว · เงื่อนไข',bk_ey:'การจอง','bk_st':'จองการเดินทาง<em>ในฝันของคุณ</em>',bs1:'เลือกแพ็กเกจ',bs2:'ข้อมูลของคุณ',bs3:'ตรวจสอบ & ชำระ',bs4:'ยืนยันแล้ว!',choose_pkg:'เลือกแพ็กเกจทัวร์',fl_date:'วันเดินทาง',fl_guests:'จำนวนผู้เดินทาง',your_details:'ข้อมูลของคุณ',fl_fname:'ชื่อ',fl_lname:'นามสกุล',fl_email:'อีเมล',fl_phone:'โทรศัพท์ / WhatsApp',fl_nat:'สัญชาติ',fl_hotel:'โรงแรม / จุดรับ',fl_note:'ความต้องการพิเศษ (ถ้ามี)',fl_contact:'ช่องทางติดต่อที่ต้องการ',btn_next:'ถัดไป',btn_back:'ย้อนกลับ',btn_confirm:'ยืนยันการจอง',review_pay:'ตรวจสอบ & ชำระเงิน',pay_method:'วิธีการชำระเงิน',pay_bank:'โอนเงินธนาคาร',pay_card:'บัตรเครดิต / เดบิต',pay_note:'ต้องชำระมัดจำ 30% ทีมงานจะติดต่อภายใน 24 ชั่วโมง',terms_agree:'ฉันยอมรับเงื่อนไขการให้บริการและนโยบายการยกเลิก',success_t:'จองสำเร็จแล้ว!',success_s:'ขอบคุณที่เลือก Siam Royal Journey ทีมงานจะติดต่อคุณภายใน 24 ชั่วโมง',ref_label:'หมายเลขการจอง',back_home:'กลับหน้าหลัก',view_all_pkg:'ดูแพ็กเกจเพิ่มเติม',adm_dash:'ภาพรวม',adm_bk:'การจอง',adm_pkg:'แพ็กเกจ',adm_cust:'ลูกค้า',adm_back:'กลับหน้าเว็บ',adm_title:'ภาพรวม',adm_sub:'ยินดีต้อนรับกลับ',m1:'การจองทั้งหมด',m1c:'+12% เดือนนี้',m2:'ยืนยันแล้ว',m2c:'+8% เดือนนี้',m3:'รายได้ (฿)',m3c:'+15% เดือนนี้',m4:'รอดำเนินการ',m4c:'รายการรอ',recent_bk:'การจองล่าสุด',view_all:'ดูทั้งหมด',th_ref:'รหัส',th_guest:'ผู้เดินทาง',th_pkg:'แพ็กเกจ',th_date:'วันที่',th_amt:'ยอด',th_status:'สถานะ',adm_bk_title:'การจองทั้งหมด',adm_pkg_title:'จัดการแพ็กเกจ',add_pkg:'+ เพิ่มแพ็กเกจ',add_pkg_title:'เพิ่มแพ็กเกจใหม่',adm_cust_title:'ลูกค้า',monthly_chart:'สถิติรายเดือน',per_group:'/ กลุ่ม',view_detail:'ดูรายละเอียด'},
+  zh:{nav_tours:'旅游线路',nav_book:'立即预订',nav_contact_lnk:'联系我们',nav_book_btn:'立即预订',hero_badge:'泰国高端私人定制游','hero_h1':'探索泰国<em>尊享之旅</em>',hero_sub:'专属私人旅游服务，配备专业车辆和司机，为您量身定制难忘旅程。',cta_packages:'查看旅游套餐',cta_consult:'免费咨询',stat1:'行程完成',stat2:'满意度',stat3:'全泰路线',stat4:'服务经验',stat4_unit:' 年',search_ph:'您想去哪里？例如：清迈、普吉、甲米...',dur_l:'天数',d1:'1天',d2:'2-3天',d3:'4-7天',d4:'7天以上',pax_l:'人数',search_btn:'搜索',pkg_ey:'推荐套餐','pkg_st':'专为您<em>精心策划的体验</em>',steps_ey:'预订流程','steps_st':'简单 <em>4步完成</em>',s1t:'选择套餐',s1d:'选择现成套餐或设计专属路线',s2t:'选择日期',s2d:'选定出行日期和旅行人数',s3t:'确认与付款',s3d:'预付30%定金，余款出行前7天支付',s4t:'开始旅程',s4d:'司机直接到酒店接您，全程贴心陪同',testy_ey:'客户评价','testy_st':'深受<em>全球旅客信赖</em>',t1q:'"我们的司机英语非常好，推荐了最地道的餐厅，下次一定还来！"',t1trip:'清迈 · 5天',t2q:'"预订简单，价格透明，无隐藏费用。服务超出预期。"',t2trip:'甲米 · 家庭游',t3q:'"非常灵活，途中更改行程也没问题，司机始终面带微笑。"',t3trip:'大城 · 一日游',cta_t:'准备好出发了吗？',cta_s:'我们的专家团队随时为您设计完美的旅行体验。',cta_chat:'立即联系我们',contact_ey:'联系方式','contact_st':'直接<em>与我们沟通</em>',tel_label:'电话联系',footer_desc:'高端私人旅游服务，配备专业车辆和司机，全程为您贴心服务。',footer_pop:'热门路线',footer_svc:'服务项目',footer_con:'联系方式',svc1:'含司机租车',svc2:'团体旅游',svc3:'定制行程',svc4:'蜜月旅行',footer_legal:'隐私政策 · 服务条款',bk_ey:'预订','bk_st':'预订您的<em>完美旅程</em>',bs1:'选择套餐',bs2:'填写信息',bs3:'确认付款',bs4:'预订成功！',choose_pkg:'选择旅游套餐',fl_date:'出发日期',fl_guests:'旅行人数',your_details:'填写个人信息',fl_fname:'名字',fl_lname:'姓氏',fl_email:'电子邮件',fl_phone:'电话 / WhatsApp',fl_nat:'国籍',fl_hotel:'酒店 / 接送地点',fl_note:'特殊要求（选填）',fl_contact:'首选联系方式',btn_next:'继续',btn_back:'返回',btn_confirm:'确认预订',review_pay:'确认与付款',pay_method:'付款方式',pay_bank:'银行转账',pay_card:'信用卡 / 借记卡',pay_note:'需支付30%定金确认预订。我们的团队将在24小时内通过您的首选渠道与您联系。',terms_agree:'我同意服务条款和取消政策',success_t:'预订成功！',success_s:'感谢您选择 Siam Royal Journey。我们的团队将在24小时内联系您，提供付款详情和完整行程。',ref_label:'预订参考号',back_home:'返回首页',view_all_pkg:'查看更多套餐',adm_dash:'仪表板',adm_bk:'预订管理',adm_pkg:'套餐管理',adm_cust:'客户管理',adm_back:'返回网站',adm_title:'仪表板',adm_sub:'欢迎回来 — 这是您的概览',m1:'总预订数',m1c:'本月+12%',m2:'已确认',m2c:'本月+8%',m3:'收入 (฿)',m3c:'本月+15%',m4:'待处理',m4c:'需处理',recent_bk:'最新预订',view_all:'查看全部',th_ref:'参考号',th_guest:'客人',th_pkg:'套餐',th_date:'日期',th_amt:'金额',th_status:'状态',adm_bk_title:'所有预订',adm_pkg_title:'套餐管理',add_pkg:'+ 添加套餐',add_pkg_title:'添加新套餐',adm_cust_title:'客户列表',monthly_chart:'月度预订统计',per_group:'/ 团',view_detail:'查看详情'}
 };
 
 function setLang(lang){
   currentLang=lang;
   document.querySelectorAll('.lb').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lb[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.querySelector('.lb[onclick="setLang(\''+lang+'\')"]').classList.add('active');
   const t=T[lang];
   document.querySelectorAll('[data-key]').forEach(el=>{
-    const k=el.dataset.key;
-    if(!t[k])return;
-    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder=t[k];
-    else if(el.tagName==='OPTION') el.textContent=t[k];
+    const k=el.dataset.key;if(!t[k])return;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t[k];
+    else if(el.tagName==='OPTION')el.textContent=t[k];
     else el.innerHTML=t[k];
   });
-  document.querySelectorAll('[data-pk]').forEach(el=>{
-    const k=el.dataset.pk;
-    if(t[k]) el.placeholder=t[k];
-  });
-  renderPkgGrid();
-  renderPkgSelect();
-  renderPkgMgmt();
+  document.querySelectorAll('[data-pk]').forEach(el=>{const k=el.dataset.pk;if(t[k])el.placeholder=t[k];});
+  renderPkgGrid();renderPkgSelect();renderPkgMgmt();
 }
 
 function showPage(p){
+  if(p==='admin'&&!isAdmin){openAdminLogin();return;}
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
   document.getElementById('page-'+p).classList.add('active');
-  if(p==='admin') renderAdmin();
+  if(p==='admin')renderAdmin();
   if(p==='booking'){bkStep=1;renderBkStep();}
   window.scrollTo(0,0);
 }
 
 function renderPkgGrid(){
-  const t=T[currentLang];
-  const g=document.getElementById('pkg-grid-home');
-  if(!g)return;
+  const t=T[currentLang];const g=document.getElementById('pkg-grid-home');if(!g)return;
   const active=PACKAGES.filter(p=>p.active);
-  g.innerHTML=active.slice(0,3).map((p,i)=>`
-    <div class="pc" onclick="showPage('booking')">
-      <div class="pi" style="background:${['linear-gradient(135deg,#1a1208,#2d1f05)','linear-gradient(135deg,#051a1a,#092828)','linear-gradient(135deg,#0a1a08,#122a0e)','linear-gradient(135deg,#160a1a,#28102a)'][i%4]}">
-        <svg width="120" height="100" viewBox="0 0 120 100" fill="none"><circle cx="60" cy="50" r="30" stroke="rgba(201,169,110,0.12)" stroke-width="1"/><circle cx="60" cy="50" r="18" stroke="rgba(201,169,110,0.2)" stroke-width="1"/><circle cx="60" cy="50" r="4" fill="rgba(201,169,110,0.5)"/></svg>
-        <div class="pb">${i===0?'Popular':'New'}</div>
-      </div>
-      <div class="pbody">
-        <div class="pdest">${p.dest}</div>
-        <div class="pname">${currentLang==='th'?p.nameT:currentLang==='zh'?p.nameZ:p.name}</div>
-        <p class="pdesc">${p.desc}</p>
-        <div class="pmeta"><div class="pm"><div class="dot"></div>${currentLang==='th'?p.durT:currentLang==='zh'?p.durZ:p.dur}</div></div>
-        <div class="pfoot"><div class="pp">฿${p.price.toLocaleString()} <span>${t.per_group||'/ group'}</span></div><button class="pbtn" onclick="event.stopPropagation();showPage('booking')">${t.view_detail||'View Details'}</button></div>
-      </div>
-    </div>`).join('')+`<div class="pc ccard" onclick="showPage('booking')"><div class="ci"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="var(--gold)" stroke-width="1.5"/></svg></div><div class="ct" data-key="custom_title">Design Your Own Trip</div><p class="cd" data-key="custom_desc">Tell us where, how long, and budget — we build the perfect journey.</p><button class="bp" style="font-size:10px;padding:10px 18px">${currentLang==='th'?'สร้างทริปของฉัน':currentLang==='zh'?'定制我的行程':'Create My Trip'}</button></div>`;
+  g.innerHTML=active.slice(0,3).map((p,i)=>`<div class="pc" onclick="showPage('booking')"><div class="pi" style="background:${['linear-gradient(135deg,#1a1208,#2d1f05)','linear-gradient(135deg,#051a1a,#092828)','linear-gradient(135deg,#0a1a08,#122a0e)','linear-gradient(135deg,#160a1a,#28102a)'][i%4]}"><svg width="120" height="100" viewBox="0 0 120 100" fill="none"><circle cx="60" cy="50" r="30" stroke="rgba(201,169,110,0.12)" stroke-width="1"/><circle cx="60" cy="50" r="18" stroke="rgba(201,169,110,0.2)" stroke-width="1"/><circle cx="60" cy="50" r="4" fill="rgba(201,169,110,0.5)"/></svg><div class="pb">${i===0?'Popular':'New'}</div></div><div class="pbody"><div class="pdest">${p.dest}</div><div class="pname">${currentLang==='th'?p.nameT:currentLang==='zh'?p.nameZ:p.name}</div><p class="pdesc">${p.desc}</p><div class="pmeta"><div class="pm"><div class="dot"></div>${currentLang==='th'?p.durT:currentLang==='zh'?p.durZ:p.dur}</div></div><div class="pfoot"><div class="pp">฿${p.price.toLocaleString()} <span>${t.per_group||'/ group'}</span></div><button class="pbtn" onclick="event.stopPropagation();showPage('booking')">${t.view_detail||'View Details'}</button></div></div></div>`).join('')+`<div class="pc ccard" onclick="showPage('booking')"><div class="ci"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="var(--gold)" stroke-width="1.5"/></svg></div><div class="ct">Design Your Own Trip</div><p class="cd">Tell us where, how long, and budget — we build the perfect journey.</p><button class="bp" style="font-size:10px;padding:10px 18px">${currentLang==='th'?'สร้างทริปของฉัน':currentLang==='zh'?'定制我的行程':'Create My Trip'}</button></div>`;
 }
 
 function renderPkgSelect(){
-  const g=document.getElementById('pkg-select-grid');
-  if(!g)return;
-  g.innerHTML=PACKAGES.filter(p=>p.active).map(p=>`
-    <div class="pkg-opt${bkSelected===p.id?' selected':''}" onclick="selectPkg('${p.id}')">
-      <div class="pkg-opt-name">${currentLang==='th'?p.nameT:currentLang==='zh'?p.nameZ:p.name}</div>
-      <div class="pkg-opt-price">฿${p.price.toLocaleString()}</div>
-      <div class="pkg-opt-dur">${currentLang==='th'?p.durT:currentLang==='zh'?p.durZ:p.dur} · ${p.dest}</div>
-    </div>`).join('');
+  const g=document.getElementById('pkg-select-grid');if(!g)return;
+  g.innerHTML=PACKAGES.filter(p=>p.active).map(p=>`<div class="pkg-opt${bkSelected===p.id?' selected':''}" onclick="selectPkg('${p.id}')"><div class="pkg-opt-name">${currentLang==='th'?p.nameT:currentLang==='zh'?p.nameZ:p.name}</div><div class="pkg-opt-price">฿${p.price.toLocaleString()}</div><div class="pkg-opt-dur">${currentLang==='th'?p.durT:currentLang==='zh'?p.durZ:p.dur} · ${p.dest}</div></div>`).join('');
 }
 
-function selectPkg(id){
-  bkSelected=id;
-  document.querySelectorAll('.pkg-opt').forEach(el=>{el.classList.remove('selected')});
-  event.currentTarget.classList.add('selected');
-}
+function selectPkg(id){bkSelected=id;document.querySelectorAll('.pkg-opt').forEach(el=>{el.classList.remove('selected')});event.currentTarget.classList.add('selected');}
 
 function bkNext(step){
-  if(step===1){
-    if(!bkSelected){alert(currentLang==='th'?'กรุณาเลือกแพ็กเกจ':currentLang==='zh'?'请选择套餐':'Please select a package');return;}
-    if(!document.getElementById('bk-date').value){alert(currentLang==='th'?'กรุณาเลือกวันเดินทาง':currentLang==='zh'?'请选择出发日期':'Please select a travel date');return;}
-  }
-  if(step===2){
-    const f=document.getElementById('bk-fname').value;
-    const e=document.getElementById('bk-email').value;
-    if(!f||!e){alert(currentLang==='th'?'กรุณากรอกชื่อและอีเมล':currentLang==='zh'?'请填写姓名和邮箱':'Please fill in name and email');return;}
-    renderSummary();
-  }
-  if(step===3){
-    if(!document.getElementById('agree-terms').checked){alert(currentLang==='th'?'กรุณายอมรับเงื่อนไข':currentLang==='zh'?'请同意服务条款':'Please agree to the terms');return;}
-    saveBooking();
-  }
-  bkStep=step+1;
-  renderBkStep();
+  if(step===1){if(!bkSelected){alert(currentLang==='th'?'กรุณาเลือกแพ็กเกจ':currentLang==='zh'?'请选择套餐':'Please select a package');return;}if(!document.getElementById('bk-date').value){alert(currentLang==='th'?'กรุณาเลือกวันเดินทาง':currentLang==='zh'?'请选择出发日期':'Please select a travel date');return;}}
+  if(step===2){const f=document.getElementById('bk-fname').value;const e=document.getElementById('bk-email').value;if(!f||!e){alert(currentLang==='th'?'กรุณากรอกชื่อและอีเมล':currentLang==='zh'?'请填写姓名和邮箱':'Please fill in name and email');return;}renderSummary();}
+  if(step===3){if(!document.getElementById('agree-terms').checked){alert(currentLang==='th'?'กรุณายอมรับเงื่อนไข':currentLang==='zh'?'请同意服务条款':'Please agree to the terms');return;}saveBooking();}
+  bkStep=step+1;renderBkStep();
 }
-
 function bkGo(step){bkStep=step;renderBkStep();}
-
 function renderBkStep(){
   [1,2,3,4].forEach(i=>{
     document.getElementById('bk-step-'+i).style.display=i===bkStep?'block':'none';
-    const n=document.getElementById('bsn'+i);
-    n.classList.remove('active','done');
-    if(i<bkStep) n.classList.add('done');
-    else if(i===bkStep) n.classList.add('active');
+    const n=document.getElementById('bsn'+i);n.classList.remove('active','done');
+    if(i<bkStep)n.classList.add('done');else if(i===bkStep)n.classList.add('active');
     n.parentElement.querySelector('.bk-step-label').classList.toggle('active',i===bkStep);
   });
-  if(bkStep===1) renderPkgSelect();
+  if(bkStep===1)renderPkgSelect();
 }
-
 function renderSummary(){
-  const pkg=PACKAGES.find(p=>p.id===bkSelected);
-  if(!pkg)return;
-  const date=document.getElementById('bk-date').value;
-  const guests=document.getElementById('bk-guests').value;
-  const fname=document.getElementById('bk-fname').value;
-  const lname=document.getElementById('bk-lname').value;
-  const deposit=Math.round(pkg.price*0.3);
-  const s=document.getElementById('bk-summary');
-  const t=T[currentLang];
-  s.innerHTML=`
-    <div class="bk-sum-row"><span class="bk-sum-label">${t.pkg_ey||'Package'}</span><span class="bk-sum-val">${currentLang==='th'?pkg.nameT:currentLang==='zh'?pkg.nameZ:pkg.name}</span></div>
-    <div class="bk-sum-row"><span class="bk-sum-label">${t.fl_date||'Date'}</span><span class="bk-sum-val">${date}</span></div>
-    <div class="bk-sum-row"><span class="bk-sum-label">${t.fl_guests||'Guests'}</span><span class="bk-sum-val">${guests}</span></div>
-    <div class="bk-sum-row"><span class="bk-sum-label">${t.fl_fname||'Guest'}</span><span class="bk-sum-val">${fname} ${lname}</span></div>
-    <div class="bk-sum-row"><span class="bk-sum-label">${t.m3||'Total'}</span><span class="bk-sum-val">฿${pkg.price.toLocaleString()}</span></div>
-    <div class="bk-sum-row"><span class="bk-sum-label">Deposit (30%)</span><span class="bk-sum-val" style="color:var(--gold);font-weight:500">฿${deposit.toLocaleString()}</span></div>`;
+  const pkg=PACKAGES.find(p=>p.id===bkSelected);if(!pkg)return;
+  const date=document.getElementById('bk-date').value;const guests=document.getElementById('bk-guests').value;
+  const fname=document.getElementById('bk-fname').value;const lname=document.getElementById('bk-lname').value;
+  const deposit=Math.round(pkg.price*0.3);const t=T[currentLang];
+  document.getElementById('bk-summary').innerHTML=`<div class="bk-sum-row"><span class="bk-sum-label">${t.pkg_ey||'Package'}</span><span class="bk-sum-val">${currentLang==='th'?pkg.nameT:currentLang==='zh'?pkg.nameZ:pkg.name}</span></div><div class="bk-sum-row"><span class="bk-sum-label">${t.fl_date||'Date'}</span><span class="bk-sum-val">${date}</span></div><div class="bk-sum-row"><span class="bk-sum-label">${t.fl_guests||'Guests'}</span><span class="bk-sum-val">${guests}</span></div><div class="bk-sum-row"><span class="bk-sum-label">${t.fl_fname||'Guest'}</span><span class="bk-sum-val">${fname} ${lname}</span></div><div class="bk-sum-row"><span class="bk-sum-label">${t.m3||'Total'}</span><span class="bk-sum-val">฿${pkg.price.toLocaleString()}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Deposit (30%)</span><span class="bk-sum-val" style="color:var(--gold);font-weight:500">฿${deposit.toLocaleString()}</span></div>`;
 }
-
 function saveBooking(){
   const pkg=PACKAGES.find(p=>p.id===bkSelected);
   const ref='SRJ-2026-'+String(Date.now()).slice(-4);
-  const bk={
-    ref,pkg:pkg.name,pkgId:pkg.id,price:pkg.price,
-    date:document.getElementById('bk-date').value,
-    guests:document.getElementById('bk-guests').value,
-    fname:document.getElementById('bk-fname').value,
-    lname:document.getElementById('bk-lname').value,
-    email:document.getElementById('bk-email').value,
-    phone:document.getElementById('bk-phone').value,
-    nat:document.getElementById('bk-nat').value,
-    hotel:document.getElementById('bk-hotel').value,
-    contact:document.getElementById('bk-contact').value,
-    note:document.getElementById('bk-note').value,
-    status:'pending',created:new Date().toISOString()
-  };
-  BOOKINGS.unshift(bk);
+  BOOKINGS.unshift({ref,pkg:pkg.name,pkgId:pkg.id,price:pkg.price,date:document.getElementById('bk-date').value,guests:document.getElementById('bk-guests').value,fname:document.getElementById('bk-fname').value,lname:document.getElementById('bk-lname').value,email:document.getElementById('bk-email').value,phone:document.getElementById('bk-phone').value,nat:document.getElementById('bk-nat').value,hotel:document.getElementById('bk-hotel').value,contact:document.getElementById('bk-contact').value,note:document.getElementById('bk-note').value,status:'pending',created:new Date().toISOString()});
   document.getElementById('bk-ref').textContent=ref;
-  window.storage&&window.storage.set('bookings',JSON.stringify(BOOKINGS)).catch(()=>{});
 }
-
-function renderAdmin(){
-  updateMetrics();
-  renderDashTable();
-  renderBarChart();
-  renderBookingTable();
-  renderPkgMgmt();
-  renderCustTable();
-}
-
+function renderAdmin(){updateMetrics();renderDashTable();renderBarChart();renderBookingTable();renderPkgMgmt();renderCustTable();}
 function updateMetrics(){
-  const conf=BOOKINGS.filter(b=>b.status==='confirmed').length;
-  const pend=BOOKINGS.filter(b=>b.status==='pending').length;
-  const rev=BOOKINGS.filter(b=>b.status==='confirmed').reduce((a,b)=>a+b.price,0);
-  document.getElementById('m-total').textContent=BOOKINGS.length;
-  document.getElementById('m-conf').textContent=conf;
-  document.getElementById('m-rev').textContent=rev>0?'฿'+rev.toLocaleString():'฿0';
-  document.getElementById('m-pend').textContent=pend;
+  const conf=BOOKINGS.filter(b=>b.status==='confirmed').length;const pend=BOOKINGS.filter(b=>b.status==='pending').length;const rev=BOOKINGS.filter(b=>b.status==='confirmed').reduce((a,b)=>a+b.price,0);
+  document.getElementById('m-total').textContent=BOOKINGS.length;document.getElementById('m-conf').textContent=conf;document.getElementById('m-rev').textContent=rev>0?'฿'+rev.toLocaleString():'฿0';document.getElementById('m-pend').textContent=pend;
 }
-
-function statusBadge(s){
-  const m={confirmed:'s-confirmed',pending:'s-pending',cancelled:'s-cancelled'};
-  const l={confirmed:'Confirmed',pending:'Pending',cancelled:'Cancelled'};
-  return `<span class="status ${m[s]||'s-pending'}">${l[s]||s}</span>`;
-}
-
-function renderDashTable(){
-  const t=document.getElementById('dash-table');
-  if(!t)return;
-  const rows=BOOKINGS.slice(0,5);
-  t.innerHTML=rows.length?rows.map(b=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td><td style="color:var(--muted)">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td><td>฿${b.price.toLocaleString()}</td><td>${statusBadge(b.status)}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';
-}
-
-function renderBookingTable(){
-  const t=document.getElementById('full-bk-table');
-  if(!t)return;
-  const f=document.getElementById('filter-status').value;
-  const rows=f?BOOKINGS.filter(b=>b.status===f):BOOKINGS;
-  document.getElementById('bk-count-label').textContent=rows.length+' total bookings';
-  t.innerHTML=rows.length?rows.map((b,i)=>`<tr>
-    <td style="color:var(--gold);font-size:10px">${b.ref}</td>
-    <td>${b.fname} ${b.lname}</td>
-    <td style="color:var(--muted);font-size:11px">${b.pkg}</td>
-    <td style="color:var(--muted)">${b.date}</td>
-    <td>${b.guests}</td>
-    <td>฿${b.price.toLocaleString()}</td>
-    <td style="font-size:10px;color:var(--muted)">${b.contact||'LINE'}</td>
-    <td>${statusBadge(b.status)}</td>
-    <td><div class="adm-act">
-      ${b.status==='pending'?`<button class="abt" onclick="chgStatus(${BOOKINGS.indexOf(b)},'confirmed')">Confirm</button>`:''}
-      <button class="abt red" onclick="chgStatus(${BOOKINGS.indexOf(b)},'cancelled')">Cancel</button>
-    </div></td></tr>`).join(''):'<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';
-}
-
-function chgStatus(i,s){
-  BOOKINGS[i].status=s;
-  renderAdmin();
-}
-
-function renderBarChart(){
-  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const data=[3,5,4,7,9,12,8,6,10,14,11,16];
-  const max=Math.max(...data);
-  const c=document.getElementById('bar-chart');
-  if(!c)return;
-  c.innerHTML=months.map((m,i)=>`<div class="bar-col"><div class="bar-val">${data[i]}</div><div class="bar" style="height:${Math.round((data[i]/max)*80)}px" title="${m}: ${data[i]} bookings"></div><div class="bar-label">${m}</div></div>`).join('');
-}
-
-function renderPkgMgmt(){
-  const g=document.getElementById('pkg-mgmt-grid');
-  if(!g)return;
-  g.innerHTML=PACKAGES.map((p,i)=>`
-    <div class="pkg-card-adm">
-      <div class="pca-name">${p.name}</div>
-      <div class="pca-info">${p.dest} · ${p.dur}<br>${p.desc}</div>
-      <div class="pca-foot">
-        <span class="pca-price">฿${p.price.toLocaleString()}</span>
-        <div style="display:flex;align-items:center;gap:10px">
-          <span style="font-size:10px;color:var(--muted)">${p.active?'Active':'Hidden'}</span>
-          <div class="toggle${p.active?'':' off'}" onclick="togglePkg(${i})" title="Toggle visibility"></div>
-        </div>
-      </div>
-    </div>`).join('');
-}
-
+function statusBadge(s){const m={confirmed:'s-confirmed',pending:'s-pending',cancelled:'s-cancelled'};const l={confirmed:'Confirmed',pending:'Pending',cancelled:'Cancelled'};return`<span class="status ${m[s]||'s-pending'}">${l[s]||s}</span>`;}
+function renderDashTable(){const t=document.getElementById('dash-table');if(!t)return;const rows=BOOKINGS.slice(0,5);t.innerHTML=rows.length?rows.map(b=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td><td style="color:var(--muted)">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td><td>฿${b.price.toLocaleString()}</td><td>${statusBadge(b.status)}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';}
+function renderBookingTable(){const t=document.getElementById('full-bk-table');if(!t)return;const f=document.getElementById('filter-status').value;const rows=f?BOOKINGS.filter(b=>b.status===f):BOOKINGS;document.getElementById('bk-count-label').textContent=rows.length+' total bookings';t.innerHTML=rows.length?rows.map((b)=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td><td style="color:var(--muted);font-size:11px">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td><td>${b.guests}</td><td>฿${b.price.toLocaleString()}</td><td style="font-size:10px;color:var(--muted)">${b.contact||'LINE'}</td><td>${statusBadge(b.status)}</td><td><div class="adm-act">${b.status==='pending'?`<button class="abt" onclick="chgStatus(${BOOKINGS.indexOf(b)},'confirmed')">Confirm</button>`:''}<button class="abt red" onclick="chgStatus(${BOOKINGS.indexOf(b)},'cancelled')">Cancel</button></div></td></tr>`).join(''):'<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';}
+function chgStatus(i,s){BOOKINGS[i].status=s;renderAdmin();}
+function renderBarChart(){const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];const data=[3,5,4,7,9,12,8,6,10,14,11,16];const max=Math.max(...data);const c=document.getElementById('bar-chart');if(!c)return;c.innerHTML=months.map((m,i)=>`<div class="bar-col"><div class="bar-val">${data[i]}</div><div class="bar" style="height:${Math.round((data[i]/max)*80)}px" title="${m}: ${data[i]}"></div><div class="bar-label">${m}</div></div>`).join('');}
+function renderPkgMgmt(){const g=document.getElementById('pkg-mgmt-grid');if(!g)return;g.innerHTML=PACKAGES.map((p,i)=>`<div class="pkg-card-adm"><div class="pca-name">${p.name}</div><div class="pca-info">${p.dest} · ${p.dur}<br>${p.desc}</div><div class="pca-foot"><span class="pca-price">฿${p.price.toLocaleString()}</span><div style="display:flex;align-items:center;gap:10px"><span style="font-size:10px;color:var(--muted)">${p.active?'Active':'Hidden'}</span><div class="toggle${p.active?'':' off'}" onclick="togglePkg(${i})"></div></div></div></div>`).join('');}
 function togglePkg(i){PACKAGES[i].active=!PACKAGES[i].active;renderPkgMgmt();renderPkgGrid();}
-
 function openAddPkg(){document.getElementById('add-pkg-form').style.display='block';}
 function closeAddPkg(){document.getElementById('add-pkg-form').style.display='none';}
-function saveNewPkg(){
-  const name=document.getElementById('npkg-name').value;
-  const price=parseInt(document.getElementById('npkg-price').value)||0;
-  const dur=document.getElementById('npkg-dur').value;
-  const dest=document.getElementById('npkg-dest').value;
-  const desc=document.getElementById('npkg-desc').value;
-  if(!name||!price){alert('Please fill in package name and price');return;}
-  PACKAGES.push({id:'p'+Date.now(),name,nameT:name,nameZ:name,dest,price,dur,durT:dur,durZ:dur,desc,active:true});
-  closeAddPkg();renderPkgMgmt();renderPkgGrid();
-  ['npkg-name','npkg-price','npkg-dur','npkg-dest','npkg-desc'].forEach(id=>{document.getElementById(id).value='';});
-}
-
-function renderCustTable(){
-  const t=document.getElementById('cust-table');
-  if(!t)return;
-  const map={};
-  BOOKINGS.forEach(b=>{
-    if(!map[b.email]) map[b.email]={name:b.fname+' '+b.lname,email:b.email,nat:b.nat||'-',phone:b.phone||'-',count:0,total:0};
-    map[b.email].count++;
-    map[b.email].total+=b.price;
-  });
-  const rows=Object.values(map);
-  t.innerHTML=rows.length?rows.map(c=>`<tr><td>${c.name}</td><td style="color:var(--muted)">${c.email}</td><td style="color:var(--muted)">${c.nat}</td><td style="color:var(--muted)">${c.phone}</td><td style="text-align:center">${c.count}</td><td style="color:var(--gold)">฿${c.total.toLocaleString()}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No customers yet</td></tr>';
-}
-
-function admView(v){
-  document.querySelectorAll('.adm-view').forEach(x=>x.classList.remove('active'));
-  document.getElementById('adm-'+v).classList.add('active');
-  document.querySelectorAll('.adm-nav a').forEach(a=>a.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-}
-
+function saveNewPkg(){const name=document.getElementById('npkg-name').value;const price=parseInt(document.getElementById('npkg-price').value)||0;const dur=document.getElementById('npkg-dur').value;const dest=document.getElementById('npkg-dest').value;const desc=document.getElementById('npkg-desc').value;if(!name||!price){alert('Please fill in package name and price');return;}PACKAGES.push({id:'p'+Date.now(),name,nameT:name,nameZ:name,dest,price,dur,durT:dur,durZ:dur,desc,active:true});closeAddPkg();renderPkgMgmt();renderPkgGrid();['npkg-name','npkg-price','npkg-dur','npkg-dest','npkg-desc'].forEach(id=>{document.getElementById(id).value='';});}
+function renderCustTable(){const t=document.getElementById('cust-table');if(!t)return;const map={};BOOKINGS.forEach(b=>{if(!map[b.email])map[b.email]={name:b.fname+' '+b.lname,email:b.email,nat:b.nat||'-',phone:b.phone||'-',count:0,total:0};map[b.email].count++;map[b.email].total+=b.price;});const rows=Object.values(map);t.innerHTML=rows.length?rows.map(c=>`<tr><td>${c.name}</td><td style="color:var(--muted)">${c.email}</td><td style="color:var(--muted)">${c.nat}</td><td style="color:var(--muted)">${c.phone}</td><td style="text-align:center">${c.count}</td><td style="color:var(--gold)">฿${c.total.toLocaleString()}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No customers yet</td></tr>';}
+function admView(v){document.querySelectorAll('.adm-view').forEach(x=>x.classList.remove('active'));document.getElementById('adm-'+v).classList.add('active');document.querySelectorAll('.adm-nav a').forEach(a=>a.classList.remove('active'));event.currentTarget.classList.add('active');}
 function openModal(html){document.getElementById('modal-content').innerHTML=html;document.getElementById('modal').classList.add('open');}
 function closeModal(){document.getElementById('modal').classList.remove('open');}
 
-async function loadBookings(){
-  try{
-    if(window.storage){
-      const r=await window.storage.get('bookings');
-      if(r&&r.value) BOOKINGS=JSON.parse(r.value);
-    }
-  }catch(e){}
-}
-
-loadBookings().then(()=>{
-  setLang('en');
-  renderPkgGrid();
-  renderPkgSelect();
-  renderBarChart();
-});
+setLang('en');renderPkgGrid();renderPkgSelect();
 </script>
+</body>
+</html>
