@@ -1,30 +1,33 @@
+<!-- Siam Royal Journey v3 — Airport Transfer + Admin Photos -->
+<!-- This file is the complete updated index.html -->
+<!-- Replace your existing index.html with this file -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Siam Royal Journey — Premium Private Tours Thailand</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a0a;color:#e8dcc8;font-family:'DM Sans',sans-serif;overflow-x:hidden}
-:root{--gold:#c9a96e;--gold-light:#e8d5a3;--gold-dark:#8a6b3a;--dark:#0a0a0a;--dark2:#111111;--dark3:#1a1a1a;--cream:#e8dcc8;--muted:#b8a990;--green:#4caf7d;--red:#e05c5c;--blue:#5b9bd5}
+:root{--gold:#c9a96e;--gold-light:#e8d5a3;--gold-dark:#8a6b3a;--dark:#0a0a0a;--dark2:#111111;--dark3:#1a1a1a;--cream:#e8dcc8;--muted:#b8a990;--green:#4caf7d;--red:#e05c5c}
 nav{background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(201,169,110,0.2);padding:0 4%;display:flex;justify-content:space-between;align-items:center;height:68px;position:sticky;top:0;z-index:100}
 .logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);letter-spacing:2px;cursor:pointer}
 .logo span{color:var(--cream);font-weight:400;font-style:italic}
-.nav-center{display:flex;gap:24px;list-style:none}
+.nav-center{display:flex;gap:20px;list-style:none}
 .nav-center a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:1px;cursor:pointer;transition:color 0.2s}
 .nav-center a:hover{color:var(--gold)}
-.nav-right{display:flex;align-items:center;gap:12px}
+.nav-right{display:flex;align-items:center;gap:10px}
 .lang-sw{display:flex;border:1px solid rgba(201,169,110,0.3)}
-.lb{background:transparent;border:none;color:var(--muted);padding:7px 12px;font-size:11px;letter-spacing:1px;cursor:pointer;font-family:inherit;border-right:1px solid rgba(201,169,110,0.2);transition:all 0.2s}
+.lb{background:transparent;border:none;color:var(--muted);padding:7px 10px;font-size:11px;cursor:pointer;font-family:inherit;border-right:1px solid rgba(201,169,110,0.2);transition:all 0.2s}
 .lb:last-child{border-right:none}
 .lb.active{background:var(--gold);color:#0a0a0a;font-weight:500}
-.lb:not(.active):hover{color:var(--gold)}
+.nav-transfer{background:transparent;border:1px solid rgba(201,169,110,0.35);color:var(--gold);padding:8px 14px;font-size:11px;cursor:pointer;font-family:inherit;transition:all 0.3s;letter-spacing:0.5px}
+.nav-transfer:hover{background:rgba(201,169,110,0.08)}
 .nav-book{background:var(--gold);border:none;color:#0a0a0a;padding:9px 18px;font-size:11px;letter-spacing:1.5px;cursor:pointer;font-weight:500;font-family:inherit;transition:all 0.3s}
 .nav-book:hover{background:var(--gold-light)}
-.page{display:none}
-.page.active{display:block}
+.page{display:none}.page.active{display:block}
 .hero{padding:72px 4% 52px;text-align:center;background:#0a0a0a;position:relative;overflow:hidden}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,169,110,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,0.03) 1px,transparent 1px);background-size:56px 56px}
 .hero-ring{position:absolute;border:1px solid rgba(201,169,110,0.05);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
@@ -39,7 +42,7 @@ h1.ht em{color:var(--gold);font-style:italic}
 .bp:hover{background:var(--gold-light)}
 .bo{background:transparent;border:1px solid rgba(201,169,110,0.45);color:var(--gold);padding:13px 28px;font-size:11px;letter-spacing:2px;cursor:pointer;font-family:inherit;transition:all 0.3s}
 .bo:hover{border-color:var(--gold)}
-.stats{display:flex;justify-content:center;border-top:1px solid rgba(201,169,110,0.12);padding-top:36px;gap:0}
+.stats{display:flex;justify-content:center;border-top:1px solid rgba(201,169,110,0.12);padding-top:36px}
 .stat{padding:0 36px;text-align:center;border-right:1px solid rgba(201,169,110,0.12)}
 .stat:last-child{border-right:none}
 .sn{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold);font-weight:600}
@@ -60,13 +63,14 @@ select.sf{cursor:pointer}
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .pc{background:var(--dark3);cursor:pointer;transition:transform 0.25s;overflow:hidden}
 .pc:hover{transform:translateY(-3px)}
-.pi{height:200px;display:flex;align-items:center;justify-content:center;position:relative}
-.pb{position:absolute;top:14px;left:14px;background:var(--gold);color:#0a0a0a;padding:4px 10px;font-size:9px;letter-spacing:2px;font-weight:500}
+.pi{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1208,#2d1f05)}
+.pi img{width:100%;height:100%;object-fit:cover;opacity:0.85;position:absolute;inset:0}
+.pb{position:absolute;top:14px;left:14px;background:var(--gold);color:#0a0a0a;padding:4px 10px;font-size:9px;letter-spacing:2px;font-weight:500;z-index:2}
 .pbody{padding:20px}
 .pdest{font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:5px}
 .pname{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:8px;line-height:1.3}
 .pdesc{font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:14px}
-.pmeta{display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.pmeta{display:flex;gap:12px;margin-bottom:14px}
 .pm{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:4px}
 .dot{width:5px;height:5px;background:var(--gold-dark);border-radius:50%;flex-shrink:0}
 .pfoot{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid rgba(201,169,110,0.12)}
@@ -100,14 +104,10 @@ select.sf{cursor:pointer}
 .cta-s2{font-size:13px;color:var(--muted);margin-bottom:32px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7}
 .contact-float{display:flex;gap:8px;justify-content:center;padding:20px 4% 0;flex-wrap:wrap}
 .cf-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid rgba(201,169,110,0.25);cursor:pointer;font-size:12px;font-family:inherit;transition:all 0.25s;letter-spacing:0.5px;background:var(--dark3)}
-.cf-btn.line{color:#06c755;border-color:rgba(6,199,85,0.3)}
-.cf-btn.line:hover{background:rgba(6,199,85,0.08)}
-.cf-btn.wechat{color:#07c160;border-color:rgba(7,193,96,0.3)}
-.cf-btn.wechat:hover{background:rgba(7,193,96,0.08)}
-.cf-btn.wa{color:#25d366;border-color:rgba(37,211,102,0.3)}
-.cf-btn.wa:hover{background:rgba(37,211,102,0.08)}
-.cf-btn.tel{color:var(--gold);border-color:rgba(201,169,110,0.3)}
-.cf-btn.tel:hover{background:rgba(201,169,110,0.06)}
+.cf-btn.line{color:#06c755;border-color:rgba(6,199,85,0.3)}.cf-btn.line:hover{background:rgba(6,199,85,0.08)}
+.cf-btn.wechat{color:#07c160;border-color:rgba(7,193,96,0.3)}.cf-btn.wechat:hover{background:rgba(7,193,96,0.08)}
+.cf-btn.wa{color:#25d366;border-color:rgba(37,211,102,0.3)}.cf-btn.wa:hover{background:rgba(37,211,102,0.08)}
+.cf-btn.tel{color:var(--gold);border-color:rgba(201,169,110,0.3)}.cf-btn.tel:hover{background:rgba(201,169,110,0.06)}
 .foot{background:var(--dark);border-top:1px solid rgba(201,169,110,0.08);padding:48px 4% 24px}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
 .fd{font-size:11px;color:var(--muted);line-height:1.7;margin-top:10px}
@@ -117,6 +117,13 @@ select.sf{cursor:pointer}
 .flinks a:hover{color:var(--gold)}
 .fb{border-top:1px solid rgba(201,169,110,0.08);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .fc{font-size:10px;color:var(--muted)}
+/* Transfer Banner */
+.tf-banner{background:linear-gradient(90deg,#0a0a0a,#1a1208,#0a0a0a);border-top:1px solid rgba(201,169,110,0.15);border-bottom:1px solid rgba(201,169,110,0.15);padding:24px 4%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.tf-banner-left{display:flex;align-items:center;gap:16px}
+.tf-banner-icon{width:48px;height:48px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tf-banner-t{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--cream)}
+.tf-banner-s{font-size:11px;color:var(--muted);margin-top:3px}
+/* BOOKING */
 .bk-page{background:var(--dark2);padding:48px 4%}
 .bk-header{text-align:center;margin-bottom:40px}
 .bk-steps{display:flex;justify-content:center;gap:0;margin-bottom:40px}
@@ -151,8 +158,7 @@ select.finput{cursor:pointer}
 .bk-summary{background:var(--dark2);border:1px solid rgba(201,169,110,0.15);padding:20px;margin-bottom:20px}
 .bk-sum-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.08);font-size:12px}
 .bk-sum-row:last-child{border-bottom:none;font-size:14px;color:var(--gold);padding-top:12px;margin-top:4px}
-.bk-sum-label{color:var(--muted)}
-.bk-sum-val{color:var(--cream)}
+.bk-sum-label{color:var(--muted)}.bk-sum-val{color:var(--cream)}
 .success-box{text-align:center;padding:48px 24px}
 .success-icon{width:64px;height:64px;border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
 .success-t{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:12px}
@@ -160,8 +166,36 @@ select.finput{cursor:pointer}
 .booking-ref{background:var(--dark2);border:1px solid rgba(201,169,110,0.2);padding:14px 24px;display:inline-block;margin-bottom:28px}
 .ref-label{font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:4px}
 .ref-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream)}
+/* TRANSFER PAGE */
+.tf-page{background:var(--dark2);padding:48px 4%}
+.tf-hero{background:linear-gradient(135deg,#0a0a0a,#1a1208);border:1px solid rgba(201,169,110,0.15);padding:40px;margin-bottom:32px;text-align:center;max-width:720px;margin-left:auto;margin-right:auto}
+.tf-types{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.tf-type{background:var(--dark3);border:2px solid rgba(201,169,110,0.15);padding:20px;text-align:center;cursor:pointer;transition:all 0.25s}
+.tf-type:hover,.tf-type.sel{border-color:var(--gold);background:rgba(201,169,110,0.05)}
+.tf-type-icon{font-size:28px;margin-bottom:8px}
+.tf-type-name{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--cream);margin-bottom:4px}
+.tf-type-desc{font-size:10px;color:var(--muted);line-height:1.5}
+.tf-type-price{font-size:15px;color:var(--gold);margin-top:8px;font-weight:500}
+.tf-form{max-width:720px;margin:0 auto;background:var(--dark3);border:1px solid rgba(201,169,110,0.15);padding:36px}
+.dir-toggle{display:flex;gap:0;margin-bottom:24px;border:1px solid rgba(201,169,110,0.2)}
+.dir-btn{flex:1;background:transparent;border:none;color:var(--muted);padding:12px;font-size:11px;letter-spacing:1px;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.dir-btn.active{background:var(--gold);color:#0a0a0a;font-weight:500}
+.airport-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.airport-opt{border:1px solid rgba(201,169,110,0.2);padding:12px 14px;cursor:pointer;transition:all 0.25s;background:var(--dark2)}
+.airport-opt:hover{border-color:rgba(201,169,110,0.5)}
+.airport-opt.sel{border-color:var(--gold);background:rgba(201,169,110,0.05)}
+.airport-code{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);margin-bottom:2px}
+.airport-name{font-size:10px;color:var(--cream)}
+.airport-city{font-size:9px;color:var(--muted)}
+.luggage-sel{display:flex;gap:6px;flex-wrap:wrap}
+.lug-btn{background:var(--dark2);border:1px solid rgba(201,169,110,0.2);color:var(--muted);padding:7px 14px;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.lug-btn.active{border-color:var(--gold);color:var(--gold)}
+.tf-price-box{background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.18);padding:20px;margin:20px 0}
+.tf-price-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0}
+.tf-price-row.total{font-size:16px;color:var(--gold);border-top:1px solid rgba(201,169,110,0.15);margin-top:8px;padding-top:12px}
+/* ADMIN */
 .adm{background:#0d0d0d;min-height:600px;display:flex}
-.adm-sidebar{width:200px;background:#111;border-right:1px solid rgba(201,169,110,0.1);padding:24px 0;flex-shrink:0}
+.adm-sidebar{width:210px;background:#111;border-right:1px solid rgba(201,169,110,0.1);padding:24px 0;flex-shrink:0}
 .adm-logo{padding:0 20px 20px;border-bottom:1px solid rgba(201,169,110,0.1);margin-bottom:16px}
 .adm-logo span{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold)}
 .adm-nav a{display:block;padding:10px 20px;font-size:12px;color:var(--muted);cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;border-left:2px solid transparent}
@@ -177,8 +211,7 @@ select.finput{cursor:pointer}
 .metric-label{font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px}
 .metric-val{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)}
 .metric-change{font-size:10px;margin-top:4px}
-.metric-change.up{color:var(--green)}
-.metric-change.dn{color:var(--red)}
+.metric-change.up{color:var(--green)}.metric-change.dn{color:var(--red)}
 .adm-table-wrap{background:var(--dark3);border:1px solid rgba(201,169,110,0.1);overflow:auto}
 .adm-table-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(201,169,110,0.1)}
 .adm-table-title{font-size:13px;color:var(--cream);font-weight:500}
@@ -194,12 +227,18 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 .s-cancelled{background:rgba(224,92,92,0.1);color:var(--red)}
 .adm-act{display:flex;gap:6px}
 .abt{background:transparent;border:1px solid rgba(201,169,110,0.2);color:var(--muted);padding:5px 10px;font-size:9px;cursor:pointer;font-family:inherit;letter-spacing:1px;transition:all 0.2s}
-.abt:hover{color:var(--gold);border-color:var(--gold)}
-.abt.red:hover{color:var(--red);border-color:var(--red)}
-.adm-view{display:none}
-.adm-view.active{display:block}
-.pkg-mgmt{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pkg-card-adm{background:var(--dark2);border:1px solid rgba(201,169,110,0.1);padding:16px}
+.abt:hover{color:var(--gold);border-color:var(--gold)}.abt.red:hover{color:var(--red);border-color:var(--red)}
+.adm-view{display:none}.adm-view.active{display:block}
+/* Package cards with photo upload */
+.pkg-mgmt{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pkg-card-adm{background:var(--dark2);border:1px solid rgba(201,169,110,0.1);overflow:hidden}
+.pca-img-area{height:150px;position:relative;overflow:hidden;background:var(--dark3);cursor:pointer;border-bottom:1px solid rgba(201,169,110,0.08)}
+.pca-img-area img{width:100%;height:100%;object-fit:cover;opacity:0.85}
+.pca-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(201,169,110,0.3)}
+.pca-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.pca-img-area:hover .pca-img-overlay{opacity:1}
+.pca-overlay-text{color:var(--gold);font-size:11px;letter-spacing:1.5px;text-align:center;line-height:2}
+.pca-body{padding:16px}
 .pca-name{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);margin-bottom:4px}
 .pca-info{font-size:10px;color:var(--muted);margin-bottom:12px;line-height:1.6}
 .pca-foot{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid rgba(201,169,110,0.08)}
@@ -207,51 +246,60 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 .toggle{width:36px;height:20px;background:var(--gold);border-radius:10px;position:relative;cursor:pointer;transition:background 0.3s;flex-shrink:0}
 .toggle.off{background:rgba(201,169,110,0.2)}
 .toggle::after{content:'';width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:left 0.3s}
-.toggle.off::after{left:3px}
-.toggle:not(.off)::after{left:19px}
+.toggle.off::after{left:3px}.toggle:not(.off)::after{left:19px}
+/* Gallery inside package card */
+.photo-gallery{padding:12px 16px;border-top:1px solid rgba(201,169,110,0.08)}
+.photo-gallery-title{font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.gallery-thumb{aspect-ratio:1;position:relative;overflow:hidden;background:var(--dark3);cursor:pointer}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;opacity:0.85;transition:opacity 0.2s}
+.gallery-thumb:hover img{opacity:1}
+.gallery-del{position:absolute;top:4px;right:4px;background:rgba(224,92,92,0.9);border:none;color:#fff;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;line-height:1}
+.gallery-thumb:hover .gallery-del{opacity:1}
+.gallery-add-btn{aspect-ratio:1;border:1px dashed rgba(201,169,110,0.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;background:var(--dark2);transition:all 0.2s;font-size:9px;color:var(--muted);letter-spacing:1px}
+.gallery-add-btn:hover{border-color:var(--gold);color:var(--gold)}
+.adm-pkg-form{background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-top:16px}
+.adm-pkg-form h4{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:20px}
 .chart-bar-wrap{margin-top:24px;background:var(--dark3);border:1px solid rgba(201,169,110,0.1);padding:20px}
 .chart-title{font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:16px}
 .bar-chart{display:flex;align-items:flex-end;gap:8px;height:100px}
 .bar-col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
 .bar{background:var(--gold-dark);width:100%;border-radius:2px 2px 0 0;transition:height 0.5s;cursor:pointer}
 .bar:hover{background:var(--gold)}
-.bar-label{font-size:9px;color:var(--muted);letter-spacing:0.5px}
+.bar-label{font-size:9px;color:var(--muted)}
 .bar-val{font-size:9px;color:var(--gold)}
-.adm-pkg-form{background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-top:16px}
-.adm-pkg-form h4{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:20px}
-.modal-overlay{display:none;background:rgba(0,0,0,0.75);padding:40px 16px;min-height:300px;align-items:center;justify-content:center}
-.modal-overlay.open{display:flex}
-.modal-box{background:var(--dark3);border:1px solid rgba(201,169,110,0.2);padding:32px;max-width:460px;width:100%}
-.modal-close{float:right;background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;font-family:inherit}
-.modal-close:hover{color:var(--gold)}
-
-/* === ADMIN LOGIN MODAL === */
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9000;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:88vh;object-fit:contain;border:1px solid rgba(201,169,110,0.2)}
+.lightbox-x{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;line-height:1}
+/* Admin Login */
 .adm-login-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;padding:20px}
 .adm-login-bg.open{display:flex}
 .adm-login-box{background:var(--dark3);border:1px solid rgba(201,169,110,0.25);padding:44px 40px;width:100%;max-width:360px;position:relative}
 .adm-login-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;font-family:inherit;line-height:1}
 .adm-login-x:hover{color:var(--gold)}
 .adm-login-logo{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);letter-spacing:2px;text-align:center;margin-bottom:4px}
-.adm-login-sub{font-size:9px;color:var(--muted);text-align:center;letter-spacing:2px;margin-bottom:6px}
+.adm-login-sub{font-size:9px;color:var(--muted);text-align:center;letter-spacing:2px}
 .adm-login-deco{width:36px;height:1px;background:var(--gold-dark);margin:16px auto 24px}
 .adm-lbl{font-size:9px;letter-spacing:2px;color:var(--gold);display:block;margin-bottom:6px}
-.adm-inp{background:var(--dark2);border:1px solid rgba(201,169,110,0.2);color:var(--cream);padding:12px 14px;font-size:13px;font-family:inherit;outline:none;width:100%;margin-bottom:14px;transition:border-color 0.2s}
+.adm-inp{background:var(--dark2);border:1px solid rgba(201,169,110,0.2);color:var(--cream);padding:12px 14px;font-size:13px;font-family:inherit;outline:none;width:100%;margin-bottom:14px}
 .adm-inp:focus{border-color:rgba(201,169,110,0.5)}
 .adm-inp::placeholder{color:var(--muted)}
-.adm-login-btn{background:var(--gold);border:none;color:#0a0a0a;padding:13px;font-size:11px;letter-spacing:2px;cursor:pointer;font-weight:500;font-family:inherit;width:100%;transition:all 0.3s}
+.adm-login-btn{background:var(--gold);border:none;color:#0a0a0a;padding:13px;font-size:11px;letter-spacing:2px;cursor:pointer;font-weight:500;font-family:inherit;width:100%}
 .adm-login-btn:hover{background:var(--gold-light)}
 .adm-login-err{color:var(--red);font-size:11px;text-align:center;margin-top:12px;min-height:16px;line-height:1.5}
 </style>
 </head>
 <body>
 
-<!-- NAV — ไม่มีปุ่ม Admin ให้ลูกค้าเห็น -->
 <nav>
   <div class="logo" onclick="showPage('home')">SIAM<span> Royal Journey</span></div>
   <ul class="nav-center">
-    <li><a data-key="nav_tours" onclick="showPage('home')">Tours</a></li>
-    <li><a data-key="nav_book" onclick="showPage('booking')">Book Now</a></li>
-    <li><a data-key="nav_contact_lnk" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">Contact</a></li>
+    <li><a onclick="showPage('home')">Tours</a></li>
+    <li><a onclick="showPage('booking')">Book Now</a></li>
+    <li><a onclick="showPage('transfer')">Airport Transfer</a></li>
+    <li><a onclick="scrollToContact()">Contact</a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-sw">
@@ -259,190 +307,287 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <button class="lb" onclick="setLang('th')">TH</button>
       <button class="lb" onclick="setLang('zh')">中文</button>
     </div>
-    <button class="nav-book" onclick="showPage('booking')" data-key="nav_book_btn">Book Now</button>
+    <button class="nav-transfer" onclick="showPage('transfer')">✈ Transfer</button>
+    <button class="nav-book" onclick="showPage('booking')">Book Now</button>
   </div>
 </nav>
 
-<!-- HOME PAGE -->
+<!-- HOME -->
 <div id="page-home" class="page active">
   <section class="hero">
     <div class="hero-grid"></div>
     <div class="hero-ring" style="width:480px;height:480px"></div>
     <div class="hero-ring" style="width:680px;height:680px"></div>
     <div class="hc">
-      <div class="badge-strip" data-key="hero_badge">Premium Private Tours Thailand</div>
-      <h1 class="ht" data-key="hero_h1">Explore Thailand <em>in Luxury</em></h1>
-      <p class="hsub" data-key="hero_sub">Private tours with professional car and driver — crafted exclusively for you.</p>
+      <div class="badge-strip">Premium Private Tours Thailand</div>
+      <h1 class="ht">Explore Thailand <em>in Luxury</em></h1>
+      <p class="hsub">Private tours with professional car and driver — crafted exclusively for you.</p>
       <div class="hbtns">
-        <button class="bp" onclick="showPage('booking')" data-key="cta_packages">View Tour Packages</button>
-        <button class="bo" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})" data-key="cta_consult">Free Consultation</button>
+        <button class="bp" onclick="showPage('booking')">View Tour Packages</button>
+        <button class="bo" onclick="showPage('transfer')">✈ Airport Transfer</button>
+        <button class="bo" onclick="scrollToContact()">Free Consultation</button>
       </div>
       <div class="stats">
-        <div class="stat"><div class="sn">1,200+</div><div class="sl" data-key="stat1">Trips Completed</div></div>
-        <div class="stat"><div class="sn">98%</div><div class="sl" data-key="stat2">Satisfaction Rate</div></div>
-        <div class="stat"><div class="sn">45+</div><div class="sl" data-key="stat3">Routes Across Thailand</div></div>
-        <div class="stat"><div class="sn">10<span style="font-size:18px" data-key="stat4_unit"> yrs</span></div><div class="sl" data-key="stat4">Experience</div></div>
+        <div class="stat"><div class="sn">1,200+</div><div class="sl">Trips Completed</div></div>
+        <div class="stat"><div class="sn">98%</div><div class="sl">Satisfaction Rate</div></div>
+        <div class="stat"><div class="sn">45+</div><div class="sl">Routes Across Thailand</div></div>
+        <div class="stat"><div class="sn">10<span style="font-size:18px"> yrs</span></div><div class="sl">Experience</div></div>
       </div>
     </div>
   </section>
+
+  <!-- Transfer Banner -->
+  <div class="tf-banner">
+    <div class="tf-banner-left">
+      <div class="tf-banner-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div>
+        <div class="tf-banner-t">Airport Transfer Service</div>
+        <div class="tf-banner-s">BKK · DMK · HKT · CNX · KBI — Fixed price, meet & greet, flight monitoring</div>
+      </div>
+    </div>
+    <button class="bp" onclick="showPage('transfer')" style="white-space:nowrap;flex-shrink:0">Book Transfer →</button>
+  </div>
+
   <div class="sbar-wrap">
     <div class="sbar">
-      <input class="sf" data-pk="search_ph" placeholder="Where do you want to go? e.g. Chiang Mai, Phuket...">
+      <input class="sf" placeholder="Where do you want to go? e.g. Chiang Mai, Phuket...">
       <div class="ssep"></div>
-      <select class="sf"><option data-key="dur_l">Duration</option><option data-key="d1">1 Day</option><option data-key="d2">2-3 Days</option><option data-key="d3">4-7 Days</option><option data-key="d4">7+ Days</option></select>
+      <select class="sf"><option>Duration</option><option>1 Day</option><option>2-3 Days</option><option>4-7 Days</option><option>7+ Days</option></select>
       <div class="ssep"></div>
-      <select class="sf"><option data-key="pax_l">Guests</option><option>1-2</option><option>3-5</option><option>6-10</option><option>10+</option></select>
-      <button class="sbtn" data-key="search_btn" onclick="showPage('booking')">Search</button>
+      <select class="sf"><option>Guests</option><option>1-2</option><option>3-5</option><option>6-10</option><option>10+</option></select>
+      <button class="sbtn" onclick="showPage('booking')">Search</button>
     </div>
   </div>
+
   <section class="sec" style="background:var(--dark2)">
-    <div class="sh"><div class="ey" data-key="pkg_ey">Featured Packages</div><h2 class="st" data-key="pkg_st">Curated <em>Experiences for You</em></h2><div class="dv"></div></div>
+    <div class="sh"><div class="ey">Featured Packages</div><h2 class="st">Curated <em>Experiences for You</em></h2><div class="dv"></div></div>
     <div class="pgrid" id="pkg-grid-home"></div>
   </section>
+
   <section class="sec" style="background:var(--dark)">
-    <div class="sh"><div class="ey" data-key="steps_ey">How to Book</div><h2 class="st" data-key="steps_st">Ready in <em>4 Simple Steps</em></h2><div class="dv"></div></div>
+    <div class="sh"><div class="ey">How to Book</div><h2 class="st">Ready in <em>4 Simple Steps</em></h2><div class="dv"></div></div>
     <div class="steps-g">
-      <div class="step"><div class="snum">01</div><div class="stit" data-key="s1t">Choose Package</div><p class="sdesc" data-key="s1d">Pick a ready-made package or design your own route.</p></div>
-      <div class="step"><div class="snum">02</div><div class="stit" data-key="s2t">Select Date</div><p class="sdesc" data-key="s2d">Choose travel dates and number of travelers.</p></div>
-      <div class="step"><div class="snum">03</div><div class="stit" data-key="s3t">Confirm & Pay</div><p class="sdesc" data-key="s3d">30% deposit secures booking. Balance 7 days before.</p></div>
-      <div class="step"><div class="snum">04</div><div class="stit" data-key="s4t">Enjoy Journey</div><p class="sdesc" data-key="s4d">Driver picks you up at hotel. Relax and explore.</p></div>
+      <div class="step"><div class="snum">01</div><div class="stit">Choose Package</div><p class="sdesc">Pick a ready-made package or design your own route.</p></div>
+      <div class="step"><div class="snum">02</div><div class="stit">Select Date</div><p class="sdesc">Choose travel dates and number of travelers.</p></div>
+      <div class="step"><div class="snum">03</div><div class="stit">Confirm & Pay</div><p class="sdesc">30% deposit secures booking. Balance 7 days before.</p></div>
+      <div class="step"><div class="snum">04</div><div class="stit">Enjoy Journey</div><p class="sdesc">Driver picks you up at hotel. Relax and explore.</p></div>
     </div>
   </section>
+
   <section class="sec" style="background:var(--dark2)">
-    <div class="sh"><div class="ey" data-key="testy_ey">Guest Reviews</div><h2 class="st" data-key="testy_st">Trusted by <em>Travelers Worldwide</em></h2><div class="dv"></div></div>
+    <div class="sh"><div class="ey">Guest Reviews</div><h2 class="st">Trusted by <em>Travelers Worldwide</em></h2><div class="dv"></div></div>
     <div class="tgrid">
-      <div class="tc"><div class="tstar">★★★★★</div><p class="tq" data-key="t1q">"Driver spoke excellent English and recommended the best local spots. Will book again!"</p><div class="tau"><div class="tav">SA</div><div><div class="tn">Sarah A.</div><div class="tt" data-key="t1trip">Chiang Mai · 5 Days</div></div></div></div>
-      <div class="tc"><div class="tstar">★★★★★</div><p class="tq" data-key="t2q">"Easy booking, transparent pricing, no hidden fees. Car spotless, service exceeded expectations."</p><div class="tau"><div class="tav">ณว</div><div><div class="tn">Natthawut W.</div><div class="tt" data-key="t2trip">Krabi · Family Trip</div></div></div></div>
-      <div class="tc"><div class="tstar">★★★★★</div><p class="tq" data-key="t3q">"Very flexible, changed itinerary mid-trip, driver always smiling. Truly impressive service."</p><div class="tau"><div class="tav">TK</div><div><div class="tn">Tanaka K.</div><div class="tt" data-key="t3trip">Ayutthaya · Day Trip</div></div></div></div>
+      <div class="tc"><div class="tstar">★★★★★</div><p class="tq">"Driver spoke excellent English and recommended the best local spots. Will book again!"</p><div class="tau"><div class="tav">SA</div><div><div class="tn">Sarah A.</div><div class="tt">Chiang Mai · 5 Days</div></div></div></div>
+      <div class="tc"><div class="tstar">★★★★★</div><p class="tq">"Easy booking, transparent pricing, no hidden fees. Car spotless, service exceeded expectations."</p><div class="tau"><div class="tav">ณว</div><div><div class="tn">Natthawut W.</div><div class="tt">Krabi · Family Trip</div></div></div></div>
+      <div class="tc"><div class="tstar">★★★★★</div><p class="tq">"Airport transfer was seamless. Driver waited with a sign, helped with bags, very professional."</p><div class="tau"><div class="tav">TK</div><div><div class="tn">Tanaka K.</div><div class="tt">BKK → Sukhumvit</div></div></div></div>
     </div>
   </section>
+
   <div class="cta-s">
     <div class="cta-deco"><div class="cta-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.8 6.2H14L10.6 8.8L11.8 13L8 10.4L4.2 13L5.4 8.8L2 6.2H6.2Z" fill="var(--gold)" opacity="0.7"/></svg></div></div>
-    <div class="cta-t" data-key="cta_t">Ready to Start Your Journey?</div>
-    <p class="cta-s2" data-key="cta_s">Our experts design the perfect experience just for you.</p>
+    <div class="cta-t">Ready to Start Your Journey?</div>
+    <p class="cta-s2">Tours, transfers, and custom experiences — all in one place.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <button class="bp" onclick="showPage('booking')" data-key="cta_packages">View All Packages</button>
-      <button class="bo" data-key="cta_chat">Chat With Us</button>
+      <button class="bp" onclick="showPage('booking')">View All Packages</button>
+      <button class="bo" onclick="showPage('transfer')">✈ Book Airport Transfer</button>
     </div>
   </div>
+
   <div id="contact-section" style="background:var(--dark3);padding:36px 4%;border-top:1px solid rgba(201,169,110,0.12)">
     <div style="text-align:center;margin-bottom:24px">
-      <div class="ey" data-key="contact_ey">Contact Us</div>
-      <h2 class="st" data-key="contact_st">Chat with Us <em>Directly</em></h2>
+      <div class="ey">Contact Us</div>
+      <h2 class="st">Chat with Us <em>Directly</em></h2>
     </div>
     <div class="contact-float">
-      <div class="cf-btn line" onclick="alert('Line: @siamroyaljourney')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61V9.86h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg> LINE</div>
-      <div class="cf-btn wechat" onclick="alert('WeChat ID: SiamRoyalJourney')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c-.2-.54-.314-1.1-.314-1.689 0-3.754 3.622-6.8 8.087-6.8.212 0 .42.009.625.025C15.934 4.728 12.614 2.188 8.69 2.188zm-2.35 3.836a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.697 0a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.194 3.95c-3.79 0-6.864 2.618-6.864 5.847 0 3.23 3.075 5.846 6.864 5.846.807 0 1.584-.107 2.307-.3a.7.7 0 0 1 .575.08l1.53.9a.262.262 0 0 0 .134.044.237.237 0 0 0 .236-.236.34.34 0 0 0-.038-.172l-.314-1.19a.473.473 0 0 1 .172-.534C21.22 19.047 22.1 17.5 22.1 15.82c0-3.229-3.075-5.847-6.867-5.847zm-2.432 3.03a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72zm4.864 0a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72z"/></svg> WeChat</div>
-      <div class="cf-btn wa" onclick="alert('WhatsApp: +66 81 234 5678')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</div>
-      <div class="cf-btn tel" onclick="alert('Tel: +66 2 123 4567')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span data-key="tel_label">Call Us</span></div>
+      <div class="cf-btn line" onclick="alert('Line: @siamroyaljourney')">LINE</div>
+      <div class="cf-btn wechat" onclick="alert('WeChat ID: SiamRoyalJourney')">WeChat</div>
+      <div class="cf-btn wa" onclick="alert('WhatsApp: +66 81 234 5678')">WhatsApp</div>
+      <div class="cf-btn tel" onclick="alert('Tel: +66 2 123 4567')">Call Us</div>
     </div>
   </div>
+
   <footer class="foot">
     <div class="fg">
       <div>
         <div class="logo" style="cursor:default">SIAM<span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--cream)"> Royal Journey</span></div>
-        <p class="fd" data-key="footer_desc">Premium private tour service with professional car and driver. We take care of you from start to finish.</p>
+        <p class="fd">Premium private tour service with professional car and driver. We take care of you from start to finish.</p>
       </div>
-      <div><div class="fch4" data-key="footer_pop">Popular Tours</div><ul class="flinks"><li><a>Chiang Mai - Chiang Rai</a></li><li><a>Phuket - Krabi</a></li><li><a>Ayutthaya Day Trip</a></li><li><a>Kanchanaburi</a></li></ul></div>
-      <div><div class="fch4" data-key="footer_svc">Services</div><ul class="flinks"><li><a data-key="svc1">Car with Driver</a></li><li><a data-key="svc2">Group Tours</a></li><li><a data-key="svc3">Custom Itinerary</a></li><li><a data-key="svc4">Honeymoon Trip</a></li></ul></div>
-      <div><div class="fch4" data-key="footer_con">Contact</div><ul class="flinks"><li><a>Line: @siamroyal</a></li><li><a>WeChat: siamroyal</a></li><li><a>WhatsApp</a></li><li><a>info@siamroyal.com</a></li></ul></div>
+      <div><div class="fch4">Popular Tours</div><ul class="flinks"><li><a>Chiang Mai - Chiang Rai</a></li><li><a>Phuket - Krabi</a></li><li><a>Ayutthaya Day Trip</a></li><li><a>Kanchanaburi</a></li></ul></div>
+      <div><div class="fch4">Services</div><ul class="flinks"><li><a>Car with Driver</a></li><li><a onclick="showPage('transfer')">Airport Transfer</a></li><li><a>Custom Itinerary</a></li><li><a>Honeymoon Trip</a></li></ul></div>
+      <div><div class="fch4">Contact</div><ul class="flinks"><li><a>Line: @siamroyal</a></li><li><a>WeChat: siamroyal</a></li><li><a>WhatsApp</a></li><li><a>info@siamroyal.com</a></li></ul></div>
     </div>
-    <div class="fb"><span class="fc">© 2026 <span style="color:var(--gold)">Siam Royal Journey</span>. All rights reserved.</span><span class="fc" data-key="footer_legal">Privacy Policy · Terms</span></div>
+    <div class="fb"><span class="fc">© 2026 <span style="color:var(--gold)">Siam Royal Journey</span>. All rights reserved.</span><span class="fc">Privacy Policy · Terms</span></div>
   </footer>
 </div>
 
 <!-- BOOKING PAGE -->
 <div id="page-booking" class="page bk-page">
-  <div class="bk-header">
-    <div class="ey" data-key="bk_ey">Booking</div>
-    <h2 class="st" data-key="bk_st">Reserve Your <em>Perfect Journey</em></h2>
-    <div class="dv" style="margin:14px auto 0"></div>
-  </div>
+  <div class="bk-header"><div class="ey">Booking</div><h2 class="st">Reserve Your <em>Perfect Journey</em></h2><div class="dv" style="margin:14px auto 0"></div></div>
   <div class="bk-steps">
-    <div class="bk-step"><div class="bk-step-num active" id="bsn1">1</div><div class="bk-step-label active" data-key="bs1">Select Package</div></div>
+    <div class="bk-step"><div class="bk-step-num active" id="bsn1">1</div><div class="bk-step-label active">Select Package</div></div>
     <div class="bk-line"></div>
-    <div class="bk-step"><div class="bk-step-num" id="bsn2">2</div><div class="bk-step-label" data-key="bs2">Your Details</div></div>
+    <div class="bk-step"><div class="bk-step-num" id="bsn2">2</div><div class="bk-step-label">Your Details</div></div>
     <div class="bk-line"></div>
-    <div class="bk-step"><div class="bk-step-num" id="bsn3">3</div><div class="bk-step-label" data-key="bs3">Review & Pay</div></div>
+    <div class="bk-step"><div class="bk-step-num" id="bsn3">3</div><div class="bk-step-label">Review & Pay</div></div>
     <div class="bk-line"></div>
-    <div class="bk-step"><div class="bk-step-num" id="bsn4">4</div><div class="bk-step-label" data-key="bs4">Confirmed!</div></div>
+    <div class="bk-step"><div class="bk-step-num" id="bsn4">4</div><div class="bk-step-label">Confirmed!</div></div>
   </div>
   <div class="bk-form">
     <div id="bk-step-1">
-      <div class="ey" style="margin-bottom:14px" data-key="choose_pkg">Choose Your Package</div>
+      <div class="ey" style="margin-bottom:14px">Choose Your Package</div>
       <div class="pkg-select-grid" id="pkg-select-grid"></div>
       <div class="form-row">
-        <div class="fgroup"><label class="flabel" data-key="fl_date">Travel Date</label><input type="date" class="finput" id="bk-date"></div>
-        <div class="fgroup"><label class="flabel" data-key="fl_guests">Number of Guests</label>
-          <select class="finput" id="bk-guests"><option value="1">1 Guest</option><option value="2">2 Guests</option><option value="3">3 Guests</option><option value="4">4 Guests</option><option value="5">5 Guests</option><option value="6">6 Guests</option></select>
-        </div>
+        <div class="fgroup"><label class="flabel">Travel Date</label><input type="date" class="finput" id="bk-date"></div>
+        <div class="fgroup"><label class="flabel">Number of Guests</label><select class="finput" id="bk-guests"><option value="1">1 Guest</option><option value="2">2 Guests</option><option value="3">3 Guests</option><option value="4">4 Guests</option><option value="5">5 Guests</option><option value="6">6 Guests</option></select></div>
       </div>
-      <div class="form-nav"><span></span><button class="fbk" onclick="bkNext(1)" data-key="btn_next">Continue</button></div>
+      <div class="form-nav"><span></span><button class="fbk" onclick="bkNext(1)">Continue</button></div>
     </div>
     <div id="bk-step-2" style="display:none">
-      <div class="ey" style="margin-bottom:14px" data-key="your_details">Your Details</div>
+      <div class="ey" style="margin-bottom:14px">Your Details</div>
       <div class="form-row">
-        <div class="fgroup"><label class="flabel" data-key="fl_fname">First Name</label><input class="finput" id="bk-fname" placeholder="e.g. Somchai"></div>
-        <div class="fgroup"><label class="flabel" data-key="fl_lname">Last Name</label><input class="finput" id="bk-lname" placeholder="e.g. Raksa"></div>
+        <div class="fgroup"><label class="flabel">First Name</label><input class="finput" id="bk-fname" placeholder="e.g. Somchai"></div>
+        <div class="fgroup"><label class="flabel">Last Name</label><input class="finput" id="bk-lname" placeholder="e.g. Raksa"></div>
       </div>
       <div class="form-row">
-        <div class="fgroup"><label class="flabel" data-key="fl_email">Email</label><input class="finput" id="bk-email" type="email" placeholder="your@email.com"></div>
-        <div class="fgroup"><label class="flabel" data-key="fl_phone">Phone / WhatsApp</label><input class="finput" id="bk-phone" placeholder="+66 81 234 5678"></div>
+        <div class="fgroup"><label class="flabel">Email</label><input class="finput" id="bk-email" type="email" placeholder="your@email.com"></div>
+        <div class="fgroup"><label class="flabel">Phone / WhatsApp</label><input class="finput" id="bk-phone" placeholder="+66 81 234 5678"></div>
       </div>
-      <div class="form-row full">
-        <div class="fgroup"><label class="flabel" data-key="fl_nat">Nationality</label>
-          <select class="finput" id="bk-nat"><option>Thai / ไทย</option><option>Chinese / 中国</option><option>Japanese</option><option>Korean</option><option>American</option><option>British</option><option>Other</option></select>
-        </div>
-      </div>
-      <div class="form-row full">
-        <div class="fgroup"><label class="flabel" data-key="fl_hotel">Hotel / Pickup Location</label><input class="finput" id="bk-hotel" placeholder="Hotel name and area"></div>
-      </div>
-      <div class="form-row full">
-        <div class="fgroup"><label class="flabel" data-key="fl_note">Special Requests (Optional)</label><textarea class="finput" id="bk-note" rows="3" placeholder="Dietary requirements, special occasions, extra stops..."></textarea></div>
-      </div>
-      <div class="form-row full">
-        <div class="fgroup"><label class="flabel" data-key="fl_contact">Preferred Contact</label>
-          <select class="finput" id="bk-contact"><option>LINE</option><option>WeChat</option><option>WhatsApp</option><option>Email</option><option>Phone</option></select>
-        </div>
-      </div>
-      <div class="form-nav">
-        <button class="fbk-out" onclick="bkGo(1)" data-key="btn_back">Back</button>
-        <button class="fbk" onclick="bkNext(2)" data-key="btn_next">Continue</button>
-      </div>
+      <div class="form-row full"><div class="fgroup"><label class="flabel">Nationality</label><select class="finput" id="bk-nat"><option>Thai / ไทย</option><option>Chinese / 中国</option><option>Japanese</option><option>Korean</option><option>American</option><option>British</option><option>Other</option></select></div></div>
+      <div class="form-row full"><div class="fgroup"><label class="flabel">Hotel / Pickup Location</label><input class="finput" id="bk-hotel" placeholder="Hotel name and area"></div></div>
+      <div class="form-row full"><div class="fgroup"><label class="flabel">Special Requests (Optional)</label><textarea class="finput" id="bk-note" rows="3" placeholder="Dietary requirements, special occasions, extra stops..."></textarea></div></div>
+      <div class="form-row full"><div class="fgroup"><label class="flabel">Preferred Contact</label><select class="finput" id="bk-contact"><option>LINE</option><option>WeChat</option><option>WhatsApp</option><option>Email</option><option>Phone</option></select></div></div>
+      <div class="form-nav"><button class="fbk-out" onclick="bkGo(1)">Back</button><button class="fbk" onclick="bkNext(2)">Continue</button></div>
     </div>
     <div id="bk-step-3" style="display:none">
-      <div class="ey" style="margin-bottom:14px" data-key="review_pay">Review & Payment</div>
+      <div class="ey" style="margin-bottom:14px">Review & Payment</div>
       <div class="bk-summary" id="bk-summary"></div>
       <div style="background:var(--dark2);border:1px solid rgba(201,169,110,0.15);padding:20px;margin-bottom:20px">
-        <div class="ey" style="margin-bottom:14px" data-key="pay_method">Payment Method</div>
+        <div class="ey" style="margin-bottom:14px">Payment Method</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--cream)"><input type="radio" name="pay" value="bank" checked style="accent-color:var(--gold)"> <span data-key="pay_bank">Bank Transfer</span></label>
-          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--cream)"><input type="radio" name="pay" value="card" style="accent-color:var(--gold)"> <span data-key="pay_card">Credit / Debit Card</span></label>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--cream)"><input type="radio" name="pay" value="bank" checked style="accent-color:var(--gold)"> Bank Transfer</label>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--cream)"><input type="radio" name="pay" value="card" style="accent-color:var(--gold)"> Credit / Debit Card</label>
           <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--cream)"><input type="radio" name="pay" value="promptpay" style="accent-color:var(--gold)"> PromptPay / QR</label>
         </div>
         <div style="margin-top:14px;padding:12px 14px;border:1px solid rgba(201,169,110,0.15);background:rgba(201,169,110,0.03)">
-          <p style="font-size:11px;color:var(--muted);line-height:1.7" data-key="pay_note">30% deposit required to confirm your booking. Our team will contact you with payment details within 24 hours via your preferred channel.</p>
+          <p style="font-size:11px;color:var(--muted);line-height:1.7">30% deposit required to confirm your booking. Our team will contact you with payment details within 24 hours.</p>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px">
         <input type="checkbox" id="agree-terms" style="accent-color:var(--gold)">
-        <label for="agree-terms" style="font-size:11px;color:var(--muted);cursor:pointer" data-key="terms_agree">I agree to the Terms of Service and Cancellation Policy</label>
+        <label for="agree-terms" style="font-size:11px;color:var(--muted);cursor:pointer">I agree to the Terms of Service and Cancellation Policy</label>
       </div>
-      <div class="form-nav">
-        <button class="fbk-out" onclick="bkGo(2)" data-key="btn_back">Back</button>
-        <button class="fbk" onclick="bkNext(3)" data-key="btn_confirm">Confirm Booking</button>
-      </div>
+      <div class="form-nav"><button class="fbk-out" onclick="bkGo(2)">Back</button><button class="fbk" onclick="bkNext(3)">Confirm Booking</button></div>
     </div>
     <div id="bk-step-4" style="display:none">
       <div class="success-box">
         <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <div class="success-t" data-key="success_t">Booking Confirmed!</div>
-        <p class="success-s" data-key="success_s">Thank you for choosing Siam Royal Journey. Our team will contact you within 24 hours with payment details and full itinerary.</p>
-        <div class="booking-ref"><div class="ref-label" data-key="ref_label">Booking Reference</div><div class="ref-num" id="bk-ref">SRJ-2026-0001</div></div>
+        <div class="success-t">Booking Confirmed!</div>
+        <p class="success-s">Thank you for choosing Siam Royal Journey. Our team will contact you within 24 hours.</p>
+        <div class="booking-ref"><div class="ref-label">Booking Reference</div><div class="ref-num" id="bk-ref">SRJ-2026-0001</div></div>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <button class="bp" onclick="showPage('home')" data-key="back_home">Back to Home</button>
-          <button class="bo" data-key="view_all_pkg">View More Packages</button>
+          <button class="bp" onclick="showPage('home')">Back to Home</button>
+          <button class="bo" onclick="showPage('transfer')">✈ Add Airport Transfer</button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AIRPORT TRANSFER PAGE -->
+<div id="page-transfer" class="page tf-page">
+  <div class="tf-hero">
+    <div class="ey">Airport Transfer</div>
+    <h2 class="st" style="margin-bottom:12px">Seamless <em>Airport Transfers</em></h2>
+    <div class="dv" style="margin:0 auto 16px"></div>
+    <p style="font-size:12px;color:var(--muted);line-height:1.8">Fixed price · Meet & Greet sign · Real-time flight monitoring · 60 min free waiting</p>
+  </div>
+
+  <div class="tf-form" id="tf-form-wrap">
+    <div class="ey" style="margin-bottom:12px">Transfer Direction</div>
+    <div class="dir-toggle">
+      <button class="dir-btn active" id="dir-arr" onclick="setDir('arrival')">✈ Arrival — Airport to Hotel</button>
+      <button class="dir-btn" id="dir-dep" onclick="setDir('departure')">🏨 Departure — Hotel to Airport</button>
+    </div>
+
+    <div class="ey" style="margin-bottom:12px">Select Airport</div>
+    <div class="airport-grid" id="airport-grid">
+      <div class="airport-opt sel" onclick="selAirport(this,'BKK','Suvarnabhumi Airport','Bangkok')"><div class="airport-code">BKK</div><div class="airport-name">Suvarnabhumi</div><div class="airport-city">Bangkok</div></div>
+      <div class="airport-opt" onclick="selAirport(this,'DMK','Don Mueang Airport','Bangkok')"><div class="airport-code">DMK</div><div class="airport-name">Don Mueang</div><div class="airport-city">Bangkok</div></div>
+      <div class="airport-opt" onclick="selAirport(this,'HKT','Phuket International','Phuket')"><div class="airport-code">HKT</div><div class="airport-name">Phuket Intl</div><div class="airport-city">Phuket</div></div>
+      <div class="airport-opt" onclick="selAirport(this,'CNX','Chiang Mai International','Chiang Mai')"><div class="airport-code">CNX</div><div class="airport-name">Chiang Mai</div><div class="airport-city">Chiang Mai</div></div>
+      <div class="airport-opt" onclick="selAirport(this,'KBI','Krabi Airport','Krabi')"><div class="airport-code">KBI</div><div class="airport-name">Krabi</div><div class="airport-city">Krabi</div></div>
+      <div class="airport-opt" onclick="selAirport(this,'USM','Samui Airport','Koh Samui')"><div class="airport-code">USM</div><div class="airport-name">Samui</div><div class="airport-city">Koh Samui</div></div>
+    </div>
+
+    <div class="ey" style="margin-bottom:12px">Vehicle Type</div>
+    <div class="tf-types">
+      <div class="tf-type sel" onclick="selVehicle(this,'sedan',950,'Sedan')"><div class="tf-type-icon">🚗</div><div class="tf-type-name">Sedan</div><div class="tf-type-desc">Toyota Camry / Accord<br>Max 3 pax · 3 bags</div><div class="tf-type-price">฿950</div></div>
+      <div class="tf-type" onclick="selVehicle(this,'suv',1350,'SUV / MPV')"><div class="tf-type-icon">🚙</div><div class="tf-type-name">SUV / MPV</div><div class="tf-type-desc">Toyota Fortuner / Innova<br>Max 6 pax · 6 bags</div><div class="tf-type-price">฿1,350</div></div>
+      <div class="tf-type" onclick="selVehicle(this,'van',1850,'Premium Van')"><div class="tf-type-icon">🚐</div><div class="tf-type-name">Premium Van</div><div class="tf-type-desc">Toyota Hiace Premium<br>Max 9 pax · 9 bags</div><div class="tf-type-price">฿1,850</div></div>
+    </div>
+
+    <div class="form-row">
+      <div class="fgroup"><label class="flabel" id="tf-date-lbl">Date of Arrival</label><input type="date" class="finput" id="tf-date"></div>
+      <div class="fgroup"><label class="flabel" id="tf-time-lbl">Arrival Time (local)</label><input type="time" class="finput" id="tf-time"></div>
+    </div>
+    <div class="form-row">
+      <div class="fgroup"><label class="flabel">Flight Number</label><input class="finput" id="tf-flight" placeholder="e.g. TG204"></div>
+      <div class="fgroup"><label class="flabel">Passengers</label><select class="finput" id="tf-pax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
+    </div>
+    <div class="fgroup" style="margin-bottom:16px">
+      <label class="flabel">Luggage Pieces</label>
+      <div class="luggage-sel">
+        <button class="lug-btn active" onclick="selLug(this,'0')">0</button>
+        <button class="lug-btn" onclick="selLug(this,'1')">1</button>
+        <button class="lug-btn" onclick="selLug(this,'2')">2</button>
+        <button class="lug-btn" onclick="selLug(this,'3')">3</button>
+        <button class="lug-btn" onclick="selLug(this,'4')">4</button>
+        <button class="lug-btn" onclick="selLug(this,'5')">5</button>
+        <button class="lug-btn" onclick="selLug(this,'6+')">6+</button>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="fgroup"><label class="flabel" id="tf-hotel-lbl">Destination Hotel / Address</label><input class="finput" id="tf-hotel" placeholder="Hotel name or full address"></div>
+      <div class="fgroup"><label class="flabel">Area</label><select class="finput" id="tf-area"><option>Sukhumvit / Asok</option><option>Silom / Sathorn</option><option>Siam / Ratchaprasong</option><option>Khao San / Old Town</option><option>Pattaya</option><option>Hua Hin</option><option>Phuket Town</option><option>Patong / Kata / Karon</option><option>Chiang Mai City</option><option>Nimman</option><option>Krabi Town</option><option>Ao Nang</option><option>Other</option></select></div>
+    </div>
+    <div class="form-row">
+      <div class="fgroup"><label class="flabel">Name on Meet & Greet Sign</label><input class="finput" id="tf-name" placeholder="e.g. Mr. Tanaka / Smith Family"></div>
+      <div class="fgroup"><label class="flabel">Phone / WhatsApp</label><input class="finput" id="tf-phone" placeholder="+66 81 234 5678"></div>
+    </div>
+    <div class="form-row full"><div class="fgroup"><label class="flabel">Email</label><input class="finput" id="tf-email" type="email" placeholder="your@email.com"></div></div>
+    <div class="fgroup" style="margin-bottom:20px">
+      <label class="flabel">Special Requests</label>
+      <textarea class="finput" id="tf-note" rows="2" placeholder="Child seat, extra stop, specific pickup area in terminal..."></textarea>
+    </div>
+
+    <div class="tf-price-box">
+      <div class="tf-price-row"><span style="color:var(--muted)">Airport</span><span id="tp-airport">Suvarnabhumi (BKK)</span></div>
+      <div class="tf-price-row"><span style="color:var(--muted)">Vehicle</span><span id="tp-vehicle">Sedan</span></div>
+      <div class="tf-price-row"><span style="color:var(--muted)">Includes</span><span style="color:var(--muted);font-size:10px">Meet & Greet · Flight monitoring · 60 min free wait</span></div>
+      <div class="tf-price-row total"><span>Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:24px" id="tp-total">฿950</span></div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px">
+      <input type="checkbox" id="tf-agree" style="accent-color:var(--gold)">
+      <label for="tf-agree" style="font-size:11px;color:var(--muted);cursor:pointer">I agree to the Terms of Service and Cancellation Policy</label>
+    </div>
+    <div class="form-nav">
+      <button class="fbk-out" onclick="showPage('home')">Back</button>
+      <button class="fbk" onclick="submitTransfer()">Confirm Transfer Booking</button>
+    </div>
+  </div>
+
+  <div id="tf-success" style="display:none;max-width:720px;margin:0 auto;background:var(--dark3);border:1px solid rgba(201,169,110,0.15);padding:36px">
+    <div class="success-box">
+      <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="success-t">Transfer Booked!</div>
+      <p class="success-s">Your airport transfer is confirmed. Our driver will be waiting with a name sign. We monitor your flight in real-time.</p>
+      <div class="booking-ref"><div class="ref-label">Transfer Reference</div><div class="ref-num" id="tf-ref">TRF-2026-0001</div></div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="bp" onclick="showPage('home')">Back to Home</button>
+        <button class="bo" onclick="showPage('booking')">Book a Tour Too</button>
       </div>
     </div>
   </div>
@@ -454,59 +599,75 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
     <div class="adm-sidebar">
       <div class="adm-logo"><span>Admin Panel</span></div>
       <div class="adm-nav">
-        <a class="active" onclick="admView('dashboard')" data-key="adm_dash">Dashboard</a>
-        <a onclick="admView('bookings')" data-key="adm_bk">Bookings</a>
-        <a onclick="admView('packages')" data-key="adm_pkg">Packages</a>
-        <a onclick="admView('customers')" data-key="adm_cust">Customers</a>
-        <a onclick="showPage('home')" data-key="adm_back">Back to Site</a>
+        <a class="active" onclick="admView('dashboard')">Dashboard</a>
+        <a onclick="admView('bookings')">Tour Bookings</a>
+        <a onclick="admView('transfers')">Airport Transfers</a>
+        <a onclick="admView('packages')">Packages & Photos</a>
+        <a onclick="admView('customers')">Customers</a>
+        <a onclick="showPage('home')">← Back to Site</a>
         <button class="adm-logout" onclick="adminLogout()">Logout</button>
       </div>
     </div>
     <div class="adm-content">
+      <!-- Dashboard -->
       <div class="adm-view active" id="adm-dashboard">
-        <div class="adm-header"><div><div class="adm-title" data-key="adm_title">Dashboard</div><div class="adm-sub" data-key="adm_sub">Welcome back</div></div></div>
+        <div class="adm-header"><div><div class="adm-title">Dashboard</div><div class="adm-sub">Welcome back</div></div></div>
         <div class="metrics">
-          <div class="metric"><div class="metric-label" data-key="m1">TOTAL BOOKINGS</div><div class="metric-val" id="m-total">0</div><div class="metric-change up" data-key="m1c">+12% this month</div></div>
-          <div class="metric"><div class="metric-label" data-key="m2">CONFIRMED</div><div class="metric-val" id="m-conf">0</div><div class="metric-change up" data-key="m2c">+8% this month</div></div>
-          <div class="metric"><div class="metric-label" data-key="m3">REVENUE (฿)</div><div class="metric-val" id="m-rev">0</div><div class="metric-change up" data-key="m3c">+15% this month</div></div>
-          <div class="metric"><div class="metric-label" data-key="m4">PENDING</div><div class="metric-val" id="m-pend">0</div><div class="metric-change dn" data-key="m4c">Need action</div></div>
+          <div class="metric"><div class="metric-label">TOUR BOOKINGS</div><div class="metric-val" id="m-total">0</div><div class="metric-change up">+12% this month</div></div>
+          <div class="metric"><div class="metric-label">TRANSFERS</div><div class="metric-val" id="m-tf">0</div><div class="metric-change up">+18% this month</div></div>
+          <div class="metric"><div class="metric-label">REVENUE (฿)</div><div class="metric-val" id="m-rev">฿0</div><div class="metric-change up">+15% this month</div></div>
+          <div class="metric"><div class="metric-label">PENDING</div><div class="metric-val" id="m-pend">0</div><div class="metric-change dn">Need action</div></div>
         </div>
         <div class="adm-table-wrap">
-          <div class="adm-table-head"><span class="adm-table-title" data-key="recent_bk">Recent Bookings</span><button class="adm-add-btn" onclick="admView('bookings')" data-key="view_all">View All</button></div>
-          <table class="bt"><thead><tr><th data-key="th_ref">REF</th><th data-key="th_guest">GUEST</th><th data-key="th_pkg">PACKAGE</th><th data-key="th_date">DATE</th><th data-key="th_amt">AMOUNT</th><th data-key="th_status">STATUS</th></tr></thead><tbody id="dash-table"></tbody></table>
+          <div class="adm-table-head"><span class="adm-table-title">Recent Bookings</span><button class="adm-add-btn" onclick="admView('bookings')">View All</button></div>
+          <table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>PACKAGE</th><th>DATE</th><th>AMOUNT</th><th>STATUS</th></tr></thead><tbody id="dash-table"></tbody></table>
         </div>
-        <div class="chart-bar-wrap"><div class="chart-title" data-key="monthly_chart">MONTHLY BOOKINGS</div><div class="bar-chart" id="bar-chart"></div></div>
+        <div class="chart-bar-wrap"><div class="chart-title">MONTHLY BOOKINGS</div><div class="bar-chart" id="bar-chart"></div></div>
       </div>
+      <!-- Tour Bookings -->
       <div class="adm-view" id="adm-bookings">
-        <div class="adm-header"><div><div class="adm-title" data-key="adm_bk_title">All Bookings</div><div class="adm-sub" id="bk-count-label">0 total</div></div>
-          <select class="finput" style="padding:8px 12px;font-size:11px;width:auto" id="filter-status" onchange="renderBookingTable()"><option value="">All Status</option><option value="confirmed">Confirmed</option><option value="pending">Pending</option><option value="cancelled">Cancelled</option></select>
+        <div class="adm-header"><div><div class="adm-title">Tour Bookings</div><div class="adm-sub" id="bk-count-label">0 total</div></div>
+          <select class="finput" style="padding:8px 12px;font-size:11px;width:auto" id="filter-status" onchange="renderBkTable()"><option value="">All</option><option value="confirmed">Confirmed</option><option value="pending">Pending</option><option value="cancelled">Cancelled</option></select>
         </div>
         <div class="adm-table-wrap"><table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>PACKAGE</th><th>DATE</th><th>GUESTS</th><th>AMOUNT</th><th>CONTACT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="full-bk-table"></tbody></table></div>
       </div>
+      <!-- Transfers -->
+      <div class="adm-view" id="adm-transfers">
+        <div class="adm-header"><div><div class="adm-title">Airport Transfers</div><div class="adm-sub" id="tf-count-label">0 total</div></div></div>
+        <div class="adm-table-wrap"><table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>AIRPORT</th><th>DIR</th><th>VEHICLE</th><th>DATE</th><th>FLIGHT</th><th>AMOUNT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="tf-adm-table"></tbody></table></div>
+      </div>
+      <!-- Packages & Photos -->
       <div class="adm-view" id="adm-packages">
-        <div class="adm-header"><div class="adm-title" data-key="adm_pkg_title">Manage Packages</div><button class="adm-add-btn" onclick="openAddPkg()" data-key="add_pkg">+ Add Package</button></div>
+        <div class="adm-header"><div class="adm-title">Packages & Photos</div><button class="adm-add-btn" onclick="openAddPkg()">+ Add Package</button></div>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:16px">Click on any package image area to upload photos. Photos appear on the homepage.</p>
         <div class="pkg-mgmt" id="pkg-mgmt-grid"></div>
         <div class="adm-pkg-form" id="add-pkg-form" style="display:none">
-          <h4 data-key="add_pkg_title">Add New Package</h4>
+          <h4>Add New Package</h4>
           <div class="form-row"><div class="fgroup"><label class="flabel">Package Name (EN)</label><input class="finput" id="npkg-name" placeholder="e.g. Northern Highlands Tour"></div><div class="fgroup"><label class="flabel">Destination</label><input class="finput" id="npkg-dest" placeholder="e.g. Chiang Mai · Pai"></div></div>
           <div class="form-row"><div class="fgroup"><label class="flabel">Price (THB)</label><input class="finput" id="npkg-price" type="number" placeholder="25000"></div><div class="fgroup"><label class="flabel">Duration</label><input class="finput" id="npkg-dur" placeholder="e.g. 3 Days 2 Nights"></div></div>
-          <div class="form-row full"><div class="fgroup"><label class="flabel">Description</label><textarea class="finput" id="npkg-desc" rows="2" placeholder="Short description of this tour package..."></textarea></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Description</label><textarea class="finput" id="npkg-desc" rows="2" placeholder="Short description..."></textarea></div></div>
           <div class="form-nav"><button class="fbk-out" onclick="closeAddPkg()">Cancel</button><button class="fbk" onclick="saveNewPkg()">Save Package</button></div>
         </div>
       </div>
+      <!-- Customers -->
       <div class="adm-view" id="adm-customers">
-        <div class="adm-header"><div class="adm-title" data-key="adm_cust_title">Customers</div></div>
+        <div class="adm-header"><div class="adm-title">Customers</div></div>
         <div class="adm-table-wrap"><table class="bt"><thead><tr><th>NAME</th><th>EMAIL</th><th>NATIONALITY</th><th>PHONE</th><th>BOOKINGS</th><th>TOTAL SPENT</th></tr></thead><tbody id="cust-table"></tbody></table></div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box"><button class="modal-close" onclick="closeModal()">×</button><div id="modal-content"></div></div>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLB()">
+  <button class="lightbox-x" onclick="closeLB()">×</button>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
 </div>
 
-<!-- ADMIN LOGIN MODAL — ซ่อนจากลูกค้า เปิดด้วย Ctrl+Shift+A -->
+<!-- Hidden photo input -->
+<input type="file" id="photo-input" accept="image/*" multiple style="display:none">
+
+<!-- Admin Login -->
 <div class="adm-login-bg" id="adm-login-bg">
   <div class="adm-login-box">
     <button class="adm-login-x" onclick="closeAdminLogin()">×</button>
@@ -523,126 +684,91 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 </div>
 
 <script>
-var isAdmin=false, adminTry=0;
+// =====================================
+// ADMIN AUTH
+// =====================================
+var isAdmin=false,adminTry=0;
 var ADMINS=[{u:'admin',p:'admin1234'},{u:'manager',p:'manager2026'}];
-
-function openAdminLogin(){
-  document.getElementById('adm-login-bg').classList.add('open');
-  setTimeout(function(){document.getElementById('adm-user').focus();},100);
-}
+function openAdminLogin(){document.getElementById('adm-login-bg').classList.add('open');setTimeout(()=>document.getElementById('adm-user').focus(),100);}
 function closeAdminLogin(){document.getElementById('adm-login-bg').classList.remove('open');}
-
 function doAdminLogin(){
-  var u=document.getElementById('adm-user').value.trim();
-  var p=document.getElementById('adm-pass').value;
-  var ok=ADMINS.find(function(c){return c.u===u&&c.p===p;});
-  if(ok){
-    isAdmin=true; adminTry=0;
-    closeAdminLogin();
-    document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
-    document.getElementById('page-admin').classList.add('active');
-    renderAdmin(); window.scrollTo(0,0);
-  } else {
-    adminTry++;
-    document.getElementById('adm-pass').value='';
-    var left=5-adminTry;
-    if(left<=0){
-      document.getElementById('adm-err').textContent='Too many attempts. Locked for 5 minutes.';
-      document.getElementById('adm-user').disabled=true;
-      document.getElementById('adm-pass').disabled=true;
-      setTimeout(function(){
-        adminTry=0;
-        document.getElementById('adm-user').disabled=false;
-        document.getElementById('adm-pass').disabled=false;
-        document.getElementById('adm-err').textContent='';
-      },300000);
-    } else {
-      document.getElementById('adm-err').textContent='Invalid credentials. '+left+' attempt'+(left===1?'':'s')+' remaining.';
-    }
-  }
+  var u=document.getElementById('adm-user').value.trim(),p=document.getElementById('adm-pass').value;
+  var ok=ADMINS.find(c=>c.u===u&&c.p===p);
+  if(ok){isAdmin=true;adminTry=0;closeAdminLogin();document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-admin').classList.add('active');renderAdmin();window.scrollTo(0,0);}
+  else{adminTry++;document.getElementById('adm-pass').value='';var l=5-adminTry;if(l<=0){document.getElementById('adm-err').textContent='Locked 5 min.';document.getElementById('adm-user').disabled=true;document.getElementById('adm-pass').disabled=true;setTimeout(()=>{adminTry=0;document.getElementById('adm-user').disabled=false;document.getElementById('adm-pass').disabled=false;document.getElementById('adm-err').textContent='';},300000);}else document.getElementById('adm-err').textContent='Invalid. '+l+' attempts left.';}
 }
+function adminLogout(){isAdmin=false;document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-home').classList.add('active');}
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='A'){e.preventDefault();if(!isAdmin)openAdminLogin();else{document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-admin').classList.add('active');renderAdmin();}}if(e.key==='Escape')closeAdminLogin();});
 
-function adminLogout(){
-  isAdmin=false;
-  document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
-  document.getElementById('page-home').classList.add('active');
-  document.getElementById('adm-user').value='';
-  document.getElementById('adm-pass').value='';
-  document.getElementById('adm-err').textContent='';
-}
-
-document.addEventListener('keydown',function(e){
-  if(e.ctrlKey&&e.shiftKey&&e.key==='A'){
-    e.preventDefault();
-    if(!isAdmin) openAdminLogin();
-    else{
-      document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
-      document.getElementById('page-admin').classList.add('active');
-      renderAdmin();
-    }
-  }
-  if(e.key==='Escape') closeAdminLogin();
-});
-
-const PACKAGES=[
-  {id:'p1',name:'Lanna Premium Circuit',nameT:'ล้านนา ไพรีเมียม เซอร์กิต',nameZ:'兰纳高端环线游',dest:'Chiang Mai · Chiang Rai',price:28500,dur:'5 Days 4 Nights',durT:'5 วัน 4 คืน',durZ:'5天4夜',desc:'Explore northern Thai culture, stunning temples, night markets, and highland peaks.',active:true},
-  {id:'p2',name:'Andaman Luxury Tour',nameT:'อันดามัน ลักชัวรี่ ทัวร์',nameZ:'安达曼奢华游',dest:'Krabi · Koh Lanta',price:22000,dur:'4 Days 3 Nights',durT:'4 วัน 3 คืน',durZ:'4天3夜',desc:'Crystal waters, white sands, and a slow coastal life along the Andaman Sea.',active:true},
-  {id:'p3',name:'World Heritage Day Trip',nameT:'มรดกโลก วันเดย์ ทริป',nameZ:'世界遗产一日游',dest:'Ayutthaya · Suphanburi',price:6500,dur:'1 Day',durT:'1 วัน',durZ:'1天',desc:'Journey through ancient Thai kingdoms with an expert heritage guide.',active:true},
-  {id:'p4',name:'Phuket Island Escape',nameT:'ภูเก็ต ไอส์แลนด์ เอสเคป',nameZ:'普吉岛度假游',dest:'Phuket · Phang Nga',price:18500,dur:'3 Days 2 Nights',durT:'3 วัน 2 คืน',durZ:'3天2夜',desc:"Iconic beaches, hidden lagoons, and vibrant nightlife on Thailand's pearl island.",active:true}
+// =====================================
+// DATA
+// =====================================
+const PKG=[
+  {id:'p1',name:'Lanna Premium Circuit',nameT:'ล้านนา ไพรีเมียม เซอร์กิต',nameZ:'兰纳高端环线游',dest:'Chiang Mai · Chiang Rai',price:28500,dur:'5 Days 4 Nights',durT:'5 วัน 4 คืน',durZ:'5天4夜',desc:'Explore northern Thai culture, stunning temples, night markets, and highland peaks.',active:true,photos:[]},
+  {id:'p2',name:'Andaman Luxury Tour',nameT:'อันดามัน ลักชัวรี่ ทัวร์',nameZ:'安达曼奢华游',dest:'Krabi · Koh Lanta',price:22000,dur:'4 Days 3 Nights',durT:'4 วัน 3 คืน',durZ:'4天3夜',desc:'Crystal waters, white sands, and a slow coastal life along the Andaman Sea.',active:true,photos:[]},
+  {id:'p3',name:'World Heritage Day Trip',nameT:'มรดกโลก วันเดย์ ทริป',nameZ:'世界遗产一日游',dest:'Ayutthaya · Suphanburi',price:6500,dur:'1 Day',durT:'1 วัน',durZ:'1天',desc:'Journey through ancient Thai kingdoms with an expert heritage guide.',active:true,photos:[]},
+  {id:'p4',name:'Phuket Island Escape',nameT:'ภูเก็ต ไอส์แลนด์ เอสเคป',nameZ:'普吉岛度假游',dest:'Phuket · Phang Nga',price:18500,dur:'3 Days 2 Nights',durT:'3 วัน 2 คืน',durZ:'3天2夜',desc:"Iconic beaches, hidden lagoons, and vibrant nightlife on Thailand's pearl island.",active:true,photos:[]}
 ];
+let BOOKINGS=[],TRANSFERS=[],bkSelected=null,bkStep=1,curLang='en';
+let tfDir='arrival',tfAP={code:'BKK',name:'Suvarnabhumi Airport'},tfVeh={key:'sedan',price:950,name:'Sedan'},tfLug='0';
+let photoPkgIdx=null;
 
-let BOOKINGS=[],currentLang='en',bkSelected=null,bkStep=1;
-
-const T={
-  en:{nav_tours:'Tours',nav_book:'Book Now',nav_contact_lnk:'Contact',nav_book_btn:'Book Now',hero_badge:'Premium Private Tours Thailand','hero_h1':'Explore Thailand <em>in Luxury</em>',hero_sub:'Private tours with professional car and driver — crafted exclusively for you.',cta_packages:'View Tour Packages',cta_consult:'Free Consultation',stat1:'Trips Completed',stat2:'Satisfaction Rate',stat3:'Routes Across Thailand',stat4:'Experience',stat4_unit:' yrs',search_ph:'Where do you want to go? e.g. Chiang Mai, Phuket...',dur_l:'Duration',d1:'1 Day',d2:'2-3 Days',d3:'4-7 Days',d4:'7+ Days',pax_l:'Guests',search_btn:'Search',pkg_ey:'Featured Packages','pkg_st':'Curated <em>Experiences for You</em>',steps_ey:'How to Book','steps_st':'Ready in <em>4 Simple Steps</em>',s1t:'Choose Package',s1d:'Pick a ready-made package or design your own route.',s2t:'Select Date',s2d:'Choose travel dates and number of travelers.',s3t:'Confirm & Pay',s3d:'30% deposit secures booking. Balance 7 days before.',s4t:'Enjoy Journey',s4d:'Driver picks you up at hotel. Relax and explore.',testy_ey:'Guest Reviews','testy_st':'Trusted by <em>Travelers Worldwide</em>',t1q:'"Driver spoke excellent English and recommended the best local spots. Will book again!"',t1trip:'Chiang Mai · 5 Days',t2q:'"Easy booking, transparent pricing. Car spotless, service exceeded expectations."',t2trip:'Krabi · Family Trip',t3q:'"Very flexible, changed itinerary mid-trip, driver always smiling. Truly impressive."',t3trip:'Ayutthaya · Day Trip',cta_t:'Ready to Start Your Journey?',cta_s:'Our experts design the perfect experience just for you.',cta_chat:'Chat With Us',contact_ey:'Contact Us','contact_st':'Chat with Us <em>Directly</em>',tel_label:'Call Us',footer_desc:'Premium private tour service with professional car and driver.',footer_pop:'Popular Tours',footer_svc:'Services',footer_con:'Contact',svc1:'Car with Driver',svc2:'Group Tours',svc3:'Custom Itinerary',svc4:'Honeymoon Trip',footer_legal:'Privacy Policy · Terms',bk_ey:'Booking','bk_st':'Reserve Your <em>Perfect Journey</em>',bs1:'Select Package',bs2:'Your Details',bs3:'Review & Pay',bs4:'Confirmed!',choose_pkg:'Choose Your Package',fl_date:'Travel Date',fl_guests:'Number of Guests',your_details:'Your Details',fl_fname:'First Name',fl_lname:'Last Name',fl_email:'Email',fl_phone:'Phone / WhatsApp',fl_nat:'Nationality',fl_hotel:'Hotel / Pickup Location',fl_note:'Special Requests (Optional)',fl_contact:'Preferred Contact',btn_next:'Continue',btn_back:'Back',btn_confirm:'Confirm Booking',review_pay:'Review & Payment',pay_method:'Payment Method',pay_bank:'Bank Transfer',pay_card:'Credit / Debit Card',pay_note:'30% deposit required to confirm booking. Team contacts you within 24 hours.',terms_agree:'I agree to Terms of Service and Cancellation Policy',success_t:'Booking Confirmed!',success_s:'Thank you for choosing Siam Royal Journey. Our team will contact you within 24 hours with payment details.',ref_label:'Booking Reference',back_home:'Back to Home',view_all_pkg:'View More Packages',adm_dash:'Dashboard',adm_bk:'Bookings',adm_pkg:'Packages',adm_cust:'Customers',adm_back:'Back to Site',adm_title:'Dashboard',adm_sub:"Welcome back — here's your overview",m1:'TOTAL BOOKINGS',m1c:'+12% this month',m2:'CONFIRMED',m2c:'+8% this month',m3:'REVENUE (฿)',m3c:'+15% this month',m4:'PENDING',m4c:'Need action',recent_bk:'Recent Bookings',view_all:'View All',th_ref:'REF',th_guest:'GUEST',th_pkg:'PACKAGE',th_date:'DATE',th_amt:'AMOUNT',th_status:'STATUS',adm_bk_title:'All Bookings',adm_pkg_title:'Manage Packages',add_pkg:'+ Add Package',add_pkg_title:'Add New Package',adm_cust_title:'Customers',monthly_chart:'MONTHLY BOOKINGS',per_group:'/ group',view_detail:'View Details'},
-  th:{nav_tours:'ทัวร์',nav_book:'จองทันที',nav_contact_lnk:'ติดต่อ',nav_book_btn:'จองทันที',hero_badge:'ทัวร์ส่วนตัวพรีเมียมในประเทศไทย','hero_h1':'เที่ยวไทย<em>อย่างมีระดับ</em>',hero_sub:'ทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบประสบการณ์เฉพาะคุณ',cta_packages:'ดูแพ็กเกจทัวร์',cta_consult:'ปรึกษาฟรี',stat1:'ทริปสำเร็จ',stat2:'ลูกค้าพอใจ',stat3:'เส้นทางทั่วไทย',stat4:'ประสบการณ์',stat4_unit:' ปี',search_ph:'ต้องการเที่ยวที่ไหน? เช่น เชียงใหม่, ภูเก็ต...',dur_l:'กี่วัน?',d1:'1 วัน',d2:'2-3 วัน',d3:'4-7 วัน',d4:'7+ วัน',pax_l:'จำนวนคน',search_btn:'ค้นหา',pkg_ey:'แพ็กเกจแนะนำ','pkg_st':'ประสบการณ์<em>ที่คัดสรรมาเพื่อคุณ</em>',steps_ey:'ขั้นตอนการจอง','steps_st':'ง่ายแค่ <em>4 ขั้นตอน</em>',s1t:'เลือกแพ็กเกจ',s1d:'เลือกจากแพ็กเกจสำเร็จหรือออกแบบเส้นทางเอง',s2t:'ยืนยันวันเดินทาง',s2d:'เลือกวันและจำนวนผู้เดินทาง',s3t:'ชำระเงิน',s3d:'มัดจำ 30% ส่วนที่เหลือก่อนเดินทาง 7 วัน',s4t:'เริ่มเดินทาง',s4d:'คนขับรับถึงที่พัก ดูแลตลอดทริป',testy_ey:'รีวิวจากลูกค้า','testy_st':'ประสบการณ์ที่<em>ลูกค้าไว้วางใจ</em>',t1q:'"คนขับพูดภาษาอังกฤษดีมาก แนะนำร้านอาหารท้องถิ่น จะกลับมาใช้บริการอีก"',t1trip:'เชียงใหม่ · 5 วัน',t2q:'"จองง่าย ราคาโปร่งใส รถสะอาดมาก บริการดีเกินคาด"',t2trip:'กระบี่ · ทริปครอบครัว',t3q:'"Flexible มากๆ เปลี่ยนโปรแกรมกลางทางได้ คนขับยิ้มแย้มตลอด"',t3trip:'อยุธยา · ทริปวันเดียว',cta_t:'พร้อมออกเดินทางแล้วหรือยัง?',cta_s:'ทีมผู้เชี่ยวชาญพร้อมออกแบบการเดินทางสำหรับคุณ',cta_chat:'คุยกับเราเลย',contact_ey:'ติดต่อเรา','contact_st':'ติดต่อเรา<em>โดยตรง</em>',tel_label:'โทรหาเรา',footer_desc:'บริการทัวร์ส่วนตัวพรีเมียมพร้อมรถและคนขับมืออาชีพ',footer_pop:'ทัวร์ยอดนิยม',footer_svc:'บริการ',footer_con:'ติดต่อ',svc1:'เช่ารถพร้อมคนขับ',svc2:'ทัวร์กลุ่มใหญ่',svc3:'ออกแบบทริปเอง',svc4:'ทริปฮันนีมูน',footer_legal:'นโยบายความเป็นส่วนตัว · เงื่อนไข',bk_ey:'การจอง','bk_st':'จองการเดินทาง<em>ในฝันของคุณ</em>',bs1:'เลือกแพ็กเกจ',bs2:'ข้อมูลของคุณ',bs3:'ตรวจสอบ & ชำระ',bs4:'ยืนยันแล้ว!',choose_pkg:'เลือกแพ็กเกจทัวร์',fl_date:'วันเดินทาง',fl_guests:'จำนวนผู้เดินทาง',your_details:'ข้อมูลของคุณ',fl_fname:'ชื่อ',fl_lname:'นามสกุล',fl_email:'อีเมล',fl_phone:'โทรศัพท์ / WhatsApp',fl_nat:'สัญชาติ',fl_hotel:'โรงแรม / จุดรับ',fl_note:'ความต้องการพิเศษ (ถ้ามี)',fl_contact:'ช่องทางติดต่อที่ต้องการ',btn_next:'ถัดไป',btn_back:'ย้อนกลับ',btn_confirm:'ยืนยันการจอง',review_pay:'ตรวจสอบ & ชำระเงิน',pay_method:'วิธีการชำระเงิน',pay_bank:'โอนเงินธนาคาร',pay_card:'บัตรเครดิต / เดบิต',pay_note:'ต้องชำระมัดจำ 30% ทีมงานจะติดต่อภายใน 24 ชั่วโมง',terms_agree:'ฉันยอมรับเงื่อนไขการให้บริการและนโยบายการยกเลิก',success_t:'จองสำเร็จแล้ว!',success_s:'ขอบคุณที่เลือก Siam Royal Journey ทีมงานจะติดต่อคุณภายใน 24 ชั่วโมง',ref_label:'หมายเลขการจอง',back_home:'กลับหน้าหลัก',view_all_pkg:'ดูแพ็กเกจเพิ่มเติม',adm_dash:'ภาพรวม',adm_bk:'การจอง',adm_pkg:'แพ็กเกจ',adm_cust:'ลูกค้า',adm_back:'กลับหน้าเว็บ',adm_title:'ภาพรวม',adm_sub:'ยินดีต้อนรับกลับ',m1:'การจองทั้งหมด',m1c:'+12% เดือนนี้',m2:'ยืนยันแล้ว',m2c:'+8% เดือนนี้',m3:'รายได้ (฿)',m3c:'+15% เดือนนี้',m4:'รอดำเนินการ',m4c:'รายการรอ',recent_bk:'การจองล่าสุด',view_all:'ดูทั้งหมด',th_ref:'รหัส',th_guest:'ผู้เดินทาง',th_pkg:'แพ็กเกจ',th_date:'วันที่',th_amt:'ยอด',th_status:'สถานะ',adm_bk_title:'การจองทั้งหมด',adm_pkg_title:'จัดการแพ็กเกจ',add_pkg:'+ เพิ่มแพ็กเกจ',add_pkg_title:'เพิ่มแพ็กเกจใหม่',adm_cust_title:'ลูกค้า',monthly_chart:'สถิติรายเดือน',per_group:'/ กลุ่ม',view_detail:'ดูรายละเอียด'},
-  zh:{nav_tours:'旅游线路',nav_book:'立即预订',nav_contact_lnk:'联系我们',nav_book_btn:'立即预订',hero_badge:'泰国高端私人定制游','hero_h1':'探索泰国<em>尊享之旅</em>',hero_sub:'专属私人旅游服务，配备专业车辆和司机，为您量身定制难忘旅程。',cta_packages:'查看旅游套餐',cta_consult:'免费咨询',stat1:'行程完成',stat2:'满意度',stat3:'全泰路线',stat4:'服务经验',stat4_unit:' 年',search_ph:'您想去哪里？例如：清迈、普吉、甲米...',dur_l:'天数',d1:'1天',d2:'2-3天',d3:'4-7天',d4:'7天以上',pax_l:'人数',search_btn:'搜索',pkg_ey:'推荐套餐','pkg_st':'专为您<em>精心策划的体验</em>',steps_ey:'预订流程','steps_st':'简单 <em>4步完成</em>',s1t:'选择套餐',s1d:'选择现成套餐或设计专属路线',s2t:'选择日期',s2d:'选定出行日期和旅行人数',s3t:'确认与付款',s3d:'预付30%定金，余款出行前7天支付',s4t:'开始旅程',s4d:'司机直接到酒店接您，全程贴心陪同',testy_ey:'客户评价','testy_st':'深受<em>全球旅客信赖</em>',t1q:'"我们的司机英语非常好，推荐了最地道的餐厅，下次一定还来！"',t1trip:'清迈 · 5天',t2q:'"预订简单，价格透明，无隐藏费用。服务超出预期。"',t2trip:'甲米 · 家庭游',t3q:'"非常灵活，途中更改行程也没问题，司机始终面带微笑。"',t3trip:'大城 · 一日游',cta_t:'准备好出发了吗？',cta_s:'我们的专家团队随时为您设计完美的旅行体验。',cta_chat:'立即联系我们',contact_ey:'联系方式','contact_st':'直接<em>与我们沟通</em>',tel_label:'电话联系',footer_desc:'高端私人旅游服务，配备专业车辆和司机，全程为您贴心服务。',footer_pop:'热门路线',footer_svc:'服务项目',footer_con:'联系方式',svc1:'含司机租车',svc2:'团体旅游',svc3:'定制行程',svc4:'蜜月旅行',footer_legal:'隐私政策 · 服务条款',bk_ey:'预订','bk_st':'预订您的<em>完美旅程</em>',bs1:'选择套餐',bs2:'填写信息',bs3:'确认付款',bs4:'预订成功！',choose_pkg:'选择旅游套餐',fl_date:'出发日期',fl_guests:'旅行人数',your_details:'填写个人信息',fl_fname:'名字',fl_lname:'姓氏',fl_email:'电子邮件',fl_phone:'电话 / WhatsApp',fl_nat:'国籍',fl_hotel:'酒店 / 接送地点',fl_note:'特殊要求（选填）',fl_contact:'首选联系方式',btn_next:'继续',btn_back:'返回',btn_confirm:'确认预订',review_pay:'确认与付款',pay_method:'付款方式',pay_bank:'银行转账',pay_card:'信用卡 / 借记卡',pay_note:'需支付30%定金确认预订。我们的团队将在24小时内通过您的首选渠道与您联系。',terms_agree:'我同意服务条款和取消政策',success_t:'预订成功！',success_s:'感谢您选择 Siam Royal Journey。我们的团队将在24小时内联系您，提供付款详情和完整行程。',ref_label:'预订参考号',back_home:'返回首页',view_all_pkg:'查看更多套餐',adm_dash:'仪表板',adm_bk:'预订管理',adm_pkg:'套餐管理',adm_cust:'客户管理',adm_back:'返回网站',adm_title:'仪表板',adm_sub:'欢迎回来 — 这是您的概览',m1:'总预订数',m1c:'本月+12%',m2:'已确认',m2c:'本月+8%',m3:'收入 (฿)',m3c:'本月+15%',m4:'待处理',m4c:'需处理',recent_bk:'最新预订',view_all:'查看全部',th_ref:'参考号',th_guest:'客人',th_pkg:'套餐',th_date:'日期',th_amt:'金额',th_status:'状态',adm_bk_title:'所有预订',adm_pkg_title:'套餐管理',add_pkg:'+ 添加套餐',add_pkg_title:'添加新套餐',adm_cust_title:'客户列表',monthly_chart:'月度预订统计',per_group:'/ 团',view_detail:'查看详情'}
-};
-
-function setLang(lang){
-  currentLang=lang;
-  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('active'));
-  document.querySelector('.lb[onclick="setLang(\''+lang+'\')"]').classList.add('active');
-  const t=T[lang];
-  document.querySelectorAll('[data-key]').forEach(el=>{
-    const k=el.dataset.key;if(!t[k])return;
-    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=t[k];
-    else if(el.tagName==='OPTION')el.textContent=t[k];
-    else el.innerHTML=t[k];
-  });
-  document.querySelectorAll('[data-pk]').forEach(el=>{const k=el.dataset.pk;if(t[k])el.placeholder=t[k];});
-  renderPkgGrid();renderPkgSelect();renderPkgMgmt();
-}
-
+// =====================================
+// NAVIGATION
+// =====================================
 function showPage(p){
   if(p==='admin'&&!isAdmin){openAdminLogin();return;}
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
   document.getElementById('page-'+p).classList.add('active');
   if(p==='admin')renderAdmin();
   if(p==='booking'){bkStep=1;renderBkStep();}
+  if(p==='transfer'){document.getElementById('tf-form-wrap').style.display='block';document.getElementById('tf-success').style.display='none';}
   window.scrollTo(0,0);
 }
+function scrollToContact(){showPage('home');setTimeout(()=>document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}),100);}
 
+// =====================================
+// LANG
+// =====================================
+function setLang(l){
+  curLang=l;
+  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.lb[onclick="setLang(\''+l+'\')"]').classList.add('active');
+  renderPkgGrid();renderPkgSelect();renderPkgMgmt();
+}
+function pkgName(p){return curLang==='th'?p.nameT:curLang==='zh'?p.nameZ:p.name;}
+function pkgDur(p){return curLang==='th'?p.durT:curLang==='zh'?p.durZ:p.dur;}
+
+// =====================================
+// HOMEPAGE PACKAGE GRID
+// =====================================
+const BG=['linear-gradient(135deg,#1a1208,#2d1f05)','linear-gradient(135deg,#051a1a,#092828)','linear-gradient(135deg,#0a1a08,#122a0e)','linear-gradient(135deg,#160a1a,#28102a)'];
 function renderPkgGrid(){
-  const t=T[currentLang];const g=document.getElementById('pkg-grid-home');if(!g)return;
-  const active=PACKAGES.filter(p=>p.active);
-  g.innerHTML=active.slice(0,3).map((p,i)=>`<div class="pc" onclick="showPage('booking')"><div class="pi" style="background:${['linear-gradient(135deg,#1a1208,#2d1f05)','linear-gradient(135deg,#051a1a,#092828)','linear-gradient(135deg,#0a1a08,#122a0e)','linear-gradient(135deg,#160a1a,#28102a)'][i%4]}"><svg width="120" height="100" viewBox="0 0 120 100" fill="none"><circle cx="60" cy="50" r="30" stroke="rgba(201,169,110,0.12)" stroke-width="1"/><circle cx="60" cy="50" r="18" stroke="rgba(201,169,110,0.2)" stroke-width="1"/><circle cx="60" cy="50" r="4" fill="rgba(201,169,110,0.5)"/></svg><div class="pb">${i===0?'Popular':'New'}</div></div><div class="pbody"><div class="pdest">${p.dest}</div><div class="pname">${currentLang==='th'?p.nameT:currentLang==='zh'?p.nameZ:p.name}</div><p class="pdesc">${p.desc}</p><div class="pmeta"><div class="pm"><div class="dot"></div>${currentLang==='th'?p.durT:currentLang==='zh'?p.durZ:p.dur}</div></div><div class="pfoot"><div class="pp">฿${p.price.toLocaleString()} <span>${t.per_group||'/ group'}</span></div><button class="pbtn" onclick="event.stopPropagation();showPage('booking')">${t.view_detail||'View Details'}</button></div></div></div>`).join('')+`<div class="pc ccard" onclick="showPage('booking')"><div class="ci"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="var(--gold)" stroke-width="1.5"/></svg></div><div class="ct">Design Your Own Trip</div><p class="cd">Tell us where, how long, and budget — we build the perfect journey.</p><button class="bp" style="font-size:10px;padding:10px 18px">${currentLang==='th'?'สร้างทริปของฉัน':currentLang==='zh'?'定制我的行程':'Create My Trip'}</button></div>`;
+  const g=document.getElementById('pkg-grid-home');if(!g)return;
+  const active=PKG.filter(p=>p.active);
+  g.innerHTML=active.slice(0,3).map((p,i)=>{
+    const img=p.photos&&p.photos.length>0?`<img src="${p.photos[0]}" alt="${pkgName(p)}">`:'';
+    return`<div class="pc" onclick="showPage('booking')"><div class="pi" style="${!img?'background:'+BG[i%4]:''}">${img}<div class="pb">${i===0?'Popular':'New'}</div>${!img?`<svg width="90" height="80" viewBox="0 0 120 100" fill="none"><circle cx="60" cy="50" r="30" stroke="rgba(201,169,110,0.12)" stroke-width="1"/><circle cx="60" cy="50" r="18" stroke="rgba(201,169,110,0.2)" stroke-width="1"/><circle cx="60" cy="50" r="4" fill="rgba(201,169,110,0.5)"/></svg>`:''}</div><div class="pbody"><div class="pdest">${p.dest}</div><div class="pname">${pkgName(p)}</div><p class="pdesc">${p.desc}</p><div class="pmeta"><div class="pm"><div class="dot"></div>${pkgDur(p)}</div></div><div class="pfoot"><div class="pp">฿${p.price.toLocaleString()} <span>/ group</span></div><button class="pbtn" onclick="event.stopPropagation();showPage('booking')">View Details</button></div></div></div>`;
+  }).join('')+`<div class="pc ccard" onclick="showPage('booking')"><div class="ci"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="var(--gold)" stroke-width="1.5"/></svg></div><div class="ct">Design Your Own Trip</div><p class="cd">Tell us where, how long, and budget.</p><button class="bp" style="font-size:10px;padding:10px 18px">Create My Trip</button></div>`;
 }
 
+// =====================================
+// BOOKING
+// =====================================
 function renderPkgSelect(){
   const g=document.getElementById('pkg-select-grid');if(!g)return;
-  g.innerHTML=PACKAGES.filter(p=>p.active).map(p=>`<div class="pkg-opt${bkSelected===p.id?' selected':''}" onclick="selectPkg('${p.id}')"><div class="pkg-opt-name">${currentLang==='th'?p.nameT:currentLang==='zh'?p.nameZ:p.name}</div><div class="pkg-opt-price">฿${p.price.toLocaleString()}</div><div class="pkg-opt-dur">${currentLang==='th'?p.durT:currentLang==='zh'?p.durZ:p.dur} · ${p.dest}</div></div>`).join('');
+  g.innerHTML=PKG.filter(p=>p.active).map(p=>`<div class="pkg-opt${bkSelected===p.id?' selected':''}" onclick="selectPkg('${p.id}')"><div class="pkg-opt-name">${pkgName(p)}</div><div class="pkg-opt-price">฿${p.price.toLocaleString()}</div><div class="pkg-opt-dur">${pkgDur(p)} · ${p.dest}</div></div>`).join('');
 }
-
-function selectPkg(id){bkSelected=id;document.querySelectorAll('.pkg-opt').forEach(el=>{el.classList.remove('selected')});event.currentTarget.classList.add('selected');}
-
-function bkNext(step){
-  if(step===1){if(!bkSelected){alert(currentLang==='th'?'กรุณาเลือกแพ็กเกจ':currentLang==='zh'?'请选择套餐':'Please select a package');return;}if(!document.getElementById('bk-date').value){alert(currentLang==='th'?'กรุณาเลือกวันเดินทาง':currentLang==='zh'?'请选择出发日期':'Please select a travel date');return;}}
-  if(step===2){const f=document.getElementById('bk-fname').value;const e=document.getElementById('bk-email').value;if(!f||!e){alert(currentLang==='th'?'กรุณากรอกชื่อและอีเมล':currentLang==='zh'?'请填写姓名和邮箱':'Please fill in name and email');return;}renderSummary();}
-  if(step===3){if(!document.getElementById('agree-terms').checked){alert(currentLang==='th'?'กรุณายอมรับเงื่อนไข':currentLang==='zh'?'请同意服务条款':'Please agree to the terms');return;}saveBooking();}
-  bkStep=step+1;renderBkStep();
+function selectPkg(id){bkSelected=id;document.querySelectorAll('.pkg-opt').forEach(el=>el.classList.remove('selected'));event.currentTarget.classList.add('selected');}
+function bkNext(s){
+  if(s===1&&!bkSelected){alert('Please select a package');return;}
+  if(s===1&&!document.getElementById('bk-date').value){alert('Please select a travel date');return;}
+  if(s===2&&(!document.getElementById('bk-fname').value||!document.getElementById('bk-email').value)){alert('Please fill in name and email');return;}
+  if(s===2)renderSummary();
+  if(s===3){if(!document.getElementById('agree-terms').checked){alert('Please agree to the terms');return;}saveBk();}
+  bkStep=s+1;renderBkStep();
 }
-function bkGo(step){bkStep=step;renderBkStep();}
+function bkGo(s){bkStep=s;renderBkStep();}
 function renderBkStep(){
   [1,2,3,4].forEach(i=>{
     document.getElementById('bk-step-'+i).style.display=i===bkStep?'block':'none';
@@ -653,39 +779,153 @@ function renderBkStep(){
   if(bkStep===1)renderPkgSelect();
 }
 function renderSummary(){
-  const pkg=PACKAGES.find(p=>p.id===bkSelected);if(!pkg)return;
-  const date=document.getElementById('bk-date').value;const guests=document.getElementById('bk-guests').value;
-  const fname=document.getElementById('bk-fname').value;const lname=document.getElementById('bk-lname').value;
-  const deposit=Math.round(pkg.price*0.3);const t=T[currentLang];
-  document.getElementById('bk-summary').innerHTML=`<div class="bk-sum-row"><span class="bk-sum-label">${t.pkg_ey||'Package'}</span><span class="bk-sum-val">${currentLang==='th'?pkg.nameT:currentLang==='zh'?pkg.nameZ:pkg.name}</span></div><div class="bk-sum-row"><span class="bk-sum-label">${t.fl_date||'Date'}</span><span class="bk-sum-val">${date}</span></div><div class="bk-sum-row"><span class="bk-sum-label">${t.fl_guests||'Guests'}</span><span class="bk-sum-val">${guests}</span></div><div class="bk-sum-row"><span class="bk-sum-label">${t.fl_fname||'Guest'}</span><span class="bk-sum-val">${fname} ${lname}</span></div><div class="bk-sum-row"><span class="bk-sum-label">${t.m3||'Total'}</span><span class="bk-sum-val">฿${pkg.price.toLocaleString()}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Deposit (30%)</span><span class="bk-sum-val" style="color:var(--gold);font-weight:500">฿${deposit.toLocaleString()}</span></div>`;
+  const p=PKG.find(x=>x.id===bkSelected);if(!p)return;
+  const dep=Math.round(p.price*0.3);
+  document.getElementById('bk-summary').innerHTML=`<div class="bk-sum-row"><span class="bk-sum-label">Package</span><span class="bk-sum-val">${pkgName(p)}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Date</span><span class="bk-sum-val">${document.getElementById('bk-date').value}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Guests</span><span class="bk-sum-val">${document.getElementById('bk-guests').value}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Guest Name</span><span class="bk-sum-val">${document.getElementById('bk-fname').value} ${document.getElementById('bk-lname').value}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Total</span><span class="bk-sum-val">฿${p.price.toLocaleString()}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Deposit (30%)</span><span style="color:var(--gold);font-weight:500">฿${dep.toLocaleString()}</span></div>`;
 }
-function saveBooking(){
-  const pkg=PACKAGES.find(p=>p.id===bkSelected);
-  const ref='SRJ-2026-'+String(Date.now()).slice(-4);
-  BOOKINGS.unshift({ref,pkg:pkg.name,pkgId:pkg.id,price:pkg.price,date:document.getElementById('bk-date').value,guests:document.getElementById('bk-guests').value,fname:document.getElementById('bk-fname').value,lname:document.getElementById('bk-lname').value,email:document.getElementById('bk-email').value,phone:document.getElementById('bk-phone').value,nat:document.getElementById('bk-nat').value,hotel:document.getElementById('bk-hotel').value,contact:document.getElementById('bk-contact').value,note:document.getElementById('bk-note').value,status:'pending',created:new Date().toISOString()});
+function saveBk(){
+  const p=PKG.find(x=>x.id===bkSelected);
+  const ref='SRJ-'+String(Date.now()).slice(-5);
+  BOOKINGS.unshift({ref,type:'tour',pkg:p.name,pkgId:p.id,price:p.price,date:document.getElementById('bk-date').value,guests:document.getElementById('bk-guests').value,fname:document.getElementById('bk-fname').value,lname:document.getElementById('bk-lname').value,email:document.getElementById('bk-email').value,phone:document.getElementById('bk-phone').value,nat:document.getElementById('bk-nat').value,hotel:document.getElementById('bk-hotel').value,contact:document.getElementById('bk-contact').value,note:document.getElementById('bk-note').value,status:'pending',created:new Date().toISOString()});
   document.getElementById('bk-ref').textContent=ref;
 }
-function renderAdmin(){updateMetrics();renderDashTable();renderBarChart();renderBookingTable();renderPkgMgmt();renderCustTable();}
-function updateMetrics(){
-  const conf=BOOKINGS.filter(b=>b.status==='confirmed').length;const pend=BOOKINGS.filter(b=>b.status==='pending').length;const rev=BOOKINGS.filter(b=>b.status==='confirmed').reduce((a,b)=>a+b.price,0);
-  document.getElementById('m-total').textContent=BOOKINGS.length;document.getElementById('m-conf').textContent=conf;document.getElementById('m-rev').textContent=rev>0?'฿'+rev.toLocaleString():'฿0';document.getElementById('m-pend').textContent=pend;
+
+// =====================================
+// TRANSFER
+// =====================================
+function setDir(d){
+  tfDir=d;
+  document.getElementById('dir-arr').classList.toggle('active',d==='arrival');
+  document.getElementById('dir-dep').classList.toggle('active',d==='departure');
+  const arr=d==='arrival';
+  document.getElementById('tf-date-lbl').textContent=arr?'Date of Arrival':'Date of Departure';
+  document.getElementById('tf-time-lbl').textContent=arr?'Arrival Time (local)':'Departure Time';
+  document.getElementById('tf-hotel-lbl').textContent=arr?'Destination Hotel / Address':'Pickup Hotel / Address';
 }
-function statusBadge(s){const m={confirmed:'s-confirmed',pending:'s-pending',cancelled:'s-cancelled'};const l={confirmed:'Confirmed',pending:'Pending',cancelled:'Cancelled'};return`<span class="status ${m[s]||'s-pending'}">${l[s]||s}</span>`;}
-function renderDashTable(){const t=document.getElementById('dash-table');if(!t)return;const rows=BOOKINGS.slice(0,5);t.innerHTML=rows.length?rows.map(b=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td><td style="color:var(--muted)">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td><td>฿${b.price.toLocaleString()}</td><td>${statusBadge(b.status)}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';}
-function renderBookingTable(){const t=document.getElementById('full-bk-table');if(!t)return;const f=document.getElementById('filter-status').value;const rows=f?BOOKINGS.filter(b=>b.status===f):BOOKINGS;document.getElementById('bk-count-label').textContent=rows.length+' total bookings';t.innerHTML=rows.length?rows.map((b)=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td><td style="color:var(--muted);font-size:11px">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td><td>${b.guests}</td><td>฿${b.price.toLocaleString()}</td><td style="font-size:10px;color:var(--muted)">${b.contact||'LINE'}</td><td>${statusBadge(b.status)}</td><td><div class="adm-act">${b.status==='pending'?`<button class="abt" onclick="chgStatus(${BOOKINGS.indexOf(b)},'confirmed')">Confirm</button>`:''}<button class="abt red" onclick="chgStatus(${BOOKINGS.indexOf(b)},'cancelled')">Cancel</button></div></td></tr>`).join(''):'<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';}
-function chgStatus(i,s){BOOKINGS[i].status=s;renderAdmin();}
-function renderBarChart(){const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];const data=[3,5,4,7,9,12,8,6,10,14,11,16];const max=Math.max(...data);const c=document.getElementById('bar-chart');if(!c)return;c.innerHTML=months.map((m,i)=>`<div class="bar-col"><div class="bar-val">${data[i]}</div><div class="bar" style="height:${Math.round((data[i]/max)*80)}px" title="${m}: ${data[i]}"></div><div class="bar-label">${m}</div></div>`).join('');}
-function renderPkgMgmt(){const g=document.getElementById('pkg-mgmt-grid');if(!g)return;g.innerHTML=PACKAGES.map((p,i)=>`<div class="pkg-card-adm"><div class="pca-name">${p.name}</div><div class="pca-info">${p.dest} · ${p.dur}<br>${p.desc}</div><div class="pca-foot"><span class="pca-price">฿${p.price.toLocaleString()}</span><div style="display:flex;align-items:center;gap:10px"><span style="font-size:10px;color:var(--muted)">${p.active?'Active':'Hidden'}</span><div class="toggle${p.active?'':' off'}" onclick="togglePkg(${i})"></div></div></div></div>`).join('');}
-function togglePkg(i){PACKAGES[i].active=!PACKAGES[i].active;renderPkgMgmt();renderPkgGrid();}
+function selAirport(el,code,name){
+  document.querySelectorAll('.airport-opt').forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');tfAP={code,name};updateTFPrice();
+}
+function selVehicle(el,key,price,name){
+  document.querySelectorAll('.tf-type').forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');tfVeh={key,price,name};updateTFPrice();
+}
+function selLug(el,v){document.querySelectorAll('.lug-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');tfLug=v;}
+function updateTFPrice(){
+  document.getElementById('tp-airport').textContent=tfAP.name+' ('+tfAP.code+')';
+  document.getElementById('tp-vehicle').textContent=tfVeh.name;
+  document.getElementById('tp-total').textContent='฿'+tfVeh.price.toLocaleString();
+}
+function submitTransfer(){
+  if(!document.getElementById('tf-date').value){alert('Please select a date');return;}
+  if(!document.getElementById('tf-name').value||!document.getElementById('tf-email').value){alert('Please fill in name and email');return;}
+  if(!document.getElementById('tf-agree').checked){alert('Please agree to the terms');return;}
+  const ref='TRF-'+String(Date.now()).slice(-5);
+  TRANSFERS.unshift({ref,airport:tfAP.code,airportName:tfAP.name,direction:tfDir,vehicle:tfVeh.name,price:tfVeh.price,date:document.getElementById('tf-date').value,time:document.getElementById('tf-time').value,flight:document.getElementById('tf-flight').value,pax:document.getElementById('tf-pax').value,luggage:tfLug,hotel:document.getElementById('tf-hotel').value,area:document.getElementById('tf-area').value,name:document.getElementById('tf-name').value,phone:document.getElementById('tf-phone').value,email:document.getElementById('tf-email').value,note:document.getElementById('tf-note').value,status:'pending',created:new Date().toISOString()});
+  document.getElementById('tf-ref').textContent=ref;
+  document.getElementById('tf-form-wrap').style.display='none';
+  document.getElementById('tf-success').style.display='block';
+  window.scrollTo(0,0);
+}
+
+// =====================================
+// ADMIN
+// =====================================
+function renderAdmin(){updateMetrics();renderDashTable();renderBarChart();renderBkTable();renderTfTable();renderPkgMgmt();renderCustTable();}
+function updateMetrics(){
+  const rev=[...BOOKINGS,...TRANSFERS].filter(b=>b.status==='confirmed').reduce((a,b)=>a+b.price,0);
+  const pend=[...BOOKINGS,...TRANSFERS].filter(b=>b.status==='pending').length;
+  document.getElementById('m-total').textContent=BOOKINGS.length;
+  document.getElementById('m-tf').textContent=TRANSFERS.length;
+  document.getElementById('m-rev').textContent=rev>0?'฿'+rev.toLocaleString():'฿0';
+  document.getElementById('m-pend').textContent=pend;
+}
+const sBadge=s=>{const m={confirmed:'s-confirmed',pending:'s-pending',cancelled:'s-cancelled'};const l={confirmed:'Confirmed',pending:'Pending',cancelled:'Cancelled'};return`<span class="status ${m[s]||'s-pending'}">${l[s]||s}</span>`;};
+function renderDashTable(){const t=document.getElementById('dash-table');if(!t)return;const rows=BOOKINGS.slice(0,5);t.innerHTML=rows.length?rows.map(b=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td><td style="color:var(--muted)">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td><td>฿${b.price.toLocaleString()}</td><td>${sBadge(b.status)}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';}
+function renderBkTable(){const t=document.getElementById('full-bk-table');if(!t)return;const f=document.getElementById('filter-status').value;const rows=f?BOOKINGS.filter(b=>b.status===f):BOOKINGS;document.getElementById('bk-count-label').textContent=rows.length+' total';t.innerHTML=rows.length?rows.map(b=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td><td style="color:var(--muted);font-size:11px">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td><td>${b.guests}</td><td>฿${b.price.toLocaleString()}</td><td style="font-size:10px;color:var(--muted)">${b.contact||'LINE'}</td><td>${sBadge(b.status)}</td><td><div class="adm-act">${b.status==='pending'?`<button class="abt" onclick="chgBk(${BOOKINGS.indexOf(b)},'confirmed')">Confirm</button>`:''}<button class="abt red" onclick="chgBk(${BOOKINGS.indexOf(b)},'cancelled')">Cancel</button></div></td></tr>`).join(''):'<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';}
+function renderTfTable(){const t=document.getElementById('tf-adm-table');if(!t)return;document.getElementById('tf-count-label').textContent=TRANSFERS.length+' total';t.innerHTML=TRANSFERS.length?TRANSFERS.map(b=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.name}</td><td style="font-size:11px">${b.airport}</td><td style="font-size:10px;color:var(--muted)">${b.direction==='arrival'?'ARR→Hotel':'Hotel→DEP'}</td><td style="color:var(--muted);font-size:11px">${b.vehicle}</td><td style="color:var(--muted)">${b.date}</td><td style="font-size:11px">${b.flight||'-'}</td><td>฿${b.price.toLocaleString()}</td><td>${sBadge(b.status)}</td><td><div class="adm-act">${b.status==='pending'?`<button class="abt" onclick="chgTf(${TRANSFERS.indexOf(b)},'confirmed')">Confirm</button>`:''}<button class="abt red" onclick="chgTf(${TRANSFERS.indexOf(b)},'cancelled')">Cancel</button></div></td></tr>`).join(''):'<tr><td colspan="10" style="text-align:center;color:var(--muted);padding:24px">No transfers yet</td></tr>';}
+function chgBk(i,s){BOOKINGS[i].status=s;renderAdmin();}
+function chgTf(i,s){TRANSFERS[i].status=s;renderAdmin();}
+function renderBarChart(){const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];const data=[3,5,4,7,9,12,8,6,10,14,11,16];const max=Math.max(...data);const c=document.getElementById('bar-chart');if(!c)return;c.innerHTML=months.map((m,i)=>`<div class="bar-col"><div class="bar-val">${data[i]}</div><div class="bar" style="height:${Math.round((data[i]/max)*80)}px"></div><div class="bar-label">${m}</div></div>`).join('');}
+
+// =====================================
+// PACKAGES & PHOTOS
+// =====================================
+function renderPkgMgmt(){
+  const g=document.getElementById('pkg-mgmt-grid');if(!g)return;
+  g.innerHTML=PKG.map((p,i)=>{
+    const mainImg=p.photos&&p.photos.length>0?`<img src="${p.photos[0]}" alt="${p.name}">`:`<div class="pca-no-img"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span style="font-size:10px;letter-spacing:1px">Click to add photos</span></div>`;
+    const thumbs=p.photos&&p.photos.length>0?`<div class="photo-gallery"><div class="photo-gallery-title">PHOTOS (${p.photos.length})</div><div class="gallery-grid">${p.photos.map((ph,pi)=>`<div class="gallery-thumb" onclick="openLB('${ph}')"><img src="${ph}" alt=""><button class="gallery-del" onclick="event.stopPropagation();delPhoto(${i},${pi})">×</button></div>`).join('')}<div class="gallery-add-btn" onclick="openPhotoUpload(${i})"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="var(--gold)" stroke-width="1.5"/></svg>ADD</div></div></div>`:'';
+    return`<div class="pkg-card-adm">
+      <div class="pca-img-area" onclick="openPhotoUpload(${i})">${mainImg}<div class="pca-img-overlay"><div class="pca-overlay-text">📷 Upload Photos<br><span style="font-size:10px;opacity:0.8;letter-spacing:0">${p.photos&&p.photos.length>0?'Change cover / Add more':'Click to upload'}</span></div></div></div>
+      <div class="pca-body">
+        <div class="pca-name">${p.name}</div>
+        <div class="pca-info">${p.dest} · ${p.dur}<br>${p.desc}</div>
+        <div class="pca-foot"><span class="pca-price">฿${p.price.toLocaleString()}</span><div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted)">${p.active?'Active':'Hidden'}</span><div class="toggle${p.active?'':' off'}" onclick="togglePkg(${i})"></div></div></div>
+      </div>
+      ${thumbs}
+    </div>`;
+  }).join('');
+}
+
+function openPhotoUpload(idx){
+  photoPkgIdx=idx;
+  const inp=document.getElementById('photo-input');
+  inp.value='';inp.click();
+}
+
+document.getElementById('photo-input').addEventListener('change',function(e){
+  if(photoPkgIdx===null)return;
+  Array.from(e.target.files).forEach(file=>{
+    const r=new FileReader();
+    r.onload=ev=>{
+      if(!PKG[photoPkgIdx].photos)PKG[photoPkgIdx].photos=[];
+      PKG[photoPkgIdx].photos.push(ev.target.result);
+      renderPkgMgmt();renderPkgGrid();
+    };
+    r.readAsDataURL(file);
+  });
+});
+
+function delPhoto(pi,ph){
+  if(!confirm('Delete this photo?'))return;
+  PKG[pi].photos.splice(ph,1);
+  renderPkgMgmt();renderPkgGrid();
+}
+function openLB(src){document.getElementById('lb-img').src=src;document.getElementById('lightbox').classList.add('open');}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+function togglePkg(i){PKG[i].active=!PKG[i].active;renderPkgMgmt();renderPkgGrid();}
 function openAddPkg(){document.getElementById('add-pkg-form').style.display='block';}
 function closeAddPkg(){document.getElementById('add-pkg-form').style.display='none';}
-function saveNewPkg(){const name=document.getElementById('npkg-name').value;const price=parseInt(document.getElementById('npkg-price').value)||0;const dur=document.getElementById('npkg-dur').value;const dest=document.getElementById('npkg-dest').value;const desc=document.getElementById('npkg-desc').value;if(!name||!price){alert('Please fill in package name and price');return;}PACKAGES.push({id:'p'+Date.now(),name,nameT:name,nameZ:name,dest,price,dur,durT:dur,durZ:dur,desc,active:true});closeAddPkg();renderPkgMgmt();renderPkgGrid();['npkg-name','npkg-price','npkg-dur','npkg-dest','npkg-desc'].forEach(id=>{document.getElementById(id).value='';});}
-function renderCustTable(){const t=document.getElementById('cust-table');if(!t)return;const map={};BOOKINGS.forEach(b=>{if(!map[b.email])map[b.email]={name:b.fname+' '+b.lname,email:b.email,nat:b.nat||'-',phone:b.phone||'-',count:0,total:0};map[b.email].count++;map[b.email].total+=b.price;});const rows=Object.values(map);t.innerHTML=rows.length?rows.map(c=>`<tr><td>${c.name}</td><td style="color:var(--muted)">${c.email}</td><td style="color:var(--muted)">${c.nat}</td><td style="color:var(--muted)">${c.phone}</td><td style="text-align:center">${c.count}</td><td style="color:var(--gold)">฿${c.total.toLocaleString()}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No customers yet</td></tr>';}
-function admView(v){document.querySelectorAll('.adm-view').forEach(x=>x.classList.remove('active'));document.getElementById('adm-'+v).classList.add('active');document.querySelectorAll('.adm-nav a').forEach(a=>a.classList.remove('active'));event.currentTarget.classList.add('active');}
-function openModal(html){document.getElementById('modal-content').innerHTML=html;document.getElementById('modal').classList.add('open');}
-function closeModal(){document.getElementById('modal').classList.remove('open');}
+function saveNewPkg(){
+  const name=document.getElementById('npkg-name').value;const price=parseInt(document.getElementById('npkg-price').value)||0;
+  if(!name||!price){alert('Please fill in name and price');return;}
+  PKG.push({id:'p'+Date.now(),name,nameT:name,nameZ:name,dest:document.getElementById('npkg-dest').value,price,dur:document.getElementById('npkg-dur').value,durT:document.getElementById('npkg-dur').value,durZ:document.getElementById('npkg-dur').value,desc:document.getElementById('npkg-desc').value,active:true,photos:[]});
+  closeAddPkg();renderPkgMgmt();renderPkgGrid();
+  ['npkg-name','npkg-price','npkg-dur','npkg-dest','npkg-desc'].forEach(id=>{document.getElementById(id).value='';});
+}
 
-setLang('en');renderPkgGrid();renderPkgSelect();
+function renderCustTable(){
+  const t=document.getElementById('cust-table');if(!t)return;
+  const map={};
+  [...BOOKINGS,...TRANSFERS].forEach(b=>{
+    const email=b.email||'unknown';const nm=b.fname&&b.lname?b.fname+' '+b.lname:b.name||'-';
+    if(!map[email])map[email]={name:nm,email,nat:b.nat||'-',phone:b.phone||'-',count:0,total:0};
+    map[email].count++;map[email].total+=b.price;
+  });
+  const rows=Object.values(map);
+  t.innerHTML=rows.length?rows.map(c=>`<tr><td>${c.name}</td><td style="color:var(--muted)">${c.email}</td><td style="color:var(--muted)">${c.nat}</td><td style="color:var(--muted)">${c.phone}</td><td style="text-align:center">${c.count}</td><td style="color:var(--gold)">฿${c.total.toLocaleString()}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No customers yet</td></tr>';
+}
+
+function admView(v){
+  document.querySelectorAll('.adm-view').forEach(x=>x.classList.remove('active'));
+  document.getElementById('adm-'+v).classList.add('active');
+  document.querySelectorAll('.adm-nav a').forEach(a=>a.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+// INIT
+renderPkgGrid();renderPkgSelect();updateTFPrice();
 </script>
 </body>
 </html>
