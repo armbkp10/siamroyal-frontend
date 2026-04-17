@@ -3,7 +3,7 @@
 // Save as: frontend/api.js  (import in your main JS)
 // ============================================================
 
-const API_BASE = 'https://api.yourdomain.com'; // ← change to your backend URL
+const API_BASE = 'https://siamroyal-backend-production.up.railway.app'; // ← change to your backend URL
 const ADMIN_KEY = ''; // ← set via secure env, NOT hardcoded in production
 
 // ── Helpers ───────────────────────────────────────────────────
