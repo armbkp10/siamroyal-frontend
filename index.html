@@ -643,9 +643,16 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <div class="pkg-mgmt" id="pkg-mgmt-grid"></div>
         <div class="adm-pkg-form" id="add-pkg-form" style="display:none">
           <h4>Add New Package</h4>
-          <div class="form-row"><div class="fgroup"><label class="flabel">Package Name (EN)</label><input class="finput" id="npkg-name" placeholder="e.g. Northern Highlands Tour"></div><div class="fgroup"><label class="flabel">Destination</label><input class="finput" id="npkg-dest" placeholder="e.g. Chiang Mai · Pai"></div></div>
-          <div class="form-row"><div class="fgroup"><label class="flabel">Price (THB)</label><input class="finput" id="npkg-price" type="number" placeholder="25000"></div><div class="fgroup"><label class="flabel">Duration</label><input class="finput" id="npkg-dur" placeholder="e.g. 3 Days 2 Nights"></div></div>
-          <div class="form-row full"><div class="fgroup"><label class="flabel">Description</label><textarea class="finput" id="npkg-desc" rows="2" placeholder="Short description..."></textarea></div></div>
+          <div style="background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.15);padding:14px 16px;margin-bottom:16px;font-size:11px;color:var(--muted);line-height:1.7">
+            กรอก <strong style="color:var(--gold)">ชื่อภาษาไทย (TH)</strong> และ <strong style="color:var(--gold)">ชื่อภาษาจีน (ZH)</strong> เพื่อให้ปุ่มเปลี่ยนภาษาทำงานได้ถูกต้อง · หากไม่กรอก TH/ZH จะใช้ชื่อภาษาอังกฤษแทน
+          </div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">Package Name (EN) *</label><input class="finput" id="npkg-name" placeholder="e.g. Northern Highlands Tour"></div><div class="fgroup"><label class="flabel">Destination</label><input class="finput" id="npkg-dest" placeholder="e.g. Chiang Mai · Pai"></div></div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">ชื่อภาษาไทย (TH)</label><input class="finput" id="npkg-nameT" placeholder="เช่น ไฮแลนด์ทัวร์ภาคเหนือ"></div><div class="fgroup"><label class="flabel">中文名称 (ZH)</label><input class="finput" id="npkg-nameZ" placeholder="例：北部高地之旅"></div></div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">Price (THB) *</label><input class="finput" id="npkg-price" type="number" placeholder="25000"></div><div class="fgroup"><label class="flabel">Duration (EN)</label><input class="finput" id="npkg-dur" placeholder="e.g. 3 Days 2 Nights"></div></div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">ระยะเวลา (TH)</label><input class="finput" id="npkg-durT" placeholder="เช่น 3 วัน 2 คืน"></div><div class="fgroup"><label class="flabel">行程天数 (ZH)</label><input class="finput" id="npkg-durZ" placeholder="例：3天2夜"></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Description (EN)</label><textarea class="finput" id="npkg-desc" rows="2" placeholder="Short description in English..."></textarea></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">คำอธิบาย (TH)</label><textarea class="finput" id="npkg-descT" rows="2" placeholder="คำอธิบายสั้นๆ เป็นภาษาไทย..."></textarea></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">描述 (ZH)</label><textarea class="finput" id="npkg-descZ" rows="2" placeholder="简短描述（中文）..."></textarea></div></div>
           <div class="form-nav"><button class="fbk-out" onclick="closeAddPkg()">Cancel</button><button class="fbk" onclick="saveNewPkg()">Save Package</button></div>
         </div>
       </div>
@@ -704,10 +711,10 @@ document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='A'){e
 // DATA
 // =====================================
 const PKG=[
-  {id:'p1',name:'Lanna Premium Circuit',nameT:'ล้านนา ไพรีเมียม เซอร์กิต',nameZ:'兰纳高端环线游',dest:'Chiang Mai · Chiang Rai',price:28500,dur:'5 Days 4 Nights',durT:'5 วัน 4 คืน',durZ:'5天4夜',desc:'Explore northern Thai culture, stunning temples, night markets, and highland peaks.',active:true,photos:[]},
-  {id:'p2',name:'Andaman Luxury Tour',nameT:'อันดามัน ลักชัวรี่ ทัวร์',nameZ:'安达曼奢华游',dest:'Krabi · Koh Lanta',price:22000,dur:'4 Days 3 Nights',durT:'4 วัน 3 คืน',durZ:'4天3夜',desc:'Crystal waters, white sands, and a slow coastal life along the Andaman Sea.',active:true,photos:[]},
-  {id:'p3',name:'World Heritage Day Trip',nameT:'มรดกโลก วันเดย์ ทริป',nameZ:'世界遗产一日游',dest:'Ayutthaya · Suphanburi',price:6500,dur:'1 Day',durT:'1 วัน',durZ:'1天',desc:'Journey through ancient Thai kingdoms with an expert heritage guide.',active:true,photos:[]},
-  {id:'p4',name:'Phuket Island Escape',nameT:'ภูเก็ต ไอส์แลนด์ เอสเคป',nameZ:'普吉岛度假游',dest:'Phuket · Phang Nga',price:18500,dur:'3 Days 2 Nights',durT:'3 วัน 2 คืน',durZ:'3天2夜',desc:"Iconic beaches, hidden lagoons, and vibrant nightlife on Thailand's pearl island.",active:true,photos:[]}
+  {id:'p1',name:'Lanna Premium Circuit',nameT:'ล้านนา ไพรีเมียม เซอร์กิต',nameZ:'兰纳高端环线游',dest:'Chiang Mai · Chiang Rai',price:28500,dur:'5 Days 4 Nights',durT:'5 วัน 4 คืน',durZ:'5天4夜',desc:'Explore northern Thai culture, stunning temples, night markets, and highland peaks.',descT:'สำรวจวัฒนธรรมภาคเหนือ วัดที่งดงาม ตลาดกลางคืน และยอดดอยสูง',descZ:'探索泰北文化、壮丽寺庙、夜市和高山峰顶',active:true,photos:[]},
+  {id:'p2',name:'Andaman Luxury Tour',nameT:'อันดามัน ลักชัวรี่ ทัวร์',nameZ:'安达曼奢华游',dest:'Krabi · Koh Lanta',price:22000,dur:'4 Days 3 Nights',durT:'4 วัน 3 คืน',durZ:'4天3夜',desc:'Crystal waters, white sands, and a slow coastal life along the Andaman Sea.',descT:'น้ำใสราวคริสตัล หาดทรายขาว และชีวิตชายทะเลอันดามันที่ผ่อนคลาย',descZ:'清澈海水、白色沙滩，领略安达曼海岸的悠闲时光',active:true,photos:[]},
+  {id:'p3',name:'World Heritage Day Trip',nameT:'มรดกโลก วันเดย์ ทริป',nameZ:'世界遗产一日游',dest:'Ayutthaya · Suphanburi',price:6500,dur:'1 Day',durT:'1 วัน',durZ:'1天',desc:'Journey through ancient Thai kingdoms with an expert heritage guide.',descT:'เดินทางผ่านราชอาณาจักรไทยโบราณ พร้อมไกด์ผู้เชี่ยวชาญด้านมรดกโลก',descZ:'跟随专业遗产导游，穿越古老泰国王朝的历史长河',active:true,photos:[]},
+  {id:'p4',name:'Phuket Island Escape',nameT:'ภูเก็ต ไอส์แลนด์ เอสเคป',nameZ:'普吉岛度假游',dest:'Phuket · Phang Nga',price:18500,dur:'3 Days 2 Nights',durT:'3 วัน 2 คืน',durZ:'3天2夜',desc:"Iconic beaches, hidden lagoons, and vibrant nightlife on Thailand's pearl island.",descT:'ชายหาดอันโด่งดัง ลากูนซ่อนเร้น และไนต์ไลฟ์สุดคึกคักบนเกาะไข่มุกของไทย',descZ:'标志性海滩、隐秘环礁湖和充满活力的夜生活，尽在泰国明珠之岛',active:true,photos:[]}
 ];
 let BOOKINGS=[],TRANSFERS=[],bkSelected=null,bkStep=1,curLang='en';
 let tfDir='arrival',tfAP={code:'BKK',name:'Suvarnabhumi Airport'},tfVeh={key:'sedan',price:950,name:'Sedan'},tfLug='0';
@@ -736,8 +743,21 @@ function setLang(l){
   document.querySelector('.lb[onclick="setLang(\''+l+'\')"]').classList.add('active');
   renderPkgGrid();renderPkgSelect();renderPkgMgmt();
 }
-function pkgName(p){return curLang==='th'?p.nameT:curLang==='zh'?p.nameZ:p.name;}
-function pkgDur(p){return curLang==='th'?p.durT:curLang==='zh'?p.durZ:p.dur;}
+function pkgName(p){
+  if(curLang==='th') return (p.nameT&&p.nameT.trim())?p.nameT:p.name;
+  if(curLang==='zh') return (p.nameZ&&p.nameZ.trim())?p.nameZ:p.name;
+  return p.name;
+}
+function pkgDur(p){
+  if(curLang==='th') return (p.durT&&p.durT.trim())?p.durT:p.dur;
+  if(curLang==='zh') return (p.durZ&&p.durZ.trim())?p.durZ:p.dur;
+  return p.dur;
+}
+function pkgDesc(p){
+  if(curLang==='th') return (p.descT&&p.descT.trim())?p.descT:p.desc;
+  if(curLang==='zh') return (p.descZ&&p.descZ.trim())?p.descZ:p.desc;
+  return p.desc;
+}
 
 // =====================================
 // HOMEPAGE PACKAGE GRID
@@ -748,7 +768,7 @@ function renderPkgGrid(){
   const active=PKG.filter(p=>p.active);
   g.innerHTML=active.slice(0,3).map((p,i)=>{
     const img=p.photos&&p.photos.length>0?`<img src="${p.photos[0]}" alt="${pkgName(p)}">`:'';
-    return`<div class="pc" onclick="showPage('booking')"><div class="pi" style="${!img?'background:'+BG[i%4]:''}">${img}<div class="pb">${i===0?'Popular':'New'}</div>${!img?`<svg width="90" height="80" viewBox="0 0 120 100" fill="none"><circle cx="60" cy="50" r="30" stroke="rgba(201,169,110,0.12)" stroke-width="1"/><circle cx="60" cy="50" r="18" stroke="rgba(201,169,110,0.2)" stroke-width="1"/><circle cx="60" cy="50" r="4" fill="rgba(201,169,110,0.5)"/></svg>`:''}</div><div class="pbody"><div class="pdest">${p.dest}</div><div class="pname">${pkgName(p)}</div><p class="pdesc">${p.desc}</p><div class="pmeta"><div class="pm"><div class="dot"></div>${pkgDur(p)}</div></div><div class="pfoot"><div class="pp">฿${p.price.toLocaleString()} <span>/ group</span></div><button class="pbtn" onclick="event.stopPropagation();showPage('booking')">View Details</button></div></div></div>`;
+    return`<div class="pc" onclick="showPage('booking')"><div class="pi" style="${!img?'background:'+BG[i%4]:''}">${img}<div class="pb">${i===0?'Popular':'New'}</div>${!img?`<svg width="90" height="80" viewBox="0 0 120 100" fill="none"><circle cx="60" cy="50" r="30" stroke="rgba(201,169,110,0.12)" stroke-width="1"/><circle cx="60" cy="50" r="18" stroke="rgba(201,169,110,0.2)" stroke-width="1"/><circle cx="60" cy="50" r="4" fill="rgba(201,169,110,0.5)"/></svg>`:''}</div><div class="pbody"><div class="pdest">${p.dest}</div><div class="pname">${pkgName(p)}</div><p class="pdesc">${pkgDesc(p)}</p><div class="pmeta"><div class="pm"><div class="dot"></div>${pkgDur(p)}</div></div><div class="pfoot"><div class="pp">฿${p.price.toLocaleString()} <span>/ group</span></div><button class="pbtn" onclick="event.stopPropagation();showPage('booking')">View Details</button></div></div></div>`;
   }).join('')+`<div class="pc ccard" onclick="showPage('booking')"><div class="ci"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="var(--gold)" stroke-width="1.5"/></svg></div><div class="ct">Design Your Own Trip</div><p class="cd">Tell us where, how long, and budget.</p><button class="bp" style="font-size:10px;padding:10px 18px">Create My Trip</button></div>`;
 }
 
@@ -760,12 +780,16 @@ function renderPkgSelect(){
   g.innerHTML=PKG.filter(p=>p.active).map(p=>`<div class="pkg-opt${bkSelected===p.id?' selected':''}" onclick="selectPkg('${p.id}')"><div class="pkg-opt-name">${pkgName(p)}</div><div class="pkg-opt-price">฿${p.price.toLocaleString()}</div><div class="pkg-opt-dur">${pkgDur(p)} · ${p.dest}</div></div>`).join('');
 }
 function selectPkg(id){bkSelected=id;document.querySelectorAll('.pkg-opt').forEach(el=>el.classList.remove('selected'));event.currentTarget.classList.add('selected');}
-function bkNext(s){
+async function bkNext(s){
   if(s===1&&!bkSelected){alert('Please select a package');return;}
   if(s===1&&!document.getElementById('bk-date').value){alert('Please select a travel date');return;}
   if(s===2&&(!document.getElementById('bk-fname').value||!document.getElementById('bk-email').value)){alert('Please fill in name and email');return;}
   if(s===2)renderSummary();
-  if(s===3){if(!document.getElementById('agree-terms').checked){alert('Please agree to the terms');return;}saveBk();}
+  if(s===3){
+    if(!document.getElementById('agree-terms').checked){alert('Please agree to the terms');return;}
+    await saveBk();
+    return; // saveBk จัดการ step เอง
+  }
   bkStep=s+1;renderBkStep();
 }
 function bkGo(s){bkStep=s;renderBkStep();}
@@ -783,11 +807,183 @@ function renderSummary(){
   const dep=Math.round(p.price*0.3);
   document.getElementById('bk-summary').innerHTML=`<div class="bk-sum-row"><span class="bk-sum-label">Package</span><span class="bk-sum-val">${pkgName(p)}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Date</span><span class="bk-sum-val">${document.getElementById('bk-date').value}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Guests</span><span class="bk-sum-val">${document.getElementById('bk-guests').value}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Guest Name</span><span class="bk-sum-val">${document.getElementById('bk-fname').value} ${document.getElementById('bk-lname').value}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Total</span><span class="bk-sum-val">฿${p.price.toLocaleString()}</span></div><div class="bk-sum-row"><span class="bk-sum-label">Deposit (30%)</span><span style="color:var(--gold);font-weight:500">฿${dep.toLocaleString()}</span></div>`;
 }
-function saveBk(){
-  const p=PKG.find(x=>x.id===bkSelected);
-  const ref='SRJ-'+String(Date.now()).slice(-5);
-  BOOKINGS.unshift({ref,type:'tour',pkg:p.name,pkgId:p.id,price:p.price,date:document.getElementById('bk-date').value,guests:document.getElementById('bk-guests').value,fname:document.getElementById('bk-fname').value,lname:document.getElementById('bk-lname').value,email:document.getElementById('bk-email').value,phone:document.getElementById('bk-phone').value,nat:document.getElementById('bk-nat').value,hotel:document.getElementById('bk-hotel').value,contact:document.getElementById('bk-contact').value,note:document.getElementById('bk-note').value,status:'pending',created:new Date().toISOString()});
-  document.getElementById('bk-ref').textContent=ref;
+async function saveBk(){
+  const p = PKG.find(x => x.id === bkSelected);
+  const payMethod = document.querySelector('input[name="pay"]:checked').value;
+
+  // ปิดปุ่มระหว่างรอ
+  const btn = document.querySelector('#bk-step-3 .fbk');
+  const origText = btn.textContent;
+  btn.textContent = 'Processing...';
+  btn.disabled = true;
+
+  try {
+    // ── Step 1: สร้าง Booking ─────────────────────────
+    const bkRes = await fetch(API_BASE + '/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        package_id:        p.id,
+        travel_date:       document.getElementById('bk-date').value,
+        guests:            document.getElementById('bk-guests').value,
+        first_name:        document.getElementById('bk-fname').value,
+        last_name:         document.getElementById('bk-lname').value,
+        email:             document.getElementById('bk-email').value,
+        phone:             document.getElementById('bk-phone').value,
+        nationality:       document.getElementById('bk-nat').value,
+        hotel:             document.getElementById('bk-hotel').value,
+        special_requests:  document.getElementById('bk-note').value,
+        preferred_contact: document.getElementById('bk-contact').value,
+        language:          curLang,
+      })
+    });
+
+    if (!bkRes.ok) {
+      const err = await bkRes.json();
+      throw new Error(err.error || 'Booking failed');
+    }
+
+    const bkData = await bkRes.json();
+    currentBookingRef = bkData.ref;
+    currentDepositAmount = bkData.deposit_amount;
+
+    // ── Step 2: ชำระเงิน ─────────────────────────────
+    if (payMethod === 'bank') {
+      // โอนธนาคาร — แสดงข้อมูลบัญชี
+      const tfRes = await fetch(API_BASE + '/api/payment/bank-transfer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ booking_ref: bkData.ref })
+      });
+      const tfData = await tfRes.json();
+      showBankDetails(bkData, tfData.bank_details);
+
+    } else if (payMethod === 'promptpay') {
+      // PromptPay QR
+      await chargePromptPay(bkData.ref, bkData.deposit_amount);
+
+    } else if (payMethod === 'card') {
+      // บัตรเครดิต — เปิด Omise popup
+      await chargeCard(bkData.ref, bkData.deposit_amount, p.name);
+    }
+
+    // บันทึกลง local array
+    BOOKINGS.unshift({
+      ref: bkData.ref, pkg: p.name, pkgId: p.id,
+      price: bkData.total_price, deposit: bkData.deposit_amount,
+      fname: document.getElementById('bk-fname').value,
+      lname: document.getElementById('bk-lname').value,
+      email: document.getElementById('bk-email').value,
+      date: document.getElementById('bk-date').value,
+      status: 'pending'
+    });
+
+  } catch(err) {
+    alert('เกิดข้อผิดพลาด: ' + err.message + '\n\nกรุณาลองใหม่หรือติดต่อทีมงาน');
+    btn.textContent = origText;
+    btn.disabled = false;
+  }
+}
+
+// ── ชำระด้วย PromptPay ──────────────────────────────────────────
+async function chargePromptPay(ref, amount) {
+  const res = await fetch(API_BASE + '/api/payment/charge', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ booking_ref: ref, method: 'promptpay' })
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'PromptPay failed');
+
+  // แสดง QR Code
+  showQRCode(ref, amount, data.qr_image, data.expires_at);
+}
+
+// ── ชำระด้วยบัตรเครดิต (Omise.js popup) ───────────────────────
+async function chargeCard(ref, amount, pkgName) {
+  // โหลด Omise.js ถ้ายังไม่มี
+  if (!window.OmiseCard) {
+    await new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.omise.co/omise.js';
+      s.onload = resolve; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  return new Promise((resolve, reject) => {
+    OmiseCard.configure({ publicKey: OMISE_PKEY });
+    OmiseCard.open({
+      frameLabel: 'Siam Royal Journey',
+      submitLabel: `Pay ฿${amount.toLocaleString()}`,
+      currency: 'THB',
+      amount: amount * 100,
+      onCreateTokenSuccess: async (nonce) => {
+        try {
+          const res = await fetch(API_BASE + '/api/payment/charge', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ booking_ref: ref, token: nonce, method: 'card' })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'Card charge failed');
+          // ชำระสำเร็จ → ไปขั้นตอน 4
+          document.getElementById('bk-ref').textContent = ref;
+          bkStep = 4; renderBkStep();
+          resolve();
+        } catch(e) { reject(e); }
+      },
+      onFormClosed: () => resolve(), // ปิด popup โดยไม่จ่าย
+    });
+  });
+}
+
+// ── Modal: Bank Transfer Details ─────────────────────────────────
+function showBankDetails(bkData, bank) {
+  const dep = bkData.deposit_amount.toLocaleString();
+  const total = bkData.total_price.toLocaleString();
+  document.getElementById('modal-content').innerHTML = `
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:8px">BANK TRANSFER</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream)">Payment Details</div>
+    </div>
+    <div style="background:var(--dark2);border:1px solid rgba(201,169,110,0.2);padding:20px;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.08);font-size:12px"><span style="color:var(--muted)">Bank</span><span>${bank.bank}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.08);font-size:12px"><span style="color:var(--muted)">Account Name</span><span>${bank.account_name}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.08);font-size:12px"><span style="color:var(--muted)">Account Number</span><span style="color:var(--gold);font-size:16px;font-weight:500">${bank.account_number}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.08);font-size:12px"><span style="color:var(--muted)">Amount (30% deposit)</span><span style="color:var(--gold);font-size:16px">฿${dep}</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:12px"><span style="color:var(--muted)">Booking Ref</span><span style="color:var(--cream)">${bkData.ref}</span></div>
+    </div>
+    <div style="background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.15);padding:14px;font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:20px">
+      ${bank.note}<br>
+      <strong style="color:var(--cream)">Reference: ${bkData.ref}</strong>
+    </div>
+    <button class="fbk" style="width:100%" onclick="closeModal();document.getElementById('bk-ref').textContent='${bkData.ref}';bkStep=4;renderBkStep();">Done — I've Noted the Details</button>
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+
+// ── Modal: PromptPay QR ──────────────────────────────────────────
+function showQRCode(ref, amount, qrUrl, expiresAt) {
+  const expStr = expiresAt ? new Date(expiresAt).toLocaleTimeString() : '30 minutes';
+  document.getElementById('modal-content').innerHTML = `
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:8px">PROMPTPAY / QR CODE</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream)">Scan to Pay</div>
+    </div>
+    <div style="text-align:center;margin-bottom:16px">
+      ${qrUrl ? `<img src="${qrUrl}" alt="QR Code" style="width:220px;height:220px;border:4px solid rgba(201,169,110,0.2)">` : '<div style="color:var(--muted);font-size:13px">QR Code loading... Please check your email.</div>'}
+    </div>
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:24px;color:var(--gold);font-family:'Cormorant Garamond',serif">฿${amount.toLocaleString()}</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">30% Deposit · Expires: ${expStr}</div>
+    </div>
+    <div style="background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.15);padding:12px;font-size:11px;color:var(--muted);text-align:center;margin-bottom:16px">
+      Booking Ref: <strong style="color:var(--cream)">${ref}</strong>
+    </div>
+    <button class="fbk" style="width:100%" onclick="closeModal();document.getElementById('bk-ref').textContent='${ref}';bkStep=4;renderBkStep();">Payment Done ✓</button>
+  `;
+  document.getElementById('modal').classList.add('open');
 }
 
 // =====================================
@@ -816,16 +1012,61 @@ function updateTFPrice(){
   document.getElementById('tp-vehicle').textContent=tfVeh.name;
   document.getElementById('tp-total').textContent='฿'+tfVeh.price.toLocaleString();
 }
-function submitTransfer(){
+async function submitTransfer(){
   if(!document.getElementById('tf-date').value){alert('Please select a date');return;}
   if(!document.getElementById('tf-name').value||!document.getElementById('tf-email').value){alert('Please fill in name and email');return;}
   if(!document.getElementById('tf-agree').checked){alert('Please agree to the terms');return;}
-  const ref='TRF-'+String(Date.now()).slice(-5);
-  TRANSFERS.unshift({ref,airport:tfAP.code,airportName:tfAP.name,direction:tfDir,vehicle:tfVeh.name,price:tfVeh.price,date:document.getElementById('tf-date').value,time:document.getElementById('tf-time').value,flight:document.getElementById('tf-flight').value,pax:document.getElementById('tf-pax').value,luggage:tfLug,hotel:document.getElementById('tf-hotel').value,area:document.getElementById('tf-area').value,name:document.getElementById('tf-name').value,phone:document.getElementById('tf-phone').value,email:document.getElementById('tf-email').value,note:document.getElementById('tf-note').value,status:'pending',created:new Date().toISOString()});
-  document.getElementById('tf-ref').textContent=ref;
-  document.getElementById('tf-form-wrap').style.display='none';
-  document.getElementById('tf-success').style.display='block';
-  window.scrollTo(0,0);
+
+  const btn = document.querySelector('#tf-form-wrap .fbk');
+  btn.textContent = 'Processing...'; btn.disabled = true;
+
+  const body = {
+    airport_code:     tfAP.code,
+    airport_name:     tfAP.name,
+    direction:        tfDir,
+    vehicle_type:     tfVeh.key,
+    vehicle_name:     tfVeh.name,
+    price:            tfVeh.price,
+    travel_date:      document.getElementById('tf-date').value,
+    travel_time:      document.getElementById('tf-time').value,
+    flight_number:    document.getElementById('tf-flight').value,
+    passengers:       document.getElementById('tf-pax').value,
+    luggage_count:    tfLug,
+    hotel:            document.getElementById('tf-hotel').value,
+    area:             document.getElementById('tf-area').value,
+    guest_name:       document.getElementById('tf-name').value,
+    phone:            document.getElementById('tf-phone').value,
+    email:            document.getElementById('tf-email').value,
+    special_requests: document.getElementById('tf-note').value,
+  };
+
+  try {
+    // ลอง POST ไป /api/transfers ถ้า backend รองรับ ไม่งั้น generate ref เอง
+    let ref;
+    try {
+      const res = await fetch(API_BASE + '/api/transfers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (res.ok) {
+        const data = await res.json();
+        ref = data.ref;
+      } else throw new Error('fallback');
+    } catch {
+      ref = 'TRF-' + String(Date.now()).slice(-5); // fallback
+    }
+
+    TRANSFERS.unshift({ ref, ...body, status: 'pending', created: new Date().toISOString() });
+    document.getElementById('tf-ref').textContent = ref;
+    document.getElementById('tf-form-wrap').style.display = 'none';
+    document.getElementById('tf-success').style.display = 'block';
+    window.scrollTo(0, 0);
+  } catch(err) {
+    alert('เกิดข้อผิดพลาด: ' + err.message);
+  } finally {
+    btn.textContent = 'Confirm Transfer Booking'; btn.disabled = false;
+  }
 }
 
 // =====================================
@@ -898,11 +1139,20 @@ function togglePkg(i){PKG[i].active=!PKG[i].active;renderPkgMgmt();renderPkgGrid
 function openAddPkg(){document.getElementById('add-pkg-form').style.display='block';}
 function closeAddPkg(){document.getElementById('add-pkg-form').style.display='none';}
 function saveNewPkg(){
-  const name=document.getElementById('npkg-name').value;const price=parseInt(document.getElementById('npkg-price').value)||0;
-  if(!name||!price){alert('Please fill in name and price');return;}
-  PKG.push({id:'p'+Date.now(),name,nameT:name,nameZ:name,dest:document.getElementById('npkg-dest').value,price,dur:document.getElementById('npkg-dur').value,durT:document.getElementById('npkg-dur').value,durZ:document.getElementById('npkg-dur').value,desc:document.getElementById('npkg-desc').value,active:true,photos:[]});
+  const name=document.getElementById('npkg-name').value.trim();
+  const price=parseInt(document.getElementById('npkg-price').value)||0;
+  if(!name||!price){alert('Please fill in package name (EN) and price');return;}
+  const nameT=document.getElementById('npkg-nameT').value.trim()||name;
+  const nameZ=document.getElementById('npkg-nameZ').value.trim()||name;
+  const dur=document.getElementById('npkg-dur').value.trim();
+  const durT=document.getElementById('npkg-durT').value.trim()||dur;
+  const durZ=document.getElementById('npkg-durZ').value.trim()||dur;
+  const desc=document.getElementById('npkg-desc').value.trim();
+  const descT=document.getElementById('npkg-descT').value.trim()||desc;
+  const descZ=document.getElementById('npkg-descZ').value.trim()||desc;
+  PKG.push({id:'p'+Date.now(),name,nameT,nameZ,dest:document.getElementById('npkg-dest').value.trim(),price,dur,durT,durZ,desc,descT,descZ,active:true,photos:[]});
   closeAddPkg();renderPkgMgmt();renderPkgGrid();
-  ['npkg-name','npkg-price','npkg-dur','npkg-dest','npkg-desc'].forEach(id=>{document.getElementById(id).value='';});
+  ['npkg-name','npkg-nameT','npkg-nameZ','npkg-price','npkg-dur','npkg-durT','npkg-durZ','npkg-dest','npkg-desc','npkg-descT','npkg-descZ'].forEach(id=>{document.getElementById(id).value='';});
 }
 
 function renderCustTable(){
@@ -924,8 +1174,56 @@ function admView(v){
   event.currentTarget.classList.add('active');
 }
 
-// INIT
-renderPkgGrid();renderPkgSelect();updateTFPrice();
+// =====================================
+// CONFIG — API
+// =====================================
+const API_BASE = 'https://siamroyal-backend-production.up.railway.app';
+const OMISE_PKEY = 'pkey_test_67dhehc9edlleyaw4hp'; // ← ใส่ Omise public key จริง
+
+// =====================================
+// PAYMENT UI STATE
+// =====================================
+let currentBookingRef = null;
+let currentDepositAmount = 0;
+
+// =====================================
+// INIT — โหลดแพ็กเกจจาก Backend
+// =====================================
+async function initApp() {
+  try {
+    const res = await fetch(API_BASE + '/api/packages');
+    if (res.ok) {
+      const serverPkgs = await res.json();
+      if (serverPkgs && serverPkgs.length > 0) {
+        // Map Supabase fields → PKG format
+        serverPkgs.forEach(sp => {
+          const existing = PKG.find(p => p.id === sp.id);
+          if (existing) {
+            // อัปเดต field จาก server (ราคา ชื่อ ฯลฯ)
+            existing.name  = sp.name    || existing.name;
+            existing.nameT = sp.name_th || existing.nameT;
+            existing.nameZ = sp.name_zh || existing.nameZ;
+            existing.dest  = sp.dest    || existing.dest;
+            existing.price = sp.price   || existing.price;
+            existing.dur   = sp.duration     || existing.dur;
+            existing.durT  = sp.duration_th  || existing.durT;
+            existing.durZ  = sp.duration_zh  || existing.durZ;
+            existing.desc  = sp.description     || existing.desc;
+            existing.descT = sp.description_th  || existing.descT;
+            existing.descZ = sp.description_zh  || existing.descZ;
+            existing.active = sp.active !== false;
+          }
+        });
+      }
+    }
+  } catch(e) {
+    console.log('Using local packages (backend unavailable):', e.message);
+  }
+  renderPkgGrid();
+  renderPkgSelect();
+  updateTFPrice();
+}
+initApp();
 </script>
 </body>
 </html>
