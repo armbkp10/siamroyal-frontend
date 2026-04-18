@@ -738,6 +738,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <a onclick="admView('packages')">Packages & Photos</a>
         <a onclick="admView('customers')">Customers</a>
         <a onclick="admView('vehicles')">🚗 Vehicle Types</a>
+        <a onclick="admView('settings')">⚙️ Settings</a>
         <a onclick="showPage('home')">← Back to Site</a>
         <button class="adm-logout" onclick="adminLogout()">Logout</button>
       </div>
@@ -840,6 +841,51 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
           </div>
         </div>
       </div>
+
+      <!-- ⚙️ Settings -->
+      <div class="adm-view" id="adm-settings">
+        <div class="adm-header">
+          <div><div class="adm-title">Settings</div><div class="adm-sub">แก้ไขข้อมูลติดต่อที่แสดงทั่วทั้งเว็บไซต์</div></div>
+          <button class="adm-add-btn" onclick="saveSettings()">💾 Save Changes</button>
+        </div>
+
+        <!-- Contact Channels -->
+        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-bottom:16px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px">Contact Channels</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.7">ข้อมูลนี้จะแสดงทั่วทั้งเว็บ — ปุ่ม Contact, หน้า Booking Confirmed, Footer</div>
+          <div class="form-row">
+            <div class="fgroup"><label class="flabel">LINE ID</label><input class="finput" id="cfg-line" placeholder="@siamroyal"><span style="font-size:10px;color:var(--muted)">ใส่ @ ด้วย เช่น @siamroyal</span></div>
+            <div class="fgroup"><label class="flabel">WeChat ID</label><input class="finput" id="cfg-wechat" placeholder="SiamRoyalJourney"></div>
+          </div>
+          <div class="form-row">
+            <div class="fgroup"><label class="flabel">WhatsApp Number</label><input class="finput" id="cfg-whatsapp" placeholder="66812345678"><span style="font-size:10px;color:var(--muted)">ตัวเลขล้วน ไม่มี + เช่น 66812345678</span></div>
+            <div class="fgroup"><label class="flabel">Phone (แสดงบนเว็บ)</label><input class="finput" id="cfg-phone" placeholder="+66 81 234 5678"></div>
+          </div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Email Address</label><input class="finput" id="cfg-email" type="email" placeholder="info@siamroyal.com"></div></div>
+        </div>
+
+        <!-- Preview -->
+        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-bottom:16px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:16px">Preview</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap" id="settings-preview"></div>
+        </div>
+
+        <!-- Business Info -->
+        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px">Business Info</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:20px">แสดงใน Footer และ Email ลูกค้า</div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Site Name</label><input class="finput" id="cfg-sitename" placeholder="Siam Royal Journey"></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Footer Description</label><textarea class="finput" id="cfg-footerdesc" rows="2" placeholder="Premium private tour service..."></textarea></div></div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(201,169,110,0.12)">
+            <button class="fbk" onclick="saveSettings()" style="width:100%">💾 Save All Settings</button>
+          </div>
+        </div>
+
+        <div id="settings-saved" style="display:none;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.3);padding:14px 18px;margin-top:16px;font-size:13px;color:var(--green);text-align:center">
+          ✅ Settings saved! Changes are now live.
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1365,11 +1411,11 @@ function pDesc(p){if(curLang==='th')return(p.descT?.trim())||p.desc;if(curLang==
 function genRef(prefix){return prefix+'-'+new Date().getFullYear()+'-'+Math.random().toString(36).substring(2,7).toUpperCase();}
 
 // Contact helpers
-function openLine(){window.open('https://line.me/R/ti/p/'+LINE_ID,'_blank');}
-function openWhatsApp(){window.open('https://wa.me/'+WHATSAPP,'_blank');}
-function openWeChatInfo(){alert('WeChat ID: '+WECHAT_ID+'\n\nPlease add us on WeChat and mention your booking reference.');}
-function openLineWithRef(){window.open('https://line.me/R/ti/p/'+LINE_ID+'?text=Hi, I have booking reference: '+encodeURIComponent(lastRef),'_blank');}
-function openWhatsAppWithRef(){window.open('https://wa.me/'+WHATSAPP+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
+function openLine(){window.open('https://line.me/R/ti/p/'+getS('line'),'_blank');}
+function openWhatsApp(){window.open('https://wa.me/'+getS('whatsapp'),'_blank');}
+function openWeChatInfo(){alert('WeChat ID: '+getS('wechat')+'\n\nPlease add us on WeChat and mention your booking reference.');}
+function openLineWithRef(){window.open('https://line.me/R/ti/p/'+getS('line')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
+function openWhatsAppWithRef(){window.open('https://wa.me/'+getS('whatsapp')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
 function scrollContact(){showPage('home');setTimeout(()=>document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}),120);}
 
 // ════════════════════════════════════════════════
@@ -1736,8 +1782,80 @@ function admView(v){
 }
 
 // ════════════════════════════════════════════════
-// VEHICLE ADMIN
+// SETTINGS — Contact info (LINE, WeChat, WhatsApp etc.)
 // ════════════════════════════════════════════════
+const DEFAULT_SETTINGS = {
+  line:        '@siamroyal',
+  wechat:      'SiamRoyalJourney',
+  whatsapp:    '66812345678',
+  phone:       '+66 81 234 5678',
+  email:       'info@siamroyal.com',
+  sitename:    'Siam Royal Journey',
+  footerdesc:  'Premium private tour service with professional car and driver.',
+};
+
+function loadSettings(){
+  try{ const s=localStorage.getItem('srj_settings'); return Object.assign({},DEFAULT_SETTINGS,s?JSON.parse(s):{}); }
+  catch{ return {...DEFAULT_SETTINGS}; }
+}
+function getS(key){ return loadSettings()[key]||DEFAULT_SETTINGS[key]; }
+
+function loadSettingsToForm(){
+  const s=loadSettings();
+  document.getElementById('cfg-line').value        = s.line;
+  document.getElementById('cfg-wechat').value      = s.wechat;
+  document.getElementById('cfg-whatsapp').value    = s.whatsapp;
+  document.getElementById('cfg-phone').value       = s.phone;
+  document.getElementById('cfg-email').value       = s.email;
+  document.getElementById('cfg-sitename').value    = s.sitename;
+  document.getElementById('cfg-footerdesc').value  = s.footerdesc;
+  renderSettingsPreview(s);
+}
+
+function renderSettingsPreview(s){
+  s=s||loadSettings();
+  const p=document.getElementById('settings-preview');
+  if(!p)return;
+  const style=(color,border)=>`background:var(--dark2);border:1px solid ${border};padding:11px 16px;font-size:12px;color:${color};display:flex;align-items:center;gap:8px`;
+  p.innerHTML=`
+    <div style="${style('#06c755','rgba(6,199,85,0.3)')}">💬 LINE: ${s.line}</div>
+    <div style="${style('#07c160','rgba(7,193,96,0.3)')}">💚 WeChat: ${s.wechat}</div>
+    <div style="${style('#25d366','rgba(37,211,102,0.3)')}">📱 WhatsApp: +${s.whatsapp}</div>
+    <div style="${style('var(--gold)','rgba(201,169,110,0.3)')}">📞 ${s.phone}</div>
+    <div style="${style('var(--muted)','rgba(201,169,110,0.2)')}">✉ ${s.email}</div>`;
+}
+
+function saveSettings(){
+  const s={
+    line:       document.getElementById('cfg-line').value.trim()       || DEFAULT_SETTINGS.line,
+    wechat:     document.getElementById('cfg-wechat').value.trim()     || DEFAULT_SETTINGS.wechat,
+    whatsapp:   document.getElementById('cfg-whatsapp').value.trim().replace(/\D/g,'') || DEFAULT_SETTINGS.whatsapp,
+    phone:      document.getElementById('cfg-phone').value.trim()      || DEFAULT_SETTINGS.phone,
+    email:      document.getElementById('cfg-email').value.trim()      || DEFAULT_SETTINGS.email,
+    sitename:   document.getElementById('cfg-sitename').value.trim()   || DEFAULT_SETTINGS.sitename,
+    footerdesc: document.getElementById('cfg-footerdesc').value.trim() || DEFAULT_SETTINGS.footerdesc,
+  };
+  localStorage.setItem('srj_settings',JSON.stringify(s));
+  renderSettingsPreview(s);
+  updateContactButtons(s);
+  const msg=document.getElementById('settings-saved');
+  if(msg){ msg.style.display='block'; setTimeout(()=>msg.style.display='none',3000); }
+}
+
+function updateContactButtons(s){
+  s=s||loadSettings();
+  // อัปเดต pay-ch-id ในหน้า booking confirmed
+  document.querySelectorAll('.pay-ch-id').forEach(el=>{
+    const txt=el.textContent.trim();
+    if(txt.startsWith('@'))          el.textContent=s.line;
+    else if(/SiamRoyal/i.test(txt)) el.textContent=s.wechat;
+    else if(/^\+?\d/.test(txt))      el.textContent='+'+s.whatsapp;
+  });
+  // อัปเดต LINE button text
+  document.querySelectorAll('.cf-btn.line').forEach(el=>{ if(el.lastChild&&el.lastChild.nodeType===3) el.lastChild.textContent=' LINE '+s.line; });
+}
+
+
 let editVehIdx = null;
 
 function renderVehAdm(){
