@@ -174,7 +174,7 @@ input[type=file]{display:none}
 
 <nav id="nav">
   <div class="nav-logo">SIAM<span> Royal Journey</span></div>
-  <a class="nav-enter" id="main-link" href="index.html">เข้าสู่เว็บไซต์ →</a>
+  <a class="nav-enter" id="main-link" href="booking.html">เข้าสู่เว็บไซต์ →</a>
 </nav>
 
 <!-- HERO -->
@@ -182,7 +182,7 @@ input[type=file]{display:none}
   <div id="slides-wrap"></div>
   <div class="slide-counter"><div class="cnt-num" id="cnt-n">01</div><div class="cnt-line"></div><div class="cnt-total" id="cnt-t">/ 06</div></div>
   <div class="main-cta">
-    <a class="main-cta-btn" id="cta-main" href="index.html">จองทัวร์ส่วนตัว <span style="transition:transform 0.3s">→</span></a>
+    <a class="main-cta-btn" id="cta-main" href="booking.html">จองทัวร์ส่วนตัว <span style="transition:transform 0.3s">→</span></a>
     <div class="cta-sub">ไม่มีค่าธรรมเนียมแอบแฝง · บริการส่วนตัว 100%</div>
   </div>
   <div class="slide-nav">
@@ -210,8 +210,8 @@ input[type=file]{display:none}
     <p class="q-text">"ประเทศไทย — ดินแดนแห่ง<em>รอยยิ้ม วัฒนธรรม</em><br>และธรรมชาติที่จะทำให้คุณหลงรักตลอดกาล"</p>
     <p class="q-auth">— Siam Royal Journey</p>
     <div class="q-btns">
-      <a class="btn-g" id="cta-pkg" href="index.html">ดูแพ็กเกจทัวร์ทั้งหมด</a>
-      <a class="btn-o" id="cta-tf" href="index.html">จองรถรับส่งสนามบิน ✈</a>
+      <a class="btn-g" id="cta-pkg" href="booking.html">ดูแพ็กเกจทัวร์ทั้งหมด</a>
+      <a class="btn-o" id="cta-tf" href="booking.html">จองรถรับส่งสนามบิน ✈</a>
     </div>
   </div>
 </section>
@@ -223,7 +223,7 @@ input[type=file]{display:none}
       <div class="mosaic-label reveal">ภาพบรรยากาศ</div>
       <h2 class="mosaic-h2 reveal rd1">ความงามของ<em>ไทย</em></h2>
     </div>
-    <a class="btn-o reveal rd2" id="cta-gal" href="index.html" style="font-size:9px;padding:9px 18px">เริ่มต้นการเดินทาง →</a>
+    <a class="btn-o reveal rd2" id="cta-gal" href="booking.html" style="font-size:9px;padding:9px 18px">เริ่มต้นการเดินทาง →</a>
   </div>
   <div class="mosaic-grid" id="mosaic-wrap"></div>
 </section>
@@ -234,7 +234,7 @@ input[type=file]{display:none}
     <p class="f-ey">เริ่มต้นการผจญภัย</p>
     <h2 class="f-h">ไทยแลนด์รอคุณ<br><em>อยู่เสมอ</em></h2>
     <p class="f-sub">บริการทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบเส้นทางเพื่อคุณโดยเฉพาะ</p>
-    <a class="btn-g" id="cta-footer" href="index.html" style="font-size:11px;padding:16px 40px">เข้าสู่เว็บไซต์หลัก →</a>
+    <a class="btn-g" id="cta-footer" href="booking.html" style="font-size:11px;padding:16px 40px">เข้าสู่เว็บไซต์หลัก →</a>
   </div>
   <div class="f-bottom">
     <span class="f-copy">© 2026 Siam Royal Journey · siamroyal-tour.com</span>
@@ -357,7 +357,7 @@ function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
 let SLIDES  = ld('lp_slides', DEF_SLIDES);
 let STRIP   = ld('lp_strip',  DEF_STRIP);
 let MOSAIC  = ld('lp_mosaic', DEF_MOSAIC);
-let MURL    = ld('lp_murl',   'index.html');
+let MURL    = ld('lp_murl',   'booking.html');
 let logged  = sessionStorage.getItem('lp_a')==='1';
 const PASS  = 'admin1234';
 
@@ -463,7 +463,7 @@ function closeAdm(){document.getElementById('adm-panel').classList.remove('open'
 
 // URL
 function saveUrl(){
-  const u=document.getElementById('cfg-url').value.trim()||'index.html';
+  const u=document.getElementById('cfg-url').value.trim()||'booking.html';
   MURL=u; sv('lp_murl',u); setLinks(u); msg('✅ บันทึก URL แล้ว');
 }
 function testUrl(){const u=document.getElementById('cfg-url').value.trim();if(u)window.open(u,'_blank');}
