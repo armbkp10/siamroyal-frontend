@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://www.siamroyal-tour.com/</loc>
-  <lastmod>2026-04-18T16:58:44+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://www.siamroyal-tour.com/booking.html</loc>
-  <lastmod>2026-04-18T16:58:45+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://siamroyal-tour.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://siamroyal-tour.com/ayutthaya-elephant-tour/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://siamroyal-tour.com/damnoen-saduak-floating-market/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://siamroyal-tour.com/pattaya-day-trip/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://siamroyal-tour.com/grand-palace-wat-phra-kaew-tour/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://siamroyal-tour.com/wat-arun-chao-phraya-river-cruise/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://siamroyal-tour.com/asiatique-bangkok-night-tour/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
