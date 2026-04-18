@@ -1228,7 +1228,8 @@ async function submitBooking(){
     const res=await fetch(API_BASE+'/api/bookings',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        package_id:p.id, travel_date:document.getElementById('bk-date').value,
+        package_id:p.id, package_name:p.name, package_price:p.price,
+        travel_date:document.getElementById('bk-date').value,
         guests:document.getElementById('bk-guests').value,
         first_name:document.getElementById('bk-fname').value,
         last_name:document.getElementById('bk-lname').value,
