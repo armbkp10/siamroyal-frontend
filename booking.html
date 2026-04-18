@@ -316,6 +316,56 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 /* Delete button style */
 .abt.danger{color:var(--red);border-color:rgba(224,92,92,0.3)}
 .abt.danger:hover{background:rgba(224,92,92,0.1);border-color:var(--red)}
+
+/* ═══ VEHICLE SYSTEM ═══ */
+.veh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.veh-card{background:var(--dark2);border:2px solid rgba(201,169,110,0.15);padding:16px;cursor:pointer;transition:all 0.25s;position:relative;text-align:center}
+.veh-card:hover{border-color:rgba(201,169,110,0.4)}
+.veh-card.sel{border-color:var(--gold);background:rgba(201,169,110,0.06)}
+.veh-card.disabled{opacity:0.4;cursor:not-allowed;pointer-events:none}
+.veh-card-icon{font-size:32px;margin-bottom:8px}
+.veh-card-name{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--cream);font-weight:600;margin-bottom:4px}
+.veh-card-model{font-size:10px;color:var(--muted);margin-bottom:6px;line-height:1.4}
+.veh-card-caps{display:flex;justify-content:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.veh-cap{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:3px}
+.veh-cap-icon{font-size:11px}
+.veh-card-price{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);font-weight:700}
+.veh-card-price span{font-size:10px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400}
+.veh-sold-badge{position:absolute;top:8px;right:8px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.2);padding:2px 7px;font-size:9px;color:var(--gold);letter-spacing:1px}
+.veh-warn{background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.18);padding:10px 14px;font-size:11px;color:var(--gold);margin-bottom:16px;display:none}
+/* Admin vehicle manager */
+.veh-adm-list{display:flex;flex-direction:column;gap:8px}
+.veh-adm-item{background:var(--dark2);border:1px solid rgba(201,169,110,0.1);padding:14px 16px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+.veh-adm-icon{font-size:24px;min-width:32px;text-align:center}
+.veh-adm-info{min-width:0}
+.veh-adm-name{font-size:13px;color:var(--cream);font-weight:500}
+.veh-adm-detail{font-size:10px;color:var(--muted);margin-top:2px}
+.veh-adm-price{font-size:14px;color:var(--gold);font-weight:600;text-align:right;white-space:nowrap}
+.veh-adm-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid rgba(201,169,110,0.08);grid-column:1/-1}
+.veh-edit-form{background:var(--dark3);border:1px solid rgba(201,169,110,0.1);padding:20px;margin-top:8px}
+.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.veh-toggle-active{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);cursor:pointer}
+
+.veh-caps{display:flex;justify-content:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.veh-cap{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:3px}
+.veh-cap-icon{font-size:11px}
+
+/* ═══ PRICE MATRIX ═══ */
+.price-matrix-wrap{overflow-x:auto;margin-top:16px}
+.price-matrix{border-collapse:collapse;width:100%;font-size:12px;min-width:580px}
+.price-matrix th{padding:8px 10px;text-align:center;font-size:9px;letter-spacing:2px;color:var(--gold);font-weight:400;border:1px solid rgba(201,169,110,0.1);background:var(--dark3)}
+.price-matrix th.veh-th{text-align:left;min-width:140px}
+.price-matrix td{padding:0;border:1px solid rgba(201,169,110,0.08)}
+.price-matrix td.veh-label{padding:10px 12px;background:var(--dark3);font-size:11px;color:var(--cream);font-weight:500}
+.price-matrix td.veh-label span{display:block;font-size:9px;color:var(--muted);margin-top:2px}
+.pm-input{background:rgba(255,255,255,0.04);border:none;color:var(--gold);padding:10px 8px;font-size:13px;font-family:'Cormorant Garamond',serif;font-weight:600;width:100%;text-align:center;outline:none;transition:background 0.2s}
+.pm-input:focus{background:rgba(201,169,110,0.08)}
+.pm-input:hover{background:rgba(201,169,110,0.04)}
+.pm-input.inactive{color:rgba(240,216,184,0.2);font-style:italic}
+.pm-inactive-row td{opacity:0.4}
+.pm-price-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.2);padding:3px 10px;font-size:13px;font-family:'Cormorant Garamond',serif;color:var(--gold);font-weight:600}
+.airport-price-note{font-size:10px;color:var(--gold);letter-spacing:1px;margin-top:8px;text-align:center}
 </style>
 </head>
 <body>
@@ -434,11 +484,11 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
     <div class="contact-float">
       <div class="cf-btn line" onclick="openLine()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61V9.86h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        LINE
+        LINE @siamroyal
       </div>
-      <div class="cf-btn wechat" onclick="openWeChatInfo()">
+      <div class="cf-btn wechat" onclick="alert('WeChat ID: SiamRoyalJourney')">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c-.2-.54-.314-1.1-.314-1.689 0-3.754 3.622-6.8 8.087-6.8.212 0 .42.009.625.025C15.934 4.728 12.614 2.188 8.69 2.188zm-2.35 3.836a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.697 0a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.194 3.95c-3.79 0-6.864 2.618-6.864 5.847 0 3.23 3.075 5.846 6.864 5.846.807 0 1.584-.107 2.307-.3a.7.7 0 0 1 .575.08l1.53.9a.262.262 0 0 0 .134.044.237.237 0 0 0 .236-.236.34.34 0 0 0-.038-.172l-.314-1.19a.473.473 0 0 1 .172-.534C21.22 19.047 22.1 17.5 22.1 15.82c0-3.229-3.075-5.847-6.867-5.847zm-2.432 3.03a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72zm4.864 0a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72z"/></svg>
-        WeChat
+        WeChat: SiamRoyalJourney
       </div>
       <div class="cf-btn wa" onclick="openWhatsApp()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
@@ -459,7 +509,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       </div>
       <div><div class="fch4" data-i="footer_pop">Popular Tours</div><ul class="flinks"><li><a>Chiang Mai - Chiang Rai</a></li><li><a>Phuket - Krabi</a></li><li><a>Ayutthaya Day Trip</a></li><li><a>Kanchanaburi</a></li></ul></div>
       <div><div class="fch4" data-i="footer_svc">Services</div><ul class="flinks"><li><a data-i="svc1">Car with Driver</a></li><li><a onclick="showPage('transfer')" data-i="svc2">Airport Transfer</a></li><li><a data-i="svc3">Custom Itinerary</a></li><li><a data-i="svc4">Honeymoon Trip</a></li></ul></div>
-      <div><div class="fch4" data-i="footer_con">Contact</div><ul class="flinks"><li><a>Line: @siamroyal</a></li><li><a>WeChat</a></li><li><a>WhatsApp: +66 81 234 5678</a></li><li><a>info@siamroyal.com</a></li></ul></div>
+      <div><div class="fch4" data-i="footer_con">Contact</div><ul class="flinks"><li><a>Line: @siamroyal</a></li><li><a>WeChat: SiamRoyalJourney</a></li><li><a>WhatsApp: +66 81 234 5678</a></li><li><a>info@siamroyal.com</a></li></ul></div>
     </div>
     <div class="fb"><span class="fc">© 2026 <span style="color:var(--gold)">Siam Royal Journey</span>. All rights reserved.</span><span class="fc" data-i="footer_legal">Privacy Policy · Terms</span></div>
   </footer>
@@ -598,18 +648,15 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <div class="airport-opt" onclick="selAP(this,'USM','Samui Airport','Koh Samui')"><div class="airport-code">USM</div><div class="airport-name">Samui</div><div class="airport-city">Koh Samui</div></div>
     </div>
     <div class="ey" style="margin-bottom:12px" data-i="tf_veh_title">Vehicle Type</div>
-    <div class="tf-types">
-      <div class="tf-type sel" onclick="selVeh(this,'sedan',950,'Sedan')"><div class="tf-type-icon">🚗</div><div class="tf-type-name" data-i="veh1_name">Sedan</div><div class="tf-type-desc" data-i="veh1_desc">Toyota Camry / Accord · Max 3 pax</div><div class="tf-type-price">฿950</div></div>
-      <div class="tf-type" onclick="selVeh(this,'suv',1350,'SUV / MPV')"><div class="tf-type-icon">🚙</div><div class="tf-type-name" data-i="veh2_name">SUV / MPV</div><div class="tf-type-desc" data-i="veh2_desc">Toyota Fortuner / Innova · Max 6 pax</div><div class="tf-type-price">฿1,350</div></div>
-      <div class="tf-type" onclick="selVeh(this,'van',1850,'Premium Van')"><div class="tf-type-icon">🚐</div><div class="tf-type-name" data-i="veh3_name">Premium Van</div><div class="tf-type-desc" data-i="veh3_desc">Toyota Hiace Premium · Max 9 pax</div><div class="tf-type-price">฿1,850</div></div>
-    </div>
+    <div class="veh-warn" id="veh-warn"></div>
+    <div class="veh-grid" id="veh-grid-tf"></div>
     <div class="form-row">
       <div class="fgroup"><label class="flabel" id="tf-date-lbl" data-i="tf_date_lbl">Date of Arrival</label><input type="date" class="finput" id="tf-date"></div>
       <div class="fgroup"><label class="flabel" id="tf-time-lbl" data-i="tf_time_lbl">Arrival Time (local)</label><input type="time" class="finput" id="tf-time"></div>
     </div>
     <div class="form-row">
       <div class="fgroup"><label class="flabel" data-i="tf_flight_lbl">Flight Number</label><input class="finput" id="tf-flight" placeholder="e.g. TG204"></div>
-      <div class="fgroup"><label class="flabel" data-i="tf_pax_lbl">Passengers</label><select class="finput" id="tf-pax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
+      <div class="fgroup"><label class="flabel" data-i="tf_pax_lbl">Passengers</label><select class="finput" id="tf-pax" onchange="renderVehicleGrid(this.value, parseInt(tfLug)||0)"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
     </div>
     <div class="fgroup" style="margin-bottom:16px">
       <label class="flabel" data-i="tf_lug_lbl">Luggage Pieces</label>
@@ -636,6 +683,14 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <div class="tf-price-row"><span style="color:var(--muted)" data-i="tf_airport_lbl">Airport</span><span id="tp-airport">Suvarnabhumi (BKK)</span></div>
       <div class="tf-price-row"><span style="color:var(--muted)" data-i="tf_veh_lbl">Vehicle</span><span id="tp-vehicle">Sedan</span></div>
       <div class="tf-price-row"><span style="color:var(--muted)" data-i="tf_incl_lbl">Includes</span><span style="color:var(--muted);font-size:10px" data-i="tf_incl_val">Meet & Greet · Flight monitoring · 60 min free wait</span></div>
+      <div class="tf-price-row"><span style="color:var(--muted)">Vehicle capacity</span><span id="tp-pax-note" style="color:var(--muted);font-size:10px">—</span></div>
+      <div id="airport-price-note" class="airport-price-note"></div>
+      <div style="margin-top:12px;padding:10px 14px;background:rgba(201,169,110,0.04);border-left:2px solid rgba(201,169,110,0.35)">
+        <div style="font-size:10px;color:var(--muted);line-height:1.85">
+          📍 <span data-i="price_note_km">ราคานี้สำหรับรับส่งในเมือง ระยะทางไม่เกิน 35 กม. จากสนามบิน</span><br>
+          ℹ️ <span data-i="price_note_bkk">สนามบินสุวรรณภูมิ (BKK) และดอนเมือง (DMK) ใช้ราคาเดียวกัน</span>
+        </div>
+      </div>
       <div class="tf-price-row total"><span data-i="tf_total_lbl">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:24px" id="tp-total">฿950</span></div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px">
@@ -682,7 +737,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <a onclick="admView('transfers')">Airport Transfers</a>
         <a onclick="admView('packages')">Packages & Photos</a>
         <a onclick="admView('customers')">Customers</a>
-        <a onclick="admView('settings')">⚙️ Settings</a>
+        <a onclick="admView('vehicles')">🚗 Vehicle Types</a>
         <a onclick="showPage('home')">← Back to Site</a>
         <button class="adm-logout" onclick="adminLogout()">Logout</button>
       </div>
@@ -743,82 +798,48 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <div class="adm-table-wrap"><table class="bt"><thead><tr><th>NAME</th><th>EMAIL</th><th>NATIONALITY</th><th>PHONE</th><th>BOOKINGS</th><th>TOTAL SPENT</th></tr></thead><tbody id="cust-table"></tbody></table></div>
       </div>
 
-      <!-- Settings -->
-      <div class="adm-view" id="adm-settings">
+      <!-- Vehicles -->
+      <div class="adm-view" id="adm-vehicles">
         <div class="adm-header">
-          <div><div class="adm-title">Settings</div><div class="adm-sub">แก้ไขข้อมูลติดต่อที่แสดงบนเว็บไซต์</div></div>
-          <button class="adm-add-btn" onclick="saveSettings()">💾 Save Changes</button>
-        </div>
-
-        <!-- Contact Info -->
-        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-bottom:20px">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px">Contact Channels</div>
-          <div style="font-size:11px;color:var(--muted);margin-bottom:20px">ข้อมูลนี้จะแสดงทั่วทั้งเว็บ — ปุ่ม Contact, หน้า Booking, Footer</div>
-
-          <div class="form-row">
-            <div class="fgroup">
-              <label class="flabel">LINE ID</label>
-              <input class="finput" id="cfg-line" placeholder="@siamroyal">
-              <span style="font-size:10px;color:var(--muted)">ใส่ @ ด้วย เช่น @siamroyal</span>
-            </div>
-            <div class="fgroup">
-              <label class="flabel">WeChat ID</label>
-              <input class="finput" id="cfg-wechat" placeholder="SiamRoyalJourney">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="fgroup">
-              <label class="flabel">WhatsApp Number</label>
-              <input class="finput" id="cfg-whatsapp" placeholder="66812345678">
-              <span style="font-size:10px;color:var(--muted)">ตัวเลขล้วน ไม่มี + หรือ - เช่น 66812345678</span>
-            </div>
-            <div class="fgroup">
-              <label class="flabel">Phone (แสดงบนเว็บ)</label>
-              <input class="finput" id="cfg-phone" placeholder="+66 81 234 5678">
-              <span style="font-size:10px;color:var(--muted)">แสดงในปุ่ม Call Us และ Footer</span>
-            </div>
-          </div>
-          <div class="form-row full">
-            <div class="fgroup">
-              <label class="flabel">Email Address</label>
-              <input class="finput" id="cfg-email" placeholder="info@siamroyal.com" type="email">
-              <span style="font-size:10px;color:var(--muted)">แสดงใน Footer</span>
-            </div>
+          <div><div class="adm-title">Vehicle Types</div><div class="adm-sub">กำหนดราคา จำนวนคน และกระเป๋าของแต่ละประเภทรถ</div></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="adm-add-btn" onclick="openAddVeh()">+ เพิ่มประเภทรถ</button>
+            <button class="adm-add-btn" style="background:var(--dark3);color:var(--gold);border:1px solid rgba(201,169,110,0.3)" onclick="openPriceMatrix()">🗓 แก้ไขตารางราคา</button>
           </div>
         </div>
-
-        <!-- Preview -->
-        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-bottom:20px">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:16px">Preview</div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap" id="settings-preview"></div>
+        <div style="background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.12);padding:12px 16px;font-size:11px;color:var(--muted);margin-bottom:16px;line-height:1.8">
+          ✅ ราคา จำนวนคน และกระเป๋าที่กำหนดที่นี่จะแสดงในหน้าจองรถรับส่งทันที<br>
+          🚫 รถที่ปิดใช้งานจะไม่แสดงในหน้าจอง · ใช้ปุ่ม ↑↓ เรียงลำดับการแสดงผล
         </div>
-
-        <!-- Business Info -->
-        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px">Business Info</div>
-          <div style="font-size:11px;color:var(--muted);margin-bottom:20px">แสดงใน Footer และ Email ที่ส่งให้ลูกค้า</div>
-          <div class="form-row full">
-            <div class="fgroup">
-              <label class="flabel">Site Name</label>
-              <input class="finput" id="cfg-sitename" placeholder="Siam Royal Journey">
-            </div>
+        <div class="veh-adm-list" id="veh-adm-list"></div>
+        <div class="veh-edit-form" id="veh-add-form" style="display:none;margin-top:16px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:14px" id="veh-form-title">เพิ่มประเภทรถใหม่</div>
+          <div class="form-row" style="margin-bottom:12px">
+            <div class="fgroup"><label class="flabel">ชื่อรถ (EN) *</label><input class="finput" id="vf-name" placeholder="Premium Sedan"></div>
+            <div class="fgroup"><label class="flabel">ชื่อรถ (TH)</label><input class="finput" id="vf-nameT" placeholder="รถเก๋งพรีเมียม"></div>
           </div>
-          <div class="form-row full">
-            <div class="fgroup">
-              <label class="flabel">Footer Description</label>
-              <textarea class="finput" id="cfg-footerdesc" rows="2" placeholder="Premium private tour service..."></textarea>
-            </div>
+          <div class="form-row" style="margin-bottom:12px">
+            <div class="fgroup"><label class="flabel">ชื่อรถ (ZH)</label><input class="finput" id="vf-nameZ" placeholder="豪华轿车"></div>
+            <div class="fgroup"><label class="flabel">Icon (Emoji)</label><input class="finput" id="vf-icon" placeholder="🚗"></div>
           </div>
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(201,169,110,0.12)">
-            <button class="fbk" onclick="saveSettings()" style="width:100%">💾 Save All Settings</button>
+          <div class="form-row full" style="margin-bottom:12px"><div class="fgroup"><label class="flabel">รุ่นรถ / รายละเอียด</label><input class="finput" id="vf-model" placeholder="Toyota Camry / Honda Accord"></div></div>
+          <div class="form-row" style="margin-bottom:12px">
+            <div class="fgroup"><label class="flabel">ราคา (฿/ทริป) *</label><input class="finput" id="vf-price" type="number" placeholder="1100"></div>
+            <div class="fgroup"><label class="flabel">จำนวนคนสูงสุด *</label><input class="finput" id="vf-pax" type="number" placeholder="3" min="1" max="30"></div>
           </div>
-        </div>
-
-        <div id="settings-saved" style="display:none;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.3);padding:14px 18px;margin-top:16px;font-size:13px;color:var(--green);text-align:center">
-          ✅ Settings saved! Changes are now live on the website.
+          <div class="form-row full" style="margin-bottom:12px">
+            <div class="fgroup"><label class="flabel">กระเป๋าสูงสุด *</label><input class="finput" id="vf-lug" type="number" placeholder="3" min="0" max="30"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <input type="checkbox" id="vf-active" checked style="accent-color:var(--gold)">
+            <label for="vf-active" style="font-size:12px;color:var(--muted);cursor:pointer">แสดงในหน้าจอง (Active)</label>
+          </div>
+          <div class="form-nav">
+            <button class="fbk-out" onclick="closeAddVeh()">ยกเลิก</button>
+            <button class="fbk" onclick="saveVeh()">💾 บันทึก</button>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -858,30 +879,9 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 // CONFIG
 // ════════════════════════════════════════════════
 const API_BASE   = 'https://siamroyal-backend-production.up.railway.app';
-// ── Contact settings (แก้ได้ใน Admin → Settings) ──────────────
-const DEFAULT_SETTINGS = {
-  line:        '@siamroyal',
-  wechat:      'SiamRoyalJourney',
-  whatsapp:    '66812345678',
-  phone:       '+66 81 234 5678',
-  email:       'info@siamroyal.com',
-  sitename:    'Siam Royal Journey',
-  footerdesc:  'Premium private tour service with professional car and driver.',
-};
-
-function loadSettings() {
-  try {
-    const s = JSON.parse(localStorage.getItem('srj_settings') || '{}');
-    return Object.assign({}, DEFAULT_SETTINGS, s);
-  } catch { return { ...DEFAULT_SETTINGS }; }
-}
-
-function getS(key) { return loadSettings()[key] || DEFAULT_SETTINGS[key]; }
-
-// compat aliases (ใช้ทั่วทั้งไฟล์)
-function LINE_ID()   { return getS('line'); }
-function WECHAT_ID() { return getS('wechat'); }
-function WHATSAPP()  { return getS('whatsapp'); }
+const LINE_ID    = '@siamroyal';
+const WECHAT_ID  = 'SiamRoyalJourney';
+const WHATSAPP   = '66812345678'; // ไม่ใส่ + และไม่ใส่ -
 
 // ════════════════════════════════════════════════
 // I18N — ระบบแปลภาษา
@@ -895,6 +895,8 @@ const I18N = {
     hero_sub:'Private tours with professional car and driver — crafted exclusively for you.',
     cta_packages:'View Tour Packages', cta_transfer:'✈ Airport Transfer', cta_consult:'Free Consultation',
     stat1:'Trips Completed', stat2:'Satisfaction Rate', stat3:'Routes Across Thailand', stat4:'Experience',
+    max_pax:'Max', max_lug:'Max bags', per_trip:'trip',
+    veh_sel_title:'Select Your Vehicle', veh_pax_note:'Suitable for your group size',
     search_ph:'Where do you want to go? e.g. Chiang Mai, Phuket...',
     dur_l:'Duration', d1:'1 Day', d2:'2-3 Days', d3:'4-7 Days', d4:'7+ Days',
     pax_l:'Guests', search_btn:'Search',
@@ -958,6 +960,8 @@ const I18N = {
     tf_phone_lbl:'Phone / WhatsApp', tf_email_lbl:'Email', tf_note_lbl:'Special Requests',
     tf_airport_lbl:'Airport', tf_veh_lbl:'Vehicle', tf_incl_lbl:'Includes',
     tf_incl_val:'Meet & Greet · Flight monitoring · 60 min free wait',
+    price_note_km:'Price covers in-city transfers within 35 km from the airport.',
+    price_note_bkk:'Suvarnabhumi (BKK) and Don Mueang (DMK) share the same price.',
     tf_total_lbl:'Total', tf_confirm_btn:'Confirm Transfer Booking',
     tf_success_t:'Transfer Booked!',
     tf_success_s:'Your airport transfer is confirmed. Our driver will wait with a name sign. Contact us to complete payment.',
@@ -975,6 +979,8 @@ const I18N = {
     hero_sub:'ทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบเพื่อคุณโดยเฉพาะ',
     cta_packages:'ดูแพ็กเกจทัวร์', cta_transfer:'✈ รับส่งสนามบิน', cta_consult:'ปรึกษาฟรี',
     stat1:'ทริปสำเร็จ', stat2:'ลูกค้าพอใจ', stat3:'เส้นทางทั่วไทย', stat4:'ประสบการณ์',
+    max_pax:'สูงสุด', max_lug:'กระเป๋าสูงสุด', per_trip:'ทริป',
+    veh_sel_title:'เลือกประเภทรถ', veh_pax_note:'เหมาะกับขนาดกลุ่มของคุณ',
     search_ph:'ต้องการเที่ยวที่ไหน? เช่น เชียงใหม่, ภูเก็ต...',
     dur_l:'กี่วัน?', d1:'1 วัน', d2:'2-3 วัน', d3:'4-7 วัน', d4:'7+ วัน',
     pax_l:'จำนวนคน', search_btn:'ค้นหา',
@@ -1038,6 +1044,8 @@ const I18N = {
     tf_phone_lbl:'โทรศัพท์ / WhatsApp', tf_email_lbl:'อีเมล', tf_note_lbl:'ความต้องการพิเศษ',
     tf_airport_lbl:'สนามบิน', tf_veh_lbl:'ยานพาหนะ', tf_incl_lbl:'รวม',
     tf_incl_val:'ถือป้ายชื่อรับ · ติดตามเที่ยวบิน · รอฟรี 60 นาที',
+    price_note_km:'ราคานี้สำหรับรับส่งในเมือง ระยะทางไม่เกิน 35 กม. จากสนามบิน',
+    price_note_bkk:'สนามบินสุวรรณภูมิ (BKK) และดอนเมือง (DMK) ใช้ราคาเดียวกัน',
     tf_total_lbl:'ราคารวม', tf_confirm_btn:'ยืนยันการจองรถ',
     tf_success_t:'จองรถสำเร็จ!',
     tf_success_s:'การจองรถรับส่งสนามบินของคุณได้รับการยืนยัน คนขับจะถือป้ายชื่อรอรับ ติดต่อเราเพื่อชำระเงิน',
@@ -1055,6 +1063,8 @@ const I18N = {
     hero_sub:'专属私人旅游服务，配备专业车辆和司机，为您量身定制难忘旅程。',
     cta_packages:'查看旅游套餐', cta_transfer:'✈ 机场接送', cta_consult:'免费咨询',
     stat1:'行程完成', stat2:'满意度', stat3:'全泰路线', stat4:'服务经验',
+    max_pax:'最多', max_lug:'最多行李', per_trip:'次',
+    veh_sel_title:'选择车型', veh_pax_note:'适合您的团队规模',
     search_ph:'您想去哪里？例如：清迈、普吉、甲米...',
     dur_l:'天数', d1:'1天', d2:'2-3天', d3:'4-7天', d4:'7天以上',
     pax_l:'人数', search_btn:'搜索',
@@ -1118,6 +1128,8 @@ const I18N = {
     tf_phone_lbl:'电话 / WhatsApp', tf_email_lbl:'电子邮件', tf_note_lbl:'特殊要求',
     tf_airport_lbl:'机场', tf_veh_lbl:'车型', tf_incl_lbl:'包含',
     tf_incl_val:'举牌迎接 · 追踪航班 · 免费等待60分钟',
+    price_note_km:'此价格适用于机场35公里范围内的市内接送。',
+    price_note_bkk:'素万那普机场（BKK）与廊曼机场（DMK）价格相同。',
     tf_total_lbl:'总价', tf_confirm_btn:'确认接送预订',
     tf_success_t:'接送预订成功！',
     tf_success_s:'您的机场接送已确认。司机将举牌等候您。请联系我们完成付款。',
@@ -1200,7 +1212,147 @@ const PKG=[
 ];
 let BOOKINGS=[], TRANSFERS=[];
 let bkSelected=null, bkStep=1;
-let tfDir='arrival', tfAP={code:'BKK',name:'Suvarnabhumi Airport'}, tfVeh={key:'sedan',price:950,name:'Sedan'}, tfLug='0';
+let tfDir='arrival', tfAP={code:'BKK',name:'Suvarnabhumi Airport'}, tfVeh=null, tfLug='0';
+
+// ════════════════════════════════════════════════
+// VEHICLE SYSTEM — Admin กำหนดราคา/จำนวนคน/กระเป๋าได้
+// ════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════
+// AIRPORTS
+// ════════════════════════════════════════════════
+const AIRPORTS = [
+  {code:'BKK', name:'Suvarnabhumi Airport', city:'Bangkok'},
+  {code:'DMK', name:'Don Mueang Airport',   city:'Bangkok'},
+  {code:'HKT', name:'Phuket International', city:'Phuket'},
+  {code:'CNX', name:'Chiang Mai Intl',      city:'Chiang Mai'},
+  {code:'KBI', name:'Krabi Airport',        city:'Krabi'},
+  {code:'USM', name:'Samui Airport',        city:'Koh Samui'},
+];
+
+// ════════════════════════════════════════════════
+// PRICE MATRIX — [vehicleId][airportCode] = price
+// กำหนดโดย Admin แยกต่างหากต่อ สนามบิน × ประเภทรถ
+// ════════════════════════════════════════════════
+const DEFAULT_PRICE_MATRIX = {
+  // BKK = DMK ราคาเดียวกัน (สนามบินในกรุงเทพ รับส่งในเมือง ≤ 35 กม.)
+  eco_car:  { BKK:750,  DMK:750,  HKT:1200, CNX:1100, KBI:1500, USM:1800 },
+  prem_sed: { BKK:1100, DMK:1100, HKT:1800, CNX:1600, KBI:2200, USM:2600 },
+  mpv:      { BKK:1350, DMK:1350, HKT:2200, CNX:2000, KBI:2800, USM:3300 },
+  eco_van:  { BKK:1600, DMK:1600, HKT:2600, CNX:2400, KBI:3200, USM:3900 },
+  prem_van: { BKK:1950, DMK:1950, HKT:3200, CNX:2900, KBI:3900, USM:4700 },
+  lux_mpv:  { BKK:3200, DMK:3200, HKT:5000, CNX:4500, KBI:6000, USM:7200 },
+};
+
+function loadPriceMatrix(){
+  try{
+    const s = localStorage.getItem('srj_price_matrix');
+    if(!s) return JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX));
+    const saved = JSON.parse(s);
+    // merge: ถ้ามีรถหรือสนามบินใหม่ที่ยังไม่มีในตาราง ใส่ default
+    const matrix = JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX));
+    Object.keys(saved).forEach(vId => {
+      if(!matrix[vId]) matrix[vId] = {};
+      Object.assign(matrix[vId], saved[vId]);
+    });
+    return matrix;
+  } catch{ return JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX)); }
+}
+function savePriceMatrix(m){ try{ localStorage.setItem('srj_price_matrix', JSON.stringify(m)); }catch{} }
+
+let PRICE_MATRIX = loadPriceMatrix();
+
+// หาราคาตาม vehicle + airport
+function getPrice(vehicleId, airportCode){
+  if(!vehicleId || !airportCode) return 0;
+  const vm = PRICE_MATRIX[vehicleId];
+  if(vm && vm[airportCode]) return vm[airportCode];
+  // fallback: ใช้ราคา base จาก vehicle
+  const v = VEHICLES.find(x=>x.id===vehicleId);
+  return v ? v.price : 0;
+}
+
+// อัปเดตราคา vehicle ใน matrix เมื่อ airport เปลี่ยน
+function ensureMatrixEntry(vehicleId){
+  if(!PRICE_MATRIX[vehicleId]) PRICE_MATRIX[vehicleId] = {};
+  AIRPORTS.forEach(ap => {
+    if(!PRICE_MATRIX[vehicleId][ap.code]){
+      const base = VEHICLES.find(v=>v.id===vehicleId)?.price || 0;
+      PRICE_MATRIX[vehicleId][ap.code] = base;
+    }
+  });
+}
+
+const DEFAULT_VEHICLES = [
+  {id:'eco_car',   icon:'🚗', name:'Eco Car',       nameT:'รถเก๋งประหยัด', nameZ:'经济轿车',
+   model:'Toyota Yaris / Honda City',       price:750,  maxPax:3, maxLug:2, active:true},
+  {id:'prem_sed',  icon:'🚙', name:'Premium Sedan', nameT:'รถเก๋งพรีเมียม',nameZ:'豪华轿车',
+   model:'Toyota Camry / Honda Accord',     price:1100, maxPax:3, maxLug:3, active:true},
+  {id:'mpv',       icon:'🚐', name:'MPV',           nameT:'รถ MPV',        nameZ:'MPV多用途车',
+   model:'Toyota Innova / Fortuner',        price:1350, maxPax:6, maxLug:4, active:true},
+  {id:'eco_van',   icon:'🚌', name:'Eco Van',       nameT:'แวนประหยัด',   nameZ:'经济面包车',
+   model:'Toyota Hiace Standard',           price:1600, maxPax:9, maxLug:6, active:true},
+  {id:'prem_van',  icon:'🚐', name:'Premium Van',   nameT:'แวนพรีเมียม',  nameZ:'高端面包车',
+   model:'Toyota Hiace Premium / Commuter', price:1950, maxPax:9, maxLug:8, active:true},
+  {id:'lux_mpv',   icon:'✨', name:'Luxury MPV',    nameT:'MPV หรูหรา',   nameZ:'豪华MPV',
+   model:'Toyota Alphard / Vellfire',       price:3200, maxPax:6, maxLug:4, active:true},
+];
+
+function loadVehicles(){ 
+  try{ const v=localStorage.getItem('srj_vehicles'); return v?JSON.parse(v):[...DEFAULT_VEHICLES]; }
+  catch{ return [...DEFAULT_VEHICLES]; }
+}
+function saveVehicles(v){ try{ localStorage.setItem('srj_vehicles',JSON.stringify(v)); }catch{} }
+let VEHICLES = loadVehicles();
+
+function vName(v){ if(curLang==='th') return v.nameT||v.name; if(curLang==='zh') return v.nameZ||v.name; return v.name; }
+
+// Render vehicle grid ในหน้า Transfer
+function renderVehicleGrid(pax, lug){
+  const grid = document.getElementById('veh-grid-tf');
+  if(!grid) return;
+  const activePax = parseInt(pax)||1;
+  const activeLug = parseInt(lug)||0;
+  grid.innerHTML = '';
+  VEHICLES.forEach(v => {
+    const overPax = activePax > v.maxPax;
+    const overLug = activeLug > v.maxLug;
+    const disabled = !v.active || overPax || overLug;
+    const isSel = tfVeh && tfVeh.id === v.id;
+    const card = document.createElement('div');
+    card.className = 'veh-card' + (isSel?' sel':'') + (disabled?' disabled':'');
+    card.onclick = () => { if(!disabled){ selectVehicle(v); } };
+    let warnText = '';
+    if(overPax) warnText = `Max ${v.maxPax} pax`;
+    else if(overLug) warnText = `Max ${v.maxLug} bags`;
+    // ราคาจาก matrix ตาม airport ที่เลือก
+    const matrixPrice = getPrice(v.id, tfAP.code);
+    card.innerHTML = `
+      <div class="veh-card-icon">${v.icon}</div>
+      <div class="veh-card-name">${vName(v)}</div>
+      <div class="veh-card-model">${v.model}</div>
+      <div class="veh-caps">
+        <span class="veh-cap"><span class="veh-cap-icon">👤</span> ${t('max_pax')||'Max'} ${v.maxPax}</span>
+        <span class="veh-cap"><span class="veh-cap-icon">🧳</span> ${t('max_lug')||'Max'} ${v.maxLug}</span>
+      </div>
+      <div class="veh-card-price">฿${matrixPrice.toLocaleString()} <span>/ ${t('per_trip')||'trip'}</span></div>
+      ${disabled ? `<div style="margin-top:6px;font-size:9px;color:var(--red);letter-spacing:1px">${warnText}</div>` : ''}`;
+    grid.appendChild(card);
+  });
+  // ถ้ายังไม่มีรถที่เลือก หรือรถที่เลือกอยู่ไม่ available ให้ auto-select ตัวแรกที่ได้
+  const firstOk = VEHICLES.find(v => v.active && activePax <= v.maxPax && activeLug <= v.maxLug);
+  if(!tfVeh || !firstOk || (tfVeh && (activePax > tfVeh.maxPax || activeLug > tfVeh.maxLug))){
+    if(firstOk) selectVehicle(firstOk, true);
+  }
+  updateTFPrice();
+}
+
+function selectVehicle(v, silent){
+  tfVeh = v;
+  // คำนวณราคาจาก matrix ตาม airport ปัจจุบัน
+  tfVeh._currentPrice = getPrice(v.id, tfAP.code);
+  if(!silent) updateTFPrice();
+}
 let photoPkgIdx=null;
 let lastRef='';
 
@@ -1213,11 +1365,11 @@ function pDesc(p){if(curLang==='th')return(p.descT?.trim())||p.desc;if(curLang==
 function genRef(prefix){return prefix+'-'+new Date().getFullYear()+'-'+Math.random().toString(36).substring(2,7).toUpperCase();}
 
 // Contact helpers
-function openLine(){window.open('https://line.me/R/ti/p/'+getS('line'),'_blank');}
-function openWhatsApp(){window.open('https://wa.me/'+getS('whatsapp'),'_blank');}
-function openWeChatInfo(){alert('WeChat ID: '+getS('wechat')+'\n\nPlease add us on WeChat and mention your booking reference.');}
-function openLineWithRef(){window.open('https://line.me/R/ti/p/'+getS('line')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
-function openWhatsAppWithRef(){window.open('https://wa.me/'+getS('whatsapp')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
+function openLine(){window.open('https://line.me/R/ti/p/'+LINE_ID,'_blank');}
+function openWhatsApp(){window.open('https://wa.me/'+WHATSAPP,'_blank');}
+function openWeChatInfo(){alert('WeChat ID: '+WECHAT_ID+'\n\nPlease add us on WeChat and mention your booking reference.');}
+function openLineWithRef(){window.open('https://line.me/R/ti/p/'+LINE_ID+'?text=Hi, I have booking reference: '+encodeURIComponent(lastRef),'_blank');}
+function openWhatsAppWithRef(){window.open('https://wa.me/'+WHATSAPP+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
 function scrollContact(){showPage('home');setTimeout(()=>document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}),120);}
 
 // ════════════════════════════════════════════════
@@ -1229,7 +1381,7 @@ function showPage(p){
   document.getElementById('page-'+p).classList.add('active');
   if(p==='admin')renderAdmin();
   if(p==='booking'){bkStep=1;renderBkStep();}
-  if(p==='transfer'){document.getElementById('tf-form-wrap').style.display='block';document.getElementById('tf-success').style.display='none';}
+  if(p==='transfer'){document.getElementById('tf-form-wrap').style.display='block';document.getElementById('tf-success').style.display='none';setTimeout(()=>renderVehicleGrid(1,0),50);}
   window.scrollTo(0,0);
 }
 
@@ -1361,13 +1513,41 @@ function setDir(d){
   document.getElementById('tf-time-lbl').textContent=t(arr?'tf_time_lbl':'tf_dep_time_lbl')||t('tf_time_lbl');
   document.getElementById('tf-hotel-lbl').textContent=t(arr?'tf_hotel_lbl':'tf_pickup_lbl')||t('tf_hotel_lbl');
 }
-function selAP(el,code,name){document.querySelectorAll('.airport-opt').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');tfAP={code,name};updateTFPrice();}
-function selVeh(el,key,price,name){document.querySelectorAll('.tf-type').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');tfVeh={key,price,name};updateTFPrice();}
-function selLug(el,v){document.querySelectorAll('.lug-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');tfLug=v;}
+function selAP(el,code,name){
+  document.querySelectorAll('.airport-opt').forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');
+  tfAP = AIRPORTS.find(a=>a.code===code) || {code,name};
+  // re-render vehicles เพื่ออัปเดตราคาตาม airport ใหม่
+  const pax = document.getElementById('tf-pax')?.value||1;
+  renderVehicleGrid(pax, parseInt(tfLug)||0);
+  // แสดง note ราคา per airport
+  const note = document.getElementById('airport-price-note');
+  if(note) note.textContent = name + ' — ราคาอัปเดตแล้ว';
+}
+function selVeh(el,key,price,name){
+  // legacy compat
+  const v=VEHICLES.find(x=>x.id===key)||{id:key,name,price,icon:'🚗',maxPax:9,maxLug:9,active:true};
+  selectVehicle(v);
+}
+function selLug(el,v){
+  document.querySelectorAll('.lug-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  tfLug=v;
+  const pax=document.getElementById('tf-pax')?.value||1;
+  renderVehicleGrid(pax, parseInt(v)||0);
+}
 function updateTFPrice(){
-  document.getElementById('tp-airport').textContent=tfAP.name+' ('+tfAP.code+')';
-  document.getElementById('tp-vehicle').textContent=tfVeh.name;
-  document.getElementById('tp-total').textContent='฿'+tfVeh.price.toLocaleString();
+  if(!tfVeh) return;
+  const price = getPrice(tfVeh.id, tfAP.code);
+  tfVeh._currentPrice = price; // cache for submit
+  const aEl = document.getElementById('tp-airport');
+  const vEl = document.getElementById('tp-vehicle');
+  const tEl = document.getElementById('tp-total');
+  const pEl = document.getElementById('tp-pax-note');
+  if(aEl) aEl.textContent = (tfAP.name||tfAP.code)+' ('+tfAP.code+')';
+  if(vEl) vEl.textContent = vName(tfVeh);
+  if(tEl){ tEl.textContent='฿'+price.toLocaleString(); }
+  if(pEl) pEl.textContent = '👤 Max '+tfVeh.maxPax+' pax · 🧳 Max '+tfVeh.maxLug+' bags';
 }
 
 async function submitTransfer(){
@@ -1383,7 +1563,7 @@ async function submitTransfer(){
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         airport_code:tfAP.code,airport_name:tfAP.name,direction:tfDir,
-        vehicle_type:tfVeh.key,vehicle_name:tfVeh.name,price:tfVeh.price,
+        vehicle_type:tfVeh.id,vehicle_name:vName(tfVeh),price:tfVeh._currentPrice||getPrice(tfVeh.id,tfAP.code),
         travel_date:document.getElementById('tf-date').value,
         travel_time:document.getElementById('tf-time').value,
         flight_number:document.getElementById('tf-flight').value,
@@ -1548,72 +1728,109 @@ function renderCustTable(){
 
 function admView(v){
   document.querySelectorAll('.adm-view').forEach(x=>x.classList.remove('active'));
-  document.getElementById('adm-'+v).classList.add('active');
+  document.getElementById('adm-'+v)?.classList.add('active');
   document.querySelectorAll('.adm-nav a').forEach(a=>a.classList.remove('active'));
   event.currentTarget.classList.add('active');
   if(v==='settings') loadSettingsToForm();
+  if(v==='vehicles') renderVehAdm();
 }
 
-function loadSettingsToForm(){
-  const s = loadSettings();
-  document.getElementById('cfg-line').value      = s.line;
-  document.getElementById('cfg-wechat').value    = s.wechat;
-  document.getElementById('cfg-whatsapp').value  = s.whatsapp;
-  document.getElementById('cfg-phone').value     = s.phone;
-  document.getElementById('cfg-email').value     = s.email;
-  document.getElementById('cfg-sitename').value  = s.sitename;
-  document.getElementById('cfg-footerdesc').value= s.footerdesc;
-  renderSettingsPreview(s);
+// ════════════════════════════════════════════════
+// VEHICLE ADMIN
+// ════════════════════════════════════════════════
+let editVehIdx = null;
+
+function renderVehAdm(){
+  const el = document.getElementById('veh-adm-list');
+  if(!el) return;
+  el.innerHTML = '';
+  VEHICLES.forEach((v, i) => {
+    const div = document.createElement('div');
+    div.className = 'veh-adm-item';
+    div.style.opacity = v.active ? '1' : '0.5';
+    div.innerHTML = `
+      <div class="veh-adm-icon">${v.icon}</div>
+      <div class="veh-adm-info">
+        <div class="veh-adm-name">${v.name}${v.nameT?' / '+v.nameT:''}</div>
+        <div class="veh-adm-detail">${v.model||''} · 👤 Max ${v.maxPax} pax · 🧳 Max ${v.maxLug} bags · ${v.active?'<span style="color:var(--green)">Active</span>':'<span style="color:var(--red)">Hidden</span>'}</div>
+      </div>
+      <div class="veh-adm-price">฿${v.price.toLocaleString()}</div>
+      <div class="veh-adm-actions">
+        <button class="abt" onclick="editVeh(${i})">✏️ แก้ไข</button>
+        <button class="abt" onclick="toggleVehActive(${i})">${v.active?'🚫 ซ่อน':'✅ แสดง'}</button>
+        <button class="abt" onclick="moveVeh(${i},-1)"${i===0?' disabled':''}>↑</button>
+        <button class="abt" onclick="moveVeh(${i},1)"${i===VEHICLES.length-1?' disabled':''}>↓</button>
+        <button class="abt danger" onclick="deleteVeh(${i})">🗑 ลบ</button>
+      </div>`;
+    el.appendChild(div);
+  });
 }
 
-function renderSettingsPreview(s){
-  s = s || loadSettings();
-  const p = document.getElementById('settings-preview');
-  if(!p) return;
-  p.innerHTML = `
-    <div style="background:var(--dark2);border:1px solid rgba(6,199,85,0.3);padding:12px 18px;font-size:12px;color:#06c755;display:flex;align-items:center;gap:8px">💬 LINE: ${s.line}</div>
-    <div style="background:var(--dark2);border:1px solid rgba(7,193,96,0.3);padding:12px 18px;font-size:12px;color:#07c160;display:flex;align-items:center;gap:8px">💚 WeChat: ${s.wechat}</div>
-    <div style="background:var(--dark2);border:1px solid rgba(37,211,102,0.3);padding:12px 18px;font-size:12px;color:#25d366;display:flex;align-items:center;gap:8px">📱 WhatsApp: +${s.whatsapp}</div>
-    <div style="background:var(--dark2);border:1px solid rgba(201,169,110,0.3);padding:12px 18px;font-size:12px;color:var(--gold);display:flex;align-items:center;gap:8px">📞 ${s.phone}</div>
-    <div style="background:var(--dark2);border:1px solid rgba(201,169,110,0.2);padding:12px 18px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px">✉️ ${s.email}</div>
-  `;
+function openAddVeh(){
+  editVehIdx = null;
+  document.getElementById('veh-form-title').textContent = 'เพิ่มประเภทรถใหม่';
+  ['vf-name','vf-nameT','vf-nameZ','vf-icon','vf-model','vf-price','vf-pax','vf-lug'].forEach(id => {
+    const el = document.getElementById(id); if(el) el.value = '';
+  });
+  const ac = document.getElementById('vf-active'); if(ac) ac.checked = true;
+  const f = document.getElementById('veh-add-form');
+  if(f){ f.style.display='block'; f.scrollIntoView({behavior:'smooth'}); }
 }
 
-function saveSettings(){
-  const s = {
-    line:       document.getElementById('cfg-line').value.trim()       || DEFAULT_SETTINGS.line,
-    wechat:     document.getElementById('cfg-wechat').value.trim()     || DEFAULT_SETTINGS.wechat,
-    whatsapp:   document.getElementById('cfg-whatsapp').value.trim().replace(/[^0-9]/g,'') || DEFAULT_SETTINGS.whatsapp,
-    phone:      document.getElementById('cfg-phone').value.trim()      || DEFAULT_SETTINGS.phone,
-    email:      document.getElementById('cfg-email').value.trim()      || DEFAULT_SETTINGS.email,
-    sitename:   document.getElementById('cfg-sitename').value.trim()   || DEFAULT_SETTINGS.sitename,
-    footerdesc: document.getElementById('cfg-footerdesc').value.trim() || DEFAULT_SETTINGS.footerdesc,
+function editVeh(i){
+  editVehIdx = i;
+  const v = VEHICLES[i];
+  document.getElementById('veh-form-title').textContent = 'แก้ไข: '+v.name;
+  document.getElementById('vf-name').value  = v.name||'';
+  document.getElementById('vf-nameT').value = v.nameT||'';
+  document.getElementById('vf-nameZ').value = v.nameZ||'';
+  document.getElementById('vf-icon').value  = v.icon||'🚗';
+  document.getElementById('vf-model').value = v.model||'';
+  document.getElementById('vf-price').value = v.price||'';
+  document.getElementById('vf-pax').value   = v.maxPax||'';
+  document.getElementById('vf-lug').value   = v.maxLug||'';
+  document.getElementById('vf-active').checked = v.active!==false;
+  const f = document.getElementById('veh-add-form');
+  if(f){ f.style.display='block'; f.scrollIntoView({behavior:'smooth'}); }
+}
+
+function saveVeh(){
+  const name  = document.getElementById('vf-name')?.value.trim();
+  const price = parseInt(document.getElementById('vf-price')?.value)||0;
+  const pax   = parseInt(document.getElementById('vf-pax')?.value)||1;
+  const lug   = parseInt(document.getElementById('vf-lug')?.value)||0;
+  if(!name||!price||!pax){ alert('กรุณากรอก ชื่อรถ ราคา และจำนวนคนสูงสุด'); return; }
+  const vData = {
+    id:     editVehIdx!==null ? VEHICLES[editVehIdx].id : 'veh_'+Date.now(),
+    icon:   document.getElementById('vf-icon')?.value||'🚗',
+    name,
+    nameT:  document.getElementById('vf-nameT')?.value.trim()||'',
+    nameZ:  document.getElementById('vf-nameZ')?.value.trim()||'',
+    model:  document.getElementById('vf-model')?.value.trim()||'',
+    price, maxPax:pax, maxLug:lug,
+    active: document.getElementById('vf-active')?.checked!==false,
   };
-  localStorage.setItem('srj_settings', JSON.stringify(s));
-  renderSettingsPreview(s);
-  // อัปเดต contact buttons บน homepage
-  updateContactButtons(s);
-  // แสดง success message
-  const msg = document.getElementById('settings-saved');
-  if(msg){ msg.style.display='block'; setTimeout(()=>msg.style.display='none', 3000); }
+  if(editVehIdx!==null) VEHICLES[editVehIdx]=vData; else VEHICLES.push(vData);
+  saveVehicles(VEHICLES);
+  closeAddVeh(); renderVehAdm();
+  alert('✅ บันทึกข้อมูลรถแล้ว');
 }
 
-function updateContactButtons(s){
-  s = s || loadSettings();
-  // อัปเดต LINE button text ทั่วหน้า
-  document.querySelectorAll('.cf-btn.line').forEach(el=>{
-    const t = el.querySelector('span')||el.lastChild;
-    if(el.textContent.includes('LINE')) el.innerHTML = el.innerHTML.replace(/@[\w]+/, s.line);
-  });
-  // อัปเดต footer
-  const footer = document.querySelector('.flinks');
-  // อัปเดต pay-ch-id
-  document.querySelectorAll('.pay-ch-id').forEach(el=>{
-    if(el.textContent.includes('@')) el.textContent = s.line;
-    else if(el.textContent.includes('SiamRoyal')||el.textContent===WECHAT_ID()) el.textContent = s.wechat;
-    else if(el.textContent.includes('+')||el.textContent.match(/^\d/)) el.textContent = '+'+s.whatsapp;
-  });
+function closeAddVeh(){
+  const f=document.getElementById('veh-add-form'); if(f) f.style.display='none'; editVehIdx=null;
 }
+function toggleVehActive(i){ VEHICLES[i].active=!VEHICLES[i].active; saveVehicles(VEHICLES); renderVehAdm(); }
+function deleteVeh(i){
+  if(VEHICLES.length<=1){alert('ต้องมีประเภทรถอย่างน้อย 1 ประเภท');return;}
+  if(!confirm('ลบ "'+VEHICLES[i].name+'" ออก?'))return;
+  VEHICLES.splice(i,1); saveVehicles(VEHICLES); renderVehAdm();
+}
+function moveVeh(i,dir){
+  const j=i+dir; if(j<0||j>=VEHICLES.length)return;
+  [VEHICLES[i],VEHICLES[j]]=[VEHICLES[j],VEHICLES[i]];
+  saveVehicles(VEHICLES); renderVehAdm();
+}
+
 function openModal(html){document.getElementById('modal-content').innerHTML=html;document.getElementById('modal').classList.add('open');}
 function closeModal(){document.getElementById('modal').classList.remove('open');}
 
@@ -1621,8 +1838,6 @@ function closeModal(){document.getElementById('modal').classList.remove('open');
 // INIT
 // ════════════════════════════════════════════════
 setLang('en');
-// Apply saved settings on load
-updateContactButtons();
 // Try to sync packages from backend
 fetch(API_BASE+'/api/packages').then(r=>r.json()).then(data=>{
   if(!data||!data.length)return;
@@ -1637,6 +1852,103 @@ fetch(API_BASE+'/api/packages').then(r=>r.json()).then(data=>{
   });
   renderPkgGrid();renderPkgSelect();
 }).catch(()=>{});
+
+// ════════════════════════════════════════════════
+// PRICE MATRIX ADMIN
+// ════════════════════════════════════════════════
+function openPriceMatrix(){
+  renderPMTable();
+  document.getElementById('price-matrix-modal').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closePriceMatrix(){
+  document.getElementById('price-matrix-modal').style.display='none';
+  document.body.style.overflow='';
+}
+function renderPMTable(){
+  const wrap=document.getElementById('pm-table-wrap');
+  if(!wrap) return;
+  let h=`<table class="price-matrix"><thead><tr>
+    <th class="veh-th">ประเภทรถ</th>
+    ${AIRPORTS.map(a=>`<th>${a.code}${a.code==='DMK'?'<br><span style="font-size:7px;color:var(--gold);opacity:0.7">=BKK</span>':''}<br><span style="font-size:8px;color:var(--muted);letter-spacing:0;font-weight:300">${a.city}</span></th>`).join('')}
+    </tr></thead><tbody>`;
+  VEHICLES.forEach(v=>{
+    h+=`<tr class="${v.active?'':'pm-inactive-row'}">
+      <td class="veh-label"><span style="font-size:16px">${v.icon}</span> ${v.name}
+        <span>${v.model||''}</span>${!v.active?'<span style="color:var(--red);font-size:9px">Hidden</span>':''}
+      </td>
+      ${AIRPORTS.map(a=>{
+        const price=(PRICE_MATRIX[v.id]||{})[a.code]||0;
+        return`<td><input class="pm-input${price===0?' inactive':''}"
+          data-veh="${v.id}" data-ap="${a.code}"
+          value="${price||''}" placeholder="0"
+          oninput="this.classList.toggle('inactive',!this.value||this.value==='0')"
+          type="number" min="0"></td>`;
+      }).join('')}
+    </tr>`;
+  });
+  h+='</tbody></table>';
+  wrap.innerHTML=h;
+  // auto-sync BKK → DMK: เมื่อพิมพ์ BKK → DMK เปลี่ยนตาม
+  wrap.querySelectorAll('.pm-input[data-ap="BKK"]').forEach(inp=>{
+    inp.addEventListener('input', ()=>{
+      const vId = inp.dataset.veh;
+      const dmkInp = wrap.querySelector(`.pm-input[data-veh="${vId}"][data-ap="DMK"]`);
+      if(dmkInp){ dmkInp.value=inp.value; dmkInp.classList.toggle('inactive',!inp.value||inp.value==='0'); }
+    });
+  });
+}
+function savePriceMatrixAdm(){
+  const newMatrix={};
+  document.querySelectorAll('.pm-input').forEach(inp=>{
+    const vId=inp.dataset.veh, ap=inp.dataset.ap, val=parseInt(inp.value)||0;
+    if(!newMatrix[vId]) newMatrix[vId]={};
+    newMatrix[vId][ap]=val;
+  });
+  PRICE_MATRIX=newMatrix;
+  savePriceMatrix(PRICE_MATRIX);
+  closePriceMatrix();
+  alert('✅ บันทึกตารางราคาแล้ว — ราคาในหน้าจองอัปเดตทันที');
+}
+function resetPriceMatrix(){
+  if(!confirm('รีเซ็ตตารางราคาเป็นค่าเริ่มต้น?')) return;
+  PRICE_MATRIX=JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX));
+  savePriceMatrix(PRICE_MATRIX);
+  renderPMTable();
+  alert('✅ รีเซ็ตแล้ว');
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&document.getElementById('price-matrix-modal')?.style.display==='block')
+    closePriceMatrix();
+});
 </script>
+
+<!-- PRICE MATRIX MODAL -->
+<div id="price-matrix-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9500;overflow-y:auto;padding:20px">
+  <div style="max-width:860px;margin:0 auto;background:var(--dark3);border:1px solid rgba(201,169,110,0.2);padding:28px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream)">ตารางราคา รับส่งสนามบิน</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">กรอกราคา (฿) สำหรับแต่ละ สนามบิน × ประเภทรถ · เว้นว่างหรือ 0 = ไม่ให้บริการ</div>
+      </div>
+      <button onclick="closePriceMatrix()" style="background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer;line-height:1">×</button>
+    </div>
+    <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);padding:10px 14px;font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.8">
+      💡 <strong style="color:var(--gold)">วิธีใช้:</strong> คลิกช่องราคาแล้วพิมพ์จำนวนเงิน (บาท) · ราคา 0 หรือว่าง = ไม่แสดงรถนี้ในสนามบินนั้น<br>
+      🔄 ราคาจะอัปเดตในหน้าจองทันทีเมื่อลูกค้าเปลี่ยนสนามบิน<br>
+      🔗 <strong style="color:var(--gold2)">BKK = DMK</strong> — เมื่อแก้ราคา BKK ช่อง DMK จะ sync อัตโนมัติ (ราคาสนามบินกรุงเทพเท่ากัน)<br>
+      📍 ราคาทั้งหมดสำหรับ<strong style="color:var(--gold2)">รับส่งในเมือง ≤ 35 กม.</strong> จากสนามบิน
+    </div>
+    <div class="price-matrix-wrap" id="pm-table-wrap"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid rgba(201,169,110,0.12);flex-wrap:wrap;gap:10px">
+      <button onclick="resetPriceMatrix()" style="background:transparent;border:1px solid rgba(224,92,92,0.3);color:var(--red);padding:10px 18px;font-size:10px;letter-spacing:1.5px;cursor:pointer;font-family:inherit">↺ รีเซ็ตเป็นค่าเริ่มต้น</button>
+      <div style="display:flex;gap:10px">
+        <button onclick="closePriceMatrix()" style="background:transparent;border:1px solid rgba(201,169,110,0.3);color:var(--muted);padding:10px 20px;font-size:10px;letter-spacing:1.5px;cursor:pointer;font-family:inherit">ยกเลิก</button>
+        <button onclick="savePriceMatrixAdm()" style="background:var(--gold);border:none;color:var(--ink);padding:11px 28px;font-size:10px;letter-spacing:2px;cursor:pointer;font-family:inherit;font-weight:500">💾 บันทึกตารางราคา</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
