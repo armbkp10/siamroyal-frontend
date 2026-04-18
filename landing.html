@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siam Royal Journey — เที่ยวไทย</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#c9a96e;--gold2:#e8d5a3;--gold3:#8a6b3a;--ink:#0d0b08;--ink2:#1a1712;--ink3:#252018;--cream:#faf6ef;--muted:rgba(240,232,216,0.55)}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:'Jost',sans-serif;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.4}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 6%;display:flex;justify-content:space-between;align-items:center;transition:all 0.5s}
+nav.scrolled{background:rgba(13,11,8,0.92);backdrop-filter:blur(16px);padding:16px 6%;border-bottom:1px solid rgba(201,169,110,0.1)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:4px;color:var(--gold2);text-transform:uppercase}
+.nav-logo span{font-style:italic;color:var(--cream);font-weight:400}
+.nav-enter{background:var(--gold);color:var(--ink);padding:11px 28px;font-size:10px;letter-spacing:3px;text-transform:uppercase;border:none;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+.nav-enter:hover{background:var(--gold2)}
+
+/* HERO SLIDESHOW */
+.hero{position:relative;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease}
+.slide.active{opacity:1;z-index:1}
+.slide-img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 9s ease-out}
+.slide.active .slide-img{transform:scale(1)}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,11,8,0.25) 0%,rgba(13,11,8,0.1) 35%,rgba(13,11,8,0.65) 75%,rgba(13,11,8,0.95) 100%)}
+.slide-caption{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:0 8% 90px}
+.slide-tag{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;opacity:0;transform:translateY(12px);transition:all 0.8s 0.2s}
+.slide.active .slide-tag{opacity:1;transform:translateY(0)}
+.slide-title{font-family:'Playfair Display',serif;font-size:clamp(48px,8vw,96px);line-height:0.95;color:var(--cream);font-weight:900;opacity:0;transform:translateY(20px);transition:all 0.8s 0.4s}
+.slide.active .slide-title{opacity:1;transform:translateY(0)}
+.slide-title em{display:block;font-style:italic;color:var(--gold);font-weight:400;font-size:0.7em;margin-top:6px}
+.slide-desc{font-size:13px;color:var(--muted);margin-top:14px;max-width:400px;line-height:1.8;font-weight:300;opacity:0;transform:translateY(12px);transition:all 0.8s 0.6s}
+.slide.active .slide-desc{opacity:1;transform:translateY(0)}
+.slide-nav{position:absolute;bottom:36px;right:8%;z-index:10;display:flex;align-items:center;gap:16px}
+.dots{display:flex;gap:7px}
+.dot{width:22px;height:2px;background:rgba(201,169,110,0.3);cursor:pointer;transition:all 0.3s}
+.dot.active{background:var(--gold);width:40px}
+.arrows{display:flex;gap:8px}
+.arrow{width:40px;height:40px;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;color:var(--gold);font-size:16px;user-select:none}
+.arrow:hover{background:var(--gold);color:var(--ink)}
+.slide-counter{position:absolute;top:50%;right:6%;transform:translateY(-50%);z-index:10;text-align:right}
+.cnt-num{font-family:'Playfair Display',serif;font-size:52px;color:var(--gold);font-weight:700;line-height:1}
+.cnt-line{width:1px;height:52px;background:linear-gradient(to bottom,var(--gold),transparent);margin:8px auto}
+.cnt-total{font-size:10px;color:var(--muted);letter-spacing:2px}
+.main-cta{position:absolute;bottom:88px;left:8%;z-index:10}
+.main-cta-btn{display:inline-flex;align-items:center;gap:14px;background:var(--gold);color:var(--ink);padding:18px 36px;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;font-family:'Jost',sans-serif;font-weight:500;transition:all 0.3s;border:none;cursor:pointer}
+.main-cta-btn:hover{background:var(--gold2);gap:20px}
+.cta-sub{font-size:10px;color:rgba(240,232,216,0.4);letter-spacing:2px;text-transform:uppercase;margin-top:12px;font-weight:300}
+
+/* PHOTO STRIP */
+.strip{display:flex;height:240px;gap:2px;overflow:hidden}
+.strip-item{flex:1;position:relative;overflow:hidden;cursor:pointer;min-width:0}
+.strip-item img{width:100%;height:100%;object-fit:cover;filter:brightness(0.65) saturate(0.85);transition:all 0.6s}
+.strip-item:hover{flex:2.5}
+.strip-item:hover img{filter:brightness(0.9) saturate(1.1);transform:scale(1.04)}
+.strip-lbl{position:absolute;bottom:12px;left:12px;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;opacity:0;transition:opacity 0.3s}
+.strip-item:hover .strip-lbl{opacity:1}
+
+/* MARQUEE */
+.marquee{background:var(--gold);padding:12px 0;overflow:hidden}
+.marquee-inner{display:flex;white-space:nowrap;animation:marquee 26s linear infinite}
+.m-i{display:inline-flex;align-items:center;gap:16px;padding:0 16px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ink);font-weight:500}
+.m-sep{font-size:5px;opacity:0.4}
+
+/* QUOTE */
+.quote{padding:96px 8%;text-align:center;background:var(--ink2);position:relative;overflow:hidden}
+.quote::before{content:'"';position:absolute;top:-80px;left:4%;font-family:'Playfair Display',serif;font-size:380px;color:rgba(201,169,110,0.04);font-weight:900;line-height:1;pointer-events:none}
+.q-text{font-family:'Playfair Display',serif;font-size:clamp(22px,3.2vw,38px);color:var(--cream);line-height:1.55;font-style:italic;max-width:760px;margin:0 auto 20px;position:relative;z-index:1}
+.q-text em{color:var(--gold);font-style:normal}
+.q-auth{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:300}
+.q-btns{margin-top:44px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-g{background:var(--gold);color:var(--ink);padding:14px 34px;font-size:10px;letter-spacing:3px;text-transform:uppercase;border:none;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s}
+.btn-g:hover{background:var(--gold2)}
+.btn-o{background:transparent;color:var(--gold);padding:14px 34px;font-size:10px;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(201,169,110,0.35);font-family:'Jost',sans-serif;font-weight:300;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s}
+.btn-o:hover{border-color:var(--gold);background:rgba(201,169,110,0.06)}
+
+/* MOSAIC */
+.mosaic-sec{padding:72px 0}
+.mosaic-hdr{padding:0 8%;margin-bottom:40px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+.mosaic-label{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;font-weight:300}
+.mosaic-h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,42px);color:var(--cream);font-weight:700}
+.mosaic-h2 em{font-style:italic;color:var(--gold);font-weight:400}
+.mosaic-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,200px);gap:3px}
+.m-item{overflow:hidden;position:relative;cursor:pointer}
+.m-item img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7) saturate(0.85);transition:all 0.7s}
+.m-item:hover img{filter:brightness(0.92) saturate(1.1);transform:scale(1.06)}
+.m-item:first-child{grid-column:span 2;grid-row:span 2}
+.m-item:nth-child(4){grid-column:span 2}
+.m-lbl{position:absolute;bottom:0;left:0;right:0;padding:18px;background:linear-gradient(to top,rgba(13,11,8,0.7),transparent);transform:translateY(3px);transition:transform 0.4s}
+.m-item:hover .m-lbl{transform:translateY(0)}
+.m-lbl-name{font-family:'Playfair Display',serif;font-size:15px;color:var(--cream);font-weight:700}
+.m-lbl-sub{font-size:9px;color:var(--gold);letter-spacing:2px;margin-top:3px}
+
+/* FOOTER */
+.footer{padding:88px 8%;background:var(--ink);border-top:1px solid rgba(201,169,110,0.08);text-align:center}
+.f-ey{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.f-h{font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,58px);color:var(--cream);font-weight:900;line-height:1.1;margin-bottom:10px}
+.f-h em{font-style:italic;color:var(--gold);font-weight:400}
+.f-sub{font-size:13px;color:var(--muted);max-width:400px;margin:0 auto 40px;line-height:1.8;font-weight:300}
+.f-bottom{margin-top:72px;padding-top:24px;border-top:1px solid rgba(201,169,110,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.f-copy{font-size:11px;color:rgba(240,232,216,0.3)}
+.f-links{display:flex;gap:18px;flex-wrap:wrap}
+.f-links a{font-size:11px;color:rgba(240,232,216,0.3);text-decoration:none;transition:color 0.3s}
+.f-links a:hover{color:var(--gold)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:0.12s}.rd2{transition-delay:0.24s}.rd3{transition-delay:0.36s}
+
+/* ADMIN */
+.adm-btn{position:fixed;bottom:22px;right:22px;z-index:500;width:42px;height:42px;background:rgba(13,11,8,0.82);border:1px solid rgba(201,169,110,0.22);color:var(--gold);font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;backdrop-filter:blur(8px)}
+.adm-btn:hover{background:var(--gold);color:var(--ink)}
+.adm-panel{position:fixed;top:0;right:-440px;width:420px;height:100vh;background:var(--ink2);border-left:1px solid rgba(201,169,110,0.1);z-index:600;overflow-y:auto;transition:right 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+.adm-panel.open{right:0}
+.adm-head{padding:26px 22px 18px;border-bottom:1px solid rgba(201,169,110,0.08);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--ink2);z-index:1}
+.adm-head-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--cream)}
+.adm-x{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;transition:color 0.2s;line-height:1;padding:0}
+.adm-x:hover{color:var(--gold)}
+.adm-sec{padding:18px 22px;border-bottom:1px solid rgba(201,169,110,0.05)}
+.adm-sec-title{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.adm-hint{font-size:11px;color:rgba(240,232,216,0.3);line-height:1.7;margin-bottom:12px}
+.adm-input{background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.12);color:var(--cream);padding:9px 11px;font-size:12px;font-family:'Jost',sans-serif;outline:none;width:100%;margin-bottom:8px;transition:border-color 0.2s}
+.adm-input:focus{border-color:rgba(201,169,110,0.35)}
+.adm-input::placeholder{color:rgba(240,232,216,0.18)}
+.adm-lbl{font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:4px;opacity:0.75}
+.adm-save{background:var(--gold);border:none;color:var(--ink);padding:11px 22px;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;font-weight:500;width:100%;transition:all 0.3s;margin-top:4px}
+.adm-save:hover{background:var(--gold2)}
+.adm-url-row{display:flex;gap:7px;margin-bottom:8px}
+.adm-url-row .adm-input{margin:0;flex:1}
+.adm-url-test{background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.18);color:var(--gold);padding:9px 11px;font-size:11px;cursor:pointer;white-space:nowrap;transition:all 0.2s;font-family:'Jost',sans-serif;flex-shrink:0}
+.adm-url-test:hover{background:rgba(201,169,110,0.18)}
+.upzone{border:1px dashed rgba(201,169,110,0.22);padding:24px 12px;text-align:center;cursor:pointer;transition:all 0.3s;margin-bottom:10px}
+.upzone:hover,.upzone.over{border-color:var(--gold);background:rgba(201,169,110,0.04)}
+.upzone-icon{font-size:24px;color:var(--gold);opacity:0.55;margin-bottom:6px}
+.upzone-txt{font-size:12px;color:var(--muted)}
+.upzone-hint{font-size:10px;color:rgba(240,232,216,0.22);margin-top:3px}
+input[type=file]{display:none}
+.slide-list-adm{display:flex;flex-direction:column;gap:7px}
+.slide-row{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,169,110,0.08);padding:9px 10px;cursor:grab}
+.slide-row:active{cursor:grabbing}.slide-row.dragging{opacity:0.35;border-style:dashed}
+.s-thumb{width:50px;height:34px;object-fit:cover;opacity:0.8;flex-shrink:0}
+.s-info{flex:1;min-width:0}
+.s-name{font-size:11px;color:var(--cream);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-sub{font-size:9px;color:var(--gold);letter-spacing:1px;margin-top:1px}
+.s-del{background:none;border:none;color:rgba(224,92,92,0.45);cursor:pointer;font-size:15px;padding:2px 4px;transition:color 0.2s;flex-shrink:0}
+.s-del:hover{color:#e05c5c}
+.drag-h{color:rgba(201,169,110,0.28);font-size:13px;cursor:grab;flex-shrink:0}
+.img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px;max-height:200px;overflow-y:auto}
+.ig-item{aspect-ratio:4/3;overflow:hidden;position:relative;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s}
+.ig-item img{width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.2s}
+.ig-item:hover img{opacity:1}
+.ig-del{position:absolute;top:3px;right:3px;background:rgba(224,92,92,0.85);border:none;color:#fff;width:17px;height:17px;border-radius:50%;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;line-height:1}
+.ig-item:hover .ig-del{opacity:1}
+.slide-txt-item{margin-bottom:13px;padding:11px;background:rgba(255,255,255,0.025);border:1px solid rgba(201,169,110,0.06)}
+.slide-idx{font-size:9px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.save-msg{text-align:center;font-size:11px;color:#4caf7d;padding:10px 22px;min-height:18px;transition:opacity 0.4s}
+
+/* Login */
+.login-ov{position:fixed;inset:0;background:rgba(13,11,8,0.92);z-index:700;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.login-box{background:var(--ink2);border:1px solid rgba(201,169,110,0.18);padding:36px;width:300px}
+.login-title{font-family:'Playfair Display',serif;font-size:19px;color:var(--gold);text-align:center;margin-bottom:4px}
+.login-sub{font-size:9px;letter-spacing:3px;color:var(--muted);text-align:center;margin-bottom:24px}
+.login-err{color:#e05c5c;font-size:11px;text-align:center;margin-top:8px;min-height:15px}
+
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">SIAM<span> Royal Journey</span></div>
+  <a class="nav-enter" id="main-link" href="index.html">เข้าสู่เว็บไซต์ →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div id="slides-wrap"></div>
+  <div class="slide-counter"><div class="cnt-num" id="cnt-n">01</div><div class="cnt-line"></div><div class="cnt-total" id="cnt-t">/ 06</div></div>
+  <div class="main-cta">
+    <a class="main-cta-btn" id="cta-main" href="index.html">จองทัวร์ส่วนตัว <span style="transition:transform 0.3s">→</span></a>
+    <div class="cta-sub">ไม่มีค่าธรรมเนียมแอบแฝง · บริการส่วนตัว 100%</div>
+  </div>
+  <div class="slide-nav">
+    <div class="dots" id="dots-wrap"></div>
+    <div class="arrows">
+      <div class="arrow" onclick="prev()">←</div>
+      <div class="arrow" onclick="next()">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" id="strip-wrap"></div>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-inner" id="mq">
+    <span class="m-i">ขี่ช้างเชียงราย <span class="m-sep">✦</span></span><span class="m-i">กินกุ้งแม่น้ำ <span class="m-sep">✦</span></span><span class="m-i">วัดอยุธยา <span class="m-sep">✦</span></span><span class="m-i">หาดกระบี่ <span class="m-sep">✦</span></span><span class="m-i">ดอยอินทนนท์ <span class="m-sep">✦</span></span><span class="m-i">ล่องเรือเจ้าพระยา <span class="m-sep">✦</span></span><span class="m-i">มวยไทย <span class="m-sep">✦</span></span><span class="m-i">ตลาดกลางคืน <span class="m-sep">✦</span></span><span class="m-i">ขี่ช้างเชียงราย <span class="m-sep">✦</span></span><span class="m-i">กินกุ้งแม่น้ำ <span class="m-sep">✦</span></span><span class="m-i">วัดอยุธยา <span class="m-sep">✦</span></span><span class="m-i">หาดกระบี่ <span class="m-sep">✦</span></span><span class="m-i">ดอยอินทนนท์ <span class="m-sep">✦</span></span><span class="m-i">ล่องเรือเจ้าพระยา <span class="m-sep">✦</span></span><span class="m-i">มวยไทย <span class="m-sep">✦</span></span><span class="m-i">ตลาดกลางคืน <span class="m-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="reveal">
+    <p class="q-text">"ประเทศไทย — ดินแดนแห่ง<em>รอยยิ้ม วัฒนธรรม</em><br>และธรรมชาติที่จะทำให้คุณหลงรักตลอดกาล"</p>
+    <p class="q-auth">— Siam Royal Journey</p>
+    <div class="q-btns">
+      <a class="btn-g" id="cta-pkg" href="index.html">ดูแพ็กเกจทัวร์ทั้งหมด</a>
+      <a class="btn-o" id="cta-tf" href="index.html">จองรถรับส่งสนามบิน ✈</a>
+    </div>
+  </div>
+</section>
+
+<!-- MOSAIC -->
+<section class="mosaic-sec">
+  <div class="mosaic-hdr">
+    <div>
+      <div class="mosaic-label reveal">ภาพบรรยากาศ</div>
+      <h2 class="mosaic-h2 reveal rd1">ความงามของ<em>ไทย</em></h2>
+    </div>
+    <a class="btn-o reveal rd2" id="cta-gal" href="index.html" style="font-size:9px;padding:9px 18px">เริ่มต้นการเดินทาง →</a>
+  </div>
+  <div class="mosaic-grid" id="mosaic-wrap"></div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+  <div class="reveal">
+    <p class="f-ey">เริ่มต้นการผจญภัย</p>
+    <h2 class="f-h">ไทยแลนด์รอคุณ<br><em>อยู่เสมอ</em></h2>
+    <p class="f-sub">บริการทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบเส้นทางเพื่อคุณโดยเฉพาะ</p>
+    <a class="btn-g" id="cta-footer" href="index.html" style="font-size:11px;padding:16px 40px">เข้าสู่เว็บไซต์หลัก →</a>
+  </div>
+  <div class="f-bottom">
+    <span class="f-copy">© 2026 Siam Royal Journey · siamroyal-tour.com</span>
+    <div class="f-links"><a href="#">LINE: @siamroyal</a><a href="#">WhatsApp</a><a href="#">info@siamroyal-tour.com</a></div>
+  </div>
+</section>
+
+<!-- ADMIN BUTTON -->
+<button class="adm-btn" id="adm-toggle" title="Admin Panel">⚙</button>
+
+<!-- ADMIN PANEL -->
+<div class="adm-panel" id="adm-panel">
+  <div class="adm-head">
+    <span class="adm-head-title">🖼 จัดการรูปภาพ</span>
+    <button class="adm-x" onclick="closeAdm()">×</button>
+  </div>
+
+  <div class="adm-sec">
+    <div class="adm-sec-title">ลิงก์เว็บไซต์หลัก</div>
+    <label class="adm-lbl">URL ของเว็บหลัก</label>
+    <div class="adm-url-row">
+      <input class="adm-input" id="cfg-url" placeholder="https://siamroyal-tour.com">
+      <button class="adm-url-test" onclick="testUrl()">ทดสอบ</button>
+    </div>
+    <button class="adm-save" onclick="saveUrl()">💾 บันทึก URL</button>
+  </div>
+
+  <div class="adm-sec">
+    <div class="adm-sec-title">รูป Slideshow หลัก</div>
+    <div class="adm-hint">อัปโหลด/ลากเรียงลำดับ — รองรับรูปจากเครื่อง</div>
+    <div class="upzone" id="uz-slide" onclick="document.getElementById('fi-slide').click()">
+      <div class="upzone-icon">📷</div>
+      <div class="upzone-txt">คลิกหรือลากรูปมาวาง</div>
+      <div class="upzone-hint">JPG, PNG · แนะนำ 1920×1080px</div>
+    </div>
+    <input type="file" id="fi-slide" accept="image/*" multiple>
+    <div class="slide-list-adm" id="slide-list"></div>
+  </div>
+
+  <div class="adm-sec">
+    <div class="adm-sec-title">ข้อความ Slides</div>
+    <div class="adm-hint">แก้ชื่อ / หัวข้อรอง / คำอธิบาย แต่ละ slide</div>
+    <div id="slide-txt-editor"></div>
+    <button class="adm-save" onclick="saveTxt()">💾 บันทึกข้อความ</button>
+  </div>
+
+  <div class="adm-sec">
+    <div class="adm-sec-title">รูป Photo Strip</div>
+    <div class="adm-hint">แถวรูปภาพ hover ได้ — แนะนำ 8 รูป</div>
+    <div class="upzone" id="uz-strip" onclick="document.getElementById('fi-strip').click()">
+      <div class="upzone-icon">🖼</div>
+      <div class="upzone-txt">คลิกหรือลากรูปมาวาง</div>
+    </div>
+    <input type="file" id="fi-strip" accept="image/*" multiple>
+    <div class="img-grid" id="strip-grid"></div>
+  </div>
+
+  <div class="adm-sec">
+    <div class="adm-sec-title">รูป Mosaic Gallery</div>
+    <div class="adm-hint">5 รูปในกริด — รูปแรกจะใหญ่พิเศษ</div>
+    <div class="upzone" id="uz-mosaic" onclick="document.getElementById('fi-mosaic').click()">
+      <div class="upzone-icon">🗂</div>
+      <div class="upzone-txt">คลิกหรือลากรูปมาวาง</div>
+    </div>
+    <input type="file" id="fi-mosaic" accept="image/*" multiple>
+    <div class="img-grid" id="mosaic-grid-adm"></div>
+  </div>
+
+  <div class="save-msg" id="save-msg"></div>
+</div>
+
+<!-- LOGIN -->
+<div class="login-ov" id="login-ov" style="display:none">
+  <div class="login-box">
+    <div class="login-title">Admin Access</div>
+    <div class="login-sub">LANDING PAGE MANAGER</div>
+    <label class="adm-lbl">Password</label>
+    <input class="adm-input" type="password" id="lp-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="adm-save" onclick="doLogin()">เข้าสู่ระบบ</button>
+    <div class="login-err" id="lp-err"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════
+// DEFAULTS
+// ══════════════════════════════════════
+const DEF_SLIDES = [
+  {url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80',title:'เชียงใหม่',sub:'ดินแดนล้านนา',desc:'วัดพระธาตุดอยสุเทพ · ตลาดกลางคืน · ขี่ช้างในป่า'},
+  {url:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1800&q=80',title:'กระบี่',sub:'อ่าวอันดามัน',desc:'หน้าผาหินปูน · น้ำทะเลสีมรกต · ชีวิตชายหาดที่ผ่อนคลาย'},
+  {url:'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1800&q=80',title:'ภูเก็ต',sub:'เกาะมุกแห่งอันดามัน',desc:'หาดทรายขาว · น้ำใสราวคริสตัล · อาหารทะเลสดๆ'},
+  {url:'https://images.unsplash.com/photo-1545579133-99bb5ad189be?w=1800&q=80',title:'อยุธยา',sub:'อดีตราชธานี',desc:'โบราณสถานมรดกโลก · ประวัติศาสตร์กว่า 400 ปี'},
+  {url:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1800&q=80',title:'เชียงราย',sub:'ดอยสูงและไร่ชา',desc:'วัดร่องขุ่น · วัดร่องเสือเต้น · บรรยากาศชายแดนทองคำ'},
+  {url:'https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=1800&q=80',title:'สมุย',sub:'อ่าวไทยฝั่งตะวันออก',desc:'น้ำตกหน้าเมือง · หาดเฉวง · วิถีชีวิตเกาะที่สงบงาม'},
+];
+const DEF_STRIP = [
+  {url:'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80',lbl:'ขี่ช้าง'},
+  {url:'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80',lbl:'กุ้งแม่น้ำ'},
+  {url:'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&q=80',lbl:'วัดไทย'},
+  {url:'https://images.unsplash.com/photo-1537153528583-c3e0de12e8b7?w=600&q=80',lbl:'ล่องเรือ'},
+  {url:'https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80',lbl:'ดำน้ำ'},
+  {url:'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80',lbl:'อาหารริมทาง'},
+  {url:'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',lbl:'หาดทราย'},
+  {url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',lbl:'ดอยสูง'},
+];
+const DEF_MOSAIC = [
+  {url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80',name:'เชียงใหม่',sub:'5 วัน 4 คืน · ฿28,500'},
+  {url:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80',name:'กระบี่',sub:'4 วัน 3 คืน · ฿22,000'},
+  {url:'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80',name:'ภูเก็ต',sub:'3 วัน 2 คืน · ฿18,500'},
+  {url:'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=900&q=80',name:'อยุธยา',sub:'วันเดียว · ฿6,500'},
+  {url:'https://images.unsplash.com/photo-1545579133-99bb5ad189be?w=600&q=80',name:'เชียงราย',sub:'3 วัน 2 คืน · ฿16,000'},
+];
+
+// ══════════════════════════════════════
+// STATE
+// ══════════════════════════════════════
+function ld(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+
+let SLIDES  = ld('lp_slides', DEF_SLIDES);
+let STRIP   = ld('lp_strip',  DEF_STRIP);
+let MOSAIC  = ld('lp_mosaic', DEF_MOSAIC);
+let MURL    = ld('lp_murl',   'index.html');
+let logged  = sessionStorage.getItem('lp_a')==='1';
+const PASS  = 'admin1234';
+
+function setLinks(u){
+  ['main-link','cta-main','cta-pkg','cta-tf','cta-gal','cta-footer'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.href = id==='cta-tf' ? u+'#transfer' : u;
+  });
+}
+setLinks(MURL);
+
+// ══════════════════════════════════════
+// SLIDESHOW
+// ══════════════════════════════════════
+let cur=0, timer;
+
+function buildSlides(){
+  const wrap=document.getElementById('slides-wrap');
+  const dots=document.getElementById('dots-wrap');
+  wrap.innerHTML=''; dots.innerHTML='';
+  SLIDES.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='slide'+(i===0?' active':'');
+    d.innerHTML=`<img class="slide-img" src="${s.url}" alt="${s.title}" loading="${i===0?'eager':'lazy'}">
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <div class="slide-tag">${s.sub||''}</div>
+        <div class="slide-title">${s.title}<em>${s.desc||''}</em></div>
+      </div>`;
+    wrap.appendChild(d);
+    const dot=document.createElement('div');
+    dot.className='dot'+(i===0?' active':'');
+    dot.onclick=()=>go(i);
+    dots.appendChild(dot);
+  });
+  document.getElementById('cnt-t').textContent='/ '+String(SLIDES.length).padStart(2,'0');
+  upCnt();
+}
+function go(n){
+  const sl=document.querySelectorAll('.slide'),dt=document.querySelectorAll('.dot');
+  sl[cur]?.classList.remove('active'); dt[cur]?.classList.remove('active');
+  cur=(n+SLIDES.length)%SLIDES.length;
+  sl[cur]?.classList.add('active'); dt[cur]?.classList.add('active');
+  upCnt(); resetT();
+}
+function next(){go(cur+1)} function prev(){go(cur-1)}
+function upCnt(){document.getElementById('cnt-n').textContent=String(cur+1).padStart(2,'0')}
+function resetT(){clearInterval(timer);timer=setInterval(next,6000)}
+
+// ══════════════════════════════════════
+// STRIP
+// ══════════════════════════════════════
+function buildStrip(){
+  const el=document.getElementById('strip-wrap'); el.innerHTML='';
+  STRIP.slice(0,8).forEach(s=>{
+    const d=document.createElement('div'); d.className='strip-item';
+    d.innerHTML=`<img src="${s.url}" alt="${s.lbl||''}" loading="lazy"><div class="strip-lbl">${s.lbl||''}</div>`;
+    el.appendChild(d);
+  });
+}
+
+// ══════════════════════════════════════
+// MOSAIC
+// ══════════════════════════════════════
+function buildMosaic(){
+  const el=document.getElementById('mosaic-wrap'); el.innerHTML='';
+  MOSAIC.slice(0,5).forEach(m=>{
+    const d=document.createElement('div'); d.className='m-item';
+    d.innerHTML=`<img src="${m.url}" alt="${m.name||''}" loading="lazy">
+      <div class="m-lbl"><div class="m-lbl-name">${m.name||''}</div><div class="m-lbl-sub">${m.sub||''}</div></div>`;
+    el.appendChild(d);
+  });
+}
+
+// ══════════════════════════════════════
+// ADMIN
+// ══════════════════════════════════════
+document.getElementById('adm-toggle').addEventListener('click',()=>{
+  if(!logged){document.getElementById('login-ov').style.display='flex';setTimeout(()=>document.getElementById('lp-pass').focus(),50);return;}
+  openAdm();
+});
+
+function doLogin(){
+  if(document.getElementById('lp-pass').value===PASS){
+    logged=true; sessionStorage.setItem('lp_a','1');
+    document.getElementById('login-ov').style.display='none';
+    document.getElementById('lp-pass').value='';
+    document.getElementById('lp-err').textContent='';
+    openAdm();
+  } else {
+    document.getElementById('lp-err').textContent='Password ไม่ถูกต้อง';
+    document.getElementById('lp-pass').value='';
+  }
+}
+document.getElementById('lp-pass').addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('login-ov').style.display='none';});
+
+function openAdm(){
+  document.getElementById('adm-panel').classList.add('open');
+  document.getElementById('cfg-url').value=MURL;
+  buildAdmSlides(); buildTxtEditor(); buildImgGrid('strip-grid',STRIP,'strip'); buildImgGrid('mosaic-grid-adm',MOSAIC,'mosaic');
+}
+function closeAdm(){document.getElementById('adm-panel').classList.remove('open');}
+
+// URL
+function saveUrl(){
+  const u=document.getElementById('cfg-url').value.trim()||'index.html';
+  MURL=u; sv('lp_murl',u); setLinks(u); msg('✅ บันทึก URL แล้ว');
+}
+function testUrl(){const u=document.getElementById('cfg-url').value.trim();if(u)window.open(u,'_blank');}
+
+// Slide list
+function buildAdmSlides(){
+  const el=document.getElementById('slide-list'); el.innerHTML='';
+  SLIDES.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='slide-row'; d.draggable=true; d.dataset.i=i;
+    d.innerHTML=`<span class="drag-h">⠿</span><img class="s-thumb" src="${s.url}" alt=""><div class="s-info"><div class="s-name">${s.title}</div><div class="s-sub">${s.sub||''}</div></div><button class="s-del" onclick="delSlide(${i})">×</button>`;
+    setupDrag(d, el, ()=>{
+      const rows=[...el.querySelectorAll('.slide-row')];
+      SLIDES=rows.map(r=>SLIDES[parseInt(r.dataset.i)]);
+      rows.forEach((r,ni)=>r.dataset.i=ni);
+      sv('lp_slides',SLIDES); buildSlides(); resetT(); buildTxtEditor();
+    });
+    el.appendChild(d);
+  });
+}
+function delSlide(i){
+  if(SLIDES.length<=1){alert('ต้องมีรูปอย่างน้อย 1 รูป');return;}
+  if(!confirm('ลบ slide นี้?'))return;
+  SLIDES.splice(i,1); sv('lp_slides',SLIDES);
+  buildSlides();resetT();buildAdmSlides();buildTxtEditor();
+}
+
+// Text editor
+function buildTxtEditor(){
+  const el=document.getElementById('slide-txt-editor'); el.innerHTML='';
+  SLIDES.forEach((s,i)=>{
+    const d=document.createElement('div'); d.className='slide-txt-item';
+    d.innerHTML=`<div class="slide-idx">Slide ${i+1}</div>
+      <label class="adm-lbl">ชื่อหัวข้อ</label><input class="adm-input" id="t-ti-${i}" value="${s.title||''}">
+      <label class="adm-lbl">หัวข้อรอง</label><input class="adm-input" id="t-su-${i}" value="${s.sub||''}">
+      <label class="adm-lbl">คำอธิบาย</label><input class="adm-input" id="t-de-${i}" value="${s.desc||''}">`;
+    el.appendChild(d);
+  });
+}
+function saveTxt(){
+  SLIDES.forEach((s,i)=>{
+    s.title=document.getElementById(`t-ti-${i}`)?.value||s.title;
+    s.sub=document.getElementById(`t-su-${i}`)?.value||s.sub;
+    s.desc=document.getElementById(`t-de-${i}`)?.value||s.desc;
+  });
+  sv('lp_slides',SLIDES); buildSlides(); resetT(); msg('✅ บันทึกข้อความแล้ว');
+}
+
+// Image grids
+function buildImgGrid(cid, arr, type){
+  const el=document.getElementById(cid); el.innerHTML='';
+  arr.forEach((item,i)=>{
+    const url=typeof item==='string'?item:item.url;
+    const d=document.createElement('div'); d.className='ig-item';
+    d.innerHTML=`<img src="${url}" alt=""><button class="ig-del" onclick="delImg('${type}',${i})">×</button>`;
+    el.appendChild(d);
+  });
+}
+function delImg(type,i){
+  if(!confirm('ลบรูปนี้?'))return;
+  if(type==='strip'){STRIP.splice(i,1);sv('lp_strip',STRIP);buildStrip();buildImgGrid('strip-grid',STRIP,'strip');}
+  else{MOSAIC.splice(i,1);sv('lp_mosaic',MOSAIC);buildMosaic();buildImgGrid('mosaic-grid-adm',MOSAIC,'mosaic');}
+}
+
+// File upload
+function readFiles(files, type){
+  Array.from(files).forEach(f=>{
+    const r=new FileReader();
+    r.onload=e=>{
+      const url=e.target.result;
+      if(type==='slide'){SLIDES.push({url,title:'ไทยแลนด์',sub:'ความงาม',desc:'ดินแดนแห่งรอยยิ้ม'});sv('lp_slides',SLIDES);buildSlides();resetT();buildAdmSlides();buildTxtEditor();}
+      else if(type==='strip'){STRIP.push({url,lbl:'ไทยแลนด์'});sv('lp_strip',STRIP);buildStrip();buildImgGrid('strip-grid',STRIP,'strip');}
+      else{MOSAIC.push({url,name:'ไทยแลนด์',sub:''});sv('lp_mosaic',MOSAIC);buildMosaic();buildImgGrid('mosaic-grid-adm',MOSAIC,'mosaic');}
+      msg('✅ อัปโหลดรูปแล้ว');
+    };
+    r.readAsDataURL(f);
+  });
+}
+document.getElementById('fi-slide').addEventListener('change',e=>readFiles(e.target.files,'slide'));
+document.getElementById('fi-strip').addEventListener('change',e=>readFiles(e.target.files,'strip'));
+document.getElementById('fi-mosaic').addEventListener('change',e=>readFiles(e.target.files,'mosaic'));
+
+// Drag drop upload
+[['uz-slide','slide'],['uz-strip','strip'],['uz-mosaic','mosaic']].forEach(([id,type])=>{
+  const z=document.getElementById(id);
+  z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('over');});
+  z.addEventListener('dragleave',()=>z.classList.remove('over'));
+  z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('over');readFiles(e.dataTransfer.files,type);});
+});
+
+// Drag reorder slides
+function setupDrag(el, container, cb){
+  el.addEventListener('dragstart',()=>el.classList.add('dragging'));
+  el.addEventListener('dragend',()=>{el.classList.remove('dragging');cb();});
+  container.addEventListener('dragover',e=>{
+    e.preventDefault();
+    const drag=container.querySelector('.dragging');
+    const items=[...container.querySelectorAll('.slide-row:not(.dragging)')];
+    const after=items.find(it=>e.clientY<it.getBoundingClientRect().top+it.offsetHeight/2);
+    after?container.insertBefore(drag,after):container.appendChild(drag);
+  });
+}
+
+// Msg
+function msg(m){const el=document.getElementById('save-msg');el.textContent=m;el.style.opacity='1';setTimeout(()=>el.style.opacity='0',2500);}
+
+// ══════════════════════════════════════
+// NAV / SCROLL REVEAL
+// ══════════════════════════════════════
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>60);});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return;
+  if(e.key==='ArrowRight')next();
+  if(e.key==='ArrowLeft')prev();
+  if(e.key==='Escape'){closeAdm();document.getElementById('login-ov').style.display='none';}
+});
+
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+buildSlides(); buildStrip(); buildMosaic(); resetT();
+</script>
+</body>
+</html>
