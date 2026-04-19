@@ -1780,7 +1780,7 @@ function renderSummary(){
     <div style="border-top:1px solid rgba(201,169,110,0.12);margin:8px 0;padding-top:8px">
       <div class="bk-sum-row" style="font-size:12px"><span class="bk-sum-label">Tour ฿${calc.tourPpax.toLocaleString()} × ${calc.pax}</span><span class="bk-sum-val">฿${calc.tourTotal.toLocaleString()}</span></div>
       <div class="bk-sum-row" style="font-size:12px"><span class="bk-sum-label">Vehicle ฿${calc.vehPpax.toLocaleString()} × ${calc.pax}</span><span class="bk-sum-val">฿${calc.vehTotal.toLocaleString()}</span></div>
-      <div class="bk-sum-row" style="font-size:15px;margin-top:6px"><span class="bk-sum-label" style="color:var(--cream);font-weight:500">Grand Total</span><span style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:22px">฿${calc.grandTotal.toLocaleString()}</span></div>
+      <div class="bk-sum-row" style="font-size:15px;margin-top:6px"><span class="bk-sum-label" style="color:var(--cream);font-weight:500">Grand Total</span><span style="color:var(--gold);font-family:Georgia,serif;font-size:22px">฿${calc.grandTotal.toLocaleString()}</span></div>
       <div class="bk-sum-row"><span class="bk-sum-label" style="color:var(--muted)">Deposit 30%</span><span style="color:var(--gold);font-weight:500">฿${dep.toLocaleString()}</span></div>
     </div>`;
 }
@@ -1987,7 +1987,7 @@ function renderTourVehPriceEditor(){
       <div style="display:flex;align-items:center;gap:6px">
         <span style="font-size:11px;color:var(--muted)">฿</span>
         <input type="number" class="finput" id="tvp-${v.id}" value="${price}" 
-               style="width:90px;padding:7px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold)"
+               style="width:90px;padding:7px;text-align:center;font-family:Georgia,serif;font-size:15px;color:var(--gold)"
                placeholder="0">
         <span style="font-size:10px;color:var(--muted)">/person</span>
       </div>
@@ -2068,7 +2068,7 @@ function renderPkgVehPriceEditor(existingVehicles){
       + '<div style="font-size:9px;color:var(--muted)">'+v.model+' · Max '+v.maxPax+' pax</div></div>'
       + '<span style="font-size:11px;color:var(--muted)">฿</span>'
       + '<input type="number" class="finput" id="pvp-'+v.id+'" value="'+cur+'"'
-      + ' style="width:100px;padding:7px;text-align:right;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold)">'
+      + ' style="width:100px;padding:7px;text-align:right;font-family:Georgia,serif;font-size:16px;color:var(--gold)">'
       + '<span style="font-size:10px;color:var(--muted);white-space:nowrap">/ทริป</span></div>';
   }).join('');
 }
