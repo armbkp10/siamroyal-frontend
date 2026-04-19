@@ -387,6 +387,55 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 .pb-val{color:var(--cream);font-weight:500}
 .pb-total{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700}
 .pb-note{font-size:10px;color:rgba(201,169,110,0.5);margin-top:6px;line-height:1.6}
+
+/* ═══ CUSTOM TRIP BUILDER ═══ */
+.ct-page{max-width:780px;margin:0 auto;padding:100px 5% 60px}
+.ct-hero{text-align:center;margin-bottom:48px}
+.ct-eyebrow{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.ct-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);color:var(--cream);font-weight:400;line-height:1.15;margin-bottom:14px}
+.ct-title em{font-style:italic;color:var(--gold)}
+.ct-subtitle{font-size:13px;color:var(--muted);line-height:1.9;max-width:560px;margin:0 auto}
+.ct-notice{background:rgba(201,169,110,0.06);border-left:3px solid var(--gold);padding:14px 18px;font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:32px}
+.ct-notice strong{color:var(--gold)}
+.ct-section{margin-bottom:28px}
+.ct-section-title{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.ct-section-title::after{content:'';flex:1;height:1px;background:rgba(201,169,110,0.15)}
+.ct-dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.ct-dest-card{background:var(--dark2);border:2px solid rgba(201,169,110,0.12);padding:12px 10px;cursor:pointer;transition:all 0.22s;text-align:center}
+.ct-dest-card:hover{border-color:rgba(201,169,110,0.4);background:rgba(201,169,110,0.04)}
+.ct-dest-card.sel{border-color:var(--gold);background:rgba(201,169,110,0.07)}
+.ct-dest-icon{font-size:22px;margin-bottom:5px}
+.ct-dest-name{font-size:11px;color:var(--cream);font-weight:500;letter-spacing:0.5px}
+.ct-dest-desc{font-size:9px;color:var(--muted);margin-top:2px}
+.ct-veh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ct-veh-card{background:var(--dark2);border:2px solid rgba(201,169,110,0.12);padding:12px 8px;cursor:pointer;transition:all 0.22s;text-align:center}
+.ct-veh-card:hover{border-color:rgba(201,169,110,0.35)}
+.ct-veh-card.sel{border-color:var(--gold);background:rgba(201,169,110,0.07)}
+.ct-veh-icon{font-size:20px;margin-bottom:4px}
+.ct-veh-name{font-size:11px;color:var(--cream);font-weight:500}
+.ct-veh-cap{font-size:9px;color:var(--muted);margin-top:2px}
+.ct-estimate{background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.2);padding:16px 20px;margin:16px 0}
+.ct-est-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 0}
+.ct-est-label{color:var(--muted)}
+.ct-est-val{color:var(--cream);font-weight:500}
+.ct-est-total{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold)}
+.ct-est-note{font-size:10px;color:rgba(201,169,110,0.5);margin-top:8px;line-height:1.7;font-style:italic}
+.day-planner{display:flex;flex-direction:column;gap:8px}
+.day-row{display:flex;align-items:flex-start;gap:10px;background:var(--dark2);border:1px solid rgba(201,169,110,0.1);padding:12px 14px}
+.day-num{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);font-weight:600;min-width:28px;padding-top:2px}
+.day-inp{background:transparent;border:none;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:12px;flex:1;outline:none;padding:0;line-height:1.7;resize:none;min-height:40px}
+.day-inp::placeholder{color:rgba(240,232,216,0.22)}
+.add-day-btn{background:rgba(201,169,110,0.08);border:1px dashed rgba(201,169,110,0.25);color:var(--gold);padding:10px;font-size:11px;cursor:pointer;width:100%;text-align:center;transition:all 0.2s;letter-spacing:1px}
+.add-day-btn:hover{background:rgba(201,169,110,0.13);border-color:var(--gold)}
+.rm-day{background:none;border:none;color:rgba(224,92,92,0.4);cursor:pointer;font-size:16px;padding:2px;transition:color 0.2s;line-height:1;flex-shrink:0;margin-top:2px}
+.rm-day:hover{color:#e05c5c}
+.ct-submit-btn{background:var(--gold);border:none;color:var(--ink);padding:16px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;width:100%;transition:all 0.3s;margin-top:8px}
+.ct-submit-btn:hover{background:var(--gold2)}
+.ct-submit-btn:disabled{opacity:0.5;cursor:not-allowed}
+.ct-success{display:none;text-align:center;padding:40px 0}
+.ct-success-icon{font-size:52px;margin-bottom:16px}
+.ct-success-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:10px}
+.ct-success-sub{font-size:13px;color:var(--muted);line-height:1.8;max-width:440px;margin:0 auto 28px}
 </style>
 </head>
 <body>
@@ -398,6 +447,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
     <li><a data-i="nav_tours" onclick="showPage('home')">Tours</a></li>
     <li><a data-i="nav_book" onclick="showPage('booking')">Book Now</a></li>
     <li><a data-i="nav_transfer" onclick="showPage('transfer')">Airport Transfer</a></li>
+    <li><a onclick="showPage('custom')" style="color:var(--gold)" data-i="nav_custom">✦ Custom Trip</a></li>
     <li><a data-i="nav_contact" onclick="scrollContact()">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -424,6 +474,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <div class="hbtns">
         <button class="bp" onclick="showPage('booking')" data-i="cta_packages">View Tour Packages</button>
         <button class="bo" onclick="showPage('transfer')" data-i="cta_transfer">✈ Airport Transfer</button>
+        <button class="bo" onclick="showPage('custom')" style="border-color:var(--gold);color:var(--gold)" data-i="cta_custom">✦ Custom Trip</button>
         <button class="bo" onclick="scrollContact()" data-i="cta_consult">Free Consultation</button>
       </div>
       <div class="stats">
@@ -780,6 +831,229 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
   </div>
 </div>
 
+<!-- ═══════ CUSTOM TRIP ═══════ -->
+<div id="page-custom" class="page">
+  <div class="ct-page">
+
+    <!-- HERO -->
+    <div class="ct-hero">
+      <div class="ct-eyebrow" data-i="ct_eyebrow">ออกแบบทริปของคุณเอง</div>
+      <h1 class="ct-title"><span data-i="ct_title1">Custom</span> <em data-i="ct_title2">Trip Builder</em></h1>
+      <p class="ct-subtitle" data-i="ct_subtitle">บอกเราว่าคุณอยากไปที่ไหน ทำอะไร กี่วัน — เราจะออกแบบทริปและเสนอราคาเบื้องต้นให้ทันที</p>
+    </div>
+
+    <!-- NOTICE -->
+    <div class="ct-notice" data-i="ct_notice">
+      ⚠️ <strong>หมายเหตุ:</strong> ราคาที่แสดงเป็นเพียง <strong>ราคาเบื้องต้น</strong> เท่านั้น อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา และรายละเอียดเพิ่มเติม ทีมงานจะติดต่อกลับเพื่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง
+    </div>
+
+    <div id="ct-form-wrap">
+
+      <!-- Destinations -->
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_dest_title">เลือกจุดหมาย (เลือกได้หลายที่)</div>
+        <div class="ct-dest-grid" id="ct-dest-grid">
+          <div class="ct-dest-card" data-dest="Bangkok" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🏙️</div>
+            <div class="ct-dest-name">กรุงเทพฯ</div>
+            <div class="ct-dest-desc">Bangkok</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Chiang Mai" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🏔️</div>
+            <div class="ct-dest-name">เชียงใหม่</div>
+            <div class="ct-dest-desc">Chiang Mai</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Chiang Rai" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🌿</div>
+            <div class="ct-dest-name">เชียงราย</div>
+            <div class="ct-dest-desc">Chiang Rai</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Phuket" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🏖️</div>
+            <div class="ct-dest-name">ภูเก็ต</div>
+            <div class="ct-dest-desc">Phuket</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Krabi" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🪨</div>
+            <div class="ct-dest-name">กระบี่</div>
+            <div class="ct-dest-desc">Krabi</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Ayutthaya" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🏛️</div>
+            <div class="ct-dest-name">อยุธยา</div>
+            <div class="ct-dest-desc">Ayutthaya</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Pattaya" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🌊</div>
+            <div class="ct-dest-name">พัทยา</div>
+            <div class="ct-dest-desc">Pattaya</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Koh Samui" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🌴</div>
+            <div class="ct-dest-name">สมุย</div>
+            <div class="ct-dest-desc">Koh Samui</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Other" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">📍</div>
+            <div class="ct-dest-name">อื่นๆ</div>
+            <div class="ct-dest-desc">Other</div>
+          </div>
+        </div>
+        <!-- Other destination input -->
+        <input class="finput" id="ct-dest-other" placeholder="ระบุจุดหมายที่ต้องการ..." style="display:none;margin-top:8px">
+      </div>
+
+      <!-- Travel Info -->
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_info_title">รายละเอียดการเดินทาง</div>
+        <div class="form-row">
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_date_lbl">วันที่เริ่มต้น</label>
+            <input type="date" class="finput" id="ct-date">
+          </div>
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_days_lbl">จำนวนวัน</label>
+            <select class="finput" id="ct-days" onchange="ctUpdateEstimate()">
+              <option value="1">1 วัน</option>
+              <option value="2">2 วัน</option>
+              <option value="3" selected>3 วัน</option>
+              <option value="4">4 วัน</option>
+              <option value="5">5 วัน</option>
+              <option value="6">6 วัน</option>
+              <option value="7">7 วัน</option>
+              <option value="10">10 วัน</option>
+              <option value="14">14 วัน</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_pax_lbl">จำนวนผู้เดินทาง</label>
+            <select class="finput" id="ct-pax" onchange="ctUpdateEstimate()">
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6</option>
+              <option>7</option><option>8</option><option>9</option><option>10+</option>
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_style_lbl">สไตล์การเดินทาง</label>
+            <select class="finput" id="ct-style">
+              <option value="cultural" data-i="ct_style_cultural">วัฒนธรรม / วัด / ประวัติศาสตร์</option>
+              <option value="nature" data-i="ct_style_nature">ธรรมชาติ / ป่า / ดอย</option>
+              <option value="beach" data-i="ct_style_beach">ทะเล / หาด / เกาะ</option>
+              <option value="food" data-i="ct_style_food">อาหาร / ตลาด / Street Food</option>
+              <option value="luxury" data-i="ct_style_luxury">Luxury / ไฮเอนด์</option>
+              <option value="adventure" data-i="ct_style_adventure">Adventure / ผจญภัย</option>
+              <option value="family" data-i="ct_style_family">ครอบครัว / เด็ก</option>
+              <option value="honeymoon" data-i="ct_style_honeymoon">ฮันนีมูน / โรแมนติก</option>
+              <option value="mix" data-i="ct_style_mix">ผสมผสาน / หลายอย่าง</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle -->
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_veh_title">ประเภทรถที่ต้องการ</div>
+        <div class="ct-veh-grid" id="ct-veh-grid"></div>
+      </div>
+
+      <!-- Day Planner -->
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_plan_title">วางแผนทีละวัน (ไม่บังคับ)</div>
+        <div class="day-planner" id="ct-day-planner"></div>
+        <button class="add-day-btn" onclick="ctAddDay()" style="margin-top:8px" data-i="ct_add_day">+ เพิ่มวัน</button>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_extra_title">ความต้องการพิเศษ</div>
+        <div class="form-row full">
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_wish_lbl">อยากทำอะไรเป็นพิเศษ? สถานที่ที่อยากไป?</label>
+            <textarea class="finput" id="ct-wishes" rows="3" placeholder="เช่น อยากขี่ช้าง, ต้องการล่องเรือ, อยากชมพระอาทิตย์ตกที่..."></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_budget_lbl">งบประมาณโดยประมาณ (฿/ทริป)</label>
+            <select class="finput" id="ct-budget">
+              <option value="economy" data-i="ct_bud1">ประหยัด (ต่ำกว่า ฿10,000)</option>
+              <option value="standard" selected data-i="ct_bud2">มาตรฐาน (฿10,000–30,000)</option>
+              <option value="premium" data-i="ct_bud3">พรีเมียม (฿30,000–60,000)</option>
+              <option value="luxury" data-i="ct_bud4">Luxury (฿60,000+)</option>
+              <option value="flexible" data-i="ct_bud5">ยืดหยุ่นได้</option>
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_hotel_lbl">ที่พักที่ต้องการ</label>
+            <select class="finput" id="ct-hotel-pref">
+              <option data-i="ct_hotel1">ไม่ต้องการ (มีที่พักแล้ว)</option>
+              <option data-i="ct_hotel2">ช่วยแนะนำ (ไม่รวมในราคา)</option>
+              <option data-i="ct_hotel3">รวมที่พักด้วย (3 ดาว)</option>
+              <option data-i="ct_hotel4">รวมที่พักด้วย (4-5 ดาว)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price Estimate -->
+      <div class="ct-estimate" id="ct-estimate-box">
+        <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px" data-i="ct_est_title">ราคาเบื้องต้น (ประมาณการ)</div>
+        <div class="ct-est-row"><span class="ct-est-label" data-i="ct_est_veh">ค่ารถ (ต่อวัน × จำนวนวัน)</span><span class="ct-est-val" id="ct-est-veh-val">—</span></div>
+        <div class="ct-est-row" id="ct-est-ticket-row" style="display:none"><span class="ct-est-label" data-i="ct_est_ticket">ค่าตั๋ว/เข้าสถานที่ (ประมาณ)</span><span class="ct-est-val" id="ct-est-ticket-val">—</span></div>
+        <div class="ct-est-row" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(201,169,110,0.15)">
+          <span class="ct-est-label" style="color:var(--cream);font-weight:500" data-i="ct_est_total">ยอดรวมโดยประมาณ</span>
+          <span class="ct-est-total" id="ct-est-total-val">—</span>
+        </div>
+        <div class="ct-est-note" data-i="ct_est_note">* ราคานี้เป็นการประมาณการเบื้องต้นเท่านั้น อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา สถานที่เพิ่มเติม และฤดูกาล ทีมงานจะติดต่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง</div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_contact_title">ข้อมูลติดต่อ</div>
+        <div class="form-row">
+          <div class="fgroup"><label class="flabel" data-i="fl_fname">ชื่อ</label><input class="finput" id="ct-fname" placeholder="First Name"></div>
+          <div class="fgroup"><label class="flabel" data-i="fl_lname">นามสกุล</label><input class="finput" id="ct-lname" placeholder="Last Name"></div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup"><label class="flabel" data-i="fl_email">Email *</label><input class="finput" id="ct-email" type="email" placeholder="your@email.com"></div>
+          <div class="fgroup"><label class="flabel" data-i="fl_phone">โทรศัพท์ / WhatsApp</label><input class="finput" id="ct-phone" placeholder="+66 81 234 5678"></div>
+        </div>
+        <div class="form-row full">
+          <div class="fgroup">
+            <label class="flabel" data-i="fl_contact">ช่องทางติดต่อที่สะดวก</label>
+            <select class="finput" id="ct-contact-pref">
+              <option>LINE</option><option>WhatsApp</option><option>WeChat</option><option>Email</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button class="ct-submit-btn" onclick="submitCustomTrip()" id="ct-submit-btn" data-i="ct_submit_btn">
+        ส่งคำขอ Custom Trip →
+      </button>
+      <div style="text-align:center;margin-top:12px">
+        <button class="fbk-out" onclick="showPage('home')" style="background:transparent;border:none;color:var(--muted);font-size:12px;cursor:pointer" data-i="btn_back">← กลับหน้าหลัก</button>
+      </div>
+
+    </div><!-- /ct-form-wrap -->
+
+    <!-- SUCCESS -->
+    <div class="ct-success" id="ct-success">
+      <div class="ct-success-icon">✦</div>
+      <div class="ct-success-title" data-i="ct_success_title">ส่งคำขอแล้วเรียบร้อย!</div>
+      <p class="ct-success-sub" data-i="ct_success_sub">ทีมงานจะตรวจสอบรายละเอียดและติดต่อกลับภายใน 2-4 ชั่วโมง เพื่อยืนยันราคาและรายละเอียดทริปของคุณ</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="fbk" onclick="openLineWithRef()" style="display:flex;align-items:center;gap:8px">💬 ติดตาม LINE</button>
+        <button class="fbk-out" onclick="showPage('home')">กลับหน้าหลัก</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <!-- ═══════ ADMIN ═══════ -->
 <div id="page-admin" class="page">
   <div class="adm">
@@ -1025,6 +1299,51 @@ const I18N = {
     hero_h1a:'Explore Thailand', hero_h1b:'in Luxury',
     hero_sub:'Private tours with professional car and driver — crafted exclusively for you.',
     cta_packages:'View Tour Packages', cta_transfer:'✈ Airport Transfer', cta_consult:'Free Consultation',
+    nav_custom:'✦ Custom Trip',
+    cta_custom:'✦ Custom Trip',
+    ct_eyebrow:'Design Your Own Trip',
+    ct_title1:'Custom',
+    ct_title2:'Trip Builder',
+    ct_subtitle:'Tell us where to go, what to do, how many days — we will design your trip and provide an initial quote immediately.',
+    ct_notice:'⚠️ <strong>Note:</strong> The price shown is an <strong>initial estimate only</strong> and may change based on actual distance, time, and details. Our team will contact you to confirm the final price within 2-4 hours.',
+    ct_submit_btn:'Send Custom Trip Request →',
+    ct_success_title:'Request Sent!',
+    ct_success_sub:'Our team will review the details and contact you within 2-4 hours to confirm pricing and itinerary.',
+    ct_dest_title:'Select Destinations (multiple)',
+    ct_info_title:'Travel Details',
+    ct_date_lbl:'Start Date', ct_days_lbl:'Number of Days',
+    ct_pax_lbl:'Number of Guests', ct_style_lbl:'Travel Style',
+    ct_style_cultural:'Cultural / Temples / History',
+    ct_style_nature:'Nature / Forest / Mountains',
+    ct_style_beach:'Beach / Sea / Islands',
+    ct_style_food:'Food / Markets / Street Food',
+    ct_style_luxury:'Luxury / High-End',
+    ct_style_adventure:'Adventure / Thrilling',
+    ct_style_family:'Family / Children-friendly',
+    ct_style_honeymoon:'Honeymoon / Romantic',
+    ct_style_mix:'Mixed / Multiple interests',
+    ct_veh_title:'Preferred Vehicle Type',
+    ct_plan_title:'Day-by-Day Plan (optional)',
+    ct_add_day:'+ Add Day',
+    ct_extra_title:'Special Requests',
+    ct_wish_lbl:'Must-do activities or places you want to visit?',
+    ct_budget_lbl:'Approximate Budget (฿/trip)',
+    ct_bud1:'Economy (under ฿10,000)',
+    ct_bud2:'Standard (฿10,000–30,000)',
+    ct_bud3:'Premium (฿30,000–60,000)',
+    ct_bud4:'Luxury (฿60,000+)',
+    ct_bud5:'Flexible',
+    ct_hotel_lbl:'Accommodation Preference',
+    ct_hotel1:'Not needed (I have accommodation)',
+    ct_hotel2:'Please recommend (not included)',
+    ct_hotel3:'Include accommodation (3-star)',
+    ct_hotel4:'Include accommodation (4-5 star)',
+    ct_est_title:'Estimated Price (preliminary)',
+    ct_est_veh:'Vehicle cost (per day × days)',
+    ct_est_ticket:'Entry fees / tickets (estimate)',
+    ct_est_total:'Estimated Grand Total',
+    ct_est_note:'* This is a preliminary estimate only. Final price may vary based on actual distance, time, additional stops, and season. Our team will confirm the final price within 2-4 hours.',
+    ct_contact_title:'Contact Information',
     stat1:'Trips Completed', stat2:'Satisfaction Rate', stat3:'Routes Across Thailand', stat4:'Experience',
     max_pax:'Max', max_lug:'Max bags', per_trip:'trip',
     veh_sel_title:'Select Your Vehicle', veh_pax_note:'Suitable for your group size',
@@ -1109,6 +1428,50 @@ const I18N = {
     hero_h1a:'เที่ยวไทย', hero_h1b:'อย่างมีระดับ',
     hero_sub:'ทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบเพื่อคุณโดยเฉพาะ',
     cta_packages:'ดูแพ็กเกจทัวร์', cta_transfer:'✈ รับส่งสนามบิน', cta_consult:'ปรึกษาฟรี',
+    nav_custom:'✦ ทริปส่วนตัว',
+    cta_custom:'✦ ออกแบบทริปเอง',
+    ct_eyebrow:'ออกแบบทริปของคุณเอง',
+    ct_title1:'Custom', ct_title2:'Trip Builder',
+    ct_subtitle:'บอกเราว่าคุณอยากไปที่ไหน ทำอะไร กี่วัน — เราจะออกแบบทริปและเสนอราคาเบื้องต้นให้ทันที',
+    ct_notice:'⚠️ <strong>หมายเหตุ:</strong> ราคาที่แสดงเป็นเพียง <strong>ราคาเบื้องต้น</strong> อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา และรายละเอียดเพิ่มเติม ทีมงานจะติดต่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง',
+    ct_dest_title:'เลือกจุดหมาย (เลือกได้หลายที่)',
+    ct_info_title:'รายละเอียดการเดินทาง',
+    ct_date_lbl:'วันที่เริ่มต้น', ct_days_lbl:'จำนวนวัน',
+    ct_pax_lbl:'จำนวนผู้เดินทาง', ct_style_lbl:'สไตล์การเดินทาง',
+    ct_style_cultural:'วัฒนธรรม / วัด / ประวัติศาสตร์',
+    ct_style_nature:'ธรรมชาติ / ป่า / ดอย',
+    ct_style_beach:'ทะเล / หาด / เกาะ',
+    ct_style_food:'อาหาร / ตลาด / Street Food',
+    ct_style_luxury:'Luxury / ไฮเอนด์',
+    ct_style_adventure:'Adventure / ผจญภัย',
+    ct_style_family:'ครอบครัว / เด็ก',
+    ct_style_honeymoon:'ฮันนีมูน / โรแมนติก',
+    ct_style_mix:'ผสมผสาน / หลายอย่าง',
+    ct_veh_title:'ประเภทรถที่ต้องการ',
+    ct_plan_title:'วางแผนทีละวัน (ไม่บังคับ)',
+    ct_add_day:'+ เพิ่มวัน',
+    ct_extra_title:'ความต้องการพิเศษ',
+    ct_wish_lbl:'อยากทำอะไรเป็นพิเศษ? สถานที่ที่อยากไป?',
+    ct_budget_lbl:'งบประมาณโดยประมาณ (฿/ทริป)',
+    ct_bud1:'ประหยัด (ต่ำกว่า ฿10,000)',
+    ct_bud2:'มาตรฐาน (฿10,000–30,000)',
+    ct_bud3:'พรีเมียม (฿30,000–60,000)',
+    ct_bud4:'Luxury (฿60,000+)',
+    ct_bud5:'ยืดหยุ่นได้',
+    ct_hotel_lbl:'ที่พักที่ต้องการ',
+    ct_hotel1:'ไม่ต้องการ (มีที่พักแล้ว)',
+    ct_hotel2:'ช่วยแนะนำ (ไม่รวมในราคา)',
+    ct_hotel3:'รวมที่พักด้วย (3 ดาว)',
+    ct_hotel4:'รวมที่พักด้วย (4-5 ดาว)',
+    ct_est_title:'ราคาเบื้องต้น (ประมาณการ)',
+    ct_est_veh:'ค่ารถ (ต่อวัน × จำนวนวัน)',
+    ct_est_ticket:'ค่าตั๋ว/เข้าสถานที่ (ประมาณ)',
+    ct_est_total:'ยอดรวมโดยประมาณ',
+    ct_est_note:'* ราคานี้เป็นการประมาณการเบื้องต้นเท่านั้น อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา สถานที่เพิ่มเติม และฤดูกาล ทีมงานจะติดต่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง',
+    ct_contact_title:'ข้อมูลติดต่อ',
+    ct_submit_btn:'ส่งคำขอ Custom Trip →',
+    ct_success_title:'ส่งคำขอแล้ว!',
+    ct_success_sub:'ทีมงานจะติดต่อกลับภายใน 2-4 ชั่วโมง เพื่อยืนยันราคาและรายละเอียดทริปของคุณ',
     stat1:'ทริปสำเร็จ', stat2:'ลูกค้าพอใจ', stat3:'เส้นทางทั่วไทย', stat4:'ประสบการณ์',
     max_pax:'สูงสุด', max_lug:'กระเป๋าสูงสุด', per_trip:'ทริป',
     veh_sel_title:'เลือกประเภทรถ', veh_pax_note:'เหมาะกับขนาดกลุ่มของคุณ',
@@ -1193,6 +1556,50 @@ const I18N = {
     hero_h1a:'探索泰国', hero_h1b:'尊享之旅',
     hero_sub:'专属私人旅游服务，配备专业车辆和司机，为您量身定制难忘旅程。',
     cta_packages:'查看旅游套餐', cta_transfer:'✈ 机场接送', cta_consult:'免费咨询',
+    nav_custom:'✦ 定制行程',
+    cta_custom:'✦ 定制行程',
+    ct_eyebrow:'设计您的专属行程',
+    ct_title1:'Custom', ct_title2:'Trip Builder',
+    ct_subtitle:'告诉我们您想去哪里、做什么、几天——我们将立即为您设计行程并提供初步报价。',
+    ct_notice:'⚠️ <strong>注意：</strong>所显示价格仅为<strong>初步估算</strong>，可能根据实际距离、时间和详情有所变动。我们的团队将在2-4小时内联系您确认最终价格。',
+    ct_dest_title:'选择目的地（可多选）',
+    ct_info_title:'出行详情',
+    ct_date_lbl:'出发日期', ct_days_lbl:'天数',
+    ct_pax_lbl:'出行人数', ct_style_lbl:'旅行风格',
+    ct_style_cultural:'文化 / 寺庙 / 历史',
+    ct_style_nature:'自然 / 森林 / 山地',
+    ct_style_beach:'海滩 / 大海 / 岛屿',
+    ct_style_food:'美食 / 市场 / 街头小食',
+    ct_style_luxury:'奢华 / 高端',
+    ct_style_adventure:'探险 / 刺激',
+    ct_style_family:'家庭 / 亲子',
+    ct_style_honeymoon:'蜜月 / 浪漫',
+    ct_style_mix:'综合 / 多样化',
+    ct_veh_title:'首选车型',
+    ct_plan_title:'逐日行程规划（可选）',
+    ct_add_day:'+ 添加天数',
+    ct_extra_title:'特殊需求',
+    ct_wish_lbl:'特别想做的事或想去的地方？',
+    ct_budget_lbl:'预算参考（฿/次）',
+    ct_bud1:'经济（฿10,000以下）',
+    ct_bud2:'标准（฿10,000–30,000）',
+    ct_bud3:'高级（฿30,000–60,000）',
+    ct_bud4:'豪华（฿60,000以上）',
+    ct_bud5:'灵活',
+    ct_hotel_lbl:'住宿偏好',
+    ct_hotel1:'不需要（已有住宿）',
+    ct_hotel2:'请推荐（不含在价格内）',
+    ct_hotel3:'含住宿（3星）',
+    ct_hotel4:'含住宿（4-5星）',
+    ct_est_title:'初步估价',
+    ct_est_veh:'车费（每天 × 天数）',
+    ct_est_ticket:'景点门票（估算）',
+    ct_est_total:'预计总费用',
+    ct_est_note:'* 此价格仅为初步估算，可能因实际距离、时间、额外景点和季节而变动。我们的团队将在2-4小时内联系您确认最终价格。',
+    ct_contact_title:'联系方式',
+    ct_submit_btn:'发送定制行程请求 →',
+    ct_success_title:'请求已发送！',
+    ct_success_sub:'我们的团队将在2-4小时内审核详情并联系您，确认价格和行程安排。',
     stat1:'行程完成', stat2:'满意度', stat3:'全泰路线', stat4:'服务经验',
     max_pax:'最多', max_lug:'最多行李', per_trip:'次',
     veh_sel_title:'选择车型', veh_pax_note:'适合您的团队规模',
@@ -1281,11 +1688,14 @@ function setLang(l){
   document.querySelectorAll('.lb').forEach(b => b.classList.remove('active'));
   document.querySelector('.lb[onclick="setLang(\''+l+'\')"]').classList.add('active');
   // translate all data-i elements
+  // keys ที่มี HTML tag ใช้ innerHTML — ที่เหลือใช้ textContent
+  const HTML_KEYS = new Set(['ct_notice','pay_contact_note','tf_incl_val','price_note_km','price_note_bkk','book_note']);
   document.querySelectorAll('[data-i]').forEach(el => {
     const k = el.getAttribute('data-i');
     const v = t(k); if(!v) return;
     if(el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder = v;
     else if(el.tagName==='OPTION') el.textContent = v;
+    else if(HTML_KEYS.has(k)) el.innerHTML = v;
     else el.textContent = v;
   });
   // translate placeholders data-ip
@@ -1629,6 +2039,7 @@ function showPage(p){
   if(p==='admin')renderAdmin();
   if(p==='booking'){bkStep=1;renderBkStep();}
   if(p==='transfer'){document.getElementById('tf-form-wrap').style.display='block';document.getElementById('tf-success').style.display='none';setTimeout(()=>renderVehicleGrid(1,0),50);}
+  if(p==='custom'){setTimeout(initCustomTrip,50);}
   window.scrollTo(0,0);
 }
 
@@ -2376,6 +2787,152 @@ fetch(API_BASE+'/api/packages').then(r=>r.json()).then(data=>{
   });
   renderPkgGrid();renderPkgSelect();
 }).catch(()=>{});
+
+// ════════════════════════════════════════════════
+// CUSTOM TRIP BUILDER
+// ════════════════════════════════════════════════
+const CT_VEH_PRICE_PER_DAY = {
+  eco_car:2000, prem_sed:3000, mpv:3500,
+  eco_van:4500, prem_van:6000, lux_mpv:10000,
+};
+const CT_TICKET_EST = {
+  cultural:400, nature:200, beach:300,
+  food:150, luxury:500, adventure:300,
+  family:400, honeymoon:350, mix:300,
+};
+let ctVehicleId = 'eco_car';
+let ctDays = 3;
+
+function initCustomTrip(){
+  const g = document.getElementById('ct-veh-grid');
+  if(!g) return;
+  g.innerHTML = VEHICLES.filter(v=>v.active).map(v=>{
+    const ppd = CT_VEH_PRICE_PER_DAY[v.id]||2000;
+    const isSel = v.id === ctVehicleId;
+    return '<div class="ct-veh-card'+(isSel?' sel':'')+'" onclick="ctSelVeh(\''+v.id+'\',this)">'
+      +'<div class="ct-veh-icon">'+v.icon+'</div>'
+      +'<div class="ct-veh-name">'+vName(v)+'</div>'
+      +'<div class="ct-veh-cap">👤 Max '+v.maxPax+' · ≈ ฿'+ppd.toLocaleString()+'/วัน</div>'
+      +'</div>';
+  }).join('');
+  ctDays = parseInt(document.getElementById('ct-days')?.value)||3;
+  buildDayPlanner();
+  ctUpdateEstimate();
+}
+
+function ctSelVeh(id, el){
+  ctVehicleId = id;
+  document.querySelectorAll('.ct-veh-card').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  ctUpdateEstimate();
+}
+
+function toggleDest(el){
+  el.classList.toggle('sel');
+  const otherInput = document.getElementById('ct-dest-other');
+  if(otherInput) otherInput.style.display =
+    document.querySelector('.ct-dest-card[data-dest="Other"].sel') ? 'block' : 'none';
+}
+
+function buildDayPlanner(){
+  const days = parseInt(document.getElementById('ct-days')?.value)||3;
+  const container = document.getElementById('ct-day-planner');
+  if(!container) return;
+  const existing = [...container.querySelectorAll('.day-inp')].map(i=>i.value);
+  container.innerHTML = '';
+  for(let i=1;i<=days;i++){
+    const div = document.createElement('div');
+    div.className = 'day-row';
+    div.innerHTML = '<span class="day-num">'+i+'</span>'
+      +'<textarea class="day-inp" id="ct-day-'+i+'" placeholder="วันที่ '+i+' — ต้องการไปที่ไหน? ทำอะไร?...">'+(existing[i-1]||'')+'</textarea>'
+      +(days>1 ? '<button class="rm-day" onclick="ctRemoveDay('+i+')" title="ลบ">×</button>' : '');
+    container.appendChild(div);
+  }
+  ctDays = days;
+}
+
+function ctAddDay(){
+  const sel = document.getElementById('ct-days');
+  let cur = parseInt(sel?.value)||3;
+  cur = Math.min(cur+1,14);
+  if(sel) sel.value = cur;
+  buildDayPlanner(); ctUpdateEstimate();
+}
+
+function ctRemoveDay(n){
+  const sel = document.getElementById('ct-days');
+  let cur = parseInt(sel?.value)||3;
+  cur = Math.max(cur-1,1);
+  if(sel) sel.value = cur;
+  buildDayPlanner(); ctUpdateEstimate();
+}
+
+function ctUpdateEstimate(){
+  const days    = parseInt(document.getElementById('ct-days')?.value)||3;
+  const pax     = parseInt(document.getElementById('ct-pax')?.value)||2;
+  const style   = document.getElementById('ct-style')?.value||'mix';
+  const vehPpd  = CT_VEH_PRICE_PER_DAY[ctVehicleId]||2000;
+  const tickPpd = CT_TICKET_EST[style]||300;
+  const vehTotal   = vehPpd * days;
+  const tickTotal  = tickPpd * pax * days;
+  const grand      = vehTotal + tickTotal;
+  const set = (id,v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+  set('ct-est-veh-val',   '฿'+vehPpd.toLocaleString()+' × '+days+' วัน = ฿'+vehTotal.toLocaleString());
+  set('ct-est-ticket-val','฿'+tickPpd.toLocaleString()+'/คน × '+pax+' คน × '+days+' วัน = ฿'+tickTotal.toLocaleString());
+  set('ct-est-total-val', '฿'+grand.toLocaleString());
+  const tr = document.getElementById('ct-est-ticket-row');
+  if(tr) tr.style.display = tickTotal>0 ? '' : 'none';
+  if(days !== ctDays) buildDayPlanner();
+}
+
+async function submitCustomTrip(){
+  const email = document.getElementById('ct-email')?.value.trim();
+  if(!email){ alert('กรุณาใส่ Email'); return; }
+  const dests = [...document.querySelectorAll('.ct-dest-card.sel')].map(el=>el.dataset.dest);
+  if(!dests.length){ alert('กรุณาเลือกจุดหมายอย่างน้อย 1 ที่'); return; }
+  const days = document.getElementById('ct-days')?.value;
+  const pax  = document.getElementById('ct-pax')?.value;
+  const dayPlans = [];
+  for(let i=1;i<=parseInt(days);i++){
+    const v = document.getElementById('ct-day-'+i)?.value.trim();
+    if(v) dayPlans.push('Day '+i+': '+v);
+  }
+  const style    = document.getElementById('ct-style')?.value||'mix';
+  const vehPpd   = CT_VEH_PRICE_PER_DAY[ctVehicleId]||2000;
+  const tickPpd  = CT_TICKET_EST[style]||300;
+  const estTotal = (vehPpd + tickPpd * parseInt(pax)) * parseInt(days);
+  const ref = genRef('CTM'); lastRef = ref;
+  const btn = document.getElementById('ct-submit-btn');
+  btn.textContent='...'; btn.disabled=true;
+  const payload = {
+    type:'custom_trip', reference:ref,
+    destinations: dests.join(', '),
+    dest_other: document.getElementById('ct-dest-other')?.value.trim()||'',
+    travel_date: document.getElementById('ct-date')?.value||'',
+    days, pax, style,
+    vehicle_type: ctVehicleId,
+    vehicle_name: VEHICLES.find(v=>v.id===ctVehicleId)?.name||ctVehicleId,
+    budget: document.getElementById('ct-budget')?.value||'',
+    hotel_pref: document.getElementById('ct-hotel-pref')?.value||'',
+    wishes: document.getElementById('ct-wishes')?.value.trim()||'',
+    day_plans: dayPlans.join(' | '),
+    est_price: estTotal,
+    first_name: document.getElementById('ct-fname')?.value.trim()||'',
+    last_name:  document.getElementById('ct-lname')?.value.trim()||'',
+    email, phone: document.getElementById('ct-phone')?.value.trim()||'',
+    contact_pref: document.getElementById('ct-contact-pref')?.value||'',
+    language: curLang,
+  };
+  try{
+    await fetch(API_BASE+'/api/bookings',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+  }catch(e){ console.warn('API error', e); }
+  document.getElementById('ct-form-wrap').style.display='none';
+  document.getElementById('ct-success').style.display='block';
+  btn.disabled=false;
+}
 
 // ════════════════════════════════════════════════
 // PRICE MATRIX ADMIN
