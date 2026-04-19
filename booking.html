@@ -1401,7 +1401,11 @@ function calcTourTotal(pkg, guests, vehicleId) {
   };
 }
 
-const PKG=[
+// ════════════════════════════════════════════════
+// PACKAGE SYSTEM — persistent ด้วย localStorage
+// ════════════════════════════════════════════════
+const PKG_DEFAULT=[
+
   {id:'p1',name:'Lanna Premium Circuit',nameT:'ล้านนา ไพรีเมียม เซอร์กิต',nameZ:'兰纳高端环线游',
    dest:'Chiang Mai · Chiang Rai',
    ticketPerPax:850, guidePerPax:0,
@@ -1434,7 +1438,25 @@ const PKG=[
    desc:"Iconic beaches, hidden lagoons, and vibrant nightlife on Thailand's pearl island.",
    descT:'ชายหาดอันโด่งดัง ลากูนซ่อนเร้น และไนต์ไลฟ์บนเกาะภูเก็ต',
    descZ:'标志性海滩、隐秘环礁湖和充满活力的夜生活',active:true,photos:[]}
+
 ];
+
+function loadPKG(){
+  try{
+    const s = localStorage.getItem('srj_packages');
+    if(!s) return PKG_DEFAULT.map(p=>({...p}));
+    const saved = JSON.parse(s);
+    // ถ้า saved มี id ที่ default ไม่มี → เพิ่มเข้าไป
+    // ถ้า saved ว่าง → ใช้ default
+    return saved.length > 0 ? saved : PKG_DEFAULT.map(p=>({...p}));
+  } catch { return PKG_DEFAULT.map(p=>({...p})); }
+}
+
+function savePKG(){
+  try{ localStorage.setItem('srj_packages', JSON.stringify(PKG)); }catch{}
+}
+
+let PKG = loadPKG()
 let BOOKINGS=[], TRANSFERS=[];
 let bkSelected=null, bkStep=1, bkVehicle=null;
 let tfDir='arrival', tfAP={code:'BKK',name:'Suvarnabhumi Airport'}, tfVeh=null, tfLug='0';
@@ -2038,19 +2060,20 @@ function deletePkg(i){
   const p=PKG[i];
   if(!confirm(`Delete package "${p.name}"?\n\nThis cannot be undone.`))return;
   PKG.splice(i,1);
+  savePKG();
   renderPkgMgmt();renderPkgGrid();renderPkgSelect();
 }
-function togglePkg(i){PKG[i].active=!PKG[i].active;renderPkgMgmt();renderPkgGrid();}
+function togglePkg(i){PKG[i].active=!PKG[i].active;savePKG();renderPkgMgmt();renderPkgGrid();}
 function openPhotoUpload(idx){photoPkgIdx=idx;const inp=document.getElementById('photo-input');inp.value='';inp.click();}
 document.getElementById('photo-input').addEventListener('change',function(e){
   if(photoPkgIdx===null)return;
   Array.from(e.target.files).forEach(file=>{
     const r=new FileReader();
-    r.onload=ev=>{if(!PKG[photoPkgIdx].photos)PKG[photoPkgIdx].photos=[];PKG[photoPkgIdx].photos.push(ev.target.result);renderPkgMgmt();renderPkgGrid();};
+    r.onload=ev=>{if(!PKG[photoPkgIdx].photos)PKG[photoPkgIdx].photos=[];PKG[photoPkgIdx].photos.push(ev.target.result);savePKG();renderPkgMgmt();renderPkgGrid();};
     r.readAsDataURL(file);
   });
 });
-function delPhoto(pi,ph){if(!confirm('Delete this photo?'))return;PKG[pi].photos.splice(ph,1);renderPkgMgmt();renderPkgGrid();}
+function delPhoto(pi,ph){if(!confirm('Delete this photo?'))return;PKG[pi].photos.splice(ph,1);savePKG();renderPkgMgmt();renderPkgGrid();}
 function openLB(src){document.getElementById('lb-img').src=src;document.getElementById('lightbox').classList.add('open');}
 function closeLB(){document.getElementById('lightbox').classList.remove('open');}
 let editPkgIdx = null;
@@ -2132,9 +2155,11 @@ function saveNewPkg(){
     dur,durT,durZ,desc,descT,descZ};
   if(editPkgIdx !== null){
     PKG[editPkgIdx] = {...PKG[editPkgIdx], ...pkgData};
+    savePKG();
     alert('✅ อัปเดตแพ็กเกจแล้ว');
   } else {
     PKG.push({id:'p'+Date.now(), ...pkgData, active:true, photos:[]});
+    savePKG();
     alert('✅ เพิ่มแพ็กเกจแล้ว');
   }
   closeAddPkg();
