@@ -175,7 +175,7 @@ select.finput{cursor:pointer}
 .ref-label{font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:4px}
 .ref-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream)}
 /* PAYMENT CONTACT CHANNELS */
-.pay-contact-grid">.pay-contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0}
+.pay-contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0}
 .pay-ch{border:1px solid rgba(201,169,110,0.2);padding:16px;text-align:center;cursor:pointer;transition:all 0.25s;background:var(--dark2)}
 .pay-ch:hover{border-color:var(--gold);background:rgba(201,169,110,0.04)}
 .pay-ch-icon{font-size:24px;margin-bottom:8px}
@@ -280,7 +280,6 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 .bar-col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
 .bar{background:var(--gold-dark);width:100%;border-radius:2px 2px 0 0;transition:height 0.5s;cursor:pointer}
 .bar:hover{background:var(--gold)}
-.bar-col.active{opacity:1}
 .bar-label{font-size:9px;color:var(--muted)}
 .bar-val{font-size:9px;color:var(--gold)}
 /* Add/Edit pkg form */
@@ -441,6 +440,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="logo" onclick="showPage('home')">SIAM<span> Royal Journey</span></div>
   <ul class="nav-center">
@@ -461,6 +461,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
   </div>
 </nav>
 
+<!-- ═══════ HOME ═══════ -->
 <div id="page-home" class="page active">
   <section class="hero">
     <div class="hero-grid"></div>
@@ -485,6 +486,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
     </div>
   </section>
 
+  <!-- Transfer Banner -->
   <div class="tf-banner">
     <div style="display:flex;align-items:center;gap:16px">
       <div class="tf-banner-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
@@ -585,6 +587,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
   </footer>
 </div>
 
+<!-- ═══════ BOOKING ═══════ -->
 <div id="page-booking" class="page bk-page">
   <div class="bk-header">
     <div class="ey" data-i="bk_ey">Booking</div>
@@ -601,10 +604,13 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
     <div class="bk-step"><div class="bk-step-num" id="bsn4">4</div><div class="bk-step-label" data-i="bs4">Confirmed!</div></div>
   </div>
   <div class="bk-form">
+    <!-- Step 1 -->
     <div id="bk-step-1">
+      <!-- เลือก Package -->
       <div class="ey" style="margin-bottom:12px" data-i="choose_pkg">Choose Your Package</div>
       <div class="pkg-select-grid" id="pkg-select-grid"></div>
 
+      <!-- วันที่และจำนวนคน -->
       <div class="form-row" style="margin-top:4px">
         <div class="fgroup"><label class="flabel" data-i="fl_date">Travel Date</label><input type="date" class="finput" id="bk-date" onchange="updateBkPrice()"></div>
         <div class="fgroup"><label class="flabel" data-i="fl_guests">Number of Guests</label>
@@ -616,9 +622,11 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         </div>
       </div>
 
+      <!-- เลือกประเภทรถ -->
       <div class="ey" style="margin:16px 0 10px" id="bk-veh-label">Select Vehicle Type</div>
       <div class="bk-veh-grid" id="bk-veh-grid"></div>
 
+      <!-- Price Breakdown -->
       <div class="price-breakdown" id="bk-price-breakdown" style="display:none">
         <div class="pb-row" id="pb-veh-row">
           <span class="pb-label" id="pb-veh-label">🚗 ค่ารถ (ต่อทริป)</span>
@@ -641,6 +649,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 
       <div class="form-nav"><span></span><button class="fbk" onclick="bkNext(1)" data-i="btn_next">Continue</button></div>
     </div>
+    <!-- Step 2 -->
     <div id="bk-step-2" style="display:none">
       <div class="ey" style="margin-bottom:14px" data-i="your_details">Your Details</div>
       <div class="form-row">
@@ -664,6 +673,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <button class="fbk" onclick="bkNext(2)" data-i="btn_next">Continue</button>
       </div>
     </div>
+    <!-- Step 3 -->
     <div id="bk-step-3" style="display:none">
       <div class="ey" style="margin-bottom:14px" data-i="review_title">Review Booking</div>
       <div class="bk-summary" id="bk-summary"></div>
@@ -680,31 +690,33 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <button class="fbk" id="confirm-btn" onclick="submitBooking()" data-i="btn_confirm">Confirm Booking</button>
       </div>
     </div>
+    <!-- Step 4: Success + Pay via Messaging -->
     <div id="bk-step-4" style="display:none">
       <div class="success-box">
         <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
         <div class="success-t" data-i="success_t">Booking Confirmed!</div>
         <p class="success-s" data-i="success_s">Thank you for choosing Siam Royal Journey. Please contact us to complete your payment. We will prepare everything for your trip.</p>
         <div class="booking-ref"><div class="ref-label" data-i="ref_label">Booking Reference</div><div class="ref-num" id="bk-ref">SRJ-2026-0001</div></div>
+        <!-- Contact to pay channels -->
         <div style="margin-bottom:24px">
           <p style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:14px" data-i="pay_contact_title">CONTACT US TO PAY</p>
           <div class="pay-contact-grid">
-            <div class="pay-ch" onclick="openLineWithRef()">
-              <div class="pay-ch-icon">💬</div>
-              <div class="pay-ch-label">LINE</div>
-              <div class="pay-ch-id" id="confirm-line-id">@177wmjar</div>
-            </div>
-            <div class="pay-ch" onclick="openWeChatInfo()">
-              <div class="pay-ch-icon">💚</div>
-              <div class="pay-ch-label">WeChat</div>
-              <div class="pay-ch-id" id="confirm-wechat-id">SiamRoyalJourney</div>
-            </div>
-            <div class="pay-ch" onclick="openWhatsAppWithRef()">
-              <div class="pay-ch-icon">📱</div>
-              <div class="pay-ch-label">WhatsApp</div>
-              <div class="pay-ch-id" id="confirm-wa-id">080-084-7620</div>
-            </div>
-          </div>
+  <div class="pay-ch" onclick="openLineWithRef()">
+    <div class="pay-ch-icon">💬</div>
+    <div class="pay-ch-label">LINE</div>
+    <div class="pay-ch-id" id="confirm-line-id">@177wmjar</div> 
+  </div>
+  <div class="pay-ch" onclick="openWeChatInfo()">
+    <div class="pay-ch-icon">💚</div>
+    <div class="pay-ch-label">WeChat</div>
+    <div class="pay-ch-id" id="confirm-wechat-id">SiamRoyalJourney</div>
+  </div>
+  <div class="pay-ch" onclick="openWhatsAppWithRef()">
+    <div class="pay-ch-icon">📱</div>
+    <div class="pay-ch-label">WhatsApp</div>
+    <div class="pay-ch-id" id="confirm-wa-id">080-084-7620</div>
+  </div>
+</div>
           <p style="font-size:11px;color:var(--muted);line-height:1.7;text-align:center" data-i="pay_contact_note">Please mention your booking reference number when contacting us. 30% deposit required to confirm your booking.</p>
         </div>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
@@ -716,6 +728,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
   </div>
 </div>
 
+<!-- ═══════ TRANSFER ═══════ -->
 <div id="page-transfer" class="page tf-page">
   <div class="tf-hero">
     <div class="ey" data-i="tf_ey">Airport Transfer</div>
@@ -795,6 +808,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
     </div>
   </div>
 
+  <!-- Transfer Success -->
   <div id="tf-success" style="display:none;max-width:720px;margin:0 auto;background:var(--dark3);border:1px solid rgba(201,169,110,0.15);padding:36px">
     <div class="success-box">
       <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -804,9 +818,9 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <div style="margin-bottom:24px">
         <p style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:14px" data-i="pay_contact_title">CONTACT US TO PAY</p>
         <div class="pay-contact-grid">
-          <div class="pay-ch" onclick="openLineWithRef()"><div class="pay-ch-icon">💬</div><div class="pay-ch-label">LINE</div><div class="pay-ch-id" id="tf-confirm-line-id">@siamroyal</div></div>
-          <div class="pay-ch" onclick="openWeChatInfo()"><div class="pay-ch-icon">💚</div><div class="pay-ch-label">WeChat</div><div class="pay-ch-id" id="tf-confirm-wechat-id">SiamRoyalJourney</div></div>
-          <div class="pay-ch" onclick="openWhatsAppWithRef()"><div class="pay-ch-icon">📱</div><div class="pay-ch-label">WhatsApp</div><div class="pay-ch-id" id="tf-confirm-wa-id">+66 81 234 5678</div></div>
+          <div class="pay-ch" onclick="openLineWithRef()"><div class="pay-ch-icon">💬</div><div class="pay-ch-label">LINE</div><div class="pay-ch-id">@siamroyal</div></div>
+          <div class="pay-ch" onclick="openWeChatInfo()"><div class="pay-ch-icon">💚</div><div class="pay-ch-label">WeChat</div><div class="pay-ch-id">SiamRoyalJourney</div></div>
+          <div class="pay-ch" onclick="openWhatsAppWithRef()"><div class="pay-ch-icon">📱</div><div class="pay-ch-label">WhatsApp</div><div class="pay-ch-id">+66 81 234 5678</div></div>
         </div>
       </div>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
@@ -817,21 +831,25 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
   </div>
 </div>
 
+<!-- ═══════ CUSTOM TRIP ═══════ -->
 <div id="page-custom" class="page">
   <div class="ct-page">
 
+    <!-- HERO -->
     <div class="ct-hero">
       <div class="ct-eyebrow" data-i="ct_eyebrow">ออกแบบทริปของคุณเอง</div>
       <h1 class="ct-title"><span data-i="ct_title1">Custom</span> <em data-i="ct_title2">Trip Builder</em></h1>
       <p class="ct-subtitle" data-i="ct_subtitle">บอกเราว่าคุณอยากไปที่ไหน ทำอะไร กี่วัน — เราจะออกแบบทริปและเสนอราคาเบื้องต้นให้ทันที</p>
     </div>
 
+    <!-- NOTICE -->
     <div class="ct-notice" data-i="ct_notice">
       ⚠️ <strong>หมายเหตุ:</strong> ราคาที่แสดงเป็นเพียง <strong>ราคาเบื้องต้น</strong> เท่านั้น อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา และรายละเอียดเพิ่มเติม ทีมงานจะติดต่อกลับเพื่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง
     </div>
 
     <div id="ct-form-wrap">
 
+      <!-- Destinations -->
       <div class="ct-section">
         <div class="ct-section-title" data-i="ct_dest_title">เลือกจุดหมาย (เลือกได้หลายที่)</div>
         <div class="ct-dest-grid" id="ct-dest-grid">
@@ -881,9 +899,11 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
             <div class="ct-dest-desc">Other</div>
           </div>
         </div>
+        <!-- Other destination input -->
         <input class="finput" id="ct-dest-other" placeholder="ระบุจุดหมายที่ต้องการ..." style="display:none;margin-top:8px">
       </div>
 
+      <!-- Travel Info -->
       <div class="ct-section">
         <div class="ct-section-title" data-i="ct_info_title">รายละเอียดการเดินทาง</div>
         <div class="form-row">
@@ -932,17 +952,20 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         </div>
       </div>
 
+      <!-- Vehicle -->
       <div class="ct-section">
         <div class="ct-section-title" data-i="ct_veh_title">ประเภทรถที่ต้องการ</div>
         <div class="ct-veh-grid" id="ct-veh-grid"></div>
       </div>
 
+      <!-- Day Planner -->
       <div class="ct-section">
         <div class="ct-section-title" data-i="ct_plan_title">วางแผนทีละวัน (ไม่บังคับ)</div>
         <div class="day-planner" id="ct-day-planner"></div>
         <button class="add-day-btn" onclick="ctAddDay()" style="margin-top:8px" data-i="ct_add_day">+ เพิ่มวัน</button>
       </div>
 
+      <!-- Additional Info -->
       <div class="ct-section">
         <div class="ct-section-title" data-i="ct_extra_title">ความต้องการพิเศษ</div>
         <div class="form-row full">
@@ -974,6 +997,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         </div>
       </div>
 
+      <!-- Price Estimate -->
       <div class="ct-estimate" id="ct-estimate-box">
         <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px" data-i="ct_est_title">ราคาเบื้องต้น (ประมาณการ)</div>
         <div class="ct-est-row"><span class="ct-est-label" data-i="ct_est_veh">ค่ารถ (ต่อวัน × จำนวนวัน)</span><span class="ct-est-val" id="ct-est-veh-val">—</span></div>
@@ -985,6 +1009,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <div class="ct-est-note" data-i="ct_est_note">* ราคานี้เป็นการประมาณการเบื้องต้นเท่านั้น อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา สถานที่เพิ่มเติม และฤดูกาล ทีมงานจะติดต่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง</div>
       </div>
 
+      <!-- Contact Info -->
       <div class="ct-section">
         <div class="ct-section-title" data-i="ct_contact_title">ข้อมูลติดต่อ</div>
         <div class="form-row">
@@ -1012,7 +1037,10 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <button class="fbk-out" onclick="showPage('home')" style="background:transparent;border:none;color:var(--muted);font-size:12px;cursor:pointer" data-i="btn_back">← กลับหน้าหลัก</button>
       </div>
 
-    </div><div class="ct-success" id="ct-success">
+    </div><!-- /ct-form-wrap -->
+
+    <!-- SUCCESS -->
+    <div class="ct-success" id="ct-success">
       <div class="ct-success-icon">✦</div>
       <div class="ct-success-title" data-i="ct_success_title">ส่งคำขอแล้วเรียบร้อย!</div>
       <p class="ct-success-sub" data-i="ct_success_sub">ทีมงานจะตรวจสอบรายละเอียดและติดต่อกลับภายใน 2-4 ชั่วโมง เพื่อยืนยันราคาและรายละเอียดทริปของคุณ</p>
@@ -1026,6 +1054,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 </div>
 
 
+<!-- ═══════ ADMIN ═══════ -->
 <div id="page-admin" class="page">
   <div class="adm">
     <div class="adm-sidebar">
@@ -1043,6 +1072,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       </div>
     </div>
     <div class="adm-content">
+      <!-- Dashboard -->
       <div class="adm-view active" id="adm-dashboard">
         <div class="adm-header"><div><div class="adm-title">Dashboard</div><div class="adm-sub">Welcome back</div></div></div>
         <div class="metrics">
@@ -1057,6 +1087,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         </div>
         <div class="chart-bar-wrap"><div class="chart-title">MONTHLY BOOKINGS (SAMPLE)</div><div class="bar-chart" id="bar-chart"></div></div>
       </div>
+      <!-- Tour Bookings -->
       <div class="adm-view" id="adm-bookings">
         <div class="adm-header">
           <div><div class="adm-title">Tour Bookings</div><div class="adm-sub" id="bk-count-label">0 total</div></div>
@@ -1064,10 +1095,12 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         </div>
         <div class="adm-table-wrap"><table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>PACKAGE</th><th>DATE</th><th>GUESTS</th><th>CONTACT</th><th>AMOUNT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="full-bk-table"></tbody></table></div>
       </div>
+      <!-- Transfers -->
       <div class="adm-view" id="adm-transfers">
         <div class="adm-header"><div><div class="adm-title">Airport Transfers</div><div class="adm-sub" id="tf-count-label">0 total</div></div></div>
         <div class="adm-table-wrap"><table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>AIRPORT</th><th>DIR</th><th>VEHICLE</th><th>DATE</th><th>FLIGHT</th><th>AMOUNT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="tf-adm-table"></tbody></table></div>
       </div>
+      <!-- Packages & Photos -->
       <div class="adm-view" id="adm-packages">
         <div class="adm-header">
           <div class="adm-title">Packages & Photos</div>
@@ -1077,6 +1110,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <div style="background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.1);padding:10px 14px;margin-bottom:16px;font-size:11px;color:var(--muted);line-height:1.8">
           💡 <strong style="color:var(--gold)">ราคารถกำหนดแยกต่อแพ็กเกจ</strong> — กด ✏️ แก้ไขในแต่ละแพ็กเกจ เพราะแต่ละทัวร์ระยะทางต่างกัน
         </div>
+        <!-- Tour Vehicle Price Table -->
         <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:20px;margin-bottom:20px">
           <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--cream);margin-bottom:6px">ราคารถต่อทัวร์ <span style="font-size:12px;color:var(--muted);font-family:'DM Sans',sans-serif">(฿ ต่อทริป — ไม่ขึ้นกับจำนวนคน)</span></div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7">💡 ค่ารถคิด<strong style="color:var(--gold)">ต่อทริป</strong> ไม่ว่าจะ 1 หรือ 9 คน · ค่าตั๋ว/ไกด์กำหนดในแต่ละแพ็กเกจแยก (ต่อคน)</div>
@@ -1123,11 +1157,13 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
           <div class="form-nav"><button class="fbk-out" onclick="closeAddPkg()">Cancel</button><button class="fbk" onclick="saveNewPkg()">💾 Save Package</button></div>
         </div>
       </div>
+      <!-- Customers -->
       <div class="adm-view" id="adm-customers">
         <div class="adm-header"><div class="adm-title">Customers</div></div>
         <div class="adm-table-wrap"><table class="bt"><thead><tr><th>NAME</th><th>EMAIL</th><th>NATIONALITY</th><th>PHONE</th><th>BOOKINGS</th><th>TOTAL SPENT</th></tr></thead><tbody id="cust-table"></tbody></table></div>
       </div>
 
+      <!-- Vehicles -->
       <div class="adm-view" id="adm-vehicles">
         <div class="adm-header">
           <div><div class="adm-title">Vehicle Types</div><div class="adm-sub">กำหนดราคา จำนวนคน และกระเป๋าของแต่ละประเภทรถ</div></div>
@@ -1170,15 +1206,18 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         </div>
       </div>
 
+      <!-- ⚙️ Settings -->
       <div class="adm-view" id="adm-settings">
         <div class="adm-header">
           <div><div class="adm-title">Settings</div><div class="adm-sub">แก้ไขข้อมูลติดต่อที่แสดงทั่วทั้งเว็บไซต์</div></div>
           <button class="adm-add-btn" onclick="saveSettings()">💾 Save Changes</button>
         </div>
 
+        <!-- Contact Channels -->
         <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-bottom:16px">
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px">Contact Channels</div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.7">ข้อมูลนี้จะแสดงทั่วทั้งเว็บ — ปุ่ม Contact, หน้า Booking Confirmed, Footer<br>
+          <span style="color:var(--gold)">LINE: @177wmjar · WhatsApp/Tel: 080-084-7620 · WeChat: ยังไม่มี</span></div>
           <div class="form-row">
             <div class="fgroup"><label class="flabel">LINE ID</label><input class="finput" id="cfg-line" placeholder="@siamroyal"><span style="font-size:10px;color:var(--muted)">ใส่ @ ด้วย เช่น @siamroyal</span></div>
             <div class="fgroup"><label class="flabel">WeChat ID</label><input class="finput" id="cfg-wechat" placeholder="SiamRoyalJourney"></div>
@@ -1190,11 +1229,13 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
           <div class="form-row full"><div class="fgroup"><label class="flabel">Email Address</label><input class="finput" id="cfg-email" type="email" placeholder="info@siamroyal.com"></div></div>
         </div>
 
+        <!-- Preview -->
         <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-bottom:16px">
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:16px">Preview</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap" id="settings-preview"></div>
         </div>
 
+        <!-- Business Info -->
         <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px">
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px">Business Info</div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:20px">แสดงใน Footer และ Email ลูกค้า</div>
@@ -1214,17 +1255,21 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
   </div>
 </div>
 
+<!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLB()">
   <button class="lightbox-x">×</button>
   <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
 </div>
 
+<!-- Modal -->
 <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box"><button class="modal-close" onclick="closeModal()">×</button><div id="modal-content"></div></div>
 </div>
 
+<!-- Hidden file input -->
 <input type="file" id="photo-input" accept="image/*" multiple style="display:none">
 
+<!-- Admin Login -->
 <div class="adm-login-bg" id="adm-login-bg">
   <div class="adm-login-box">
     <button class="adm-login-x" onclick="closeAdminLogin()">×</button>
@@ -1245,6 +1290,9 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 // CONFIG
 // ════════════════════════════════════════════════
 const API_BASE   = 'https://siamroyal-backend-production.up.railway.app';
+const LINE_ID    = '@177wmjar';
+const WECHAT_ID  = '';
+const WHATSAPP   = '66800847620'; // ไม่ใส่ + และไม่ใส่ -
 
 // ════════════════════════════════════════════════
 // I18N — ระบบแปลภาษา
@@ -1373,7 +1421,7 @@ const I18N = {
     tf_total_lbl:'Total', tf_confirm_btn:'Confirm Transfer Booking',
     tf_success_t:'Transfer Booked!',
     tf_success_s:'Your airport transfer is confirmed. Our driver will wait with a name sign. Contact us to complete payment.',
-    tf_ref_label:'接送参考号', book_tour_too:'Book a Tour Too',
+    tf_ref_label:'Transfer Reference', book_tour_too:'Book a Tour Too',
     per_group:'/ group', per_pax:'/ person', view_detail:'View Details', bk_veh_title:'Select Vehicle Type', persons_unit:'persons',
     pkg_no_photo:'No photos yet', design_trip:'Design Your Own Trip',
     design_trip_desc:'Tell us where, how long, and budget.',
@@ -1385,3 +1433,1629 @@ const I18N = {
     hero_badge:'ทัวร์ส่วนตัวพรีเมียมในประเทศไทย',
     hero_h1a:'เที่ยวไทย', hero_h1b:'อย่างมีระดับ',
     hero_sub:'ทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบเพื่อคุณโดยเฉพาะ',
+    cta_packages:'ดูแพ็กเกจทัวร์', cta_transfer:'✈ รับส่งสนามบิน', cta_consult:'ปรึกษาฟรี',
+    nav_custom:'✦ ทริปส่วนตัว',
+    cta_custom:'✦ ออกแบบทริปเอง',
+    ct_eyebrow:'ออกแบบทริปของคุณเอง',
+    ct_title1:'Custom', ct_title2:'Trip Builder',
+    ct_subtitle:'บอกเราว่าคุณอยากไปที่ไหน ทำอะไร กี่วัน — เราจะออกแบบทริปและเสนอราคาเบื้องต้นให้ทันที',
+    ct_notice:'⚠️ <strong>หมายเหตุ:</strong> ราคาที่แสดงเป็นเพียง <strong>ราคาเบื้องต้น</strong> อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา และรายละเอียดเพิ่มเติม ทีมงานจะติดต่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง',
+    ct_dest_title:'เลือกจุดหมาย (เลือกได้หลายที่)',
+    ct_info_title:'รายละเอียดการเดินทาง',
+    ct_date_lbl:'วันที่เริ่มต้น', ct_days_lbl:'จำนวนวัน',
+    ct_pax_lbl:'จำนวนผู้เดินทาง', ct_style_lbl:'สไตล์การเดินทาง',
+    ct_style_cultural:'วัฒนธรรม / วัด / ประวัติศาสตร์',
+    ct_style_nature:'ธรรมชาติ / ป่า / ดอย',
+    ct_style_beach:'ทะเล / หาด / เกาะ',
+    ct_style_food:'อาหาร / ตลาด / Street Food',
+    ct_style_luxury:'Luxury / ไฮเอนด์',
+    ct_style_adventure:'Adventure / ผจญภัย',
+    ct_style_family:'ครอบครัว / เด็ก',
+    ct_style_honeymoon:'ฮันนีมูน / โรแมนติก',
+    ct_style_mix:'ผสมผสาน / หลายอย่าง',
+    ct_veh_title:'ประเภทรถที่ต้องการ',
+    ct_plan_title:'วางแผนทีละวัน (ไม่บังคับ)',
+    ct_add_day:'+ เพิ่มวัน',
+    ct_extra_title:'ความต้องการพิเศษ',
+    ct_wish_lbl:'อยากทำอะไรเป็นพิเศษ? สถานที่ที่อยากไป?',
+    ct_budget_lbl:'งบประมาณโดยประมาณ (฿/ทริป)',
+    ct_bud1:'ประหยัด (ต่ำกว่า ฿10,000)',
+    ct_bud2:'มาตรฐาน (฿10,000–30,000)',
+    ct_bud3:'พรีเมียม (฿30,000–60,000)',
+    ct_bud4:'Luxury (฿60,000+)',
+    ct_bud5:'ยืดหยุ่นได้',
+    ct_hotel_lbl:'ที่พักที่ต้องการ',
+    ct_hotel1:'ไม่ต้องการ (มีที่พักแล้ว)',
+    ct_hotel2:'ช่วยแนะนำ (ไม่รวมในราคา)',
+    ct_hotel3:'รวมที่พักด้วย (3 ดาว)',
+    ct_hotel4:'รวมที่พักด้วย (4-5 ดาว)',
+    ct_est_title:'ราคาเบื้องต้น (ประมาณการ)',
+    ct_est_veh:'ค่ารถ (ต่อวัน × จำนวนวัน)',
+    ct_est_ticket:'ค่าตั๋ว/เข้าสถานที่ (ประมาณ)',
+    ct_est_total:'ยอดรวมโดยประมาณ',
+    ct_est_note:'* ราคานี้เป็นการประมาณการเบื้องต้นเท่านั้น อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา สถานที่เพิ่มเติม และฤดูกาล ทีมงานจะติดต่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง',
+    ct_contact_title:'ข้อมูลติดต่อ',
+    ct_submit_btn:'ส่งคำขอ Custom Trip →',
+    ct_success_title:'ส่งคำขอแล้ว!',
+    ct_success_sub:'ทีมงานจะติดต่อกลับภายใน 2-4 ชั่วโมง เพื่อยืนยันราคาและรายละเอียดทริปของคุณ',
+    stat1:'ทริปสำเร็จ', stat2:'ลูกค้าพอใจ', stat3:'เส้นทางทั่วไทย', stat4:'ประสบการณ์',
+    max_pax:'สูงสุด', max_lug:'กระเป๋าสูงสุด', per_trip:'ทริป',
+    veh_sel_title:'เลือกประเภทรถ', veh_pax_note:'เหมาะกับขนาดกลุ่มของคุณ',
+    search_ph:'ต้องการเที่ยวที่ไหน? เช่น เชียงใหม่, ภูเก็ต...',
+    dur_l:'กี่วัน?', d1:'1 วัน', d2:'2-3 วัน', d3:'4-7 วัน', d4:'7+ วัน',
+    pax_l:'จำนวนคน', search_btn:'ค้นหา',
+    pkg_ey:'แพ็กเกจแนะนำ', pkg_st1:'ประสบการณ์', pkg_st2:'ที่คัดสรรเพื่อคุณ',
+    steps_ey:'ขั้นตอนการจอง', steps_st1:'ง่ายแค่', steps_st2:'4 ขั้นตอน',
+    s1t:'เลือกแพ็กเกจ', s1d:'เลือกจากแพ็กเกจสำเร็จหรือออกแบบเส้นทางเอง',
+    s2t:'เลือกวันเดินทาง', s2d:'เลือกวันและจำนวนผู้เดินทาง',
+    s3t:'ยืนยันการจอง', s3d:'กรอกข้อมูล ทีมงานติดต่อกลับภายใน 24 ชั่วโมง',
+    s4t:'เริ่มเดินทาง', s4d:'คนขับรับถึงที่พัก ดูแลตลอดทริป',
+    testy_ey:'รีวิวจากลูกค้า', testy_st1:'ประสบการณ์ที่', testy_st2:'ลูกค้าไว้วางใจ',
+    t1q:'"คนขับพูดภาษาอังกฤษดีมาก แนะนำสถานที่น่าไปเที่ยว จะกลับมาใช้บริการอีก"',
+    t1trip:'เชียงใหม่ · 5 วัน',
+    t2q:'"จองง่าย ราคาโปร่งใส รถสะอาด บริการดีเกินคาด"',
+    t2trip:'กระบี่ · ทริปครอบครัว',
+    t3q:'"รับส่งสนามบินราบรื่นมาก คนขับถือป้ายรอ ช่วยยกกระเป๋า เป็นมืออาชีพ"',
+    t3trip:'BKK → สุขุมวิท',
+    cta_t:'พร้อมออกเดินทางแล้วหรือยัง?',
+    cta_s:'ทัวร์ รถรับส่งสนามบิน และประสบการณ์ที่กำหนดเอง ครบในที่เดียว',
+    cta_transfer2:'✈ จองรับส่งสนามบิน',
+    contact_ey:'ติดต่อเรา', contact_st1:'คุยกับเรา', contact_st2:'โดยตรง',
+    tel_label:'โทรหาเรา',
+    footer_desc:'บริการทัวร์ส่วนตัวพรีเมียมพร้อมรถและคนขับมืออาชีพ',
+    footer_pop:'ทัวร์ยอดนิยม', footer_svc:'บริการ', footer_con:'ติดต่อ',
+    svc1:'เช่ารถพร้อมคนขับ', svc2:'รับส่งสนามบิน', svc3:'ออกแบบทริปเอง', svc4:'ทริปฮันนีมูน',
+    footer_legal:'นโยบายความเป็นส่วนตัว · เงื่อนไข',
+    tf_banner_t:'บริการรับส่งสนามบิน',
+    tf_banner_s:'BKK · DMK · HKT · CNX · KBI — ราคาตายตัว รับป้ายชื่อ ติดตามเที่ยวบิน',
+    tf_banner_btn:'จองรับส่ง →',
+    bk_ey:'การจอง', bk_st1:'จองการเดินทาง', bk_st2:'ในฝันของคุณ',
+    bs1:'เลือกแพ็กเกจ', bs2:'ข้อมูลของคุณ', bs3:'ตรวจสอบ', bs4:'ยืนยันแล้ว!',
+    choose_pkg:'เลือกแพ็กเกจทัวร์',
+    fl_date:'วันเดินทาง', fl_guests:'จำนวนผู้เดินทาง',
+    your_details:'ข้อมูลของคุณ',
+    fl_fname:'ชื่อ', fl_lname:'นามสกุล', fl_email:'อีเมล',
+    fl_phone:'โทรศัพท์ / WhatsApp', fl_nat:'สัญชาติ',
+    fl_hotel:'โรงแรม / จุดรับ',
+    fl_note:'ความต้องการพิเศษ (ถ้ามี)', fl_contact:'ช่องทางติดต่อที่ต้องการ',
+    btn_next:'ถัดไป', btn_back:'ย้อนกลับ', btn_confirm:'ยืนยันการจอง',
+    review_title:'ตรวจสอบการจอง',
+    pay_info_title:'ข้อมูลการชำระเงิน',
+    pay_info_body:'หลังยืนยัน ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมงผ่านช่องทางที่คุณเลือก พร้อมรายละเอียดการชำระเงิน รับโอนธนาคารและประสานงานผ่าน LINE, WeChat หรือ WhatsApp',
+    terms_agree:'ฉันยอมรับเงื่อนไขการให้บริการและนโยบายการยกเลิก',
+    success_t:'จองสำเร็จแล้ว!',
+    success_s:'ขอบคุณที่เลือก Siam Royal Journey กรุณาติดต่อเราเพื่อชำระเงิน ทีมงานจะเตรียมทุกอย่างสำหรับทริปของคุณ',
+    ref_label:'หมายเลขการจอง',
+    pay_contact_title:'ติดต่อเราเพื่อชำระเงิน',
+    pay_contact_note:'กรุณาแจ้งหมายเลขการจองเมื่อติดต่อ ต้องชำระมัดจำ 30% เพื่อยืนยันการจอง',
+    back_home:'กลับหน้าหลัก', add_transfer:'จองรถรับส่งสนามบินด้วย',
+    tf_ey:'รับส่งสนามบิน', tf_st1:'บริการรับส่ง', tf_st2:'สนามบินทั่วไทย',
+    tf_sub:'ราคาตายตัว · ถือป้ายชื่อ · ติดตามเที่ยวบินแบบเรียลไทม์ · รอฟรี 60 นาที',
+    tf_dir_title:'ทิศทางการเดินทาง',
+    dir_arr:'✈ ขาเข้า — สนามบินถึงโรงแรม', dir_dep:'🏨 ขาออก — โรงแรมถึงสนามบิน',
+    tf_ap_title:'เลือกสนามบิน', tf_veh_title:'ประเภทรถ',
+    veh1_name:'รถเก๋ง', veh1_desc:'Toyota Camry / Accord · สูงสุด 3 คน',
+    veh2_name:'SUV / MPV', veh2_desc:'Toyota Fortuner / Innova · สูงสุด 6 คน',
+    veh3_name:'แวนพรีเมียม', veh3_desc:'Toyota Hiace Premium · สูงสุด 9 คน',
+    tf_date_lbl:'วันที่เดินทางถึง', tf_time_lbl:'เวลาลงจอด (เวลาท้องถิ่น)',
+    tf_flight_lbl:'หมายเลขเที่ยวบิน', tf_pax_lbl:'จำนวนผู้โดยสาร',
+    tf_lug_lbl:'จำนวนกระเป๋า', tf_hotel_lbl:'โรงแรม / ที่อยู่ปลายทาง',
+    tf_area_lbl:'พื้นที่', tf_name_lbl:'ชื่อบนป้ายรับ',
+    tf_phone_lbl:'โทรศัพท์ / WhatsApp', tf_email_lbl:'อีเมล', tf_note_lbl:'ความต้องการพิเศษ',
+    tf_airport_lbl:'สนามบิน', tf_veh_lbl:'ยานพาหนะ', tf_incl_lbl:'รวม',
+    tf_incl_val:'ถือป้ายชื่อรับ · ติดตามเที่ยวบิน · รอฟรี 60 นาที',
+    price_note_km:'ราคานี้สำหรับรับส่งในเมือง ระยะทางไม่เกิน 35 กม. จากสนามบิน',
+    price_note_bkk:'สนามบินสุวรรณภูมิ (BKK) และดอนเมือง (DMK) ใช้ราคาเดียวกัน',
+    tf_total_lbl:'ราคารวม', tf_confirm_btn:'ยืนยันการจองรถ',
+    tf_success_t:'จองรถสำเร็จ!',
+    tf_success_s:'การจองรถรับส่งสนามบินของคุณได้รับการยืนยัน คนขับจะถือป้ายชื่อรอรับ ติดต่อเราเพื่อชำระเงิน',
+    tf_ref_label:'หมายเลขการจองรถ', book_tour_too:'จองทัวร์ด้วย',
+    per_group:'/ กลุ่ม', per_pax:'/ คน', view_detail:'ดูรายละเอียด', bk_veh_title:'เลือกประเภทรถ', persons_unit:'คน',
+    pkg_no_photo:'ยังไม่มีรูปภาพ', design_trip:'ออกแบบทริปเอง',
+    design_trip_desc:'บอกเราว่าต้องการไปไหน กี่วัน งบประมาณเท่าไร',
+    create_trip:'สร้างทริปของฉัน',
+  },
+  zh:{
+    nav_tours:'旅游线路', nav_book:'立即预订', nav_transfer:'机场接送', nav_contact:'联系我们',
+    nav_book_btn:'立即预订',
+    hero_badge:'泰国高端私人定制游',
+    hero_h1a:'探索泰国', hero_h1b:'尊享之旅',
+    hero_sub:'专属私人旅游服务，配备专业车辆和司机，为您量身定制难忘旅程。',
+    cta_packages:'查看旅游套餐', cta_transfer:'✈ 机场接送', cta_consult:'免费咨询',
+    nav_custom:'✦ 定制行程',
+    cta_custom:'✦ 定制行程',
+    ct_eyebrow:'设计您的专属行程',
+    ct_title1:'Custom', ct_title2:'Trip Builder',
+    ct_subtitle:'告诉我们您想去哪里、做什么、几天——我们将立即为您设计行程并提供初步报价。',
+    ct_notice:'⚠️ <strong>注意：</strong>所显示价格仅为<strong>初步估算</strong>，可能根据实际距离、时间和详情有所变动。我们的团队将在2-4小时内联系您确认最终价格。',
+    ct_dest_title:'选择目的地（可多选）',
+    ct_info_title:'出行详情',
+    ct_date_lbl:'出发日期', ct_days_lbl:'天数',
+    ct_pax_lbl:'出行人数', ct_style_lbl:'旅行风格',
+    ct_style_cultural:'文化 / 寺庙 / 历史',
+    ct_style_nature:'自然 / 森林 / 山地',
+    ct_style_beach:'海滩 / 大海 / 岛屿',
+    ct_style_food:'美食 / 市场 / 街头小食',
+    ct_style_luxury:'奢华 / 高端',
+    ct_style_adventure:'探险 / 刺激',
+    ct_style_family:'家庭 / 亲子',
+    ct_style_honeymoon:'蜜月 / 浪漫',
+    ct_style_mix:'综合 / 多样化',
+    ct_veh_title:'首选车型',
+    ct_plan_title:'逐日行程规划（可选）',
+    ct_add_day:'+ 添加天数',
+    ct_extra_title:'特殊需求',
+    ct_wish_lbl:'特别想做的事或想去的地方？',
+    ct_budget_lbl:'预算参考（฿/次）',
+    ct_bud1:'经济（฿10,000以下）',
+    ct_bud2:'标准（฿10,000–30,000）',
+    ct_bud3:'高级（฿30,000–60,000）',
+    ct_bud4:'豪华（฿60,000以上）',
+    ct_bud5:'灵活',
+    ct_hotel_lbl:'住宿偏好',
+    ct_hotel1:'不需要（已有住宿）',
+    ct_hotel2:'请推荐（不含在价格内）',
+    ct_hotel3:'含住宿（3星）',
+    ct_hotel4:'含住宿（4-5星）',
+    ct_est_title:'初步估价',
+    ct_est_veh:'车费（每天 × 天数）',
+    ct_est_ticket:'景点门票（估算）',
+    ct_est_total:'预计总费用',
+    ct_est_note:'* 此价格仅为初步估算，可能因实际距离、时间、额外景点和季节而变动。我们的团队将在2-4小时内联系您确认最终价格。',
+    ct_contact_title:'联系方式',
+    ct_submit_btn:'发送定制行程请求 →',
+    ct_success_title:'请求已发送！',
+    ct_success_sub:'我们的团队将在2-4小时内审核详情并联系您，确认价格和行程安排。',
+    stat1:'行程完成', stat2:'满意度', stat3:'全泰路线', stat4:'服务经验',
+    max_pax:'最多', max_lug:'最多行李', per_trip:'次',
+    veh_sel_title:'选择车型', veh_pax_note:'适合您的团队规模',
+    search_ph:'您想去哪里？例如：清迈、普吉、甲米...',
+    dur_l:'天数', d1:'1天', d2:'2-3天', d3:'4-7天', d4:'7天以上',
+    pax_l:'人数', search_btn:'搜索',
+    pkg_ey:'推荐套餐', pkg_st1:'专为您', pkg_st2:'精心策划的体验',
+    steps_ey:'预订流程', steps_st1:'简单', steps_st2:'4步完成',
+    s1t:'选择套餐', s1d:'选择现成套餐或设计专属路线',
+    s2t:'选择日期', s2d:'选定出行日期和旅行人数',
+    s3t:'确认预订', s3d:'填写信息，我们的团队将在24小时内联系您',
+    s4t:'开始旅程', s4d:'司机直接到酒店接您，全程贴心陪同',
+    testy_ey:'客户评价', testy_st1:'深受', testy_st2:'全球旅客信赖',
+    t1q:'"司机英语非常好，推荐了最地道的景点，下次一定还来！"',
+    t1trip:'清迈 · 5天',
+    t2q:'"预订简单，价格透明，车辆非常干净，服务超出预期。"',
+    t2trip:'甲米 · 家庭游',
+    t3q:'"机场接送非常顺畅，司机举牌等候，帮忙提行李，非常专业。"',
+    t3trip:'BKK → 素坤逸',
+    cta_t:'准备好出发了吗？',
+    cta_s:'旅游、机场接送、定制体验——一站式服务。',
+    cta_transfer2:'✈ 预订机场接送',
+    contact_ey:'联系方式', contact_st1:'直接', contact_st2:'与我们沟通',
+    tel_label:'电话联系',
+    footer_desc:'高端私人旅游服务，配备专业车辆和司机，全程为您贴心服务。',
+    footer_pop:'热门路线', footer_svc:'服务项目', footer_con:'联系方式',
+    svc1:'含司机租车', svc2:'机场接送', svc3:'定制行程', svc4:'蜜月旅行',
+    footer_legal:'隐私政策 · 服务条款',
+    tf_banner_t:'机场接送服务',
+    tf_banner_s:'BKK · DMK · HKT · CNX · KBI — 固定价格，举牌迎接，实时追踪航班',
+    tf_banner_btn:'立即预订接送 →',
+    bk_ey:'预订', bk_st1:'预订您的', bk_st2:'完美旅程',
+    bs1:'选择套餐', bs2:'填写信息', bs3:'确认', bs4:'预订成功！',
+    choose_pkg:'选择旅游套餐',
+    fl_date:'出发日期', fl_guests:'旅行人数',
+    your_details:'填写个人信息',
+    fl_fname:'名字', fl_lname:'姓氏', fl_email:'电子邮件',
+    fl_phone:'电话 / WhatsApp', fl_nat:'国籍',
+    fl_hotel:'酒店 / 接送地点',
+    fl_note:'特殊要求（选填）', fl_contact:'首选联系方式',
+    btn_next:'继续', btn_back:'返回', btn_confirm:'确认预订',
+    review_title:'确认预订信息',
+    pay_info_title:'付款信息',
+    pay_info_body:'确认后，我们的团队将在24小时内通过您的首选渠道联系您，提供付款详情。我们接受银行转账，并通过LINE、微信或WhatsApp协调付款，方便您操作。',
+    terms_agree:'我同意服务条款和取消政策',
+    success_t:'预订成功！',
+    success_s:'感谢您选择 Siam Royal Journey。请联系我们完成付款，我们将为您的旅程做好一切准备。',
+    ref_label:'预订参考号',
+    pay_contact_title:'联系我们付款',
+    pay_contact_note:'联系时请提供您的预订参考号。需支付30%定金以确认预订。',
+    back_home:'返回首页', add_transfer:'加订机场接送',
+    tf_ey:'机场接送', tf_st1:'顺畅便捷', tf_st2:'机场接送服务',
+    tf_sub:'固定价格 · 举牌迎接 · 实时追踪航班 · 免费等待60分钟',
+    tf_dir_title:'接送方向',
+    dir_arr:'✈ 到达 — 机场到酒店', dir_dep:'🏨 出发 — 酒店到机场',
+    tf_ap_title:'选择机场', tf_veh_title:'车型选择',
+    veh1_name:'轿车', veh1_desc:'Toyota Camry / Accord · 最多3人',
+    veh2_name:'SUV / MPV', veh2_desc:'Toyota Fortuner / Innova · 最多6人',
+    veh3_name:'高端面包车', veh3_desc:'Toyota Hiace Premium · 最多9人',
+    tf_date_lbl:'到达日期', tf_time_lbl:'到达时间（当地时间）',
+    tf_flight_lbl:'航班号', tf_pax_lbl:'乘客人数',
+    tf_lug_lbl:'行李件数', tf_hotel_lbl:'目的地酒店 / 地址',
+    tf_area_lbl:'区域', tf_name_lbl:'接机牌姓名',
+    tf_phone_lbl:'电话 / WhatsApp', tf_email_lbl:'电子邮件', tf_note_lbl:'特殊要求',
+    tf_airport_lbl:'机场', tf_veh_lbl:'车型', tf_incl_lbl:'包含',
+    tf_incl_val:'举牌迎接 · 追踪航班 · 免费等待60分钟',
+    price_note_km:'此价格适用于机场35公里范围内的市内接送。',
+    price_note_bkk:'素万那普机场（BKK）与廊曼机场（DMK）价格相同。',
+    tf_total_lbl:'总价', tf_confirm_btn:'确认接送预订',
+    tf_success_t:'接送预订成功！',
+    tf_success_s:'您的机场接送已确认。司机将举牌等候您。请联系我们完成付款。',
+    tf_ref_label:'接送参考号', book_tour_too:'加订旅游',
+    per_group:'/ 团', per_pax:'/ 人', view_detail:'查看详情', bk_veh_title:'选择车型', persons_unit:'人',
+    pkg_no_photo:'暂无照片', design_trip:'定制专属行程',
+    design_trip_desc:'告诉我们目的地、天数和预算，我们来规划。',
+    create_trip:'定制我的行程',
+  }
+};
+
+let curLang = 'en';
+
+function t(key){ return (I18N[curLang]||I18N.en)[key] || I18N.en[key] || key; }
+
+function setLang(l){
+  curLang = l;
+  document.querySelectorAll('.lb').forEach(b => b.classList.remove('active'));
+  document.querySelector('.lb[onclick="setLang(\''+l+'\')"]').classList.add('active');
+  // translate all data-i elements
+  // keys ที่มี HTML tag ใช้ innerHTML — ที่เหลือใช้ textContent
+  const HTML_KEYS = new Set(['ct_notice','pay_contact_note','tf_incl_val','price_note_km','price_note_bkk','book_note']);
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const k = el.getAttribute('data-i');
+    const v = t(k); if(!v) return;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder = v;
+    else if(el.tagName==='OPTION') el.textContent = v;
+    else if(HTML_KEYS.has(k)) el.innerHTML = v;
+    else el.textContent = v;
+  });
+  updateContactUI();
+  // translate placeholders data-ip
+  document.querySelectorAll('[data-ip]').forEach(el => {
+    const k = el.getAttribute('data-ip');
+    el.placeholder = t(k);
+  });
+  renderPkgGrid();
+  renderPkgSelect();
+  renderPkgMgmt();
+}
+
+// ════════════════════════════════════════════════
+// ADMIN AUTH
+// ════════════════════════════════════════════════
+let isAdmin=false, adminTry=0;
+const ADMINS=[{u:'admin',p:'admin1234'},{u:'manager',p:'manager2026'}];
+function openAdminLogin(){document.getElementById('adm-login-bg').classList.add('open');setTimeout(()=>document.getElementById('adm-user').focus(),100);}
+function closeAdminLogin(){document.getElementById('adm-login-bg').classList.remove('open');}
+function doAdminLogin(){
+  const u=document.getElementById('adm-user').value.trim(), p=document.getElementById('adm-pass').value;
+  if(ADMINS.find(c=>c.u===u&&c.p===p)){
+    isAdmin=true;adminTry=0;closeAdminLogin();
+    document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+    document.getElementById('page-admin').classList.add('active');
+    renderAdmin();window.scrollTo(0,0);
+  } else {
+    adminTry++;document.getElementById('adm-pass').value='';
+    const left=5-adminTry;
+    if(left<=0){
+      document.getElementById('adm-err').textContent='Locked 5 min.';
+      document.getElementById('adm-user').disabled=true;document.getElementById('adm-pass').disabled=true;
+      setTimeout(()=>{adminTry=0;document.getElementById('adm-user').disabled=false;document.getElementById('adm-pass').disabled=false;document.getElementById('adm-err').textContent='';},300000);
+    } else document.getElementById('adm-err').textContent='Invalid. '+left+' attempts left.';
+  }
+}
+function adminLogout(){
+  isAdmin=false;
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-home').classList.add('active');
+}
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&e.shiftKey&&e.key==='A'){e.preventDefault();if(!isAdmin)openAdminLogin();else{document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-admin').classList.add('active');renderAdmin();}}
+  if(e.key==='Escape')closeAdminLogin();
+});
+
+// ════════════════════════════════════════════════
+// PACKAGES DATA
+// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════
+// TOUR PRICING — หลักการใหม่
+// ════════════════════════════════════════════════
+// ค่ารถ (vehiclePrice) = คิดต่อทริป ไม่ใช่ต่อคน
+//   เพราะรถวิ่งทริปเดียว ไม่ว่า 1 หรือ 9 คน
+// ค่าตั๋ว/เข้าสถานที่ (ticketPerPax) = คิดต่อคน
+//   เพราะต้องซื้อตามจำนวนคนจริง
+// ค่าไกด์ (guidePrice) = คิดต่อทริป (optional)
+// ════════════════════════════════════════════════
+
+// ราคารถ ต่อทริป สำหรับทัวร์ (แยกจากราคาตั๋วสนามบิน)
+const DEFAULT_TOUR_VEHICLE_PRICES = {
+  eco_car:  2500,
+  prem_sed: 3500,
+  mpv:      4500,
+  eco_van:  5500,
+  prem_van: 7000,
+  lux_mpv:  12000,
+};
+
+function loadTourVehiclePrices(){
+  try{
+    const s = localStorage.getItem('srj_tour_veh_prices');
+    return s ? {...DEFAULT_TOUR_VEHICLE_PRICES, ...JSON.parse(s)} : {...DEFAULT_TOUR_VEHICLE_PRICES};
+  } catch { return {...DEFAULT_TOUR_VEHICLE_PRICES}; }
+}
+function saveTourVehiclePrices(p){ try{ localStorage.setItem('srj_tour_veh_prices', JSON.stringify(p)); }catch{} }
+let TOUR_VEH_PRICES = loadTourVehiclePrices();
+
+// คำนวณราคาทัวร์ (หลักการถูกต้อง):
+//   grandTotal = ค่ารถ/ทริป + (ค่าตั๋ว/คน + ค่าไกด์/คน) × จำนวนคน
+// ── ราคารถ default ถ้าแพ็กเกจใหม่ยังไม่ได้ตั้ง ──
+const DEFAULT_PKG_VEHICLE_PRICES = {
+  eco_car:2500, prem_sed:3500, mpv:4500,
+  eco_van:5500, prem_van:7000, lux_mpv:12000,
+};
+
+// อ่านราคารถจาก pkg.vehicles ของแพ็กเกจนั้นๆ โดยตรง
+function getPkgVehiclePrice(pkg, vehicleId){
+  if(pkg && pkg.vehicles && pkg.vehicles[vehicleId] !== undefined)
+    return pkg.vehicles[vehicleId];
+  return DEFAULT_PKG_VEHICLE_PRICES[vehicleId] || 0;
+}
+
+function calcTourTotal(pkg, guests, vehicleId) {
+  const pax          = parseInt(guests) || 1;
+  const ticketPpax   = (pkg && pkg.ticketPerPax)   || 0; // ค่าตั๋ว/เข้าสถานที่ ต่อคน
+  const guidePerHour = (pkg && pkg.guidePerHour)   || 0; // ค่าไกด์ต่อชั่วโมง
+  const guideHours   = (pkg && pkg.guideHours)     || 0; // จำนวนชั่วโมงไกด์
+  const guideTotal   = guidePerHour * guideHours;         // ค่าไกด์รวม (ต่อทริป)
+  const vehTrip      = getPkgVehiclePrice(pkg, vehicleId);
+  const ticketTotal  = ticketPpax * pax;
+  const grandTotal   = vehTrip + ticketTotal + guideTotal;
+  return {
+    vehTrip,
+    ticketPpax, ticketTotal,
+    guidePerHour, guideHours, guideTotal,
+    grandTotal, pax,
+    // compat
+    tourPpax: ticketPpax,
+    guidePpax: 0,
+    vehPpax: 0, tourTotal: ticketTotal + guideTotal, vehTotal: vehTrip,
+  };
+}
+
+// ════════════════════════════════════════════════
+// PACKAGE SYSTEM — persistent ด้วย localStorage
+// ════════════════════════════════════════════════
+const PKG_DEFAULT=[
+
+  {id:'p1',name:'Lanna Premium Circuit',nameT:'ล้านนา ไพรีเมียม เซอร์กิต',nameZ:'兰纳高端环线游',
+   dest:'Chiang Mai · Chiang Rai',
+   ticketPerPax:850, guidePerHour:0, guideHours:0,
+   vehicles:{eco_car:8000,prem_sed:10000,mpv:12000,eco_van:14000,prem_van:18000,lux_mpv:28000},
+   dur:'5 Days 4 Nights',durT:'5 วัน 4 คืน',durZ:'5天4夜',
+   desc:'Explore northern Thai culture, stunning temples, night markets, and highland peaks.',
+   descT:'สำรวจวัฒนธรรมภาคเหนือ วัดที่งดงาม ตลาดกลางคืน และยอดดอยสูง',
+   descZ:'探索泰北文化、壮丽寺庙、夜市和高山峰顶',active:true,photos:[]},
+  {id:'p2',name:'Andaman Luxury Tour',nameT:'อันดามัน ลักชัวรี่ ทัวร์',nameZ:'安达曼奢华游',
+   dest:'Krabi · Koh Lanta',
+   ticketPerPax:500, guidePerHour:0, guideHours:0,
+   vehicles:{eco_car:10000,prem_sed:13000,mpv:15000,eco_van:18000,prem_van:22000,lux_mpv:35000},
+   dur:'4 Days 3 Nights',durT:'4 วัน 3 คืน',durZ:'4天3夜',
+   desc:'Crystal waters, white sands, and a slow coastal life along the Andaman Sea.',
+   descT:'น้ำใสราวคริสตัล หาดทรายขาว และชีวิตชายทะเลอันดามันที่ผ่อนคลาย',
+   descZ:'清澈海水、白色沙滩，领略安达曼海岸的悠闲时光',active:true,photos:[]},
+  {id:'p3',name:'World Heritage Day Trip',nameT:'มรดกโลก วันเดย์ ทริป',nameZ:'世界遗产一日游',
+   dest:'Ayutthaya · Suphanburi',
+   ticketPerPax:350, guidePerHour:500, guideHours:4,
+   vehicles:{eco_car:2500,prem_sed:3200,mpv:3800,eco_van:4500,prem_van:5500,lux_mpv:9000},
+   dur:'1 Day',durT:'1 วัน',durZ:'1天',
+   desc:'Journey through ancient Thai kingdoms with an expert heritage guide.',
+   descT:'เดินทางผ่านราชอาณาจักรไทยโบราณพร้อมไกด์ผู้เชี่ยวชาญ',
+   descZ:'跟随专业导游，穿越古老泰国王朝历史',active:true,photos:[]},
+  {id:'p4',name:'Phuket Island Escape',nameT:'ภูเก็ต ไอส์แลนด์ เอสเคป',nameZ:'普吉岛度假游',
+   dest:'Phuket · Phang Nga',
+   ticketPerPax:600, guidePerHour:0, guideHours:0,
+   vehicles:{eco_car:9000,prem_sed:12000,mpv:14000,eco_van:16000,prem_van:20000,lux_mpv:32000},
+   dur:'3 Days 2 Nights',durT:'3 วัน 2 คืน',durZ:'3天2夜',
+   desc:"Iconic beaches, hidden lagoons, and vibrant nightlife on Thailand's pearl island.",
+   descT:'ชายหาดอันโด่งดัง ลากูนซ่อนเร้น และไนต์ไลฟ์บนเกาะภูเก็ต',
+   descZ:'标志性海滩、隐秘环礁湖和充满活力的夜生活',active:true,photos:[]}
+
+];
+
+function loadPKG(){
+  try{
+    const s = localStorage.getItem('srj_packages');
+    if(!s) return PKG_DEFAULT.map(p=>({...p}));
+    const saved = JSON.parse(s);
+    // ถ้า saved มี id ที่ default ไม่มี → เพิ่มเข้าไป
+    // ถ้า saved ว่าง → ใช้ default
+    return saved.length > 0 ? saved : PKG_DEFAULT.map(p=>({...p}));
+  } catch { return PKG_DEFAULT.map(p=>({...p})); }
+}
+
+function savePKG(){
+  try{ localStorage.setItem('srj_packages', JSON.stringify(PKG)); }catch{}
+}
+
+let PKG = loadPKG()
+let BOOKINGS=[], TRANSFERS=[];
+let bkSelected=null, bkStep=1, bkVehicle=null;
+let tfDir='arrival', tfAP={code:'BKK',name:'Suvarnabhumi Airport'}, tfVeh=null, tfLug='0';
+
+// ════════════════════════════════════════════════
+// VEHICLE SYSTEM — Admin กำหนดราคา/จำนวนคน/กระเป๋าได้
+// ════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════
+// AIRPORTS
+// ════════════════════════════════════════════════
+const AIRPORTS = [
+  {code:'BKK', name:'Suvarnabhumi Airport', city:'Bangkok'},
+  {code:'DMK', name:'Don Mueang Airport',   city:'Bangkok'},
+  {code:'HKT', name:'Phuket International', city:'Phuket'},
+  {code:'CNX', name:'Chiang Mai Intl',      city:'Chiang Mai'},
+  {code:'KBI', name:'Krabi Airport',        city:'Krabi'},
+  {code:'USM', name:'Samui Airport',        city:'Koh Samui'},
+];
+
+// ════════════════════════════════════════════════
+// PRICE MATRIX — [vehicleId][airportCode] = price
+// กำหนดโดย Admin แยกต่างหากต่อ สนามบิน × ประเภทรถ
+// ════════════════════════════════════════════════
+const DEFAULT_PRICE_MATRIX = {
+  // BKK = DMK ราคาเดียวกัน (สนามบินในกรุงเทพ รับส่งในเมือง ≤ 35 กม.)
+  eco_car:  { BKK:750,  DMK:750,  HKT:1200, CNX:1100, KBI:1500, USM:1800 },
+  prem_sed: { BKK:1100, DMK:1100, HKT:1800, CNX:1600, KBI:2200, USM:2600 },
+  mpv:      { BKK:1350, DMK:1350, HKT:2200, CNX:2000, KBI:2800, USM:3300 },
+  eco_van:  { BKK:1600, DMK:1600, HKT:2600, CNX:2400, KBI:3200, USM:3900 },
+  prem_van: { BKK:1950, DMK:1950, HKT:3200, CNX:2900, KBI:3900, USM:4700 },
+  lux_mpv:  { BKK:3200, DMK:3200, HKT:5000, CNX:4500, KBI:6000, USM:7200 },
+};
+
+function loadPriceMatrix(){
+  try{
+    const s = localStorage.getItem('srj_price_matrix');
+    if(!s) return JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX));
+    const saved = JSON.parse(s);
+    // merge: ถ้ามีรถหรือสนามบินใหม่ที่ยังไม่มีในตาราง ใส่ default
+    const matrix = JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX));
+    Object.keys(saved).forEach(vId => {
+      if(!matrix[vId]) matrix[vId] = {};
+      Object.assign(matrix[vId], saved[vId]);
+    });
+    return matrix;
+  } catch{ return JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX)); }
+}
+function savePriceMatrix(m){ try{ localStorage.setItem('srj_price_matrix', JSON.stringify(m)); }catch{} }
+
+let PRICE_MATRIX = loadPriceMatrix();
+
+// หาราคาตาม vehicle + airport
+function getPrice(vehicleId, airportCode){
+  if(!vehicleId || !airportCode) return 0;
+  const vm = PRICE_MATRIX[vehicleId];
+  if(vm && vm[airportCode]) return vm[airportCode];
+  // fallback: ใช้ราคา base จาก vehicle
+  const v = VEHICLES.find(x=>x.id===vehicleId);
+  return v ? v.price : 0;
+}
+
+// อัปเดตราคา vehicle ใน matrix เมื่อ airport เปลี่ยน
+function ensureMatrixEntry(vehicleId){
+  if(!PRICE_MATRIX[vehicleId]) PRICE_MATRIX[vehicleId] = {};
+  AIRPORTS.forEach(ap => {
+    if(!PRICE_MATRIX[vehicleId][ap.code]){
+      const base = VEHICLES.find(v=>v.id===vehicleId)?.price || 0;
+      PRICE_MATRIX[vehicleId][ap.code] = base;
+    }
+  });
+}
+
+const DEFAULT_VEHICLES = [
+  {id:'eco_car',   icon:'🚗', name:'Eco Car',       nameT:'รถเก๋งประหยัด', nameZ:'经济轿车',
+   model:'Toyota Yaris / Honda City',       price:750,  maxPax:3, maxLug:2, active:true},
+  {id:'prem_sed',  icon:'🚙', name:'Premium Sedan', nameT:'รถเก๋งพรีเมียม',nameZ:'豪华轿车',
+   model:'Toyota Camry / Honda Accord',     price:1100, maxPax:3, maxLug:3, active:true},
+  {id:'mpv',       icon:'🚐', name:'MPV',           nameT:'รถ MPV',        nameZ:'MPV多用途车',
+   model:'Toyota Innova / Fortuner',        price:1350, maxPax:6, maxLug:4, active:true},
+  {id:'eco_van',   icon:'🚌', name:'Eco Van',       nameT:'แวนประหยัด',   nameZ:'经济面包车',
+   model:'Toyota Hiace Standard',           price:1600, maxPax:9, maxLug:6, active:true},
+  {id:'prem_van',  icon:'🚐', name:'Premium Van',   nameT:'แวนพรีเมียม',  nameZ:'高端面包车',
+   model:'Toyota Hiace Premium / Commuter', price:1950, maxPax:9, maxLug:8, active:true},
+  {id:'lux_mpv',   icon:'✨', name:'Luxury MPV',    nameT:'MPV หรูหรา',   nameZ:'豪华MPV',
+   model:'Toyota Alphard / Vellfire',       price:3200, maxPax:6, maxLug:4, active:true},
+];
+
+function loadVehicles(){ 
+  try{ const v=localStorage.getItem('srj_vehicles'); return v?JSON.parse(v):[...DEFAULT_VEHICLES]; }
+  catch{ return [...DEFAULT_VEHICLES]; }
+}
+function saveVehicles(v){ try{ localStorage.setItem('srj_vehicles',JSON.stringify(v)); }catch{} }
+let VEHICLES = loadVehicles();
+
+function vName(v){ if(curLang==='th') return v.nameT||v.name; if(curLang==='zh') return v.nameZ||v.name; return v.name; }
+
+// Render vehicle grid ในหน้า Transfer
+function renderVehicleGrid(pax, lug){
+  const grid = document.getElementById('veh-grid-tf');
+  if(!grid) return;
+  const activePax = parseInt(pax)||1;
+  const activeLug = parseInt(lug)||0;
+  grid.innerHTML = '';
+  VEHICLES.forEach(v => {
+    const overPax = activePax > v.maxPax;
+    const overLug = activeLug > v.maxLug;
+    const disabled = !v.active || overPax || overLug;
+    const isSel = tfVeh && tfVeh.id === v.id;
+    const card = document.createElement('div');
+    card.className = 'veh-card' + (isSel?' sel':'') + (disabled?' disabled':'');
+    card.onclick = () => { if(!disabled){ selectVehicle(v); } };
+    let warnText = '';
+    if(overPax) warnText = `Max ${v.maxPax} pax`;
+    else if(overLug) warnText = `Max ${v.maxLug} bags`;
+    // ราคาจาก matrix ตาม airport ที่เลือก
+    const matrixPrice = getPrice(v.id, tfAP.code);
+    card.innerHTML = `
+      <div class="veh-card-icon">${v.icon}</div>
+      <div class="veh-card-name">${vName(v)}</div>
+      <div class="veh-card-model">${v.model}</div>
+      <div class="veh-caps">
+        <span class="veh-cap"><span class="veh-cap-icon">👤</span> ${t('max_pax')||'Max'} ${v.maxPax}</span>
+        <span class="veh-cap"><span class="veh-cap-icon">🧳</span> ${t('max_lug')||'Max'} ${v.maxLug}</span>
+      </div>
+      <div class="veh-card-price">฿${matrixPrice.toLocaleString()} <span>/ ${t('per_trip')||'trip'}</span></div>
+      ${disabled ? `<div style="margin-top:6px;font-size:9px;color:var(--red);letter-spacing:1px">${warnText}</div>` : ''}`;
+    grid.appendChild(card);
+  });
+  // ถ้ายังไม่มีรถที่เลือก หรือรถที่เลือกอยู่ไม่ available ให้ auto-select ตัวแรกที่ได้
+  const firstOk = VEHICLES.find(v => v.active && activePax <= v.maxPax && activeLug <= v.maxLug);
+  if(!tfVeh || !firstOk || (tfVeh && (activePax > tfVeh.maxPax || activeLug > tfVeh.maxLug))){
+    if(firstOk) selectVehicle(firstOk, true);
+  }
+  updateTFPrice();
+}
+
+function selectVehicle(v, silent){
+  tfVeh = v;
+  // คำนวณราคาจาก matrix ตาม airport ปัจจุบัน
+  tfVeh._currentPrice = getPrice(v.id, tfAP.code);
+  if(!silent) updateTFPrice();
+}
+let photoPkgIdx=null;
+let lastRef='';
+
+// ════════════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════════════
+function pName(p){if(curLang==='th')return(p.nameT?.trim())||p.name;if(curLang==='zh')return(p.nameZ?.trim())||p.name;return p.name;}
+function pDur(p){if(curLang==='th')return(p.durT?.trim())||p.dur;if(curLang==='zh')return(p.durZ?.trim())||p.dur;return p.dur;}
+function pDesc(p){if(curLang==='th')return(p.descT?.trim())||p.desc;if(curLang==='zh')return(p.descZ?.trim())||p.desc;return p.desc;}
+function genRef(prefix){return prefix+'-'+new Date().getFullYear()+'-'+Math.random().toString(36).substring(2,7).toUpperCase();}
+
+// Contact helpers
+function openLine(){window.open('https://line.me/R/ti/p/'+getS('line'),'_blank');}
+function callPhone(){
+  const ph = getS('phone');
+  window.location.href = 'tel:'+ph.replace(/[^0-9+]/g,'');
+}
+function updateContactUI(){
+  try{
+    const s = loadSettings();
+    const set = (id,val)=>{ const el=document.getElementById(id); if(el) el.textContent=val; };
+    const hide = (id,show)=>{ const el=document.getElementById(id); if(el) el.style.display=show?'':'none'; };
+    set('contact-line-id',    s.line);
+    set('contact-wechat-id',  s.wechat||'(ยังไม่พร้อม)');
+    set('contact-phone-display', s.phone||'Call Us');
+    const wBtn = document.getElementById('contact-wechat-btn');
+    if(wBtn) wBtn.style.opacity = s.wechat ? '1' : '0.45';
+    set('footer-line',      'LINE: '+s.line);
+    set('footer-whatsapp',  'WhatsApp: '+s.phone);
+    set('footer-email',     s.email);
+    if(document.getElementById('footer-wechat')){
+      if(s.wechat){ document.getElementById('footer-wechat').textContent='WeChat: '+s.wechat; hide('footer-wechat',true); }
+      else hide('footer-wechat',false);
+    }
+    set('confirm-line-id',  s.line);
+    set('confirm-wa-id',    s.phone);
+  }catch(e){}
+}
+function openWhatsApp(){window.open('https://wa.me/'+getS('whatsapp'),'_blank');}
+function openWeChatInfo(){
+  const wc = getS('wechat');
+  if(!wc){ alert('WeChat ยังไม่พร้อมให้บริการในขณะนี้ กรุณาติดต่อผ่าน LINE หรือ WhatsApp'); return; }
+  alert('WeChat ID: '+wc+'\n\nPlease add us on WeChat and mention your booking reference.');
+}
+function openLineWithRef(){window.open('https://line.me/R/ti/p/'+getS('line')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
+function openWhatsAppWithRef(){window.open('https://wa.me/'+getS('whatsapp')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
+function scrollContact(){showPage('home');setTimeout(()=>document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}),120);}
+
+// ════════════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════════════
+function showPage(p){
+  if(p==='admin'&&!isAdmin){openAdminLogin();return;}
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  if(p==='admin')renderAdmin();
+  if(p==='booking'){bkStep=1;renderBkStep();}
+  if(p==='transfer'){document.getElementById('tf-form-wrap').style.display='block';document.getElementById('tf-success').style.display='none';setTimeout(()=>renderVehicleGrid(1,0),50);}
+  if(p==='custom'){setTimeout(initCustomTrip,50);}
+  window.scrollTo(0,0);
+}
+
+// ════════════════════════════════════════════════
+// HOMEPAGE PACKAGES
+// ════════════════════════════════════════════════
+const BG=['linear-gradient(135deg,#1a1208,#2d1f05)','linear-gradient(135deg,#051a1a,#092828)','linear-gradient(135deg,#0a1a08,#122a0e)','linear-gradient(135deg,#160a1a,#28102a)'];
+function renderPkgGrid(){
+  const g=document.getElementById('pkg-grid-home');if(!g)return;
+  const active=PKG.filter(p=>p.active);
+  g.innerHTML=active.slice(0,3).map((p,i)=>{
+    const img=p.photos?.length>0?`<img src="${p.photos[0]}" alt="${pName(p)}">`:'';
+    return`<div class="pc" onclick="showPage('booking')">
+      <div class="pi" style="${!img?'background:'+BG[i%4]:''}">${img}
+        <div class="pb">${i===0?'Popular':'New'}</div>
+        ${!img?`<svg width="90" height="80" viewBox="0 0 120 100" fill="none"><circle cx="60" cy="50" r="30" stroke="rgba(201,169,110,0.12)" stroke-width="1"/><circle cx="60" cy="50" r="18" stroke="rgba(201,169,110,0.2)" stroke-width="1"/><circle cx="60" cy="50" r="4" fill="rgba(201,169,110,0.5)"/></svg>`:''}
+      </div>
+      <div class="pbody">
+        <div class="pdest">${p.dest}</div>
+        <div class="pname">${pName(p)}</div>
+        <p class="pdesc">${pDesc(p)}</p>
+        <div class="pmeta"><div class="pm"><div class="dot"></div>${pDur(p)}</div></div>
+        <div class="pfoot"><div class="pp">฿${(p.ticketPerPax||0).toLocaleString()} <span style="font-size:9px;color:rgba(184,169,144,0.6)">ค่าตั๋ว/คน + ค่ารถ/ทริป</span></div>
+          <button class="pbtn" onclick="event.stopPropagation();showPage('booking')">${t('view_detail')}</button></div>
+      </div>
+    </div>`;
+  }).join('')+`<div class="pc ccard" onclick="showPage('custom')">
+    <div class="ci"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="var(--gold)" stroke-width="1.5"/></svg></div>
+    <div class="ct">${t('design_trip')}</div>
+    <p class="cd">${t('design_trip_desc')}</p>
+    <button class="bp" style="font-size:10px;padding:10px 18px" onclick="event.stopPropagation();showPage('custom')">${t('create_trip')}</button>
+  </div>`;
+}
+
+// ════════════════════════════════════════════════
+// BOOKING FLOW
+// ════════════════════════════════════════════════
+function renderPkgSelect(){
+  const g=document.getElementById('pkg-select-grid');if(!g)return;
+  const guests = parseInt(document.getElementById('bk-guests')?.value)||1;
+  g.innerHTML=PKG.filter(p=>p.active).map(p=>{
+    const ticket = p.ticketPerPax || 0;
+    const guideHr = p.guidePerHour || 0;
+    const guideH  = p.guideHours   || 0;
+    return `<div class="pkg-opt${bkSelected===p.id?' selected':''}" onclick="selectPkg('${p.id}')">
+      <div class="pkg-opt-name">${pName(p)}</div>
+      <div class="pkg-opt-price" style="font-size:12px">
+        ${ticket>0?`🎫 ค่าตั๋ว ฿${ticket.toLocaleString()}/คน`:''}
+        ${guideHr>0?` · 👤 ไกด์ ฿${guideHr.toLocaleString()}/ชม.×${guideH}ชม.`:''}
+        ${ticket===0&&guideHr===0?'ไม่มีค่าตั๋วเพิ่ม':''}
+      </div>
+      <div class="pkg-opt-dur">${pDur(p)} · ${p.dest}</div>
+    </div>`;
+  }).join('');
+}
+function selectPkg(id){
+  bkSelected=id;
+  document.querySelectorAll('.pkg-opt').forEach(el=>el.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  renderBkVehicles();
+  updateBkPrice();
+}
+
+function renderBkVehicles(){
+  const g = document.getElementById('bk-veh-grid');
+  if(!g) return;
+  const guests = parseInt(document.getElementById('bk-guests')?.value)||1;
+  const activeVehs = VEHICLES.filter(v => v.active && guests <= v.maxPax);
+  g.innerHTML = activeVehs.map(v => {
+    const _pkg = PKG.find(x=>x.id===bkSelected);
+    const tripPrice = getPkgVehiclePrice(_pkg, v.id);
+    const isSel = bkVehicle && bkVehicle.id === v.id;
+    return `<div class="bk-veh-card${isSel?' sel':''}" onclick="selectBkVehicle('${v.id}')">
+      <div class="bk-veh-icon">${v.icon}</div>
+      <div class="bk-veh-name">${vName(v)}</div>
+      <div class="bk-veh-model">${v.model}</div>
+      <div class="bk-veh-cap">👤 Max ${v.maxPax} · 🧳 Max ${v.maxLug}</div>
+      <div class="bk-veh-price">฿${tripPrice.toLocaleString()} <span>/ ทริป</span></div>
+    </div>`;
+  }).join('');
+  // auto-select ถ้ายังไม่ได้เลือก หรือรถที่เลือกเกินจำนวนคน
+  if(!bkVehicle || guests > bkVehicle.maxPax){
+    const first = activeVehs[0];
+    if(first){ bkVehicle = first; }
+    document.querySelectorAll('.bk-veh-card').forEach((el,i)=>{
+      el.classList.toggle('sel', activeVehs[i]?.id === bkVehicle?.id);
+    });
+  }
+  updateBkPrice();
+}
+
+function selectBkVehicle(id){
+  bkVehicle = VEHICLES.find(v=>v.id===id)||null;
+  document.querySelectorAll('.bk-veh-card').forEach(el=>el.classList.remove('sel'));
+  event.currentTarget.classList.add('sel');
+  updateBkPrice();
+}
+
+function updateBkPrice(){
+  const pkg = PKG.find(x=>x.id===bkSelected);
+  const breakdown = document.getElementById('bk-price-breakdown');
+  if(!pkg || !bkVehicle){ if(breakdown) breakdown.style.display='none'; return; }
+  const guests = parseInt(document.getElementById('bk-guests')?.value)||1;
+  const calc = calcTourTotal(pkg, guests, bkVehicle.id);
+  if(breakdown){
+    breakdown.style.display='block';
+    // ค่ารถ (ต่อทริป เสมอ)
+    document.getElementById('pb-veh-val').textContent = '฿'+calc.vehTrip.toLocaleString();
+    // ค่าตั๋ว (ต่อคน × จำนวนคน)
+    const hasTicket = calc.ticketPpax > 0;
+    document.getElementById('pb-ticket-row').style.display = hasTicket ? '' : 'none';
+    if(hasTicket){
+      document.getElementById('pb-pax-n').textContent = calc.pax;
+      document.getElementById('pb-ticket-val').textContent = '฿'+((calc.ticketPpax)*calc.pax).toLocaleString();
+      document.getElementById('pb-ticket-label').innerHTML = `🎫 ค่าตั๋ว ฿${calc.ticketPpax.toLocaleString()} × <span id="pb-pax-n">${calc.pax}</span> คน`;
+    }
+    // ค่าไกด์ (ต่อคน × จำนวนคน)
+    const hasGuide = calc.guideTotal > 0;
+    document.getElementById('pb-guide-row').style.display = hasGuide ? '' : 'none';
+    if(hasGuide){
+      document.getElementById('pb-guide-val').textContent = '฿'+calc.guideTotal.toLocaleString();
+      document.getElementById('pb-guide-label').innerHTML = `👤 ค่าไกด์ ฿${calc.guidePerHour.toLocaleString()}/ชม. × ${calc.guideHours} ชม.`;
+    }
+    document.getElementById('pb-total').textContent = '฿'+calc.grandTotal.toLocaleString();
+    document.getElementById('pb-dep').textContent   = '฿'+Math.round(calc.grandTotal*0.3).toLocaleString();
+  }
+  const el = document.getElementById('bk-veh-label');
+  if(el) el.textContent = t('bk_veh_title')||'Select Vehicle Type';
+}
+
+function bkNext(s){
+  if(s===1){
+    if(!bkSelected){alert(t('choose_pkg')||'Please select a package');return;}
+    if(!document.getElementById('bk-date').value){alert((t('fl_date')||'Travel date')+'?');return;}
+    if(!bkVehicle){alert((t('bk_veh_title')||'Please select a vehicle type'));return;}
+  }
+  if(s===2){
+    if(!document.getElementById('bk-fname').value||!document.getElementById('bk-email').value){alert(t('fl_fname')+' & '+t('fl_email')+' required');return;}
+    renderSummary();
+  }
+  if(s===3){
+    if(!document.getElementById('agree-terms').checked){alert(t('terms_agree'));return;}
+    submitBooking();return;
+  }
+  bkStep=s+1;renderBkStep();
+}
+function bkGo(s){bkStep=s;renderBkStep();}
+function renderBkStep(){
+  [1,2,3,4].forEach(i=>{
+    document.getElementById('bk-step-'+i).style.display=i===bkStep?'block':'none';
+    const n=document.getElementById('bsn'+i);
+    n.classList.remove('active','done');
+    if(i<bkStep)n.classList.add('done');else if(i===bkStep)n.classList.add('active');
+    n.parentElement.querySelector('.bk-step-label').classList.toggle('active',i===bkStep);
+  });
+  if(bkStep===1){renderPkgSelect();setTimeout(()=>{renderBkVehicles();updateBkPrice();},50);}
+}
+function renderSummary(){
+  const p=PKG.find(x=>x.id===bkSelected);if(!p)return;
+  const guests = document.getElementById('bk-guests').value;
+  const calc = calcTourTotal(p, guests, bkVehicle?.id||'eco_car');
+  const dep = Math.round(calc.grandTotal*0.3);
+  document.getElementById('bk-summary').innerHTML=`
+    <div class="bk-sum-row"><span class="bk-sum-label">${t('pkg_ey')}</span><span class="bk-sum-val">${pName(p)}</span></div>
+    <div class="bk-sum-row"><span class="bk-sum-label">${t('fl_date')}</span><span class="bk-sum-val">${document.getElementById('bk-date').value}</span></div>
+    <div class="bk-sum-row"><span class="bk-sum-label">${t('fl_guests')}</span><span class="bk-sum-val">${calc.pax} ${t('persons_unit')||'persons'}</span></div>
+    <div class="bk-sum-row"><span class="bk-sum-label">Vehicle</span><span class="bk-sum-val">${bkVehicle?vName(bkVehicle):'-'}</span></div>
+    <div class="bk-sum-row"><span class="bk-sum-label">${t('fl_fname')}</span><span class="bk-sum-val">${document.getElementById('bk-fname').value} ${document.getElementById('bk-lname').value}</span></div>
+    <div class="bk-sum-row"><span class="bk-sum-label">${t('fl_hotel')}</span><span class="bk-sum-val">${document.getElementById('bk-hotel').value||'-'}</span></div>
+    <div class="bk-sum-row"><span class="bk-sum-label">${t('fl_contact')}</span><span class="bk-sum-val">${document.getElementById('bk-contact').value}</span></div>
+    <div style="border-top:1px solid rgba(201,169,110,0.12);margin:8px 0;padding-top:8px">
+      <div class="bk-sum-row" style="font-size:12px"><span class="bk-sum-label">Tour ฿${calc.tourPpax.toLocaleString()} × ${calc.pax}</span><span class="bk-sum-val">฿${calc.tourTotal.toLocaleString()}</span></div>
+      <div class="bk-sum-row" style="font-size:12px"><span class="bk-sum-label">Vehicle ฿${calc.vehPpax.toLocaleString()} × ${calc.pax}</span><span class="bk-sum-val">฿${calc.vehTotal.toLocaleString()}</span></div>
+      <div class="bk-sum-row" style="font-size:15px;margin-top:6px"><span class="bk-sum-label" style="color:var(--cream);font-weight:500">Grand Total</span><span style="color:var(--gold);font-family:Georgia,serif;font-size:22px">฿${calc.grandTotal.toLocaleString()}</span></div>
+      <div class="bk-sum-row"><span class="bk-sum-label" style="color:var(--muted)">Deposit 30%</span><span style="color:var(--gold);font-weight:500">฿${dep.toLocaleString()}</span></div>
+    </div>`;
+}
+
+async function submitBooking(){
+  const btn=document.getElementById('confirm-btn');
+  btn.textContent='...'; btn.disabled=true;
+  const p=PKG.find(x=>x.id===bkSelected);
+  const guests = document.getElementById('bk-guests').value;
+  const calc = calcTourTotal(p, guests, bkVehicle?.id||'eco_car');
+  const ref=genRef('SRJ');
+  try{
+    const res=await fetch(API_BASE+'/api/bookings',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        package_id:p.id,
+        package_name:p.name,
+        package_price:calc.grandTotal,
+        price_per_pax:calc.tourPpax,
+        vehicle_type:bkVehicle?.id||'',
+        vehicle_name:bkVehicle?vName(bkVehicle):'',
+        vehicle_price_per_pax:calc.vehPpax,
+        guests_count:calc.pax,
+        travel_date:document.getElementById('bk-date').value,
+        guests:document.getElementById('bk-guests').value,
+        first_name:document.getElementById('bk-fname').value,
+        last_name:document.getElementById('bk-lname').value,
+        email:document.getElementById('bk-email').value,
+        phone:document.getElementById('bk-phone').value,
+        nationality:document.getElementById('bk-nat').value,
+        hotel:document.getElementById('bk-hotel').value,
+        special_requests:document.getElementById('bk-note').value,
+        preferred_contact:document.getElementById('bk-contact').value,
+        language:curLang
+      })
+    });
+    const data=await res.json();
+    lastRef=data.ref||ref;
+  }catch(e){lastRef=ref;}
+  BOOKINGS.unshift({ref:lastRef,pkg:p.name,price:p.price,date:document.getElementById('bk-date').value,fname:document.getElementById('bk-fname').value,lname:document.getElementById('bk-lname').value,email:document.getElementById('bk-email').value,phone:document.getElementById('bk-phone').value,contact:document.getElementById('bk-contact').value,status:'pending'});
+  document.getElementById('bk-ref').textContent=lastRef;
+  btn.textContent=t('btn_confirm'); btn.disabled=false;
+  bkStep=4;renderBkStep();
+}
+
+// ════════════════════════════════════════════════
+// TRANSFER
+// ════════════════════════════════════════════════
+function setDir(d){
+  tfDir=d;
+  document.getElementById('dir-arr').classList.toggle('active',d==='arrival');
+  document.getElementById('dir-dep').classList.toggle('active',d==='departure');
+  const arr=d==='arrival';
+  document.getElementById('tf-date-lbl').textContent=t(arr?'tf_date_lbl':'tf_dep_date_lbl')||t('tf_date_lbl');
+  document.getElementById('tf-time-lbl').textContent=t(arr?'tf_time_lbl':'tf_dep_time_lbl')||t('tf_time_lbl');
+  document.getElementById('tf-hotel-lbl').textContent=t(arr?'tf_hotel_lbl':'tf_pickup_lbl')||t('tf_hotel_lbl');
+}
+function selAP(el,code,name){
+  document.querySelectorAll('.airport-opt').forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');
+  tfAP = AIRPORTS.find(a=>a.code===code) || {code,name};
+  // re-render vehicles เพื่ออัปเดตราคาตาม airport ใหม่
+  const pax = document.getElementById('tf-pax')?.value||1;
+  renderVehicleGrid(pax, parseInt(tfLug)||0);
+  // แสดง note ราคา per airport
+  const note = document.getElementById('airport-price-note');
+  if(note) note.textContent = name + ' — ราคาอัปเดตแล้ว';
+}
+function selVeh(el,key,price,name){
+  // legacy compat
+  const v=VEHICLES.find(x=>x.id===key)||{id:key,name,price,icon:'🚗',maxPax:9,maxLug:9,active:true};
+  selectVehicle(v);
+}
+function selLug(el,v){
+  document.querySelectorAll('.lug-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  tfLug=v;
+  const pax=document.getElementById('tf-pax')?.value||1;
+  renderVehicleGrid(pax, parseInt(v)||0);
+}
+function updateTFPrice(){
+  if(!tfVeh) return;
+  const price = getPrice(tfVeh.id, tfAP.code);
+  tfVeh._currentPrice = price; // cache for submit
+  const aEl = document.getElementById('tp-airport');
+  const vEl = document.getElementById('tp-vehicle');
+  const tEl = document.getElementById('tp-total');
+  const pEl = document.getElementById('tp-pax-note');
+  if(aEl) aEl.textContent = (tfAP.name||tfAP.code)+' ('+tfAP.code+')';
+  if(vEl) vEl.textContent = vName(tfVeh);
+  if(tEl){ tEl.textContent='฿'+price.toLocaleString(); }
+  if(pEl) pEl.textContent = '👤 Max '+tfVeh.maxPax+' pax · 🧳 Max '+tfVeh.maxLug+' bags';
+}
+
+async function submitTransfer(){
+  if(!document.getElementById('tf-date').value){alert(t('tf_date_lbl')+'?');return;}
+  if(!document.getElementById('tf-name').value||!document.getElementById('tf-email').value){alert('Name & email required');return;}
+  if(!document.getElementById('tf-agree').checked){alert(t('terms_agree'));return;}
+  const btn=document.getElementById('tf-confirm-btn');
+  btn.textContent='...'; btn.disabled=true;
+  const ref=genRef('TRF');
+  let finalRef=ref;
+  try{
+    const res=await fetch(API_BASE+'/api/transfers',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        airport_code:tfAP.code,airport_name:tfAP.name,direction:tfDir,
+        vehicle_type:tfVeh.id,vehicle_name:vName(tfVeh),price:tfVeh._currentPrice||getPrice(tfVeh.id,tfAP.code),
+        travel_date:document.getElementById('tf-date').value,
+        travel_time:document.getElementById('tf-time').value,
+        flight_number:document.getElementById('tf-flight').value,
+        passengers:document.getElementById('tf-pax').value,
+        luggage_count:tfLug,
+        hotel:document.getElementById('tf-hotel').value,
+        area:document.getElementById('tf-area').value,
+        guest_name:document.getElementById('tf-name').value,
+        phone:document.getElementById('tf-phone').value,
+        email:document.getElementById('tf-email').value,
+        special_requests:document.getElementById('tf-note').value,
+      })
+    });
+    if(res.ok){const d=await res.json();finalRef=d.ref||ref;}
+  }catch(e){}
+  lastRef=finalRef;
+  TRANSFERS.unshift({ref:finalRef,airport:tfAP.code,direction:tfDir,vehicle:tfVeh.name,price:tfVeh.price,date:document.getElementById('tf-date').value,name:document.getElementById('tf-name').value,email:document.getElementById('tf-email').value,status:'pending'});
+  document.getElementById('tf-ref').textContent=finalRef;
+  btn.textContent=t('tf_confirm_btn'); btn.disabled=false;
+  document.getElementById('tf-form-wrap').style.display='none';
+  document.getElementById('tf-success').style.display='block';
+  window.scrollTo(0,0);
+}
+
+// ════════════════════════════════════════════════
+// ADMIN RENDER
+// ════════════════════════════════════════════════
+function renderAdmin(){updateMetrics();renderDashTable();renderBarChart();renderBkTable();renderTfTable();renderPkgMgmt();renderTourVehPriceEditor();renderCustTable();}
+function updateMetrics(){
+  const rev=[...BOOKINGS,...TRANSFERS].filter(b=>b.status==='confirmed').reduce((a,b)=>a+(b.price||0),0);
+  const pend=[...BOOKINGS,...TRANSFERS].filter(b=>b.status==='pending').length;
+  document.getElementById('m-total').textContent=BOOKINGS.length;
+  document.getElementById('m-tf').textContent=TRANSFERS.length;
+  document.getElementById('m-rev').textContent=rev>0?'฿'+rev.toLocaleString():'฿0';
+  document.getElementById('m-pend').textContent=pend;
+}
+const sBadge=s=>{const m={confirmed:'s-confirmed',pending:'s-pending',cancelled:'s-cancelled'};const l={confirmed:'Confirmed',pending:'Pending',cancelled:'Cancelled'};return`<span class="status ${m[s]||'s-pending'}">${l[s]||s}</span>`;};
+function renderDashTable(){
+  const t=document.getElementById('dash-table');if(!t)return;
+  t.innerHTML=BOOKINGS.slice(0,5).map(b=>`<tr><td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td><td style="color:var(--muted)">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td><td>฿${(b.price||0).toLocaleString()}</td><td>${sBadge(b.status)}</td></tr>`).join('')||'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';
+}
+function renderBkTable(){
+  const t=document.getElementById('full-bk-table');if(!t)return;
+  const f=document.getElementById('filter-status').value;
+  const rows=f?BOOKINGS.filter(b=>b.status===f):BOOKINGS;
+  document.getElementById('bk-count-label').textContent=rows.length+' total';
+  t.innerHTML=rows.map(b=>`<tr>
+    <td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.fname} ${b.lname}</td>
+    <td style="color:var(--muted);font-size:11px">${b.pkg}</td><td style="color:var(--muted)">${b.date}</td>
+    <td>${b.guests||1}</td><td style="font-size:10px;color:var(--muted)">${b.contact||'LINE'}</td>
+    <td>฿${(b.price||0).toLocaleString()}</td><td>${sBadge(b.status)}</td>
+    <td><div class="adm-act">
+      ${b.status==='pending'?`<button class="abt" onclick="chgBk(${BOOKINGS.indexOf(b)},'confirmed')">✓</button>`:''}
+      <button class="abt red" onclick="chgBk(${BOOKINGS.indexOf(b)},'cancelled')">✗</button>
+    </div></td></tr>`).join('')||'<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px">No bookings yet</td></tr>';
+}
+function renderTfTable(){
+  const t=document.getElementById('tf-adm-table');if(!t)return;
+  document.getElementById('tf-count-label').textContent=TRANSFERS.length+' total';
+  t.innerHTML=TRANSFERS.map(b=>`<tr>
+    <td style="color:var(--gold);font-size:10px">${b.ref}</td><td>${b.name||'-'}</td>
+    <td style="font-size:11px">${b.airport}</td>
+    <td style="font-size:10px;color:var(--muted)">${b.direction==='arrival'?'ARR':'DEP'}</td>
+    <td style="color:var(--muted);font-size:11px">${b.vehicle}</td>
+    <td style="color:var(--muted)">${b.date}</td>
+    <td style="font-size:11px">${b.flight||'-'}</td>
+    <td>฿${(b.price||0).toLocaleString()}</td><td>${sBadge(b.status)}</td>
+    <td><div class="adm-act">
+      ${b.status==='pending'?`<button class="abt" onclick="chgTf(${TRANSFERS.indexOf(b)},'confirmed')">✓</button>`:''}
+      <button class="abt red" onclick="chgTf(${TRANSFERS.indexOf(b)},'cancelled')">✗</button>
+    </div></td></tr>`).join('')||'<tr><td colspan="10" style="text-align:center;color:var(--muted);padding:24px">No transfers yet</td></tr>';
+}
+function chgBk(i,s){BOOKINGS[i].status=s;renderAdmin();}
+function chgTf(i,s){TRANSFERS[i].status=s;renderAdmin();}
+function renderBarChart(){
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const data=[3,5,4,7,9,12,8,6,10,14,11,16];const max=Math.max(...data);
+  const c=document.getElementById('bar-chart');if(!c)return;
+  c.innerHTML=months.map((m,i)=>`<div class="bar-col"><div class="bar-val">${data[i]}</div><div class="bar" style="height:${Math.round((data[i]/max)*80)}px"></div><div class="bar-label">${m}</div></div>`).join('');
+}
+
+// ════════════════════════════════════════════════
+// PACKAGES & PHOTOS ADMIN
+// ════════════════════════════════════════════════
+function renderTourVehPriceEditor(){
+  const el = document.getElementById('tour-veh-price-editor');
+  if(!el) return;
+  el.innerHTML = VEHICLES.filter(v=>v.active).map(v=>{
+    const price = TOUR_VEH_PRICES[v.id]||0;
+    return `<div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.06)">
+      <span style="font-size:20px;width:28px;text-align:center">${v.icon}</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;color:var(--cream);font-weight:500">${v.name}</div>
+        <div style="font-size:10px;color:var(--muted)">${v.model} · Max ${v.maxPax} pax</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:11px;color:var(--muted)">฿</span>
+        <input type="number" class="finput" id="tvp-${v.id}" value="${price}" 
+               style="width:90px;padding:7px;text-align:center;font-family:Georgia,serif;font-size:15px;color:var(--gold)"
+               placeholder="0">
+        <span style="font-size:10px;color:var(--muted)">/person</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+function saveTourVehPrices(){
+  VEHICLES.filter(v=>v.active).forEach(v=>{
+    const inp = document.getElementById('tvp-'+v.id);
+    if(inp) TOUR_VEH_PRICES[v.id] = parseInt(inp.value)||0;
+  });
+  saveTourVehiclePrices(TOUR_VEH_PRICES);
+  const msg = document.getElementById('tvp-saved');
+  if(msg){ msg.style.display='block'; setTimeout(()=>msg.style.display='none',2000); }
+}
+
+function renderPkgMgmt(){
+  const g=document.getElementById('pkg-mgmt-grid');if(!g)return;
+  g.innerHTML=PKG.map((p,i)=>{
+    const mainImg=p.photos?.length>0?`<img src="${p.photos[0]}" alt="${p.name}">`:`<div class="pca-no-img"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span style="font-size:10px;letter-spacing:1px">${t('pkg_no_photo')}</span></div>`;
+    const thumbs=p.photos?.length>0?`<div class="photo-gallery">
+      <div class="photo-gallery-title">PHOTOS (${p.photos.length})</div>
+      <div class="gallery-grid">
+        ${p.photos.map((ph,pi)=>`<div class="gallery-thumb" onclick="openLB('${ph}')"><img src="${ph}" alt=""><button class="gallery-del" onclick="event.stopPropagation();delPhoto(${i},${pi})">×</button></div>`).join('')}
+        <div class="gallery-add-btn" onclick="openPhotoUpload(${i})"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="var(--gold)" stroke-width="1.5"/></svg>ADD</div>
+      </div></div>`:'';
+    return`<div class="pkg-card-adm">
+      <div class="pca-img-area" onclick="openPhotoUpload(${i})">${mainImg}<div class="pca-img-overlay"><div class="pca-overlay-text">📷 Upload Photos<br><span style="font-size:10px;opacity:0.8;letter-spacing:0">${p.photos?.length>0?'Change / Add more':'Click to upload'}</span></div></div></div>
+      <div class="pca-body">
+        <div class="pca-name">${p.name}</div>
+        <div class="pca-info">${p.nameT||'—'} · ${p.nameZ||'—'}<br>${p.dest} · ${p.dur}</div>
+        <div class="pca-foot">
+          <div>
+            <div style="font-size:10px;color:var(--muted)">🎫 ค่าตั๋ว: ฿${(p.ticketPerPax||0).toLocaleString()}/คน${p.guidePerHour?` · 👤 ไกด์: ฿${p.guidePerHour}/ชม.×${p.guideHours||0}ชม.`:''}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span style="font-size:10px;color:var(--muted)">${p.active?'Active':'Hidden'}</span>
+            <div class="toggle${p.active?'':' off'}" onclick="togglePkg(${i})"></div>
+            <button class="abt" onclick="openEditPkg(${i})" title="Edit">✏️</button>
+            <button class="abt danger" onclick="deletePkg(${i})" title="Delete">🗑</button>
+          </div>
+        </div>
+      </div>${thumbs}</div>`;
+  }).join('');
+}
+
+function deletePkg(i){
+  const p=PKG[i];
+  if(!confirm(`Delete package "${p.name}"?\n\nThis cannot be undone.`))return;
+  PKG.splice(i,1);
+  savePKG();
+  renderPkgMgmt();renderPkgGrid();renderPkgSelect();
+}
+function togglePkg(i){PKG[i].active=!PKG[i].active;savePKG();renderPkgMgmt();renderPkgGrid();}
+function openPhotoUpload(idx){photoPkgIdx=idx;const inp=document.getElementById('photo-input');inp.value='';inp.click();}
+document.getElementById('photo-input').addEventListener('change',function(e){
+  if(photoPkgIdx===null)return;
+  Array.from(e.target.files).forEach(file=>{
+    const r=new FileReader();
+    r.onload=ev=>{if(!PKG[photoPkgIdx].photos)PKG[photoPkgIdx].photos=[];PKG[photoPkgIdx].photos.push(ev.target.result);savePKG();renderPkgMgmt();renderPkgGrid();};
+    r.readAsDataURL(file);
+  });
+});
+function delPhoto(pi,ph){if(!confirm('Delete this photo?'))return;PKG[pi].photos.splice(ph,1);savePKG();renderPkgMgmt();renderPkgGrid();}
+function openLB(src){document.getElementById('lb-img').src=src;document.getElementById('lightbox').classList.add('open');}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+let editPkgIdx = null;
+
+function renderPkgVehPriceEditor(existingVehicles){
+  const el = document.getElementById('pkg-veh-price-editor');
+  if(!el) return;
+  el.innerHTML = VEHICLES.filter(v=>v.active).map(v=>{
+    const cur = (existingVehicles && existingVehicles[v.id] != null)
+                ? existingVehicles[v.id]
+                : (DEFAULT_PKG_VEHICLE_PRICES[v.id] || 0);
+    return '<div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(201,169,110,0.06)">'
+      + '<span style="font-size:18px;width:24px;flex-shrink:0">'+v.icon+'</span>'
+      + '<div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--cream);font-weight:500">'+v.name+'</div>'
+      + '<div style="font-size:9px;color:var(--muted)">'+v.model+' · Max '+v.maxPax+' pax</div></div>'
+      + '<span style="font-size:11px;color:var(--muted)">฿</span>'
+      + '<input type="number" class="finput" id="pvp-'+v.id+'" value="'+cur+'"'
+      + ' style="width:100px;padding:7px;text-align:right;font-family:Georgia,serif;font-size:16px;color:var(--gold)">'
+      + '<span style="font-size:10px;color:var(--muted);white-space:nowrap">/ทริป</span></div>';
+  }).join('');
+}
+
+function openAddPkg(){
+  editPkgIdx = null;
+  document.getElementById('pkg-form-title').textContent = 'Add New Package';
+  ['npkg-name','npkg-nameT','npkg-nameZ','npkg-dest','npkg-dur','npkg-durT','npkg-durZ',
+   'npkg-desc','npkg-descT','npkg-descZ','npkg-ticket','npkg-guide'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.value='';
+  });
+  document.getElementById('add-pkg-form').style.display='block';
+  renderPkgVehPriceEditor(null);
+  document.getElementById('add-pkg-form').scrollIntoView({behavior:'smooth'});
+}
+
+function openEditPkg(i){
+  editPkgIdx = i;
+  const p = PKG[i];
+  document.getElementById('pkg-form-title').textContent = 'แก้ไข: '+p.name;
+  document.getElementById('npkg-name').value   = p.name||'';
+  document.getElementById('npkg-nameT').value  = p.nameT||'';
+  document.getElementById('npkg-nameZ').value  = p.nameZ||'';
+  document.getElementById('npkg-dest').value   = p.dest||'';
+  document.getElementById('npkg-dur').value    = p.dur||'';
+  document.getElementById('npkg-durT').value   = p.durT||'';
+  document.getElementById('npkg-durZ').value   = p.durZ||'';
+  document.getElementById('npkg-desc').value   = p.desc||'';
+  document.getElementById('npkg-descT').value  = p.descT||'';
+  document.getElementById('npkg-descZ').value  = p.descZ||'';
+  document.getElementById('npkg-ticket').value = p.ticketPerPax||0;
+  document.getElementById('npkg-guide').value = p.guidePerHour||0;
+  const ghEl=document.getElementById('npkg-guide-hours'); if(ghEl) ghEl.value=p.guideHours||0;
+  document.getElementById('add-pkg-form').style.display='block';
+  renderPkgVehPriceEditor(p.vehicles || {});
+  document.getElementById('add-pkg-form').scrollIntoView({behavior:'smooth'});
+}
+
+function closeAddPkg(){document.getElementById('add-pkg-form').style.display='none';editPkgIdx=null;}
+function saveNewPkg(){
+  const name = document.getElementById('npkg-name').value.trim();
+  if(!name){alert('กรุณาใส่ชื่อแพ็กเกจ (EN)');return;}
+  const nameT       = document.getElementById('npkg-nameT').value.trim()||name;
+  const nameZ       = document.getElementById('npkg-nameZ').value.trim()||name;
+  const dest        = document.getElementById('npkg-dest').value.trim();
+  const dur         = document.getElementById('npkg-dur').value.trim()||'';
+  const durT        = document.getElementById('npkg-durT').value.trim()||dur;
+  const durZ        = document.getElementById('npkg-durZ').value.trim()||dur;
+  const desc        = document.getElementById('npkg-desc').value.trim();
+  const descT       = document.getElementById('npkg-descT').value.trim()||desc;
+  const descZ       = document.getElementById('npkg-descZ').value.trim()||desc;
+  const ticketPerPax= parseInt(document.getElementById('npkg-ticket').value)||0;
+  const guidePerHour = parseInt(document.getElementById('npkg-guide').value)||0;
+  const guideHours   = parseInt(document.getElementById('npkg-guide-hours')?.value)||0;
+  // อ่านราคารถต่อทริปจาก editor
+  const vehicles = {};
+  VEHICLES.filter(v=>v.active).forEach(v=>{
+    const inp = document.getElementById('pvp-'+v.id);
+    if(inp) vehicles[v.id] = parseInt(inp.value)||0;
+  });
+  const pkgData = {name,nameT,nameZ,dest,ticketPerPax,guidePerHour,guideHours,
+    vehicles, price:ticketPerPax, pricePerPax:ticketPerPax,
+    dur,durT,durZ,desc,descT,descZ};
+  if(editPkgIdx !== null){
+    PKG[editPkgIdx] = {...PKG[editPkgIdx], ...pkgData};
+    savePKG();
+    alert('✅ อัปเดตแพ็กเกจแล้ว');
+  } else {
+    PKG.push({id:'p'+Date.now(), ...pkgData, active:true, photos:[]});
+    savePKG();
+    alert('✅ เพิ่มแพ็กเกจแล้ว');
+  }
+  closeAddPkg();
+  renderPkgMgmt();renderPkgGrid();renderPkgSelect();
+}
+
+function renderCustTable(){
+  const t=document.getElementById('cust-table');if(!t)return;
+  const map={};
+  [...BOOKINGS,...TRANSFERS].forEach(b=>{
+    const email=b.email||'?'; const nm=b.fname&&b.lname?b.fname+' '+b.lname:b.name||'-';
+    if(!map[email])map[email]={name:nm,email,nat:b.nat||'-',phone:b.phone||'-',count:0,total:0};
+    map[email].count++;map[email].total+=(b.price||0);
+  });
+  const rows=Object.values(map);
+  t.innerHTML=rows.length?rows.map(c=>`<tr><td>${c.name}</td><td style="color:var(--muted)">${c.email}</td><td style="color:var(--muted)">${c.nat}</td><td style="color:var(--muted)">${c.phone}</td><td style="text-align:center">${c.count}</td><td style="color:var(--gold)">฿${c.total.toLocaleString()}</td></tr>`).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">No customers yet</td></tr>';
+}
+
+function admView(v){
+  document.querySelectorAll('.adm-view').forEach(x=>x.classList.remove('active'));
+  document.getElementById('adm-'+v)?.classList.add('active');
+  document.querySelectorAll('.adm-nav a').forEach(a=>a.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  if(v==='settings') loadSettingsToForm();
+  if(v==='vehicles') renderVehAdm();
+}
+
+// ════════════════════════════════════════════════
+// SETTINGS — Contact info (LINE, WeChat, WhatsApp etc.)
+// ════════════════════════════════════════════════
+const DEFAULT_SETTINGS = {
+  line:        '@177wmjar',
+  wechat:      '',
+  whatsapp:    '66800847620',
+  phone:       '+66 80 084 7620',
+  email:       'info@siamroyal.com',
+  sitename:    'Siam Royal Journey',
+  footerdesc:  'Premium private tour service with professional car and driver.',
+};
+
+function loadSettings(){
+  try{ const s=localStorage.getItem('srj_settings'); return Object.assign({},DEFAULT_SETTINGS,s?JSON.parse(s):{}); }
+  catch{ return {...DEFAULT_SETTINGS}; }
+}
+function getS(key){ return loadSettings()[key]||DEFAULT_SETTINGS[key]; }
+
+function loadSettingsToForm(){
+  const s=loadSettings();
+  document.getElementById('cfg-line').value        = s.line;
+  document.getElementById('cfg-wechat').value      = s.wechat;
+  document.getElementById('cfg-whatsapp').value    = s.whatsapp;
+  document.getElementById('cfg-phone').value       = s.phone;
+  document.getElementById('cfg-email').value       = s.email;
+  document.getElementById('cfg-sitename').value    = s.sitename;
+  document.getElementById('cfg-footerdesc').value  = s.footerdesc;
+  renderSettingsPreview(s);
+}
+
+function renderSettingsPreview(s){
+  s=s||loadSettings();
+  const p=document.getElementById('settings-preview');
+  if(!p)return;
+  const style=(color,border)=>`background:var(--dark2);border:1px solid ${border};padding:11px 16px;font-size:12px;color:${color};display:flex;align-items:center;gap:8px`;
+  p.innerHTML=`
+    <div style="${style('#06c755','rgba(6,199,85,0.3)')}">💬 LINE: ${s.line}</div>
+    <div style="${style('#07c160','rgba(7,193,96,0.3)')}">💚 WeChat: ${s.wechat}</div>
+    <div style="${style('#25d366','rgba(37,211,102,0.3)')}">📱 WhatsApp: +${s.whatsapp}</div>
+    <div style="${style('var(--gold)','rgba(201,169,110,0.3)')}">📞 ${s.phone}</div>
+    <div style="${style('var(--muted)','rgba(201,169,110,0.2)')}">✉ ${s.email}</div>`;
+}
+
+function saveSettings(){
+  const s={
+    line:       document.getElementById('cfg-line').value.trim()       || DEFAULT_SETTINGS.line,
+    wechat:     document.getElementById('cfg-wechat').value.trim()     || DEFAULT_SETTINGS.wechat,
+    whatsapp:   document.getElementById('cfg-whatsapp').value.trim().replace(/\D/g,'') || DEFAULT_SETTINGS.whatsapp,
+    phone:      document.getElementById('cfg-phone').value.trim()      || DEFAULT_SETTINGS.phone,
+    email:      document.getElementById('cfg-email').value.trim()      || DEFAULT_SETTINGS.email,
+    sitename:   document.getElementById('cfg-sitename').value.trim()   || DEFAULT_SETTINGS.sitename,
+    footerdesc: document.getElementById('cfg-footerdesc').value.trim() || DEFAULT_SETTINGS.footerdesc,
+  };
+  localStorage.setItem('srj_settings',JSON.stringify(s));
+  renderSettingsPreview(s);
+  updateContactButtons(s);
+  const msg=document.getElementById('settings-saved');
+  if(msg){ msg.style.display='block'; setTimeout(()=>msg.style.display='none',3000); }
+}
+
+function updateContactButtons(s){ updateContactUI(); }
+
+
+let editVehIdx = null;
+
+function renderVehAdm(){
+  const el = document.getElementById('veh-adm-list');
+  if(!el) return;
+  el.innerHTML = '';
+  VEHICLES.forEach((v, i) => {
+    const div = document.createElement('div');
+    div.className = 'veh-adm-item';
+    div.style.opacity = v.active ? '1' : '0.5';
+    div.innerHTML = `
+      <div class="veh-adm-icon">${v.icon}</div>
+      <div class="veh-adm-info">
+        <div class="veh-adm-name">${v.name}${v.nameT?' / '+v.nameT:''}</div>
+        <div class="veh-adm-detail">${v.model||''} · 👤 Max ${v.maxPax} pax · 🧳 Max ${v.maxLug} bags · ${v.active?'<span style="color:var(--green)">Active</span>':'<span style="color:var(--red)">Hidden</span>'}</div>
+      </div>
+      <div class="veh-adm-price">฿${v.price.toLocaleString()}</div>
+      <div class="veh-adm-actions">
+        <button class="abt" onclick="editVeh(${i})">✏️ แก้ไข</button>
+        <button class="abt" onclick="toggleVehActive(${i})">${v.active?'🚫 ซ่อน':'✅ แสดง'}</button>
+        <button class="abt" onclick="moveVeh(${i},-1)"${i===0?' disabled':''}>↑</button>
+        <button class="abt" onclick="moveVeh(${i},1)"${i===VEHICLES.length-1?' disabled':''}>↓</button>
+        <button class="abt danger" onclick="deleteVeh(${i})">🗑 ลบ</button>
+      </div>`;
+    el.appendChild(div);
+  });
+}
+
+function openAddVeh(){
+  editVehIdx = null;
+  document.getElementById('veh-form-title').textContent = 'เพิ่มประเภทรถใหม่';
+  ['vf-name','vf-nameT','vf-nameZ','vf-icon','vf-model','vf-price','vf-pax','vf-lug'].forEach(id => {
+    const el = document.getElementById(id); if(el) el.value = '';
+  });
+  const ac = document.getElementById('vf-active'); if(ac) ac.checked = true;
+  const f = document.getElementById('veh-add-form');
+  if(f){ f.style.display='block'; f.scrollIntoView({behavior:'smooth'}); }
+}
+
+function editVeh(i){
+  editVehIdx = i;
+  const v = VEHICLES[i];
+  document.getElementById('veh-form-title').textContent = 'แก้ไข: '+v.name;
+  document.getElementById('vf-name').value  = v.name||'';
+  document.getElementById('vf-nameT').value = v.nameT||'';
+  document.getElementById('vf-nameZ').value = v.nameZ||'';
+  document.getElementById('vf-icon').value  = v.icon||'🚗';
+  document.getElementById('vf-model').value = v.model||'';
+  document.getElementById('vf-price').value = v.price||'';
+  document.getElementById('vf-pax').value   = v.maxPax||'';
+  document.getElementById('vf-lug').value   = v.maxLug||'';
+  document.getElementById('vf-active').checked = v.active!==false;
+  const f = document.getElementById('veh-add-form');
+  if(f){ f.style.display='block'; f.scrollIntoView({behavior:'smooth'}); }
+}
+
+function saveVeh(){
+  const name  = document.getElementById('vf-name')?.value.trim();
+  const price = parseInt(document.getElementById('vf-price')?.value)||0;
+  const pax   = parseInt(document.getElementById('vf-pax')?.value)||1;
+  const lug   = parseInt(document.getElementById('vf-lug')?.value)||0;
+  if(!name||!price||!pax){ alert('กรุณากรอก ชื่อรถ ราคา และจำนวนคนสูงสุด'); return; }
+  const vData = {
+    id:     editVehIdx!==null ? VEHICLES[editVehIdx].id : 'veh_'+Date.now(),
+    icon:   document.getElementById('vf-icon')?.value||'🚗',
+    name,
+    nameT:  document.getElementById('vf-nameT')?.value.trim()||'',
+    nameZ:  document.getElementById('vf-nameZ')?.value.trim()||'',
+    model:  document.getElementById('vf-model')?.value.trim()||'',
+    price, maxPax:pax, maxLug:lug,
+    active: document.getElementById('vf-active')?.checked!==false,
+  };
+  if(editVehIdx!==null) VEHICLES[editVehIdx]=vData; else VEHICLES.push(vData);
+  saveVehicles(VEHICLES);
+  closeAddVeh(); renderVehAdm();
+  alert('✅ บันทึกข้อมูลรถแล้ว');
+}
+
+function closeAddVeh(){
+  const f=document.getElementById('veh-add-form'); if(f) f.style.display='none'; editVehIdx=null;
+}
+function toggleVehActive(i){ VEHICLES[i].active=!VEHICLES[i].active; saveVehicles(VEHICLES); renderVehAdm(); }
+function deleteVeh(i){
+  if(VEHICLES.length<=1){alert('ต้องมีประเภทรถอย่างน้อย 1 ประเภท');return;}
+  if(!confirm('ลบ "'+VEHICLES[i].name+'" ออก?'))return;
+  VEHICLES.splice(i,1); saveVehicles(VEHICLES); renderVehAdm();
+}
+function moveVeh(i,dir){
+  const j=i+dir; if(j<0||j>=VEHICLES.length)return;
+  [VEHICLES[i],VEHICLES[j]]=[VEHICLES[j],VEHICLES[i]];
+  saveVehicles(VEHICLES); renderVehAdm();
+}
+
+function openModal(html){document.getElementById('modal-content').innerHTML=html;document.getElementById('modal').classList.add('open');}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+
+// ════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════
+setLang('en');
+// Try to sync packages from backend
+fetch(API_BASE+'/api/packages').then(r=>r.json()).then(data=>{
+  if(!data||!data.length)return;
+  data.forEach(sp=>{
+    const local=PKG.find(p=>p.id===sp.id);
+    if(local){
+      local.name=sp.name||local.name;local.nameT=sp.name_th||local.nameT;local.nameZ=sp.name_zh||local.nameZ;
+      local.price=sp.price||local.price;local.dest=sp.dest||local.dest;
+      local.dur=sp.duration||local.dur;local.durT=sp.duration_th||local.durT;local.durZ=sp.duration_zh||local.durZ;
+      local.active=sp.active!==false;
+    }
+  });
+  renderPkgGrid();renderPkgSelect();
+}).catch(()=>{});
+
+// ════════════════════════════════════════════════
+// CUSTOM TRIP BUILDER
+// ════════════════════════════════════════════════
+const CT_VEH_PRICE_PER_DAY = {
+  eco_car:2000, prem_sed:3000, mpv:3500,
+  eco_van:4500, prem_van:6000, lux_mpv:10000,
+};
+const CT_TICKET_EST = {
+  cultural:400, nature:200, beach:300,
+  food:150, luxury:500, adventure:300,
+  family:400, honeymoon:350, mix:300,
+};
+let ctVehicleId = 'eco_car';
+let ctDays = 3;
+
+function initCustomTrip(){
+  const g = document.getElementById('ct-veh-grid');
+  if(!g) return;
+  g.innerHTML = VEHICLES.filter(v=>v.active).map(v=>{
+    const ppd = CT_VEH_PRICE_PER_DAY[v.id]||2000;
+    const isSel = v.id === ctVehicleId;
+    return '<div class="ct-veh-card'+(isSel?' sel':'')+'" onclick="ctSelVeh(\''+v.id+'\',this)">'
+      +'<div class="ct-veh-icon">'+v.icon+'</div>'
+      +'<div class="ct-veh-name">'+vName(v)+'</div>'
+      +'<div class="ct-veh-cap">👤 Max '+v.maxPax+' · ≈ ฿'+ppd.toLocaleString()+'/วัน</div>'
+      +'</div>';
+  }).join('');
+  ctDays = parseInt(document.getElementById('ct-days')?.value)||3;
+  buildDayPlanner();
+  ctUpdateEstimate();
+}
+
+function ctSelVeh(id, el){
+  ctVehicleId = id;
+  document.querySelectorAll('.ct-veh-card').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  ctUpdateEstimate();
+}
+
+function toggleDest(el){
+  el.classList.toggle('sel');
+  const otherInput = document.getElementById('ct-dest-other');
+  if(otherInput) otherInput.style.display =
+    document.querySelector('.ct-dest-card[data-dest="Other"].sel') ? 'block' : 'none';
+}
+
+function buildDayPlanner(){
+  const days = parseInt(document.getElementById('ct-days')?.value)||3;
+  const container = document.getElementById('ct-day-planner');
+  if(!container) return;
+  const existing = [...container.querySelectorAll('.day-inp')].map(i=>i.value);
+  container.innerHTML = '';
+  for(let i=1;i<=days;i++){
+    const div = document.createElement('div');
+    div.className = 'day-row';
+    div.innerHTML = '<span class="day-num">'+i+'</span>'
+      +'<textarea class="day-inp" id="ct-day-'+i+'" placeholder="วันที่ '+i+' — ต้องการไปที่ไหน? ทำอะไร?...">'+(existing[i-1]||'')+'</textarea>'
+      +(days>1 ? '<button class="rm-day" onclick="ctRemoveDay('+i+')" title="ลบ">×</button>' : '');
+    container.appendChild(div);
+  }
+  ctDays = days;
+}
+
+function ctAddDay(){
+  const sel = document.getElementById('ct-days');
+  let cur = parseInt(sel?.value)||3;
+  cur = Math.min(cur+1,14);
+  if(sel) sel.value = cur;
+  buildDayPlanner(); ctUpdateEstimate();
+}
+
+function ctRemoveDay(n){
+  const sel = document.getElementById('ct-days');
+  let cur = parseInt(sel?.value)||3;
+  cur = Math.max(cur-1,1);
+  if(sel) sel.value = cur;
+  buildDayPlanner(); ctUpdateEstimate();
+}
+
+function ctUpdateEstimate(){
+  const days    = parseInt(document.getElementById('ct-days')?.value)||3;
+  const pax     = parseInt(document.getElementById('ct-pax')?.value)||2;
+  const style   = document.getElementById('ct-style')?.value||'mix';
+  const vehPpd  = CT_VEH_PRICE_PER_DAY[ctVehicleId]||2000;
+  const tickPpd = CT_TICKET_EST[style]||300;
+  const vehTotal   = vehPpd * days;
+  const tickTotal  = tickPpd * pax * days;
+  const grand      = vehTotal + tickTotal;
+  const set = (id,v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+  set('ct-est-veh-val',   '฿'+vehPpd.toLocaleString()+' × '+days+' วัน = ฿'+vehTotal.toLocaleString());
+  set('ct-est-ticket-val','฿'+tickPpd.toLocaleString()+'/คน × '+pax+' คน × '+days+' วัน = ฿'+tickTotal.toLocaleString());
+  set('ct-est-total-val', '฿'+grand.toLocaleString());
+  const tr = document.getElementById('ct-est-ticket-row');
+  if(tr) tr.style.display = tickTotal>0 ? '' : 'none';
+  if(days !== ctDays) buildDayPlanner();
+}
+
+async function submitCustomTrip(){
+  const email = document.getElementById('ct-email')?.value.trim();
+  if(!email){ alert('กรุณาใส่ Email'); return; }
+  const dests = [...document.querySelectorAll('.ct-dest-card.sel')].map(el=>el.dataset.dest);
+  if(!dests.length){ alert('กรุณาเลือกจุดหมายอย่างน้อย 1 ที่'); return; }
+  const days = document.getElementById('ct-days')?.value;
+  const pax  = document.getElementById('ct-pax')?.value;
+  const dayPlans = [];
+  for(let i=1;i<=parseInt(days);i++){
+    const v = document.getElementById('ct-day-'+i)?.value.trim();
+    if(v) dayPlans.push('Day '+i+': '+v);
+  }
+  const style    = document.getElementById('ct-style')?.value||'mix';
+  const vehPpd   = CT_VEH_PRICE_PER_DAY[ctVehicleId]||2000;
+  const tickPpd  = CT_TICKET_EST[style]||300;
+  const estTotal = (vehPpd + tickPpd * parseInt(pax)) * parseInt(days);
+  const ref = genRef('CTM'); lastRef = ref;
+  const btn = document.getElementById('ct-submit-btn');
+  btn.textContent='...'; btn.disabled=true;
+  const payload = {
+    type:'custom_trip', reference:ref,
+    destinations: dests.join(', '),
+    dest_other: document.getElementById('ct-dest-other')?.value.trim()||'',
+    travel_date: document.getElementById('ct-date')?.value||'',
+    days, pax, style,
+    vehicle_type: ctVehicleId,
+    vehicle_name: VEHICLES.find(v=>v.id===ctVehicleId)?.name||ctVehicleId,
+    budget: document.getElementById('ct-budget')?.value||'',
+    hotel_pref: document.getElementById('ct-hotel-pref')?.value||'',
+    wishes: document.getElementById('ct-wishes')?.value.trim()||'',
+    day_plans: dayPlans.join(' | '),
+    est_price: estTotal,
+    first_name: document.getElementById('ct-fname')?.value.trim()||'',
+    last_name:  document.getElementById('ct-lname')?.value.trim()||'',
+    email, phone: document.getElementById('ct-phone')?.value.trim()||'',
+    contact_pref: document.getElementById('ct-contact-pref')?.value||'',
+    language: curLang,
+  };
+  try{
+    await fetch(API_BASE+'/api/bookings',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+  }catch(e){ console.warn('API error', e); }
+  document.getElementById('ct-form-wrap').style.display='none';
+  document.getElementById('ct-success').style.display='block';
+  btn.disabled=false;
+}
+
+// ════════════════════════════════════════════════
+// PRICE MATRIX ADMIN
+// ════════════════════════════════════════════════
+function openPriceMatrix(){
+  renderPMTable();
+  document.getElementById('price-matrix-modal').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closePriceMatrix(){
+  document.getElementById('price-matrix-modal').style.display='none';
+  document.body.style.overflow='';
+}
+function renderPMTable(){
+  const wrap=document.getElementById('pm-table-wrap');
+  if(!wrap) return;
+  let h=`<table class="price-matrix"><thead><tr>
+    <th class="veh-th">ประเภทรถ</th>
+    ${AIRPORTS.map(a=>`<th>${a.code}${a.code==='DMK'?'<br><span style="font-size:7px;color:var(--gold);opacity:0.7">=BKK</span>':''}<br><span style="font-size:8px;color:var(--muted);letter-spacing:0;font-weight:300">${a.city}</span></th>`).join('')}
+    </tr></thead><tbody>`;
+  VEHICLES.forEach(v=>{
+    h+=`<tr class="${v.active?'':'pm-inactive-row'}">
+      <td class="veh-label"><span style="font-size:16px">${v.icon}</span> ${v.name}
+        <span>${v.model||''}</span>${!v.active?'<span style="color:var(--red);font-size:9px">Hidden</span>':''}
+      </td>
+      ${AIRPORTS.map(a=>{
+        const price=(PRICE_MATRIX[v.id]||{})[a.code]||0;
+        return`<td><input class="pm-input${price===0?' inactive':''}"
+          data-veh="${v.id}" data-ap="${a.code}"
+          value="${price||''}" placeholder="0"
+          oninput="this.classList.toggle('inactive',!this.value||this.value==='0')"
+          type="number" min="0"></td>`;
+      }).join('')}
+    </tr>`;
+  });
+  h+='</tbody></table>';
+  wrap.innerHTML=h;
+  // auto-sync BKK → DMK: เมื่อพิมพ์ BKK → DMK เปลี่ยนตาม
+  wrap.querySelectorAll('.pm-input[data-ap="BKK"]').forEach(inp=>{
+    inp.addEventListener('input', ()=>{
+      const vId = inp.dataset.veh;
+      const dmkInp = wrap.querySelector(`.pm-input[data-veh="${vId}"][data-ap="DMK"]`);
+      if(dmkInp){ dmkInp.value=inp.value; dmkInp.classList.toggle('inactive',!inp.value||inp.value==='0'); }
+    });
+  });
+}
+function savePriceMatrixAdm(){
+  const newMatrix={};
+  document.querySelectorAll('.pm-input').forEach(inp=>{
+    const vId=inp.dataset.veh, ap=inp.dataset.ap, val=parseInt(inp.value)||0;
+    if(!newMatrix[vId]) newMatrix[vId]={};
+    newMatrix[vId][ap]=val;
+  });
+  PRICE_MATRIX=newMatrix;
+  savePriceMatrix(PRICE_MATRIX);
+  closePriceMatrix();
+  alert('✅ บันทึกตารางราคาแล้ว — ราคาในหน้าจองอัปเดตทันที');
+}
+function resetPriceMatrix(){
+  if(!confirm('รีเซ็ตตารางราคาเป็นค่าเริ่มต้น?')) return;
+  PRICE_MATRIX=JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX));
+  savePriceMatrix(PRICE_MATRIX);
+  renderPMTable();
+  alert('✅ รีเซ็ตแล้ว');
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&document.getElementById('price-matrix-modal')?.style.display==='block')
+    closePriceMatrix();
+});
+</script>
+
+<!-- PRICE MATRIX MODAL -->
+<div id="price-matrix-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9500;overflow-y:auto;padding:20px">
+  <div style="max-width:860px;margin:0 auto;background:var(--dark3);border:1px solid rgba(201,169,110,0.2);padding:28px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream)">ตารางราคา รับส่งสนามบิน</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">กรอกราคา (฿) สำหรับแต่ละ สนามบิน × ประเภทรถ · เว้นว่างหรือ 0 = ไม่ให้บริการ</div>
+      </div>
+      <button onclick="closePriceMatrix()" style="background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer;line-height:1">×</button>
+    </div>
+    <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);padding:10px 14px;font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.8">
+      💡 <strong style="color:var(--gold)">วิธีใช้:</strong> คลิกช่องราคาแล้วพิมพ์จำนวนเงิน (บาท) · ราคา 0 หรือว่าง = ไม่แสดงรถนี้ในสนามบินนั้น<br>
+      🔄 ราคาจะอัปเดตในหน้าจองทันทีเมื่อลูกค้าเปลี่ยนสนามบิน<br>
+      🔗 <strong style="color:var(--gold2)">BKK = DMK</strong> — เมื่อแก้ราคา BKK ช่อง DMK จะ sync อัตโนมัติ (ราคาสนามบินกรุงเทพเท่ากัน)<br>
+      📍 ราคาทั้งหมดสำหรับ<strong style="color:var(--gold2)">รับส่งในเมือง ≤ 35 กม.</strong> จากสนามบิน
+    </div>
+    <div class="price-matrix-wrap" id="pm-table-wrap"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid rgba(201,169,110,0.12);flex-wrap:wrap;gap:10px">
+      <button onclick="resetPriceMatrix()" style="background:transparent;border:1px solid rgba(224,92,92,0.3);color:var(--red);padding:10px 18px;font-size:10px;letter-spacing:1.5px;cursor:pointer;font-family:inherit">↺ รีเซ็ตเป็นค่าเริ่มต้น</button>
+      <div style="display:flex;gap:10px">
+        <button onclick="closePriceMatrix()" style="background:transparent;border:1px solid rgba(201,169,110,0.3);color:var(--muted);padding:10px 20px;font-size:10px;letter-spacing:1.5px;cursor:pointer;font-family:inherit">ยกเลิก</button>
+        <button onclick="savePriceMatrixAdm()" style="background:var(--gold);border:none;color:var(--ink);padding:11px 28px;font-size:10px;letter-spacing:2px;cursor:pointer;font-family:inherit;font-weight:500">💾 บันทึกตารางราคา</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
