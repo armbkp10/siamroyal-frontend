@@ -818,10 +818,10 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <div style="margin-bottom:24px">
         <p style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:14px" data-i="pay_contact_title">CONTACT US TO PAY</p>
         <div class="pay-contact-grid">
-          <div class="pay-ch" onclick="openLineWithRef()"><div class="pay-ch-icon">💬</div><div class="pay-ch-label">LINE</div><div class="pay-ch-id">@siamroyal</div></div>
-          <div class="pay-ch" onclick="openWeChatInfo()"><div class="pay-ch-icon">💚</div><div class="pay-ch-label">WeChat</div><div class="pay-ch-id">SiamRoyalJourney</div></div>
-          <div class="pay-ch" onclick="openWhatsAppWithRef()"><div class="pay-ch-icon">📱</div><div class="pay-ch-label">WhatsApp</div><div class="pay-ch-id">+66 81 234 5678</div></div>
-        </div>
+  <div class="pay-ch" onclick="openLineWithRef()"><div class="pay-ch-icon">💬</div><div class="pay-ch-label">LINE</div><div class="pay-ch-id" id="tf-confirm-line-id">@siamroyal</div></div>
+  <div class="pay-ch" onclick="openWeChatInfo()"><div class="pay-ch-icon">💚</div><div class="pay-ch-label">WeChat</div><div class="pay-ch-id" id="tf-confirm-wechat-id">SiamRoyalJourney</div></div>
+  <div class="pay-ch" onclick="openWhatsAppWithRef()"><div class="pay-ch-icon">📱</div><div class="pay-ch-label">WhatsApp</div><div class="pay-ch-id" id="tf-confirm-wa-id">+66 81 234 5678</div></div>
+</div>
       </div>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <button class="bp" onclick="showPage('home')" data-i="back_home">Back to Home</button>
@@ -2037,22 +2037,28 @@ function updateContactUI(){
   try{
     const s = loadSettings();
     const set = (id,val)=>{ const el=document.getElementById(id); if(el) el.textContent=val; };
-    const hide = (id,show)=>{ const el=document.getElementById(id); if(el) el.style.display=show?'':'none'; };
-    set('contact-line-id',    s.line);
-    set('contact-wechat-id',  s.wechat||'(ยังไม่พร้อม)');
-    set('contact-phone-display', s.phone||'Call Us');
+    
+    // อัปเดตหน้าแรกและ Footer
+    set('contact-line-id', s.line);
+    set('contact-wechat-id', s.wechat || '(ยังไม่พร้อม)');
+    set('contact-phone-display', s.phone);
+    set('footer-line', 'LINE: ' + s.line);
+    set('footer-whatsapp', 'WhatsApp: ' + s.phone);
+    set('footer-email', s.email);
+    
     const wBtn = document.getElementById('contact-wechat-btn');
     if(wBtn) wBtn.style.opacity = s.wechat ? '1' : '0.45';
-    set('footer-line',      'LINE: '+s.line);
-    set('footer-whatsapp',  'WhatsApp: '+s.phone);
-    set('footer-email',     s.email);
-    if(document.getElementById('footer-wechat')){
-      if(s.wechat){ document.getElementById('footer-wechat').textContent='WeChat: '+s.wechat; hide('footer-wechat',true); }
-      else hide('footer-wechat',false);
-    }
-    set('confirm-line-id',  s.line);
-    set('confirm-wa-id',    s.phone);
-  }catch(e){}
+    
+    // 🔥 สั่งผูกข้อมูลเข้าหน้า Booking สำเร็จ (ทัวร์)
+    set('confirm-line-id', s.line);
+    set('confirm-wechat-id', s.wechat || 'SiamRoyalJourney');
+    set('confirm-wa-id', s.phone);
+
+    // 🔥 สั่งผูกข้อมูลเข้าหน้าจองสำเร็จ (รถรับส่งสนามบิน)
+    set('tf-confirm-line-id', s.line);
+    set('tf-confirm-wechat-id', s.wechat || 'SiamRoyalJourney');
+    set('tf-confirm-wa-id', s.phone);
+  }catch(e){ console.log("Contact UI Sync Error: ", e); }
 }
 function openWhatsApp(){window.open('https://wa.me/'+getS('whatsapp'),'_blank');}
 function openWeChatInfo(){
