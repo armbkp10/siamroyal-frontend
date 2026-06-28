@@ -625,4 +625,763 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
           <span class="pb-val" id="pb-veh-val">฿0</span>
         </div>
         <div class="pb-row" id="pb-ticket-row" style="display:none">
-          <span class="pb-label" id="pb-ticket-label">🎫 ค่าตั๋ว × <span id="
+          <span class="pb-label" id="pb-ticket-label">🎫 ค่าตั๋ว × <span id="pb-pax-n">1</span> คน</span>
+          <span class="pb-val" id="pb-ticket-val">฿0</span>
+        </div>
+        <div class="pb-row" id="pb-guide-row" style="display:none">
+          <span class="pb-label" id="pb-guide-label">👤 ค่าไกด์ × <span id="pb-pax-g">1</span> คน</span>
+          <span class="pb-val" id="pb-guide-val">฿0</span>
+        </div>
+        <div class="pb-row">
+          <span class="pb-label" style="color:var(--cream);font-weight:500">รวมทั้งหมด</span>
+          <span class="pb-total" id="pb-total">฿0</span>
+        </div>
+        <div class="pb-note">มัดจำ 30%: <strong style="color:var(--gold)" id="pb-dep">฿0</strong></div>
+      </div>
+
+      <div class="form-nav"><span></span><button class="fbk" onclick="bkNext(1)" data-i="btn_next">Continue</button></div>
+    </div>
+    <div id="bk-step-2" style="display:none">
+      <div class="ey" style="margin-bottom:14px" data-i="your_details">Your Details</div>
+      <div class="form-row">
+        <div class="fgroup"><label class="flabel" data-i="fl_fname">First Name</label><input class="finput" id="bk-fname" placeholder="Somchai"></div>
+        <div class="fgroup"><label class="flabel" data-i="fl_lname">Last Name</label><input class="finput" id="bk-lname" placeholder="Raksa"></div>
+      </div>
+      <div class="form-row">
+        <div class="fgroup"><label class="flabel" data-i="fl_email">Email</label><input class="finput" id="bk-email" type="email" placeholder="your@email.com"></div>
+        <div class="fgroup"><label class="flabel" data-i="fl_phone">Phone / WhatsApp</label><input class="finput" id="bk-phone" placeholder="+66 81 234 5678"></div>
+      </div>
+      <div class="form-row full"><div class="fgroup"><label class="flabel" data-i="fl_nat">Nationality</label>
+        <select class="finput" id="bk-nat"><option>Thai / ไทย</option><option>Chinese / 中国</option><option>Japanese</option><option>Korean</option><option>American</option><option>British</option><option>European</option><option>Other</option></select>
+      </div></div>
+      <div class="form-row full"><div class="fgroup"><label class="flabel" data-i="fl_hotel">Hotel / Pickup Location</label><input class="finput" id="bk-hotel" placeholder="Hotel name and area"></div></div>
+      <div class="form-row full"><div class="fgroup"><label class="flabel" data-i="fl_note">Special Requests (Optional)</label><textarea class="finput" id="bk-note" rows="3" placeholder="Dietary requirements, occasions, extra stops..."></textarea></div></div>
+      <div class="form-row full"><div class="fgroup"><label class="flabel" data-i="fl_contact">Preferred Contact</label>
+        <select class="finput" id="bk-contact"><option>LINE</option><option>WeChat</option><option>WhatsApp</option><option>Email</option><option>Phone</option></select>
+      </div></div>
+      <div class="form-nav">
+        <button class="fbk-out" onclick="bkGo(1)" data-i="btn_back">Back</button>
+        <button class="fbk" onclick="bkNext(2)" data-i="btn_next">Continue</button>
+      </div>
+    </div>
+    <div id="bk-step-3" style="display:none">
+      <div class="ey" style="margin-bottom:14px" data-i="review_title">Review Booking</div>
+      <div class="bk-summary" id="bk-summary"></div>
+      <div style="background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.15);padding:18px;margin-bottom:20px">
+        <div class="ey" style="margin-bottom:10px" data-i="pay_info_title">Payment Information</div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.8" data-i="pay_info_body">After confirming, our team will contact you within 24 hours via your preferred channel with payment details. We accept bank transfer, and coordinate payments through LINE, WeChat, or WhatsApp for your convenience.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px">
+        <input type="checkbox" id="agree-terms" style="accent-color:var(--gold)">
+        <label for="agree-terms" style="font-size:11px;color:var(--muted);cursor:pointer" data-i="terms_agree">I agree to the Terms of Service and Cancellation Policy</label>
+      </div>
+      <div class="form-nav">
+        <button class="fbk-out" onclick="bkGo(2)" data-i="btn_back">Back</button>
+        <button class="fbk" id="confirm-btn" onclick="submitBooking()" data-i="btn_confirm">Confirm Booking</button>
+      </div>
+    </div>
+    <div id="bk-step-4" style="display:none">
+      <div class="success-box">
+        <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div class="success-t" data-i="success_t">Booking Confirmed!</div>
+        <p class="success-s" data-i="success_s">Thank you for choosing Siam Royal Journey. Please contact us to complete your payment. We will prepare everything for your trip.</p>
+        <div class="booking-ref"><div class="ref-label" data-i="ref_label">Booking Reference</div><div class="ref-num" id="bk-ref">SRJ-2026-0001</div></div>
+        <div style="margin-bottom:24px">
+          <p style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:14px" data-i="pay_contact_title">CONTACT US TO PAY</p>
+          <div class="pay-contact-grid">
+            <div class="pay-ch" onclick="openLineWithRef()">
+              <div class="pay-ch-icon">💬</div>
+              <div class="pay-ch-label">LINE</div>
+              <div class="pay-ch-id" id="confirm-line-id">@177wmjar</div>
+            </div>
+            <div class="pay-ch" onclick="openWeChatInfo()">
+              <div class="pay-ch-icon">💚</div>
+              <div class="pay-ch-label">WeChat</div>
+              <div class="pay-ch-id" id="confirm-wechat-id">SiamRoyalJourney</div>
+            </div>
+            <div class="pay-ch" onclick="openWhatsAppWithRef()">
+              <div class="pay-ch-icon">📱</div>
+              <div class="pay-ch-label">WhatsApp</div>
+              <div class="pay-ch-id" id="confirm-wa-id">080-084-7620</div>
+            </div>
+          </div>
+          <p style="font-size:11px;color:var(--muted);line-height:1.7;text-align:center" data-i="pay_contact_note">Please mention your booking reference number when contacting us. 30% deposit required to confirm your booking.</p>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="bp" onclick="showPage('home')" data-i="back_home">Back to Home</button>
+          <button class="bo" onclick="showPage('transfer')" data-i="add_transfer">Add Airport Transfer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-transfer" class="page tf-page">
+  <div class="tf-hero">
+    <div class="ey" data-i="tf_ey">Airport Transfer</div>
+    <h2 class="st" style="margin-bottom:12px"><span data-i="tf_st1">Seamless</span> <em data-i="tf_st2">Airport Transfers</em></h2>
+    <div class="dv" style="margin:0 auto 16px"></div>
+    <p style="font-size:12px;color:var(--muted);line-height:1.8" data-i="tf_sub">Fixed price · Meet & Greet sign · Real-time flight monitoring · 60 min free waiting</p>
+  </div>
+
+  <div class="tf-form" id="tf-form-wrap">
+    <div class="ey" style="margin-bottom:12px" data-i="tf_dir_title">Transfer Direction</div>
+    <div class="dir-toggle">
+      <button class="dir-btn active" id="dir-arr" onclick="setDir('arrival')" data-i="dir_arr">✈ Arrival — Airport to Hotel</button>
+      <button class="dir-btn" id="dir-dep" onclick="setDir('departure')" data-i="dir_dep">🏨 Departure — Hotel to Airport</button>
+    </div>
+    <div class="ey" style="margin-bottom:12px" data-i="tf_ap_title">Select Airport</div>
+    <div class="airport-grid">
+      <div class="airport-opt sel" onclick="selAP(this,'BKK','Suvarnabhumi Airport','Bangkok')"><div class="airport-code">BKK</div><div class="airport-name">Suvarnabhumi</div><div class="airport-city">Bangkok</div></div>
+      <div class="airport-opt" onclick="selAP(this,'DMK','Don Mueang Airport','Bangkok')"><div class="airport-code">DMK</div><div class="airport-name">Don Mueang</div><div class="airport-city">Bangkok</div></div>
+      <div class="airport-opt" onclick="selAP(this,'HKT','Phuket International','Phuket')"><div class="airport-code">HKT</div><div class="airport-name">Phuket Intl</div><div class="airport-city">Phuket</div></div>
+      <div class="airport-opt" onclick="selAP(this,'CNX','Chiang Mai International','Chiang Mai')"><div class="airport-code">CNX</div><div class="airport-name">Chiang Mai</div><div class="airport-city">Chiang Mai</div></div>
+      <div class="airport-opt" onclick="selAP(this,'KBI','Krabi Airport','Krabi')"><div class="airport-code">KBI</div><div class="airport-name">Krabi</div><div class="airport-city">Krabi</div></div>
+      <div class="airport-opt" onclick="selAP(this,'USM','Samui Airport','Koh Samui')"><div class="airport-code">USM</div><div class="airport-name">Samui</div><div class="airport-city">Koh Samui</div></div>
+    </div>
+    <div class="ey" style="margin-bottom:12px" data-i="tf_veh_title">Vehicle Type</div>
+    <div class="veh-warn" id="veh-warn"></div>
+    <div class="veh-grid" id="veh-grid-tf"></div>
+    <div class="form-row">
+      <div class="fgroup"><label class="flabel" id="tf-date-lbl" data-i="tf_date_lbl">Date of Arrival</label><input type="date" class="finput" id="tf-date"></div>
+      <div class="fgroup"><label class="flabel" id="tf-time-lbl" data-i="tf_time_lbl">Arrival Time (local)</label><input type="time" class="finput" id="tf-time"></div>
+    </div>
+    <div class="form-row">
+      <div class="fgroup"><label class="flabel" data-i="tf_flight_lbl">Flight Number</label><input class="finput" id="tf-flight" placeholder="e.g. TG204"></div>
+      <div class="fgroup"><label class="flabel" data-i="tf_pax_lbl">Passengers</label><select class="finput" id="tf-pax" onchange="renderVehicleGrid(this.value, parseInt(tfLug)||0)"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
+    </div>
+    <div class="fgroup" style="margin-bottom:16px">
+      <label class="flabel" data-i="tf_lug_lbl">Luggage Pieces</label>
+      <div class="luggage-sel">
+        <button class="lug-btn active" onclick="selLug(this,'0')">0</button><button class="lug-btn" onclick="selLug(this,'1')">1</button><button class="lug-btn" onclick="selLug(this,'2')">2</button><button class="lug-btn" onclick="selLug(this,'3')">3</button><button class="lug-btn" onclick="selLug(this,'4')">4</button><button class="lug-btn" onclick="selLug(this,'5')">5</button><button class="lug-btn" onclick="selLug(this,'6+')">6+</button>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="fgroup"><label class="flabel" id="tf-hotel-lbl" data-i="tf_hotel_lbl">Destination Hotel / Address</label><input class="finput" id="tf-hotel" placeholder="Hotel name or address"></div>
+      <div class="fgroup"><label class="flabel" data-i="tf_area_lbl">Area</label>
+        <select class="finput" id="tf-area"><option>Sukhumvit / Asok</option><option>Silom / Sathorn</option><option>Siam / Ratchaprasong</option><option>Khao San / Old Town</option><option>Pattaya</option><option>Hua Hin</option><option>Phuket Town</option><option>Patong / Kata / Karon</option><option>Chiang Mai City</option><option>Nimman</option><option>Krabi Town / Ao Nang</option><option>Other</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="fgroup"><label class="flabel" data-i="tf_name_lbl">Name on Meet & Greet Sign</label><input class="finput" id="tf-name" placeholder="e.g. Mr. Tanaka"></div>
+      <div class="fgroup"><label class="flabel" data-i="tf_phone_lbl">Phone / WhatsApp</label><input class="finput" id="tf-phone" placeholder="+66 81 234 5678"></div>
+    </div>
+    <div class="form-row full"><div class="fgroup"><label class="flabel" data-i="tf_email_lbl">Email</label><input class="finput" id="tf-email" type="email" placeholder="your@email.com"></div></div>
+    <div class="fgroup" style="margin-bottom:20px">
+      <label class="flabel" data-i="tf_note_lbl">Special Requests</label>
+      <textarea class="finput" id="tf-note" rows="2" placeholder="Child seat, extra stop, specific pickup area..."></textarea>
+    </div>
+    <div class="tf-price-box">
+      <div class="tf-price-row"><span style="color:var(--muted)" data-i="tf_airport_lbl">Airport</span><span id="tp-airport">Suvarnabhumi (BKK)</span></div>
+      <div class="tf-price-row"><span style="color:var(--muted)" data-i="tf_veh_lbl">Vehicle</span><span id="tp-vehicle">Sedan</span></div>
+      <div class="tf-price-row"><span style="color:var(--muted)" data-i="tf_incl_lbl">Includes</span><span style="color:var(--muted);font-size:10px" data-i="tf_incl_val">Meet & Greet · Flight monitoring · 60 min free wait</span></div>
+      <div class="tf-price-row"><span style="color:var(--muted)">Vehicle capacity</span><span id="tp-pax-note" style="color:var(--muted);font-size:10px">—</span></div>
+      <div id="airport-price-note" class="airport-price-note"></div>
+      <div style="margin-top:12px;padding:10px 14px;background:rgba(201,169,110,0.04);border-left:2px solid rgba(201,169,110,0.35)">
+        <div style="font-size:10px;color:var(--muted);line-height:1.85">
+          📍 <span data-i="price_note_km">ราคานี้สำหรับรับส่งในเมือง ระยะทางไม่เกิน 35 กม. จากสนามบิน</span><br>
+          ℹ️ <span data-i="price_note_bkk">สนามบินสุวรรณภูมิ (BKK) และดอนเมือง (DMK) ใช้ราคาเดียวกัน</span>
+        </div>
+      </div>
+      <div class="tf-price-row total"><span data-i="tf_total_lbl">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:24px" id="tp-total">฿950</span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px">
+      <input type="checkbox" id="tf-agree" style="accent-color:var(--gold)">
+      <label for="tf-agree" style="font-size:11px;color:var(--muted);cursor:pointer" data-i="terms_agree">I agree to the Terms of Service and Cancellation Policy</label>
+    </div>
+    <div class="form-nav">
+      <button class="fbk-out" onclick="showPage('home')" data-i="btn_back">Back</button>
+      <button class="fbk" id="tf-confirm-btn" onclick="submitTransfer()" data-i="tf_confirm_btn">Confirm Transfer Booking</button>
+    </div>
+  </div>
+
+  <div id="tf-success" style="display:none;max-width:720px;margin:0 auto;background:var(--dark3);border:1px solid rgba(201,169,110,0.15);padding:36px">
+    <div class="success-box">
+      <div class="success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="success-t" data-i="tf_success_t">Transfer Booked!</div>
+      <p class="success-s" data-i="tf_success_s">Your airport transfer request is confirmed. Our driver will be waiting with a name sign. Contact us to complete payment.</p>
+      <div class="booking-ref"><div class="ref-label" data-i="tf_ref_label">Transfer Reference</div><div class="ref-num" id="tf-ref">TRF-2026-0001</div></div>
+      <div style="margin-bottom:24px">
+        <p style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:14px" data-i="pay_contact_title">CONTACT US TO PAY</p>
+        <div class="pay-contact-grid">
+          <div class="pay-ch" onclick="openLineWithRef()"><div class="pay-ch-icon">💬</div><div class="pay-ch-label">LINE</div><div class="pay-ch-id" id="tf-confirm-line-id">@siamroyal</div></div>
+          <div class="pay-ch" onclick="openWeChatInfo()"><div class="pay-ch-icon">💚</div><div class="pay-ch-label">WeChat</div><div class="pay-ch-id" id="tf-confirm-wechat-id">SiamRoyalJourney</div></div>
+          <div class="pay-ch" onclick="openWhatsAppWithRef()"><div class="pay-ch-icon">📱</div><div class="pay-ch-label">WhatsApp</div><div class="pay-ch-id" id="tf-confirm-wa-id">+66 81 234 5678</div></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="bp" onclick="showPage('home')" data-i="back_home">Back to Home</button>
+        <button class="bo" onclick="showPage('booking')" data-i="book_tour_too">Book a Tour Too</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-custom" class="page">
+  <div class="ct-page">
+
+    <div class="ct-hero">
+      <div class="ct-eyebrow" data-i="ct_eyebrow">ออกแบบทริปของคุณเอง</div>
+      <h1 class="ct-title"><span data-i="ct_title1">Custom</span> <em data-i="ct_title2">Trip Builder</em></h1>
+      <p class="ct-subtitle" data-i="ct_subtitle">บอกเราว่าคุณอยากไปที่ไหน ทำอะไร กี่วัน — เราจะออกแบบทริปและเสนอราคาเบื้องต้นให้ทันที</p>
+    </div>
+
+    <div class="ct-notice" data-i="ct_notice">
+      ⚠️ <strong>หมายเหตุ:</strong> ราคาที่แสดงเป็นเพียง <strong>ราคาเบื้องต้น</strong> เท่านั้น อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา และรายละเอียดเพิ่มเติม ทีมงานจะติดต่อกลับเพื่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง
+    </div>
+
+    <div id="ct-form-wrap">
+
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_dest_title">เลือกจุดหมาย (เลือกได้หลายที่)</div>
+        <div class="ct-dest-grid" id="ct-dest-grid">
+          <div class="ct-dest-card" data-dest="Bangkok" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🏙️</div>
+            <div class="ct-dest-name">กรุงเทพฯ</div>
+            <div class="ct-dest-desc">Bangkok</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Chiang Mai" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🏔️</div>
+            <div class="ct-dest-name">เชียงใหม่</div>
+            <div class="ct-dest-desc">Chiang Mai</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Chiang Rai" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🌿</div>
+            <div class="ct-dest-name">เชียงราย</div>
+            <div class="ct-dest-desc">Chiang Rai</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Phuket" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🏖️</div>
+            <div class="ct-dest-name">ภูเก็ต</div>
+            <div class="ct-dest-desc">Phuket</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Krabi" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🪨</div>
+            <div class="ct-dest-name">กระบี่</div>
+            <div class="ct-dest-desc">Krabi</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Ayutthaya" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🏛️</div>
+            <div class="ct-dest-name">อยุธยา</div>
+            <div class="ct-dest-desc">Ayutthaya</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Pattaya" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🌊</div>
+            <div class="ct-dest-name">พัทยา</div>
+            <div class="ct-dest-desc">Pattaya</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Koh Samui" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">🌴</div>
+            <div class="ct-dest-name">สมุย</div>
+            <div class="ct-dest-desc">Koh Samui</div>
+          </div>
+          <div class="ct-dest-card" data-dest="Other" onclick="toggleDest(this)">
+            <div class="ct-dest-icon">📍</div>
+            <div class="ct-dest-name">อื่นๆ</div>
+            <div class="ct-dest-desc">Other</div>
+          </div>
+        </div>
+        <input class="finput" id="ct-dest-other" placeholder="ระบุจุดหมายที่ต้องการ..." style="display:none;margin-top:8px">
+      </div>
+
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_info_title">รายละเอียดการเดินทาง</div>
+        <div class="form-row">
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_date_lbl">วันที่เริ่มต้น</label>
+            <input type="date" class="finput" id="ct-date">
+          </div>
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_days_lbl">จำนวนวัน</label>
+            <select class="finput" id="ct-days" onchange="ctUpdateEstimate()">
+              <option value="1">1 วัน</option>
+              <option value="2">2 วัน</option>
+              <option value="3" selected>3 วัน</option>
+              <option value="4">4 วัน</option>
+              <option value="5">5 วัน</option>
+              <option value="6">6 วัน</option>
+              <option value="7">7 วัน</option>
+              <option value="10">10 วัน</option>
+              <option value="14">14 วัน</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_pax_lbl">จำนวนผู้เดินทาง</label>
+            <select class="finput" id="ct-pax" onchange="ctUpdateEstimate()">
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6</option>
+              <option>7</option><option>8</option><option>9</option><option>10+</option>
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_style_lbl">สไตล์การเดินทาง</label>
+            <select class="finput" id="ct-style">
+              <option value="cultural" data-i="ct_style_cultural">วัฒนธรรม / วัด / ประวัติศาสตร์</option>
+              <option value="nature" data-i="ct_style_nature">ธรรมชาติ / ป่า / ดอย</option>
+              <option value="beach" data-i="ct_style_beach">ทะเล / หาด / เกาะ</option>
+              <option value="food" data-i="ct_style_food">อาหาร / ตลาด / Street Food</option>
+              <option value="luxury" data-i="ct_style_luxury">Luxury / ไฮเอนด์</option>
+              <option value="adventure" data-i="ct_style_adventure">Adventure / ผจญภัย</option>
+              <option value="family" data-i="ct_style_family">ครอบครัว / เด็ก</option>
+              <option value="honeymoon" data-i="ct_style_honeymoon">ฮันนีมูน / โรแมนติก</option>
+              <option value="mix" data-i="ct_style_mix">ผสมผสาน / หลายอย่าง</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_veh_title">ประเภทรถที่ต้องการ</div>
+        <div class="ct-veh-grid" id="ct-veh-grid"></div>
+      </div>
+
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_plan_title">วางแผนทีละวัน (ไม่บังคับ)</div>
+        <div class="day-planner" id="ct-day-planner"></div>
+        <button class="add-day-btn" onclick="ctAddDay()" style="margin-top:8px" data-i="ct_add_day">+ เพิ่มวัน</button>
+      </div>
+
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_extra_title">ความต้องการพิเศษ</div>
+        <div class="form-row full">
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_wish_lbl">อยากทำอะไรเป็นพิเศษ? สถานที่ที่อยากไป?</label>
+            <textarea class="finput" id="ct-wishes" rows="3" placeholder="เช่น อยากขี่ช้าง, ต้องการล่องเรือ, อยากชมพระอาทิตย์ตกที่..."></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_budget_lbl">งบประมาณโดยประมาณ (฿/ทริป)</label>
+            <select class="finput" id="ct-budget">
+              <option value="economy" data-i="ct_bud1">ประหยัด (ต่ำกว่า ฿10,000)</option>
+              <option value="standard" selected data-i="ct_bud2">มาตรฐาน (฿10,000–30,000)</option>
+              <option value="premium" data-i="ct_bud3">พรีเมียม (฿30,000–60,000)</option>
+              <option value="luxury" data-i="ct_bud4">Luxury (฿60,000+)</option>
+              <option value="flexible" data-i="ct_bud5">ยืดหยุ่นได้</option>
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" data-i="ct_hotel_lbl">ที่พักที่ต้องการ</label>
+            <select class="finput" id="ct-hotel-pref">
+              <option data-i="ct_hotel1">ไม่ต้องการ (มีที่พักแล้ว)</option>
+              <option data-i="ct_hotel2">ช่วยแนะนำ (ไม่รวมในราคา)</option>
+              <option data-i="ct_hotel3">รวมที่พักด้วย (3 ดาว)</option>
+              <option data-i="ct_hotel4">รวมที่พักด้วย (4-5 ดาว)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-estimate" id="ct-estimate-box">
+        <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px" data-i="ct_est_title">ราคาเบื้องต้น (ประมาณการ)</div>
+        <div class="ct-est-row"><span class="ct-est-label" data-i="ct_est_veh">ค่ารถ (ต่อวัน × จำนวนวัน)</span><span class="ct-est-val" id="ct-est-veh-val">—</span></div>
+        <div class="ct-est-row" id="ct-est-ticket-row" style="display:none"><span class="ct-est-label" data-i="ct_est_ticket">ค่าตั๋ว/เข้าสถานที่ (ประมาณ)</span><span class="ct-est-val" id="ct-est-ticket-val">—</span></div>
+        <div class="ct-est-row" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(201,169,110,0.15)">
+          <span class="ct-est-label" style="color:var(--cream);font-weight:500" data-i="ct_est_total">ยอดรวมโดยประมาณ</span>
+          <span class="ct-est-total" id="ct-est-total-val">—</span>
+        </div>
+        <div class="ct-est-note" data-i="ct_est_note">* ราคานี้เป็นการประมาณการเบื้องต้นเท่านั้น อาจมีการเปลี่ยนแปลงตามระยะทางจริง เวลา สถานที่เพิ่มเติม และฤดูกาล ทีมงานจะติดต่อยืนยันราคาสุดท้ายภายใน 2-4 ชั่วโมง</div>
+      </div>
+
+      <div class="ct-section">
+        <div class="ct-section-title" data-i="ct_contact_title">ข้อมูลติดต่อ</div>
+        <div class="form-row">
+          <div class="fgroup"><label class="flabel" data-i="fl_fname">ชื่อ</label><input class="finput" id="ct-fname" placeholder="First Name"></div>
+          <div class="fgroup"><label class="flabel" data-i="fl_lname">นามสกุล</label><input class="finput" id="ct-lname" placeholder="Last Name"></div>
+        </div>
+        <div class="form-row">
+          <div class="fgroup"><label class="flabel" data-i="fl_email">Email *</label><input class="finput" id="ct-email" type="email" placeholder="your@email.com"></div>
+          <div class="fgroup"><label class="flabel" data-i="fl_phone">โทรศัพท์ / WhatsApp</label><input class="finput" id="ct-phone" placeholder="+66 81 234 5678"></div>
+        </div>
+        <div class="form-row full">
+          <div class="fgroup">
+            <label class="flabel" data-i="fl_contact">ช่องทางติดต่อที่สะดวก</label>
+            <select class="finput" id="ct-contact-pref">
+              <option>LINE</option><option>WhatsApp</option><option>WeChat</option><option>Email</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button class="ct-submit-btn" onclick="submitCustomTrip()" id="ct-submit-btn" data-i="ct_submit_btn">
+        ส่งคำขอ Custom Trip →
+      </button>
+      <div style="text-align:center;margin-top:12px">
+        <button class="fbk-out" onclick="showPage('home')" style="background:transparent;border:none;color:var(--muted);font-size:12px;cursor:pointer" data-i="btn_back">← กลับหน้าหลัก</button>
+      </div>
+
+    </div><div class="ct-success" id="ct-success">
+      <div class="ct-success-icon">✦</div>
+      <div class="ct-success-title" data-i="ct_success_title">ส่งคำขอแล้วเรียบร้อย!</div>
+      <p class="ct-success-sub" data-i="ct_success_sub">ทีมงานจะตรวจสอบรายละเอียดและติดต่อกลับภายใน 2-4 ชั่วโมง เพื่อยืนยันราคาและรายละเอียดทริปของคุณ</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="fbk" onclick="openLineWithRef()" style="display:flex;align-items:center;gap:8px">💬 ติดตาม LINE</button>
+        <button class="fbk-out" onclick="showPage('home')">กลับหน้าหลัก</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="page-admin" class="page">
+  <div class="adm">
+    <div class="adm-sidebar">
+      <div class="adm-logo"><span>Admin Panel</span></div>
+      <div class="adm-nav">
+        <a class="active" onclick="admView('dashboard')">Dashboard</a>
+        <a onclick="admView('bookings')">Tour Bookings</a>
+        <a onclick="admView('transfers')">Airport Transfers</a>
+        <a onclick="admView('packages')">Packages & Photos</a>
+        <a onclick="admView('customers')">Customers</a>
+        <a onclick="admView('vehicles')">🚗 Vehicle Types</a>
+        <a onclick="admView('settings')">⚙️ Settings</a>
+        <a onclick="showPage('home')">← Back to Site</a>
+        <button class="adm-logout" onclick="adminLogout()">Logout</button>
+      </div>
+    </div>
+    <div class="adm-content">
+      <div class="adm-view active" id="adm-dashboard">
+        <div class="adm-header"><div><div class="adm-title">Dashboard</div><div class="adm-sub">Welcome back</div></div></div>
+        <div class="metrics">
+          <div class="metric"><div class="metric-label">TOUR BOOKINGS</div><div class="metric-val" id="m-total">0</div><div class="metric-change up">All time</div></div>
+          <div class="metric"><div class="metric-label">TRANSFERS</div><div class="metric-val" id="m-tf">0</div><div class="metric-change up">All time</div></div>
+          <div class="metric"><div class="metric-label">REVENUE (฿)</div><div class="metric-val" id="m-rev">฿0</div><div class="metric-change up">Confirmed only</div></div>
+          <div class="metric"><div class="metric-label">PENDING</div><div class="metric-val" id="m-pend">0</div><div class="metric-change dn">Need action</div></div>
+        </div>
+        <div class="adm-table-wrap">
+          <div class="adm-table-head"><span class="adm-table-title">Recent Bookings</span><button class="adm-add-btn" onclick="admView('bookings')">View All</button></div>
+          <table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>PACKAGE</th><th>DATE</th><th>AMOUNT</th><th>STATUS</th></tr></thead><tbody id="dash-table"></tbody></table>
+        </div>
+        <div class="chart-bar-wrap"><div class="chart-title">MONTHLY BOOKINGS (SAMPLE)</div><div class="bar-chart" id="bar-chart"></div></div>
+      </div>
+      <div class="adm-view" id="adm-bookings">
+        <div class="adm-header">
+          <div><div class="adm-title">Tour Bookings</div><div class="adm-sub" id="bk-count-label">0 total</div></div>
+          <select class="finput" style="padding:8px 12px;font-size:11px;width:auto" id="filter-status" onchange="renderBkTable()"><option value="">All</option><option value="confirmed">Confirmed</option><option value="pending">Pending</option><option value="cancelled">Cancelled</option></select>
+        </div>
+        <div class="adm-table-wrap"><table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>PACKAGE</th><th>DATE</th><th>GUESTS</th><th>CONTACT</th><th>AMOUNT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="full-bk-table"></tbody></table></div>
+      </div>
+      <div class="adm-view" id="adm-transfers">
+        <div class="adm-header"><div><div class="adm-title">Airport Transfers</div><div class="adm-sub" id="tf-count-label">0 total</div></div></div>
+        <div class="adm-table-wrap"><table class="bt"><thead><tr><th>REF</th><th>GUEST</th><th>AIRPORT</th><th>DIR</th><th>VEHICLE</th><th>DATE</th><th>FLIGHT</th><th>AMOUNT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="tf-adm-table"></tbody></table></div>
+      </div>
+      <div class="adm-view" id="adm-packages">
+        <div class="adm-header">
+          <div class="adm-title">Packages & Photos</div>
+          <button class="adm-add-btn" onclick="openAddPkg()">+ Add Package</button>
+        </div>
+        <div class="form-hint">คลิกที่ภาพแพ็กเกจเพื่ออัปโหลดรูปภาพ · รูปแรกจะแสดงเป็น Cover · ลบแพ็กเกจได้ด้วยปุ่มลบ (ยืนยันก่อนลบ)</div>
+        <div style="background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.1);padding:10px 14px;margin-bottom:16px;font-size:11px;color:var(--muted);line-height:1.8">
+          💡 <strong style="color:var(--gold)">ราคารถกำหนดแยกต่อแพ็กเกจ</strong> — กด ✏️ แก้ไขในแต่ละแพ็กเกจ เพราะแต่ละทัวร์ระยะทางต่างกัน
+        </div>
+        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:20px;margin-bottom:20px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--cream);margin-bottom:6px">ราคารถต่อทัวร์ <span style="font-size:12px;color:var(--muted);font-family:'DM Sans',sans-serif">(฿ ต่อทริป — ไม่ขึ้นกับจำนวนคน)</span></div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7">💡 ค่ารถคิด<strong style="color:var(--gold)">ต่อทริป</strong> ไม่ว่าจะ 1 หรือ 9 คน · ค่าตั๋ว/ไกด์กำหนดในแต่ละแพ็กเกจแยก (ต่อคน)</div>
+          <div id="tour-veh-price-editor"></div>
+          <button class="adm-add-btn" style="margin-top:12px" onclick="saveTourVehPrices()">💾 บันทึกราคารถ</button>
+          <div id="tvp-saved" style="display:none;color:var(--green);font-size:11px;margin-top:8px">✅ บันทึกแล้ว</div>
+        </div>
+        <div class="pkg-mgmt" id="pkg-mgmt-grid"></div>
+        <div class="adm-pkg-form" id="add-pkg-form" style="display:none">
+          <h4 id="pkg-form-title">Add New Package</h4>
+          <div class="form-hint">กรอกชื่อภาษาไทย (TH) และภาษาจีน (ZH) เพื่อให้ระบบแปลภาษาทำงานได้ · ถ้าไม่กรอก จะใช้ภาษาอังกฤษแทน</div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">Package Name (EN) *</label><input class="finput" id="npkg-name" placeholder="e.g. Northern Highlands Tour"></div><div class="fgroup"><label class="flabel">Destination</label><input class="finput" id="npkg-dest" placeholder="e.g. Chiang Mai · Pai"></div></div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">ชื่อภาษาไทย (TH)</label><input class="finput" id="npkg-nameT" placeholder="เช่น ทัวร์ไฮแลนด์ภาคเหนือ"></div><div class="fgroup"><label class="flabel">中文名称 (ZH)</label><input class="finput" id="npkg-nameZ" placeholder="例：北部高地之旅"></div></div>
+          <div class="form-row">
+            <div class="fgroup">
+              <label class="flabel">🎫 ค่าตั๋ว/เข้าสถานที่ (฿/คน)</label>
+              <input class="finput" id="npkg-ticket" type="number" placeholder="0">
+              <span style="font-size:10px;color:var(--muted)">คิดต่อคน — เช่น ค่าเข้าวัด ค่าบัตรสวน ฯลฯ (0 = ไม่มี)</span>
+            </div>
+            <div class="fgroup">
+              <label class="flabel">👤 ค่าไกด์ (฿/ชั่วโมง)</label>
+              <input class="finput" id="npkg-guide" type="number" placeholder="0">
+              <span style="font-size:10px;color:var(--muted)">ราคาต่อชั่วโมง (0 = ไม่มีไกด์)</span>
+            </div>
+            <div class="fgroup">
+              <label class="flabel">⏱ จำนวนชั่วโมงไกด์</label>
+              <input class="finput" id="npkg-guide-hours" type="number" placeholder="0" min="0" max="24">
+              <span style="font-size:10px;color:var(--muted)">ชั่วโมงที่ใช้ไกด์ต่อทริป</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="fgroup"><label class="flabel">Duration (EN)</label><input class="finput" id="npkg-dur" placeholder="3 Days 2 Nights"></div>
+            <div class="fgroup"><input class="finput" id="npkg-price" type="number" placeholder="0" style="display:none"></div>
+          </div>
+          <div class="form-row"><div class="fgroup"><label class="flabel">ระยะเวลา (TH)</label><input class="finput" id="npkg-durT" placeholder="3 วัน 2 คืน"></div><div class="fgroup"><label class="flabel">行程天数 (ZH)</label><input class="finput" id="npkg-durZ" placeholder="3天2夜"></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Description (EN)</label><textarea class="finput" id="npkg-desc" rows="2" placeholder="Short description in English..."></textarea></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">คำอธิบาย (TH)</label><textarea class="finput" id="npkg-descT" rows="2" placeholder="คำอธิบายภาษาไทย..."></textarea></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">描述 (ZH)</label><textarea class="finput" id="npkg-descZ" rows="2" placeholder="中文描述..."></textarea></div></div>
+          <div style="margin:16px 0;padding:16px;background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.12)">
+            <div style="font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:6px">🚗 ราคารถต่อทริป (แยกต่อแพ็กเกจนี้)</div>
+            <div style="font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.7">ราคารถไม่ขึ้นกับจำนวนคน — แต่ละทัวร์ระยะทางไม่เท่ากัน กำหนดได้อิสระ</div>
+            <div id="pkg-veh-price-editor"></div>
+          </div>
+          <div class="form-nav"><button class="fbk-out" onclick="closeAddPkg()">Cancel</button><button class="fbk" onclick="saveNewPkg()">💾 Save Package</button></div>
+        </div>
+      </div>
+      <div class="adm-view" id="adm-customers">
+        <div class="adm-header"><div class="adm-title">Customers</div></div>
+        <div class="adm-table-wrap"><table class="bt"><thead><tr><th>NAME</th><th>EMAIL</th><th>NATIONALITY</th><th>PHONE</th><th>BOOKINGS</th><th>TOTAL SPENT</th></tr></thead><tbody id="cust-table"></tbody></table></div>
+      </div>
+
+      <div class="adm-view" id="adm-vehicles">
+        <div class="adm-header">
+          <div><div class="adm-title">Vehicle Types</div><div class="adm-sub">กำหนดราคา จำนวนคน และกระเป๋าของแต่ละประเภทรถ</div></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="adm-add-btn" onclick="openAddVeh()">+ เพิ่มประเภทรถ</button>
+            <button class="adm-add-btn" style="background:var(--dark3);color:var(--gold);border:1px solid rgba(201,169,110,0.3)" onclick="openPriceMatrix()">🗓 แก้ไขตารางราคา</button>
+          </div>
+        </div>
+        <div style="background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.12);padding:12px 16px;font-size:11px;color:var(--muted);margin-bottom:16px;line-height:1.8">
+          ✅ ราคา จำนวนคน และกระเป๋าที่กำหนดที่นี่จะแสดงในหน้าจองรถรับส่งทันที<br>
+          🚫 รถที่ปิดใช้งานจะไม่แสดงในหน้าจอง · ใช้ปุ่ม ↑↓ เรียงลำดับการแสดงผล
+        </div>
+        <div class="veh-adm-list" id="veh-adm-list"></div>
+        <div class="veh-edit-form" id="veh-add-form" style="display:none;margin-top:16px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:14px" id="veh-form-title">เพิ่มประเภทรถใหม่</div>
+          <div class="form-row" style="margin-bottom:12px">
+            <div class="fgroup"><label class="flabel">ชื่อรถ (EN) *</label><input class="finput" id="vf-name" placeholder="Premium Sedan"></div>
+            <div class="fgroup"><label class="flabel">ชื่อรถ (TH)</label><input class="finput" id="vf-nameT" placeholder="รถเก๋งพรีเมียม"></div>
+          </div>
+          <div class="form-row" style="margin-bottom:12px">
+            <div class="fgroup"><label class="flabel">ชื่อรถ (ZH)</label><input class="finput" id="vf-nameZ" placeholder="豪华轿车"></div>
+            <div class="fgroup"><label class="flabel">Icon (Emoji)</label><input class="finput" id="vf-icon" placeholder="🚗"></div>
+          </div>
+          <div class="form-row full" style="margin-bottom:12px"><div class="fgroup"><label class="flabel">รุ่นรถ / รายละเอียด</label><input class="finput" id="vf-model" placeholder="Toyota Camry / Honda Accord"></div></div>
+          <div class="form-row" style="margin-bottom:12px">
+            <div class="fgroup"><label class="flabel">ราคา (฿/ทริป) *</label><input class="finput" id="vf-price" type="number" placeholder="1100"></div>
+            <div class="fgroup"><label class="flabel">จำนวนคนสูงสุด *</label><input class="finput" id="vf-pax" type="number" placeholder="3" min="1" max="30"></div>
+          </div>
+          <div class="form-row full" style="margin-bottom:12px">
+            <div class="fgroup"><label class="flabel">กระเป๋าสูงสุด *</label><input class="finput" id="vf-lug" type="number" placeholder="3" min="0" max="30"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <input type="checkbox" id="vf-active" checked style="accent-color:var(--gold)">
+            <label for="vf-active" style="font-size:12px;color:var(--muted);cursor:pointer">แสดงในหน้าจอง (Active)</label>
+          </div>
+          <div class="form-nav">
+            <button class="fbk-out" onclick="closeAddVeh()">ยกเลิก</button>
+            <button class="fbk" onclick="saveVeh()">💾 บันทึก</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="adm-view" id="adm-settings">
+        <div class="adm-header">
+          <div><div class="adm-title">Settings</div><div class="adm-sub">แก้ไขข้อมูลติดต่อที่แสดงทั่วทั้งเว็บไซต์</div></div>
+          <button class="adm-add-btn" onclick="saveSettings()">💾 Save Changes</button>
+        </div>
+
+        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-bottom:16px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px">Contact Channels</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.7">ข้อมูลนี้จะแสดงทั่วทั้งเว็บ — ปุ่ม Contact, หน้า Booking Confirmed, Footer<br>
+          <div class="form-row">
+            <div class="fgroup"><label class="flabel">LINE ID</label><input class="finput" id="cfg-line" placeholder="@siamroyal"><span style="font-size:10px;color:var(--muted)">ใส่ @ ด้วย เช่น @siamroyal</span></div>
+            <div class="fgroup"><label class="flabel">WeChat ID</label><input class="finput" id="cfg-wechat" placeholder="SiamRoyalJourney"></div>
+          </div>
+          <div class="form-row">
+            <div class="fgroup"><label class="flabel">WhatsApp Number</label><input class="finput" id="cfg-whatsapp" placeholder="66812345678"><span style="font-size:10px;color:var(--muted)">ตัวเลขล้วน ไม่มี + เช่น 66812345678</span></div>
+            <div class="fgroup"><label class="flabel">Phone (แสดงบนเว็บ)</label><input class="finput" id="cfg-phone" placeholder="+66 81 234 5678"></div>
+          </div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Email Address</label><input class="finput" id="cfg-email" type="email" placeholder="info@siamroyal.com"></div></div>
+        </div>
+
+        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-bottom:16px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:16px">Preview</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap" id="settings-preview"></div>
+        </div>
+
+        <div style="background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:6px">Business Info</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:20px">แสดงใน Footer และ Email ลูกค้า</div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Site Name</label><input class="finput" id="cfg-sitename" placeholder="Siam Royal Journey"></div></div>
+          <div class="form-row full"><div class="fgroup"><label class="flabel">Footer Description</label><textarea class="finput" id="cfg-footerdesc" rows="2" placeholder="Premium private tour service..."></textarea></div></div>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(201,169,110,0.12)">
+            <button class="fbk" onclick="saveSettings()" style="width:100%">💾 Save All Settings</button>
+          </div>
+        </div>
+
+        <div id="settings-saved" style="display:none;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.3);padding:14px 18px;margin-top:16px;font-size:13px;color:var(--green);text-align:center">
+          ✅ Settings saved! Changes are now live.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLB()">
+  <button class="lightbox-x">×</button>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box"><button class="modal-close" onclick="closeModal()">×</button><div id="modal-content"></div></div>
+</div>
+
+<input type="file" id="photo-input" accept="image/*" multiple style="display:none">
+
+<div class="adm-login-bg" id="adm-login-bg">
+  <div class="adm-login-box">
+    <button class="adm-login-x" onclick="closeAdminLogin()">×</button>
+    <div class="adm-login-logo">SIAM ROYAL JOURNEY</div>
+    <div class="adm-login-sub">ADMIN ACCESS</div>
+    <div class="adm-login-deco"></div>
+    <label class="adm-lbl">USERNAME</label>
+    <input class="adm-inp" id="adm-user" placeholder="admin" autocomplete="username">
+    <label class="adm-lbl">PASSWORD</label>
+    <input class="adm-inp" id="adm-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()">
+    <button class="adm-login-btn" onclick="doAdminLogin()">ACCESS ADMIN PANEL</button>
+    <div class="adm-login-err" id="adm-err"></div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════
+// CONFIG
+// ════════════════════════════════════════════════
+const API_BASE   = 'https://siamroyal-backend-production.up.railway.app';
+
+// ════════════════════════════════════════════════
+// I18N — ระบบแปลภาษา
+// ════════════════════════════════════════════════
+const I18N = {
+  en:{
+    nav_tours:'Tours', nav_book:'Book Now', nav_transfer:'Airport Transfer', nav_contact:'Contact',
+    nav_book_btn:'Book Now',
+    hero_badge:'Premium Private Tours Thailand',
+    hero_h1a:'Explore Thailand', hero_h1b:'in Luxury',
+    hero_sub:'Private tours with professional car and driver — crafted exclusively for you.',
+    cta_packages:'View Tour Packages', cta_transfer:'✈ Airport Transfer', cta_consult:'Free Consultation',
+    nav_custom:'✦ Custom Trip',
+    cta_custom:'✦ Custom Trip',
+    ct_eyebrow:'Design Your Own Trip',
+    ct_title1:'Custom',
+    ct_title2:'Trip Builder',
+    ct_subtitle:'Tell us where to go, what to do, how many days — we will design your trip and provide an initial quote immediately.',
+    ct_notice:'⚠️ <strong>Note:</strong> The price shown is an <strong>initial estimate only</strong> and may change based on actual distance, time, and details. Our team will contact you to confirm the final price within 2-4 hours.',
+    ct_submit_btn:'Send Custom Trip Request →',
+    ct_success_title:'Request Sent!',
+    ct_success_sub:'Our team will review the details and contact you within 2-4 hours to confirm pricing and itinerary.',
+    ct_dest_title:'Select Destinations (multiple)',
+    ct_info_title:'Travel Details',
+    ct_date_lbl:'Start Date', ct_days_lbl:'Number of Days',
+    ct_pax_lbl:'Number of Guests', ct_style_lbl:'Travel Style',
+    ct_style_cultural:'Cultural / Temples / History',
+    ct_style_nature:'Nature / Forest / Mountains',
+    ct_style_beach:'Beach / Sea / Islands',
+    ct_style_food:'Food / Markets / Street Food',
+    ct_style_luxury:'Luxury / High-End',
+    ct_style_adventure:'Adventure / Thrilling',
+    ct_style_family:'Family / Children-friendly',
+    ct_style_honeymoon:'Honeymoon / Romantic',
+    ct_style_mix:'Mixed / Multiple interests',
+    ct_veh_title:'Preferred Vehicle Type',
+    ct_plan_title:'Day-by-Day Plan (optional)',
+    ct_add_day:'+ Add Day',
+    ct_extra_title:'Special Requests',
+    ct_wish_lbl:'Must-do activities or places you want to visit?',
+    ct_budget_lbl:'Approximate Budget (฿/trip)',
+    ct_bud1:'Economy (under ฿10,000)',
+    ct_bud2:'Standard (฿10,000–30,000)',
+    ct_bud3:'Premium (฿30,000–60,000)',
+    ct_bud4:'Luxury (฿60,000+)',
+    ct_bud5:'Flexible',
+    ct_hotel_lbl:'Accommodation Preference',
+    ct_hotel1:'Not needed (I have accommodation)',
+    ct_hotel2:'Please recommend (not included)',
+    ct_hotel3:'Include accommodation (3-star)',
+    ct_hotel4:'Include accommodation (4-5 star)',
+    ct_est_title:'Estimated Price (preliminary)',
+    ct_est_veh:'Vehicle cost (per day × days)',
+    ct_est_ticket:'Entry fees / tickets (estimate)',
+    ct_est_total:'Estimated Grand Total',
+    ct_est_note:'* This is a preliminary estimate only. Final price may vary based on actual distance, time, additional stops, and season. Our team will confirm the final price within 2-4 hours.',
+    ct_contact_title:'Contact Information',
+    stat1:'Trips Completed', stat2:'Satisfaction Rate', stat3:'Routes Across Thailand', stat4:'Experience',
+    max_pax:'Max', max_lug:'Max bags', per_trip:'trip',
+    veh_sel_title:'Select Your Vehicle', veh_pax_note:'Suitable for your group size',
+    search_ph:'Where do you want to go? e.g. Chiang Mai, Phuket...',
+    dur_l:'Duration', d1:'1 Day', d2:'2-3 Days', d3:'4-7 Days', d4:'7+ Days',
+    pax_l:'Guests', search_btn:'Search',
+    pkg_ey:'Featured Packages', pkg_st1:'Curated', pkg_st2:'Experiences for You',
+    steps_ey:'How to Book', steps_st1:'Ready in', steps_st2:'4 Simple Steps',
+    s1t:'Choose Package', s1d:'Pick a ready-made package or design your own route.',
+    s2t:'Select Date', s2d:'Choose travel dates and number of travelers.',
+    s3t:'Confirm Booking', s3d:'Submit your details. Our team contacts you within 24 hours.',
+    s4t:'Enjoy Journey', s4d:'Driver picks you up at hotel. Relax and explore.',
+    testy_ey:'Guest Reviews', testy_st1:'Trusted by', testy_st2:'Travelers Worldwide',
+    t1q:'"Driver spoke excellent English and recommended the best local spots. Will book again!"',
+    t1trip:'Chiang Mai · 5 Days',
+    t2q:'"Easy booking, transparent pricing. Car spotless, service exceeded expectations."',
+    t2trip:'Krabi · Family Trip',
+    t3q:'"Airport transfer was seamless. Driver waited with a sign, very professional."',
+    t3trip:'BKK → Sukhumvit',
+    cta_t:'Ready to Start Your Journey?',
+    cta_s:'Tours, transfers, and custom experiences — all in one place.',
+    cta_transfer2:'✈ Book Airport Transfer',
+    contact_ey:'Contact Us', contact_st1:'Chat with Us', contact_st2:'Directly',
+    tel_label:'Call Us',
+    footer_desc:'Premium private tour service with professional car and driver.',
+    footer_pop:'Popular Tours', footer_svc:'Services', footer_con:'Contact',
+    svc1:'Car with Driver', svc2:'Airport Transfer', svc3:'Custom Itinerary', svc4:'Honeymoon Trip',
+    footer_legal:'Privacy Policy · Terms',
+    tf_banner_t:'Airport Transfer Service',
+    tf_banner_s:'BKK · DMK · HKT · CNX · KBI — Fixed price, meet & greet, flight monitoring',
+    tf_banner_btn:'Book Transfer →',
+    bk_ey:'Booking', bk_st1:'Reserve Your', bk_st2:'Perfect Journey',
+    bs1:'Select Package', bs2:'Your Details', bs3:'Review', bs4:'Confirmed!',
+    choose_pkg:'Choose Your Package',
+    fl_date:'Travel Date', fl_guests:'Number of Guests',
+    your_details:'Your Details',
+    fl_fname:'First Name', fl_lname:'Last Name', fl_email:'Email',
+    fl_phone:'Phone / WhatsApp', fl_nat:'Nationality',
+    fl_hotel:'Hotel / Pickup Location',
+    fl_note:'Special Requests (Optional)', fl_contact:'Preferred Contact',
+    btn_next:'Continue', btn_back:'Back', btn_confirm:'Confirm Booking',
+    review_title:'Review Booking',
+    pay_info_title:'Payment Information',
+    pay_info_body:'After confirming, our team will contact you within 24 hours via your preferred channel with payment details. We accept bank transfer, and coordinate payments through LINE, WeChat, or WhatsApp for your convenience.',
+    terms_agree:'I agree to the Terms of Service and Cancellation Policy',
+    success_t:'Booking Confirmed!',
+    success_s:'Thank you for choosing Siam Royal Journey. Please contact us to complete your payment. We will prepare everything for your trip.',
+    ref_label:'Booking Reference',
+    pay_contact_title:'CONTACT US TO PAY',
+    pay_contact_note:'Please mention your booking reference number. 30% deposit required to confirm.',
+    back_home:'Back to Home', add_transfer:'Add Airport Transfer',
+    tf_ey:'Airport Transfer', tf_st1:'Seamless', tf_st2:'Airport Transfers',
+    tf_sub:'Fixed price · Meet & Greet · Real-time flight monitoring · 60 min free waiting',
+    tf_dir_title:'Transfer Direction',
+    dir_arr:'✈ Arrival — Airport to Hotel', dir_dep:'🏨 Departure — Hotel to Airport',
+    tf_ap_title:'Select Airport', tf_veh_title:'Vehicle Type',
+    veh1_name:'Sedan', veh1_desc:'Toyota Camry / Accord · Max 3 pax',
+    veh2_name:'SUV / MPV', veh2_desc:'Toyota Fortuner / Innova · Max 6 pax',
+    veh3_name:'Premium Van', veh3_desc:'Toyota Hiace Premium · Max 9 pax',
+    tf_date_lbl:'Date of Arrival', tf_time_lbl:'Arrival Time (local)',
+    tf_flight_lbl:'Flight Number', tf_pax_lbl:'Passengers',
+    tf_lug_lbl:'Luggage Pieces', tf_hotel_lbl:'Destination Hotel / Address',
+    tf_area_lbl:'Area', tf_name_lbl:'Name on Meet & Greet Sign',
+    tf_phone_lbl:'Phone / WhatsApp', tf_email_lbl:'Email', tf_note_lbl:'Special Requests',
+    tf_airport_lbl:'Airport', tf_veh_lbl:'Vehicle', tf_incl_lbl:'Includes',
+    tf_incl_val:'Meet & Greet · Flight monitoring · 60 min free wait',
+    price_note_km:'Price covers in-city transfers within 35 km from the airport.',
+    price_note_bkk:'Suvarnabhumi (BKK) and Don Mueang (DMK) share the same price.',
+    tf_total_lbl:'Total', tf_confirm_btn:'Confirm Transfer Booking',
+    tf_success_t:'Transfer Booked!',
+    tf_success_s:'Your airport transfer is confirmed. Our driver will wait with a name sign. Contact us to complete payment.',
+    tf_ref_label:'接送参考号', book_tour_too:'Book a Tour Too',
+    per_group:'/ group', per_pax:'/ person', view_detail:'View Details', bk_veh_title:'Select Vehicle Type', persons_unit:'persons',
+    pkg_no_photo:'No photos yet', design_trip:'Design Your Own Trip',
+    design_trip_desc:'Tell us where, how long, and budget.',
+    create_trip:'Create My Trip',
+  },
+  th:{
+    nav_tours:'ทัวร์', nav_book:'จองทันที', nav_transfer:'รถรับส่งสนามบิน', nav_contact:'ติดต่อ',
+    nav_book_btn:'จองทันที',
+    hero_badge:'ทัวร์ส่วนตัวพรีเมียมในประเทศไทย',
+    hero_h1a:'เที่ยวไทย', hero_h1b:'อย่างมีระดับ',
+    hero_sub:'ทัวร์ส่วนตัวพร้อมรถและคนขับมืออาชีพ ออกแบบเพื่อคุณโดยเฉพาะ',
