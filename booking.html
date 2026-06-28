@@ -1974,47 +1974,63 @@ function vName(v){ if(curLang==='th') return v.nameT||v.name; if(curLang==='zh')
 function renderVehicleGrid(pax, lug){
   const grid = document.getElementById('veh-grid-tf');
   if(!grid) return;
-  const activePax = parseInt(pax)||1;
-  const activeLug = parseInt(lug)||0;
+  const activePax = parseInt(pax) || 1;
+  const activeLug = parseInt(lug) || 0;
   grid.innerHTML = '';
+  
   VEHICLES.forEach(v => {
     const overPax = activePax > v.maxPax;
     const overLug = activeLug > v.maxLug;
     const disabled = !v.active || overPax || overLug;
-    const isSel = tfVeh && tfVeh.id === v.id;
+    
+    // 🔥 ตรวจสอบให้แม่นยำว่า ID ตรงกันไหม
+    const isSel = tfVeh && tfVeh.id === v.id; 
+    
     const card = document.createElement('div');
-    card.className = 'veh-card' + (isSel?' sel':'') + (disabled?' disabled':'');
-    card.onclick = () => { if(!disabled){ selectVehicle(v); } };
+    card.className = 'veh-card' + (isSel ? ' sel' : '') + (disabled ? ' disabled' : '');
+    
+    // ปรับการผูกฟังก์ชันคลิกให้ชัดเจน ไม่รันถ้าติดเงื่อนไขความจุ
+    card.onclick = (e) => { 
+      e.preventDefault();
+      if(!disabled){ 
+        selectVehicle(v); 
+      } 
+    };
+    
     let warnText = '';
     if(overPax) warnText = `Max ${v.maxPax} pax`;
     else if(overLug) warnText = `Max ${v.maxLug} bags`;
-    // ราคาจาก matrix ตาม airport ที่เลือก
+    
     const matrixPrice = getPrice(v.id, tfAP.code);
     card.innerHTML = `
       <div class="veh-card-icon">${v.icon}</div>
       <div class="veh-card-name">${vName(v)}</div>
       <div class="veh-card-model">${v.model}</div>
       <div class="veh-caps">
-        <span class="veh-cap"><span class="veh-cap-icon">👤</span> ${t('max_pax')||'Max'} ${v.maxPax}</span>
-        <span class="veh-cap"><span class="veh-cap-icon">🧳</span> ${t('max_lug')||'Max'} ${v.maxLug}</span>
+        <span class="veh-cap">👤 ${t('max_pax') || 'Max'} ${v.maxPax}</span>
+        <span class="veh-cap">🧳 ${t('max_lug') || 'Max'} ${v.maxLug}</span>
       </div>
-      <div class="veh-card-price">฿${matrixPrice.toLocaleString()} <span>/ ${t('per_trip')||'trip'}</span></div>
+      <div class="veh-card-price">฿${matrixPrice.toLocaleString()} <span>/ ${t('per_trip') || 'trip'}</span></div>
       ${disabled ? `<div style="margin-top:6px;font-size:9px;color:var(--red);letter-spacing:1px">${warnText}</div>` : ''}`;
     grid.appendChild(card);
   });
-  // ถ้ายังไม่มีรถที่เลือก หรือรถที่เลือกอยู่ไม่ available ให้ auto-select ตัวแรกที่ได้
-  const firstOk = VEHICLES.find(v => v.active && activePax <= v.maxPax && activeLug <= v.maxLug);
-  if(!tfVeh || !firstOk || (tfVeh && (activePax > tfVeh.maxPax || activeLug > tfVeh.maxLug))){
-    if(firstOk) selectVehicle(firstOk, true);
-  }
+  
   updateTFPrice();
 }
 
-function selectVehicle(v, silent){
+function selectVehicle(v){
   tfVeh = v;
-  // คำนวณราคาจาก matrix ตาม airport ปัจจุบัน
   tfVeh._currentPrice = getPrice(v.id, tfAP.code);
-  if(!silent) updateTFPrice();
+  
+  // 🔥 แทนที่จะล้างโดมใหม่ทั้งหมด ให้สลับ Class 'sel' แค่ที่หน้าจอเพื่อความลื่นไหล ไม่หน่วงคลิก
+  const cards = document.querySelectorAll('#veh-grid-tf .veh-card');
+  VEHICLES.forEach((item, idx) => {
+    if(cards[idx]) {
+      cards[idx].classList.toggle('sel', item.id === v.id);
+    }
+  });
+  
+  updateTFPrice();
 }
 let photoPkgIdx=null;
 let lastRef='';
@@ -2161,35 +2177,51 @@ function selectPkg(id){
 function renderBkVehicles(){
   const g = document.getElementById('bk-veh-grid');
   if(!g) return;
-  const guests = parseInt(document.getElementById('bk-guests')?.value)||1;
+  const guests = parseInt(document.getElementById('bk-guests')?.value) || 1;
   const activeVehs = VEHICLES.filter(v => v.active && guests <= v.maxPax);
+  
   g.innerHTML = activeVehs.map(v => {
-    const _pkg = PKG.find(x=>x.id===bkSelected);
+    const _pkg = PKG.find(x => x.id === bkSelected);
     const tripPrice = getPkgVehiclePrice(_pkg, v.id);
+    
+    // เช็คสถานะการเลือกปัจจุบัน
     const isSel = bkVehicle && bkVehicle.id === v.id;
-    return `<div class="bk-veh-card${isSel?' sel':''}" onclick="selectBkVehicle('${v.id}')">
-      <div class="bk-veh-icon">${v.icon}</div>
-      <div class="bk-veh-name">${vName(v)}</div>
-      <div class="bk-veh-model">${v.model}</div>
-      <div class="bk-veh-cap">👤 Max ${v.maxPax} · 🧳 Max ${v.maxLug}</div>
-      <div class="bk-veh-price">฿${tripPrice.toLocaleString()} <span>/ ทริป</span></div>
-    </div>`;
+    return `
+      <div class="bk-veh-card${isSel ? ' sel' : ''}" onclick="selectBkVehicle('${v.id}')">
+        <div class="bk-veh-icon">${v.icon}</div>
+        <div class="bk-veh-name">${vName(v)}</div>
+        <div class="bk-veh-model">${v.model}</div>
+        <div class="bk-veh-cap">👤 Max ${v.maxPax} · 🧳 Max ${v.maxLug}</div>
+        <div class="bk-veh-price">฿${tripPrice.toLocaleString()} <span>/ ทริป</span></div>
+      </div>`;
   }).join('');
-  // auto-select ถ้ายังไม่ได้เลือก หรือรถที่เลือกเกินจำนวนคน
+  
+  // ถ้ายังไม่ได้เลือกรถ หรือจำนวนคนเกินขีดจำกัดของรถที่เลือกไว้ ให้รีเซ็ตเลือกคันแรกที่รองรับทันที
   if(!bkVehicle || guests > bkVehicle.maxPax){
-    const first = activeVehs[0];
-    if(first){ bkVehicle = first; }
-    document.querySelectorAll('.bk-veh-card').forEach((el,i)=>{
-      el.classList.toggle('sel', activeVehs[i]?.id === bkVehicle?.id);
-    });
+    if(activeVehs.length > 0) {
+      bkVehicle = activeVehs[0];
+      // ไฮไลต์สีทองคันแรก
+      const firstCard = g.querySelector('.bk-veh-card');
+      if(firstCard) firstCard.classList.add('sel');
+    }
   }
   updateBkPrice();
 }
 
 function selectBkVehicle(id){
-  bkVehicle = VEHICLES.find(v=>v.id===id)||null;
-  document.querySelectorAll('.bk-veh-card').forEach(el=>el.classList.remove('sel'));
-  event.currentTarget.classList.add('sel');
+  bkVehicle = VEHICLES.find(v => v.id === id) || null;
+  
+  // 🔥 ใช้คำสั่งสลับ Active Class แบบแมนนวล แทนการยิง HTML ใหม่ ทำให้ปุ่มไม่กระตุกและติดนิ้วทันที
+  const cards = document.querySelectorAll('#bk-veh-grid .bk-veh-card');
+  const guests = parseInt(document.getElementById('bk-guests')?.value) || 1;
+  const activeVehs = VEHICLES.filter(v => v.active && guests <= v.maxPax);
+  
+  activeVehs.forEach((v, idx) => {
+    if(cards[idx]) {
+      cards[idx].classList.toggle('sel', v.id === id);
+    }
+  });
+  
   updateBkPrice();
 }
 
