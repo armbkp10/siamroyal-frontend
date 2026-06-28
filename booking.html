@@ -2028,7 +2028,14 @@ function pDesc(p){if(curLang==='th')return(p.descT?.trim())||p.desc;if(curLang==
 function genRef(prefix){return prefix+'-'+new Date().getFullYear()+'-'+Math.random().toString(36).substring(2,7).toUpperCase();}
 
 // Contact helpers
-function openLine(){window.open('https://line.me/R/ti/p/'+getS('line'),'_blank');}
+function openLine(){ 
+  let lineId = loadSettings().line.replace('@', ''); // เอา @ ออกเพื่อไม่ให้ลิงก์เสีย
+  window.open('https://line.me/R/ti/p/~' + lineId, '_blank'); 
+}
+function openLineWithRef(){ 
+  let lineId = loadSettings().line.replace('@', '');
+  window.open('https://line.me/R/ti/p/~' + lineId + '?text=BookingRef:' + encodeURIComponent(lastRef), '_blank'); 
+}
 function callPhone(){
   const ph = getS('phone');
   window.location.href = 'tel:'+ph.replace(/[^0-9+]/g,'');
@@ -2062,12 +2069,19 @@ function updateContactUI(){
 }
 function openWhatsApp(){window.open('https://wa.me/'+getS('whatsapp'),'_blank');}
 function openWeChatInfo(){
-  const wc = getS('wechat');
-  if(!wc){ alert('WeChat ยังไม่พร้อมให้บริการในขณะนี้ กรุณาติดต่อผ่าน LINE หรือ WhatsApp'); return; }
-  alert('WeChat ID: '+wc+'\n\nPlease add us on WeChat and mention your booking reference.');
+  const wc = loadSettings().wechat;
+  if(!wc || wc.trim() === ""){ 
+    alert('WeChat is currently unavailable. Please contact us via LINE or WhatsApp instead.'); 
+    return; 
+  }
+  alert('Our WeChat ID is: ' + wc + '\n\nPlease add us on WeChat and mention your booking reference: ' + lastRef);
 }
 function openLineWithRef(){window.open('https://line.me/R/ti/p/'+getS('line')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
-function openWhatsAppWithRef(){window.open('https://wa.me/'+getS('whatsapp')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
+function openWhatsAppWithRef(){
+  // ดึงเบอร์ WhatsApp ใน Settings ตัดเครื่องหมาย + หรือช่องว่างออกให้เหลือแต่ตัวเลขล้วน
+  let waNum = loadSettings().whatsapp.replace(/[^0-9]/g, ''); 
+  window.open('https://wa.me/' + waNum + '?text=Hi, my booking reference is: ' + encodeURIComponent(lastRef), '_blank');
+}
 function scrollContact(){showPage('home');setTimeout(()=>document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}),120);}
 
 // ════════════════════════════════════════════════
