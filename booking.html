@@ -199,3 +199,430 @@ select.finput{cursor:pointer}
 .airport-opt{border:1px solid rgba(201,169,110,0.2);padding:12px 14px;cursor:pointer;transition:all 0.25s;background:var(--dark2)}
 .airport-opt:hover{border-color:rgba(201,169,110,0.5)}
 .airport-opt.sel{border-color:var(--gold);background:rgba(201,169,110,0.05)}
+.airport-code{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);margin-bottom:2px}
+.airport-name{font-size:10px;color:var(--cream)}
+.airport-city{font-size:9px;color:var(--muted)}
+.luggage-sel{display:flex;gap:6px;flex-wrap:wrap}
+.lug-btn{background:var(--dark2);border:1px solid rgba(201,169,110,0.2);color:var(--muted);padding:7px 14px;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.lug-btn.active{border-color:var(--gold);color:var(--gold)}
+.tf-price-box{background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.18);padding:20px;margin:20px 0}
+.tf-price-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0}
+.tf-price-row.total{font-size:16px;color:var(--gold);border-top:1px solid rgba(201,169,110,0.15);margin-top:8px;padding-top:12px}
+/* ADMIN */
+.adm{background:#0d0d0d;min-height:600px;display:flex}
+.adm-sidebar{width:210px;background:#111;border-right:1px solid rgba(201,169,110,0.1);padding:24px 0;flex-shrink:0}
+.adm-logo{padding:0 20px 20px;border-bottom:1px solid rgba(201,169,110,0.1);margin-bottom:16px}
+.adm-logo span{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold)}
+.adm-nav a{display:block;padding:10px 20px;font-size:12px;color:var(--muted);cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;border-left:2px solid transparent}
+.adm-nav a:hover,.adm-nav a.active{color:var(--gold);border-left-color:var(--gold);background:rgba(201,169,110,0.04)}
+.adm-logout{display:block;padding:10px 20px;font-size:12px;color:var(--red);cursor:pointer;transition:all 0.2s;border-left:2px solid transparent;border-top:1px solid rgba(201,169,110,0.08);margin-top:8px;background:none;border-right:none;border-bottom:none;width:100%;text-align:left;font-family:inherit}
+.adm-logout:hover{background:rgba(224,92,92,0.05);border-left-color:var(--red)}
+.adm-content{flex:1;padding:28px;overflow:auto;min-width:0}
+.adm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.adm-title{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--cream)}
+.adm-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.metric{background:var(--dark3);border:1px solid rgba(201,169,110,0.1);padding:18px}
+.metric-label{font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px}
+.metric-val{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)}
+.metric-change{font-size:10px;margin-top:4px}
+.metric-change.up{color:var(--green)}.metric-change.dn{color:var(--red)}
+.adm-table-wrap{background:var(--dark3);border:1px solid rgba(201,169,110,0.1);overflow:auto}
+.adm-table-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(201,169,110,0.1);flex-wrap:wrap;gap:8px}
+.adm-table-title{font-size:13px;color:var(--cream);font-weight:500}
+.adm-add-btn{background:var(--gold);border:none;color:#0a0a0a;padding:8px 16px;font-size:10px;letter-spacing:1.5px;cursor:pointer;font-weight:500;font-family:inherit}
+table.bt{width:100%;border-collapse:collapse;font-size:11px;min-width:600px}
+table.bt th{text-align:left;padding:10px 16px;color:var(--muted);letter-spacing:1.5px;font-size:9px;border-bottom:1px solid rgba(201,169,110,0.08);font-weight:400}
+table.bt td{padding:11px 16px;border-bottom:1px solid rgba(201,169,110,0.06);color:var(--cream);vertical-align:middle}
+table.bt tr:last-child td{border-bottom:none}
+table.bt tr:hover td{background:rgba(201,169,110,0.02)}
+.status{display:inline-block;padding:3px 10px;font-size:9px;letter-spacing:1px;border-radius:2px}
+.s-confirmed{background:rgba(76,175,125,0.12);color:var(--green)}
+.s-pending{background:rgba(201,169,110,0.1);color:var(--gold)}
+.s-cancelled{background:rgba(224,92,92,0.1);color:var(--red)}
+.adm-act{display:flex;gap:6px;flex-wrap:wrap}
+.abt{background:transparent;border:1px solid rgba(201,169,110,0.2);color:var(--muted);padding:5px 10px;font-size:9px;cursor:pointer;font-family:inherit;letter-spacing:1px;transition:all 0.2s}
+.abt:hover{color:var(--gold);border-color:var(--gold)}.abt.red:hover{color:var(--red);border-color:var(--red)}
+.adm-view{display:none}.adm-view.active{display:block}
+/* Package admin cards */
+.pkg-mgmt{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pkg-card-adm{background:var(--dark2);border:1px solid rgba(201,169,110,0.1);overflow:hidden}
+.pca-img-area{height:140px;position:relative;overflow:hidden;background:var(--dark3);cursor:pointer;border-bottom:1px solid rgba(201,169,110,0.08)}
+.pca-img-area img{width:100%;height:100%;object-fit:cover;opacity:0.85}
+.pca-no-img{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(201,169,110,0.3)}
+.pca-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.pca-img-area:hover .pca-img-overlay{opacity:1}
+.pca-overlay-text{color:var(--gold);font-size:11px;letter-spacing:1.5px;text-align:center;line-height:2}
+.pca-body{padding:16px}
+.pca-name{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cream);margin-bottom:4px}
+.pca-info{font-size:10px;color:var(--muted);margin-bottom:12px;line-height:1.6}
+.pca-foot{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid rgba(201,169,110,0.08);flex-wrap:wrap;gap:8px}
+.pca-price{font-size:14px;color:var(--gold)}
+.toggle{width:36px;height:20px;background:var(--gold);border-radius:10px;position:relative;cursor:pointer;transition:background 0.3s;flex-shrink:0}
+.toggle.off{background:rgba(201,169,110,0.2)}
+.toggle::after{content:'';width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:left 0.3s}
+.toggle.off::after{left:3px}.toggle:not(.off)::after{left:19px}
+/* Gallery */
+.photo-gallery{padding:12px 16px;border-top:1px solid rgba(201,169,110,0.08)}
+.photo-gallery-title{font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.gallery-thumb{aspect-ratio:1;position:relative;overflow:hidden;background:var(--dark3);cursor:pointer}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;opacity:0.85;transition:opacity 0.2s}
+.gallery-thumb:hover img{opacity:1}
+.gallery-del{position:absolute;top:4px;right:4px;background:rgba(224,92,92,0.9);border:none;color:#fff;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;line-height:1}
+.gallery-thumb:hover .gallery-del{opacity:1}
+.gallery-add-btn{aspect-ratio:1;border:1px dashed rgba(201,169,110,0.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;background:var(--dark2);transition:all 0.2s;font-size:9px;color:var(--muted);letter-spacing:1px}
+.gallery-add-btn:hover{border-color:var(--gold);color:var(--gold)}
+/* Chart */
+.chart-bar-wrap{margin-top:24px;background:var(--dark3);border:1px solid rgba(201,169,110,0.1);padding:20px}
+.chart-title{font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:16px}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:100px}
+.bar-col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.bar{background:var(--gold-dark);width:100%;border-radius:2px 2px 0 0;transition:height 0.5s;cursor:pointer}
+.bar:hover{background:var(--gold)}
+.bar-col.active{opacity:1}
+.bar-label{font-size:9px;color:var(--muted)}
+.bar-val{font-size:9px;color:var(--gold)}
+/* Add/Edit pkg form */
+.adm-pkg-form{background:var(--dark3);border:1px solid rgba(201,169,110,0.12);padding:24px;margin-top:16px}
+.adm-pkg-form h4{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:16px}
+.form-hint{background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.15);padding:12px 14px;font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9000;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:88vh;object-fit:contain}
+.lightbox-x{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;line-height:1}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:8000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--dark3);border:1px solid rgba(201,169,110,0.2);padding:32px;max-width:500px;width:100%;max-height:90vh;overflow:auto}
+.modal-close{float:right;background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;line-height:1;font-family:inherit}
+.modal-close:hover{color:var(--gold)}
+/* Admin Login */
+.adm-login-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.adm-login-bg.open{display:flex}
+.adm-login-box{background:var(--dark3);border:1px solid rgba(201,169,110,0.25);padding:44px 40px;width:100%;max-width:360px;position:relative}
+.adm-login-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;font-family:inherit;line-height:1}
+.adm-login-x:hover{color:var(--gold)}
+.adm-login-logo{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);letter-spacing:2px;text-align:center;margin-bottom:4px}
+.adm-login-sub{font-size:9px;color:var(--muted);text-align:center;letter-spacing:2px}
+.adm-login-deco{width:36px;height:1px;background:var(--gold-dark);margin:16px auto 24px}
+.adm-lbl{font-size:9px;letter-spacing:2px;color:var(--gold);display:block;margin-bottom:6px}
+.adm-inp{background:var(--dark2);border:1px solid rgba(201,169,110,0.2);color:var(--cream);padding:12px 14px;font-size:13px;font-family:inherit;outline:none;width:100%;margin-bottom:14px}
+.adm-inp:focus{border-color:rgba(201,169,110,0.5)}
+.adm-inp::placeholder{color:var(--muted)}
+.adm-login-btn{background:var(--gold);border:none;color:#0a0a0a;padding:13px;font-size:11px;letter-spacing:2px;cursor:pointer;font-weight:500;font-family:inherit;width:100%}
+.adm-login-btn:hover{background:var(--gold-light)}
+.adm-login-err{color:var(--red);font-size:11px;text-align:center;margin-top:12px;min-height:16px;line-height:1.5}
+/* Delete button style */
+.abt.danger{color:var(--red);border-color:rgba(224,92,92,0.3)}
+.abt.danger:hover{background:rgba(224,92,92,0.1);border-color:var(--red)}
+
+/* ═══ VEHICLE SYSTEM ═══ */
+.veh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.veh-card{background:var(--dark2);border:2px solid rgba(201,169,110,0.15);padding:16px;cursor:pointer;transition:all 0.25s;position:relative;text-align:center}
+.veh-card:hover{border-color:rgba(201,169,110,0.4)}
+.veh-card.sel{border-color:var(--gold);background:rgba(201,169,110,0.06)}
+.veh-card.disabled{opacity:0.4;cursor:not-allowed;pointer-events:none}
+.veh-card-icon{font-size:32px;margin-bottom:8px}
+.veh-card-name{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--cream);font-weight:600;margin-bottom:4px}
+.veh-card-model{font-size:10px;color:var(--muted);margin-bottom:6px;line-height:1.4}
+.veh-card-caps{display:flex;justify-content:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.veh-cap{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:3px}
+.veh-cap-icon{font-size:11px}
+.veh-card-price{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);font-weight:700}
+.veh-card-price span{font-size:10px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400}
+.veh-sold-badge{position:absolute;top:8px;right:8px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.2);padding:2px 7px;font-size:9px;color:var(--gold);letter-spacing:1px}
+.veh-warn{background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.18);padding:10px 14px;font-size:11px;color:var(--gold);margin-bottom:16px;display:none}
+/* Admin vehicle manager */
+.veh-adm-list{display:flex;flex-direction:column;gap:8px}
+.veh-adm-item{background:var(--dark2);border:1px solid rgba(201,169,110,0.1);padding:14px 16px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+.veh-adm-icon{font-size:24px;min-width:32px;text-align:center}
+.veh-adm-info{min-width:0}
+.veh-adm-name{font-size:13px;color:var(--cream);font-weight:500}
+.veh-adm-detail{font-size:10px;color:var(--muted);margin-top:2px}
+.veh-adm-price{font-size:14px;color:var(--gold);font-weight:600;text-align:right;white-space:nowrap}
+.veh-adm-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid rgba(201,169,110,0.08);grid-column:1/-1}
+.veh-edit-form{background:var(--dark3);border:1px solid rgba(201,169,110,0.1);padding:20px;margin-top:8px}
+.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.veh-toggle-active{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);cursor:pointer}
+
+.veh-caps{display:flex;justify-content:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.veh-cap{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:3px}
+.veh-cap-icon{font-size:11px}
+
+/* ═══ PRICE MATRIX ═══ */
+.price-matrix-wrap{overflow-x:auto;margin-top:16px}
+.price-matrix{border-collapse:collapse;width:100%;font-size:12px;min-width:580px}
+.price-matrix th{padding:8px 10px;text-align:center;font-size:9px;letter-spacing:2px;color:var(--gold);font-weight:400;border:1px solid rgba(201,169,110,0.1);background:var(--dark3)}
+.price-matrix th.veh-th{text-align:left;min-width:140px}
+.price-matrix td{padding:0;border:1px solid rgba(201,169,110,0.08)}
+.price-matrix td.veh-label{padding:10px 12px;background:var(--dark3);font-size:11px;color:var(--cream);font-weight:500}
+.price-matrix td.veh-label span{display:block;font-size:9px;color:var(--muted);margin-top:2px}
+.pm-input{background:rgba(255,255,255,0.04);border:none;color:var(--gold);padding:10px 8px;font-size:13px;font-family:'Cormorant Garamond',serif;font-weight:600;width:100%;text-align:center;outline:none;transition:background 0.2s}
+.pm-input:focus{background:rgba(201,169,110,0.08)}
+.pm-input:hover{background:rgba(201,169,110,0.04)}
+.pm-input.inactive{color:rgba(240,216,184,0.2);font-style:italic}
+.pm-inactive-row td{opacity:0.4}
+.pm-price-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.2);padding:3px 10px;font-size:13px;font-family:'Cormorant Garamond',serif;color:var(--gold);font-weight:600}
+.airport-price-note{font-size:10px;color:var(--gold);letter-spacing:1px;margin-top:8px;text-align:center}
+
+/* ═══ BOOKING VEHICLE SELECTION ═══ */
+.bk-veh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.bk-veh-card{background:var(--dark2);border:2px solid rgba(201,169,110,0.15);padding:14px 10px;cursor:pointer;transition:all 0.25s;text-align:center;position:relative}
+.bk-veh-card:hover{border-color:rgba(201,169,110,0.4)}
+.bk-veh-card.sel{border-color:var(--gold);background:rgba(201,169,110,0.06)}
+.bk-veh-card.disabled{opacity:0.38;cursor:not-allowed;pointer-events:none}
+.bk-veh-icon{font-size:24px;margin-bottom:6px}
+.bk-veh-name{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--cream);font-weight:600;margin-bottom:3px}
+.bk-veh-model{font-size:9px;color:var(--muted);margin-bottom:5px;line-height:1.4}
+.bk-veh-cap{font-size:9px;color:var(--muted);margin-bottom:6px}
+.bk-veh-price{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold);font-weight:700}
+.bk-veh-price span{font-size:9px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400}
+/* Price breakdown */
+.price-breakdown{background:rgba(201,169,110,0.04);border:1px solid rgba(201,169,110,0.15);padding:14px 16px;margin:12px 0}
+.pb-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid rgba(201,169,110,0.06)}
+.pb-row:last-child{border-bottom:none;padding-top:8px;margin-top:4px;font-size:14px}
+.pb-label{color:var(--muted)}
+.pb-val{color:var(--cream);font-weight:500}
+.pb-total{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700}
+.pb-note{font-size:10px;color:rgba(201,169,110,0.5);margin-top:6px;line-height:1.6}
+
+/* ═══ CUSTOM TRIP BUILDER ═══ */
+.ct-page{max-width:780px;margin:0 auto;padding:100px 5% 60px}
+.ct-hero{text-align:center;margin-bottom:48px}
+.ct-eyebrow{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.ct-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);color:var(--cream);font-weight:400;line-height:1.15;margin-bottom:14px}
+.ct-title em{font-style:italic;color:var(--gold)}
+.ct-subtitle{font-size:13px;color:var(--muted);line-height:1.9;max-width:560px;margin:0 auto}
+.ct-notice{background:rgba(201,169,110,0.06);border-left:3px solid var(--gold);padding:14px 18px;font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:32px}
+.ct-notice strong{color:var(--gold)}
+.ct-section{margin-bottom:28px}
+.ct-section-title{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.ct-section-title::after{content:'';flex:1;height:1px;background:rgba(201,169,110,0.15)}
+.ct-dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.ct-dest-card{background:var(--dark2);border:2px solid rgba(201,169,110,0.12);padding:12px 10px;cursor:pointer;transition:all 0.22s;text-align:center}
+.ct-dest-card:hover{border-color:rgba(201,169,110,0.4);background:rgba(201,169,110,0.04)}
+.ct-dest-card.sel{border-color:var(--gold);background:rgba(201,169,110,0.07)}
+.ct-dest-icon{font-size:22px;margin-bottom:5px}
+.ct-dest-name{font-size:11px;color:var(--cream);font-weight:500;letter-spacing:0.5px}
+.ct-dest-desc{font-size:9px;color:var(--muted);margin-top:2px}
+.ct-veh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ct-veh-card{background:var(--dark2);border:2px solid rgba(201,169,110,0.12);padding:12px 8px;cursor:pointer;transition:all 0.22s;text-align:center}
+.ct-veh-card:hover{border-color:rgba(201,169,110,0.35)}
+.ct-veh-card.sel{border-color:var(--gold);background:rgba(201,169,110,0.07)}
+.ct-veh-icon{font-size:20px;margin-bottom:4px}
+.ct-veh-name{font-size:11px;color:var(--cream);font-weight:500}
+.ct-veh-cap{font-size:9px;color:var(--muted);margin-top:2px}
+.ct-estimate{background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.2);padding:16px 20px;margin:16px 0}
+.ct-est-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 0}
+.ct-est-label{color:var(--muted)}
+.ct-est-val{color:var(--cream);font-weight:500}
+.ct-est-total{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold)}
+.ct-est-note{font-size:10px;color:rgba(201,169,110,0.5);margin-top:8px;line-height:1.7;font-style:italic}
+.day-planner{display:flex;flex-direction:column;gap:8px}
+.day-row{display:flex;align-items:flex-start;gap:10px;background:var(--dark2);border:1px solid rgba(201,169,110,0.1);padding:12px 14px}
+.day-num{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);font-weight:600;min-width:28px;padding-top:2px}
+.day-inp{background:transparent;border:none;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:12px;flex:1;outline:none;padding:0;line-height:1.7;resize:none;min-height:40px}
+.day-inp::placeholder{color:rgba(240,232,216,0.22)}
+.add-day-btn{background:rgba(201,169,110,0.08);border:1px dashed rgba(201,169,110,0.25);color:var(--gold);padding:10px;font-size:11px;cursor:pointer;width:100%;text-align:center;transition:all 0.2s;letter-spacing:1px}
+.add-day-btn:hover{background:rgba(201,169,110,0.13);border-color:var(--gold)}
+.rm-day{background:none;border:none;color:rgba(224,92,92,0.4);cursor:pointer;font-size:16px;padding:2px;transition:color 0.2s;line-height:1;flex-shrink:0;margin-top:2px}
+.rm-day:hover{color:#e05c5c}
+.ct-submit-btn{background:var(--gold);border:none;color:var(--ink);padding:16px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;width:100%;transition:all 0.3s;margin-top:8px}
+.ct-submit-btn:hover{background:var(--gold2)}
+.ct-submit-btn:disabled{opacity:0.5;cursor:not-allowed}
+.ct-success{display:none;text-align:center;padding:40px 0}
+.ct-success-icon{font-size:52px;margin-bottom:16px}
+.ct-success-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:10px}
+.ct-success-sub{font-size:13px;color:var(--muted);line-height:1.8;max-width:440px;margin:0 auto 28px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="showPage('home')">SIAM<span> Royal Journey</span></div>
+  <ul class="nav-center">
+    <li><a data-i="nav_tours" onclick="showPage('home')">Tours</a></li>
+    <li><a data-i="nav_book" onclick="showPage('booking')">Book Now</a></li>
+    <li><a data-i="nav_transfer" onclick="showPage('transfer')">Airport Transfer</a></li>
+    <li><a onclick="showPage('custom')" style="color:var(--gold)" data-i="nav_custom">✦ Custom Trip</a></li>
+    <li><a data-i="nav_contact" onclick="scrollContact()">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lb active" onclick="setLang('en')">EN</button>
+      <button class="lb" onclick="setLang('th')">TH</button>
+      <button class="lb" onclick="setLang('zh')">中文</button>
+    </div>
+    <button class="nav-transfer" onclick="showPage('transfer')">✈ Transfer</button>
+    <button class="nav-book" onclick="showPage('booking')" data-i="nav_book_btn">Book Now</button>
+  </div>
+</nav>
+
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-ring" style="width:480px;height:480px"></div>
+    <div class="hero-ring" style="width:680px;height:680px"></div>
+    <div class="hc">
+      <div class="badge-strip" data-i="hero_badge">Premium Private Tours Thailand</div>
+      <h1 class="ht"><span data-i="hero_h1a">Explore Thailand</span> <em data-i="hero_h1b">in Luxury</em></h1>
+      <p class="hsub" data-i="hero_sub">Private tours with professional car and driver — crafted exclusively for you.</p>
+      <div class="hbtns">
+        <button class="bp" onclick="showPage('booking')" data-i="cta_packages">View Tour Packages</button>
+        <button class="bo" onclick="showPage('transfer')" data-i="cta_transfer">✈ Airport Transfer</button>
+        <button class="bo" onclick="showPage('custom')" style="border-color:var(--gold);color:var(--gold)" data-i="cta_custom">✦ Custom Trip</button>
+        <button class="bo" onclick="scrollContact()" data-i="cta_consult">Free Consultation</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="sn">1,200+</div><div class="sl" data-i="stat1">Trips Completed</div></div>
+        <div class="stat"><div class="sn">98%</div><div class="sl" data-i="stat2">Satisfaction Rate</div></div>
+        <div class="stat"><div class="sn">45+</div><div class="sl" data-i="stat3">Routes Across Thailand</div></div>
+        <div class="stat"><div class="sn">10<span style="font-size:18px"> yrs</span></div><div class="sl" data-i="stat4">Experience</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tf-banner">
+    <div style="display:flex;align-items:center;gap:16px">
+      <div class="tf-banner-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+      <div>
+        <div class="tf-banner-t" data-i="tf_banner_t">Airport Transfer Service</div>
+        <div class="tf-banner-s" data-i="tf_banner_s">BKK · DMK · HKT · CNX · KBI — Fixed price, meet & greet, flight monitoring</div>
+      </div>
+    </div>
+    <button class="bp" onclick="showPage('transfer')" data-i="tf_banner_btn">Book Transfer →</button>
+  </div>
+
+  <div class="sbar-wrap">
+    <div class="sbar">
+      <input class="sf" data-ip="search_ph" placeholder="Where do you want to go?">
+      <div class="ssep"></div>
+      <select class="sf">
+        <option data-i="dur_l">Duration</option><option data-i="d1">1 Day</option>
+        <option data-i="d2">2-3 Days</option><option data-i="d3">4-7 Days</option><option data-i="d4">7+ Days</option>
+      </select>
+      <div class="ssep"></div>
+      <select class="sf">
+        <option data-i="pax_l">Guests</option><option>1-2</option><option>3-5</option><option>6-10</option><option>10+</option>
+      </select>
+      <button class="sbtn" onclick="showPage('booking')" data-i="search_btn">Search</button>
+    </div>
+  </div>
+
+  <section class="sec" style="background:var(--dark2)">
+    <div class="sh"><div class="ey" data-i="pkg_ey">Featured Packages</div><h2 class="st"><span data-i="pkg_st1">Curated</span> <em data-i="pkg_st2">Experiences for You</em></h2><div class="dv"></div></div>
+    <div class="pgrid" id="pkg-grid-home"></div>
+  </section>
+
+  <section class="sec" style="background:var(--dark)">
+    <div class="sh"><div class="ey" data-i="steps_ey">How to Book</div><h2 class="st"><span data-i="steps_st1">Ready in</span> <em data-i="steps_st2">4 Simple Steps</em></h2><div class="dv"></div></div>
+    <div class="steps-g">
+      <div class="step"><div class="snum">01</div><div class="stit" data-i="s1t">Choose Package</div><p class="sdesc" data-i="s1d">Pick a ready-made package or design your own route.</p></div>
+      <div class="step"><div class="snum">02</div><div class="stit" data-i="s2t">Select Date</div><p class="sdesc" data-i="s2d">Choose travel dates and number of travelers.</p></div>
+      <div class="step"><div class="snum">03</div><div class="stit" data-i="s3t">Confirm Booking</div><p class="sdesc" data-i="s3d">Submit your details. Our team contacts you within 24 hours.</p></div>
+      <div class="step"><div class="snum">04</div><div class="stit" data-i="s4t">Enjoy Journey</div><p class="sdesc" data-i="s4d">Driver picks you up at hotel. Relax and explore.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--dark2)">
+    <div class="sh"><div class="ey" data-i="testy_ey">Guest Reviews</div><h2 class="st"><span data-i="testy_st1">Trusted by</span> <em data-i="testy_st2">Travelers Worldwide</em></h2><div class="dv"></div></div>
+    <div class="tgrid">
+      <div class="tc"><div class="tstar">★★★★★</div><p class="tq" data-i="t1q">"Driver spoke excellent English and recommended the best local spots. Will book again!"</p><div class="tau"><div class="tav">SA</div><div><div class="tn">Sarah A.</div><div class="tt" data-i="t1trip">Chiang Mai · 5 Days</div></div></div></div>
+      <div class="tc"><div class="tstar">★★★★★</div><p class="tq" data-i="t2q">"Easy booking, transparent pricing, no hidden fees. Car spotless, service exceeded expectations."</p><div class="tau"><div class="tav">ณว</div><div><div class="tn">Natthawut W.</div><div class="tt" data-i="t2trip">Krabi · Family Trip</div></div></div></div>
+      <div class="tc"><div class="tstar">★★★★★</div><p class="tq" data-i="t3q">"Airport transfer was seamless. Driver waited with a sign, helped with bags, very professional."</p><div class="tau"><div class="tav">TK</div><div><div class="tn">Tanaka K.</div><div class="tt" data-i="t3trip">BKK → Sukhumvit</div></div></div></div>
+    </div>
+  </section>
+
+  <div class="cta-s">
+    <div class="cta-deco"><div class="cta-ic"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.8 6.2H14L10.6 8.8L11.8 13L8 10.4L4.2 13L5.4 8.8L2 6.2H6.2Z" fill="var(--gold)" opacity="0.7"/></svg></div></div>
+    <div class="cta-t" data-i="cta_t">Ready to Start Your Journey?</div>
+    <p class="cta-s2" data-i="cta_s">Tours, transfers, and custom experiences — all in one place.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button class="bp" onclick="showPage('booking')" data-i="cta_packages">View All Packages</button>
+      <button class="bo" onclick="showPage('transfer')" data-i="cta_transfer2">✈ Book Airport Transfer</button>
+    </div>
+  </div>
+
+  <div id="contact-section" style="background:var(--dark3);padding:36px 4%;border-top:1px solid rgba(201,169,110,0.12)">
+    <div style="text-align:center;margin-bottom:24px">
+      <div class="ey" data-i="contact_ey">Contact Us</div>
+      <h2 class="st"><span data-i="contact_st1">Chat with Us</span> <em data-i="contact_st2">Directly</em></h2>
+    </div>
+    <div class="contact-float">
+      <div class="cf-btn line" onclick="openLine()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61V9.86h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE <span id="contact-line-id">@177wmjar</span>
+      </div>
+      <div class="cf-btn wechat" onclick="openWeChatInfo()" id="contact-wechat-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c-.2-.54-.314-1.1-.314-1.689 0-3.754 3.622-6.8 8.087-6.8.212 0 .42.009.625.025C15.934 4.728 12.614 2.188 8.69 2.188zm-2.35 3.836a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.697 0a.9.9 0 0 1 .9.9.9.9 0 0 1-.9.9.9.9 0 0 1-.9-.9.9.9 0 0 1 .9-.9zm4.194 3.95c-3.79 0-6.864 2.618-6.864 5.847 0 3.23 3.075 5.846 6.864 5.846.807 0 1.584-.107 2.307-.3a.7.7 0 0 1 .575.08l1.53.9a.262.262 0 0 0 .134.044.237.237 0 0 0 .236-.236.34.34 0 0 0-.038-.172l-.314-1.19a.473.473 0 0 1 .172-.534C21.22 19.047 22.1 17.5 22.1 15.82c0-3.229-3.075-5.847-6.867-5.847zm-2.432 3.03a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72zm4.864 0a.72.72 0 0 1 .72.72.72.72 0 0 1-.72.72.72.72 0 0 1-.72-.72.72.72 0 0 1 .72-.72z"/></svg>
+        WeChat <span id="contact-wechat-id">(ยังไม่พร้อม)</span>
+      </div>
+      <div class="cf-btn wa" onclick="openWhatsApp()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </div>
+      <div class="cf-btn tel" onclick="callPhone()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="contact-phone-display">+66 80 084 7620</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="fg">
+      <div>
+        <div class="logo" style="cursor:default">SIAM<span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--cream)"> Royal Journey</span></div>
+        <p class="fd" data-i="footer_desc">Premium private tour service with professional car and driver.</p>
+      </div>
+      <div><div class="fch4" data-i="footer_pop">Popular Tours</div><ul class="flinks"><li><a>Chiang Mai - Chiang Rai</a></li><li><a>Phuket - Krabi</a></li><li><a>Ayutthaya Day Trip</a></li><li><a>Kanchanaburi</a></li></ul></div>
+      <div><div class="fch4" data-i="footer_svc">Services</div><ul class="flinks"><li><a data-i="svc1">Car with Driver</a></li><li><a onclick="showPage('transfer')" data-i="svc2">Airport Transfer</a></li><li><a data-i="svc3">Custom Itinerary</a></li><li><a data-i="svc4">Honeymoon Trip</a></li></ul></div>
+      <div><div class="fch4" data-i="footer_con">Contact</div><ul class="flinks"><li><a id="footer-line">LINE: @177wmjar</a></li><li><a id="footer-wechat" style="display:none"></a></li><li><a id="footer-whatsapp">WhatsApp: 080-084-7620</a></li><li><a id="footer-email">info@siamroyal.com</a></li></ul></div>
+    </div>
+    <div class="fb"><span class="fc">© 2026 <span style="color:var(--gold)">Siam Royal Journey</span>. All rights reserved.</span><span class="fc" data-i="footer_legal">Privacy Policy · Terms</span></div>
+  </footer>
+</div>
+
+<div id="page-booking" class="page bk-page">
+  <div class="bk-header">
+    <div class="ey" data-i="bk_ey">Booking</div>
+    <h2 class="st"><span data-i="bk_st1">Reserve Your</span> <em data-i="bk_st2">Perfect Journey</em></h2>
+    <div class="dv" style="margin:14px auto 0"></div>
+  </div>
+  <div class="bk-steps">
+    <div class="bk-step"><div class="bk-step-num active" id="bsn1">1</div><div class="bk-step-label active" data-i="bs1">Select Package</div></div>
+    <div class="bk-line"></div>
+    <div class="bk-step"><div class="bk-step-num" id="bsn2">2</div><div class="bk-step-label" data-i="bs2">Your Details</div></div>
+    <div class="bk-line"></div>
+    <div class="bk-step"><div class="bk-step-num" id="bsn3">3</div><div class="bk-step-label" data-i="bs3">Review</div></div>
+    <div class="bk-line"></div>
+    <div class="bk-step"><div class="bk-step-num" id="bsn4">4</div><div class="bk-step-label" data-i="bs4">Confirmed!</div></div>
+  </div>
+  <div class="bk-form">
+    <div id="bk-step-1">
+      <div class="ey" style="margin-bottom:12px" data-i="choose_pkg">Choose Your Package</div>
+      <div class="pkg-select-grid" id="pkg-select-grid"></div>
+
+      <div class="form-row" style="margin-top:4px">
+        <div class="fgroup"><label class="flabel" data-i="fl_date">Travel Date</label><input type="date" class="finput" id="bk-date" onchange="updateBkPrice()"></div>
+        <div class="fgroup"><label class="flabel" data-i="fl_guests">Number of Guests</label>
+          <select class="finput" id="bk-guests" onchange="updateBkPrice()">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ey" style="margin:16px 0 10px" id="bk-veh-label">Select Vehicle Type</div>
+      <div class="bk-veh-grid" id="bk-veh-grid"></div>
+
+      <div class="price-breakdown" id="bk-price-breakdown" style="display:none">
+        <div class="pb-row" id="pb-veh-row">
+          <span class="pb-label" id="pb-veh-label">🚗 ค่ารถ (ต่อทริป)</span>
+          <span class="pb-val" id="pb-veh-val">฿0</span>
+        </div>
+        <div class="pb-row" id="pb-ticket-row" style="display:none">
+          <span class="pb-label" id="pb-ticket-label">🎫 ค่าตั๋ว × <span id="
