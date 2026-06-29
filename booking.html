@@ -2863,17 +2863,38 @@ setLang('en');
 // Try to sync packages from backend
 fetch(API_BASE+'/api/packages').then(r=>r.json()).then(data=>{
   if(!data||!data.length)return;
-  data.forEach(sp=>{
-    const local=PKG.find(p=>p.id===sp.id);
+  
+  // 🔥 ดึงข้อมูลรูปภาพและราคารถล่าสุดที่แก้ใน Admin จาก localStorage มารอก่อน
+  let localData = [];
+  try { localData = JSON.parse(localStorage.getItem('srj_packages')) || []; } catch(e){}
+
+  data.forEach(sp => {
+    const local = PKG.find(p => p.id === sp.id);
     if(local){
       local.name=sp.name||local.name;local.nameT=sp.name_th||local.nameT;local.nameZ=sp.name_zh||local.nameZ;
       local.price=sp.price||local.price;local.dest=sp.dest||local.dest;
       local.dur=sp.duration||local.dur;local.durT=sp.duration_th||local.durT;local.durZ=sp.duration_zh||local.durZ;
       local.active=sp.active!==false;
+      
+      // 🔥 ดึงรูปภาพ (.photos) และราคารถ (.vehicles) ล่าสุดจากหน้า Admin มาใส่ร่วมกัน ไม่ให้โดนเคลียร์ทิ้ง
+      const adminPkg = localData.find(x => x.id === sp.id);
+      if(adminPkg) {
+        if(adminPkg.photos) local.photos = adminPkg.photos;
+        if(adminPkg.vehicles) local.vehicles = adminPkg.vehicles;
+      }
     }
   });
+  
+  // เซฟทับลงตัวแปรหลักและสั่งวาดหน้าจอใหม่
+  localStorage.setItem('srj_packages', JSON.stringify(PKG));
   renderPkgGrid();renderPkgSelect();
-}).catch(()=>{});
+}).catch(()=>{
+  // หากเชื่อมต่อ server ไม่สำเร็จ ให้ดึงจาก localStorage ดิบๆ ขึ้นมาแสดงผลแทนเพื่อไม่ให้หน้าเว็บว่าง
+  if(localStorage.getItem('srj_packages')){
+    try { PKG = JSON.parse(localStorage.getItem('srj_packages')); } catch(e){}
+    renderPkgGrid();renderPkgSelect();
+  }
+});
 
 // ════════════════════════════════════════════════
 // CUSTOM TRIP BUILDER
