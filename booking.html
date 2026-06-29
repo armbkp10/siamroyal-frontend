@@ -2120,9 +2120,18 @@ function showPage(p){
 const BG=['linear-gradient(135deg,#1a1208,#2d1f05)','linear-gradient(135deg,#051a1a,#092828)','linear-gradient(135deg,#0a1a08,#122a0e)','linear-gradient(135deg,#160a1a,#28102a)'];
 function renderPkgGrid(){
   const g=document.getElementById('pkg-grid-home');if(!g)return;
+  // 🔥 ดึงข้อมูลสดใหม่ล่าสุดจาก LocalStorage ทุกครั้งก่อนรีเฟรชหน้าแรก เพื่อแก้ไขปัญหารูป admin แก้แล้วไม่เปลี่ยน
+  if(localStorage.getItem('srj_packages')){
+    try { PKG = JSON.parse(localStorage.getItem('srj_packages')); } catch(e){}
+  }
+  
   const active=PKG.filter(p=>p.active);
   g.innerHTML=active.slice(0,3).map((p,i)=>{
-    const img=p.photos?.length>0?`<img src="${p.photos[0]}" alt="${pName(p)}">`:'';
+    // 🔥 แก้ไข Logic การตรวจจับรูปภาพให้แม่นยำ: เช็คทั้ง photos array และ image fallback
+    const hasPhoto = p.photos && p.photos.length > 0;
+    const imgSrc = hasPhoto ? p.photos[0] : (p.image || '');
+    const img = imgSrc ? `<img src="${imgSrc}" alt="${pName(p)}" loading="lazy" style="width:100%; height:100%; object-fit:cover;">` : '';
+    
     return`<div class="pc" onclick="showPage('booking')">
       <div class="pi" style="${!img?'background:'+BG[i%4]:''}">${img}
         <div class="pb">${i===0?'Popular':'New'}</div>
