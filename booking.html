@@ -1903,29 +1903,46 @@ async function syncPKGToServer(){
 }
 
 async function syncPhotosToServer(savedPkgs){
-  // หา packages ที่มีรูป base64 จริงๆ
   const pkgsWithPhotos = PKG.filter(p => (p.photos||[]).some(ph => ph.startsWith('data:')));
   if(!pkgsWithPhotos.length) return;
 
   for(const p of pkgsWithPhotos){
-    const realPhotos = p.photos.filter(ph => ph.startsWith('data:'));
-    if(!realPhotos.length) continue;
-
-    // หา supabase_id จาก savedPkgs
     const saved = (savedPkgs||[]).find(s => s.name === p.name);
     const pkgId = saved?.id || p.supabase_id;
     if(!pkgId) continue;
+
+    // Compress รูปก่อนส่ง — ลด quality และ resize
+    const compressedPhotos = await Promise.all(p.photos.map(ph => compressImage(ph)));
 
     try{
       const r = await fetch(API_BASE+'/api/admin/packages/'+pkgId+'/photos',{
         method:'PUT',
         headers:{'Content-Type':'application/json','x-admin-key':ADMIN_API_KEY},
-        body:JSON.stringify({ photos: p.photos }),
+        body:JSON.stringify({ photos: compressedPhotos }),
       });
       if(r.ok) console.log('✅ Photos synced for', p.name);
       else console.warn('⚠️ Photos sync failed for', p.name, r.status);
     }catch(e){ console.warn('⚠️ Photos sync error:', e.message); }
   }
+}
+
+// Compress รูปเป็น JPEG quality 70% และ resize สูงสุด 800px
+function compressImage(dataUrl, maxW=800, maxH=600, quality=0.7){
+  return new Promise(resolve => {
+    if(!dataUrl || !dataUrl.startsWith('data:')){ resolve(dataUrl); return; }
+    const img = new Image();
+    img.onload = () => {
+      let w = img.width, h = img.height;
+      if(w > maxW){ h = Math.round(h * maxW / w); w = maxW; }
+      if(h > maxH){ w = Math.round(w * maxH / h); h = maxH; }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      resolve(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.onerror = () => resolve(dataUrl);
+    img.src = dataUrl;
+  });
 }
 
 let PKG = loadPKG()
@@ -2587,7 +2604,13 @@ document.getElementById('photo-input').addEventListener('change',function(e){
   if(photoPkgIdx===null)return;
   Array.from(e.target.files).forEach(file=>{
     const r=new FileReader();
-    r.onload=ev=>{if(!PKG[photoPkgIdx].photos)PKG[photoPkgIdx].photos=[];PKG[photoPkgIdx].photos.push(ev.target.result);savePKG();renderPkgMgmt();renderPkgGrid();};
+    r.onload=async ev=>{
+      if(!PKG[photoPkgIdx].photos) PKG[photoPkgIdx].photos=[];
+      // Compress รูปก่อนเก็บ — ลด size ลงมาก
+      const compressed = await compressImage(ev.target.result, 1200, 900, 0.75);
+      PKG[photoPkgIdx].photos.push(compressed);
+      savePKG();renderPkgMgmt();renderPkgGrid();
+    };
     r.readAsDataURL(file);
   });
 });
