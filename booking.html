@@ -1882,7 +1882,10 @@ async function syncPKGToServer(){
       body:JSON.stringify(PKG),
     });
     if(res.ok){ const d=await res.json(); console.log('✅ Synced',d.saved,'packages to server'); }
-    else console.warn('⚠️ Sync failed:',res.status);
+    else {
+      const errText = await res.text();
+      console.error('⚠️ Sync failed:', res.status, errText);
+    }
   }catch(e){ console.warn('⚠️ Server sync error (offline?):', e.message); }
 }
 
