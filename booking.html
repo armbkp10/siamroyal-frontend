@@ -1938,7 +1938,15 @@ function loadPriceMatrix(){
     return matrix;
   } catch{ return JSON.parse(JSON.stringify(DEFAULT_PRICE_MATRIX)); }
 }
-function savePriceMatrix(m){ try{ localStorage.setItem('srj_price_matrix', JSON.stringify(m)); }catch{} }
+function savePriceMatrix(m){
+  try{ localStorage.setItem('srj_price_matrix', JSON.stringify(m)); }catch{}
+  fetch(API_BASE+'/api/admin/settings/price_matrix',{
+    method:'PUT',
+    headers:{'Content-Type':'application/json','x-admin-key':ADMIN_API_KEY},
+    body:JSON.stringify({value:m}),
+  }).then(r=>r.ok?console.log('✅ Price matrix synced to server'):console.warn('⚠️ Price matrix sync failed',r.status))
+    .catch(e=>console.warn('⚠️ Price matrix sync error',e.message));
+}
 
 let PRICE_MATRIX = loadPriceMatrix();
 
@@ -1982,7 +1990,15 @@ function loadVehicles(){
   try{ const v=localStorage.getItem('srj_vehicles'); return v?JSON.parse(v):[...DEFAULT_VEHICLES]; }
   catch{ return [...DEFAULT_VEHICLES]; }
 }
-function saveVehicles(v){ try{ localStorage.setItem('srj_vehicles',JSON.stringify(v)); }catch{} }
+function saveVehicles(v){
+  try{ localStorage.setItem('srj_vehicles',JSON.stringify(v)); }catch{}
+  fetch(API_BASE+'/api/admin/settings/vehicles',{
+    method:'PUT',
+    headers:{'Content-Type':'application/json','x-admin-key':ADMIN_API_KEY},
+    body:JSON.stringify({value:v}),
+  }).then(r=>r.ok?console.log('✅ Vehicles synced to server'):console.warn('⚠️ Vehicles sync failed',r.status))
+    .catch(e=>console.warn('⚠️ Vehicles sync error',e.message));
+}
 let VEHICLES = loadVehicles();
 
 function vName(v){ if(curLang==='th') return v.nameT||v.name; if(curLang==='zh') return v.nameZ||v.name; return v.name; }
@@ -2819,6 +2835,18 @@ setLang('en');
 // ════════════════════════════════════════════════
 // โหลด packages จาก Server — Server คือ source of truth
 // ════════════════════════════════════════════════
+// ══ Load all settings from server ══
+async function loadAllFromServer(){
+  try{
+    const r = await fetch(API_BASE+'/api/settings/price_matrix');
+    if(r.ok){ const d=await r.json(); if(d.value&&Object.keys(d.value).length){ PRICE_MATRIX=d.value; try{localStorage.setItem('srj_price_matrix',JSON.stringify(d.value));}catch{} console.log('✅ Price matrix loaded from server'); }}
+  }catch(e){ console.warn('⚠️ Cannot load price_matrix:', e.message); }
+  try{
+    const r = await fetch(API_BASE+'/api/settings/vehicles');
+    if(r.ok){ const d=await r.json(); if(d.value&&d.value.length){ VEHICLES=d.value; try{localStorage.setItem('srj_vehicles',JSON.stringify(d.value));}catch{} console.log('✅ Vehicles loaded from server'); }}
+  }catch(e){ console.warn('⚠️ Cannot load vehicles:', e.message); }
+}
+
 async function loadPKGFromServer(){
   try{
     const res = await fetch(API_BASE+'/api/packages');
@@ -2857,6 +2885,8 @@ async function loadPKGFromServer(){
     return false;
   }
 }
+
+loadAllFromServer().catch(()=>{});
 
 loadPKGFromServer().then(ok=>{
   if(!ok){
