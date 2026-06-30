@@ -1876,17 +1876,56 @@ function savePKG(){
 
 async function syncPKGToServer(){
   try{
+    // ส่งข้อมูลแพ็กเกจ โดย compress photos เป็น URL สั้นๆ แทน base64 เต็ม
+    const pkgLight = PKG.map(p => ({
+      ...p,
+      // ส่ง photos แค่ความยาว ไม่ส่ง base64 ใน sync หลัก
+      photos: (p.photos||[]).map((ph,i) => 
+        ph.startsWith('http') ? ph : `__b64_${p.id}_${i}__`
+      )
+    }));
+
     const res = await fetch(API_BASE+'/api/admin/packages',{
       method:'PUT',
       headers:{'Content-Type':'application/json','x-admin-key':ADMIN_API_KEY},
-      body:JSON.stringify(PKG),
+      body:JSON.stringify(pkgLight),
     });
-    if(res.ok){ const d=await res.json(); console.log('✅ Synced',d.saved,'packages to server'); }
-    else {
+    if(res.ok){
+      const d = await res.json();
+      console.log('✅ Synced',d.saved,'packages to server');
+      // sync photos แยก (base64 ใหญ่มาก ต้องแยก)
+      syncPhotosToServer(d.data);
+    } else {
       const errText = await res.text();
-      console.error('⚠️ Sync failed:', res.status, errText);
+      console.error('⚠️ Sync failed:', res.status, errText.slice(0,200));
     }
   }catch(e){ console.warn('⚠️ Server sync error (offline?):', e.message); }
+}
+
+async function syncPhotosToServer(savedPkgs){
+  // หา packages ที่มีรูป base64 จริงๆ
+  const pkgsWithPhotos = PKG.filter(p => (p.photos||[]).some(ph => ph.startsWith('data:')));
+  if(!pkgsWithPhotos.length) return;
+
+  for(const p of pkgsWithPhotos){
+    const realPhotos = p.photos.filter(ph => ph.startsWith('data:'));
+    if(!realPhotos.length) continue;
+
+    // หา supabase_id จาก savedPkgs
+    const saved = (savedPkgs||[]).find(s => s.name === p.name);
+    const pkgId = saved?.id || p.supabase_id;
+    if(!pkgId) continue;
+
+    try{
+      const r = await fetch(API_BASE+'/api/admin/packages/'+pkgId+'/photos',{
+        method:'PUT',
+        headers:{'Content-Type':'application/json','x-admin-key':ADMIN_API_KEY},
+        body:JSON.stringify({ photos: p.photos }),
+      });
+      if(r.ok) console.log('✅ Photos synced for', p.name);
+      else console.warn('⚠️ Photos sync failed for', p.name, r.status);
+    }catch(e){ console.warn('⚠️ Photos sync error:', e.message); }
+  }
 }
 
 let PKG = loadPKG()
