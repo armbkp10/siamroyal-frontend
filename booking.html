@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18283077247"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18283077247');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Siam Royal Journey — Premium Private Tours Thailand</title>
@@ -710,22 +701,22 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
         <div style="margin-bottom:24px">
           <p style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:14px" data-i="pay_contact_title">CONTACT US TO PAY</p>
           <div class="pay-contact-grid">
-  <div class="pay-ch" onclick="openLineWithRef()">
-    <div class="pay-ch-icon">💬</div>
-    <div class="pay-ch-label">LINE</div>
-    <div class="pay-ch-id" id="confirm-line-id">@177wmjar</div> 
-  </div>
-  <div class="pay-ch" onclick="openWeChatInfo()">
-    <div class="pay-ch-icon">💚</div>
-    <div class="pay-ch-label">WeChat</div>
-    <div class="pay-ch-id" id="confirm-wechat-id">SiamRoyalJourney</div>
-  </div>
-  <div class="pay-ch" onclick="openWhatsAppWithRef()">
-    <div class="pay-ch-icon">📱</div>
-    <div class="pay-ch-label">WhatsApp</div>
-    <div class="pay-ch-id" id="confirm-wa-id">080-084-7620</div>
-  </div>
-</div>
+            <div class="pay-ch" onclick="openLineWithRef()">
+              <div class="pay-ch-icon">💬</div>
+              <div class="pay-ch-label">LINE</div>
+              <div class="pay-ch-id" id="confirm-line-id">@177wmjar</div>
+            </div>
+            <div class="pay-ch" onclick="openWeChatInfo()">
+              <div class="pay-ch-icon">💚</div>
+              <div class="pay-ch-label">WeChat</div>
+              <div class="pay-ch-id">SiamRoyalJourney</div>
+            </div>
+            <div class="pay-ch" onclick="openWhatsAppWithRef()">
+              <div class="pay-ch-icon">📱</div>
+              <div class="pay-ch-label">WhatsApp</div>
+              <div class="pay-ch-id" id="confirm-wa-id">080-084-7620</div>
+            </div>
+          </div>
           <p style="font-size:11px;color:var(--muted);line-height:1.7;text-align:center" data-i="pay_contact_note">Please mention your booking reference number when contacting us. 30% deposit required to confirm your booking.</p>
         </div>
         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
@@ -827,10 +818,10 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
       <div style="margin-bottom:24px">
         <p style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:14px" data-i="pay_contact_title">CONTACT US TO PAY</p>
         <div class="pay-contact-grid">
-  <div class="pay-ch" onclick="openLineWithRef()"><div class="pay-ch-icon">💬</div><div class="pay-ch-label">LINE</div><div class="pay-ch-id" id="tf-confirm-line-id">@siamroyal</div></div>
-  <div class="pay-ch" onclick="openWeChatInfo()"><div class="pay-ch-icon">💚</div><div class="pay-ch-label">WeChat</div><div class="pay-ch-id" id="tf-confirm-wechat-id">SiamRoyalJourney</div></div>
-  <div class="pay-ch" onclick="openWhatsAppWithRef()"><div class="pay-ch-icon">📱</div><div class="pay-ch-label">WhatsApp</div><div class="pay-ch-id" id="tf-confirm-wa-id">+66 81 234 5678</div></div>
-</div>
+          <div class="pay-ch" onclick="openLineWithRef()"><div class="pay-ch-icon">💬</div><div class="pay-ch-label">LINE</div><div class="pay-ch-id">@siamroyal</div></div>
+          <div class="pay-ch" onclick="openWeChatInfo()"><div class="pay-ch-icon">💚</div><div class="pay-ch-label">WeChat</div><div class="pay-ch-id">SiamRoyalJourney</div></div>
+          <div class="pay-ch" onclick="openWhatsAppWithRef()"><div class="pay-ch-icon">📱</div><div class="pay-ch-label">WhatsApp</div><div class="pay-ch-id">+66 81 234 5678</div></div>
+        </div>
       </div>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <button class="bp" onclick="showPage('home')" data-i="back_home">Back to Home</button>
@@ -1299,6 +1290,7 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 // CONFIG
 // ════════════════════════════════════════════════
 const API_BASE   = 'https://siamroyal-backend-production.up.railway.app';
+const ADMIN_API_KEY = 'srj-admin-2026';
 const LINE_ID    = '@177wmjar';
 const WECHAT_ID  = '';
 const WHATSAPP   = '66800847620'; // ไม่ใส่ + และไม่ใส่ -
@@ -1879,6 +1871,19 @@ function loadPKG(){
 
 function savePKG(){
   try{ localStorage.setItem('srj_packages', JSON.stringify(PKG)); }catch{}
+  syncPKGToServer();
+}
+
+async function syncPKGToServer(){
+  try{
+    const res = await fetch(API_BASE+'/api/admin/packages',{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','x-admin-key':ADMIN_API_KEY},
+      body:JSON.stringify(PKG),
+    });
+    if(res.ok){ const d=await res.json(); console.log('✅ Synced',d.saved,'packages to server'); }
+    else console.warn('⚠️ Sync failed:',res.status);
+  }catch(e){ console.warn('⚠️ Server sync error (offline?):', e.message); }
 }
 
 let PKG = loadPKG()
@@ -1983,63 +1988,47 @@ function vName(v){ if(curLang==='th') return v.nameT||v.name; if(curLang==='zh')
 function renderVehicleGrid(pax, lug){
   const grid = document.getElementById('veh-grid-tf');
   if(!grid) return;
-  const activePax = parseInt(pax) || 1;
-  const activeLug = parseInt(lug) || 0;
+  const activePax = parseInt(pax)||1;
+  const activeLug = parseInt(lug)||0;
   grid.innerHTML = '';
-  
   VEHICLES.forEach(v => {
     const overPax = activePax > v.maxPax;
     const overLug = activeLug > v.maxLug;
     const disabled = !v.active || overPax || overLug;
-    
-    // 🔥 ตรวจสอบให้แม่นยำว่า ID ตรงกันไหม
-    const isSel = tfVeh && tfVeh.id === v.id; 
-    
+    const isSel = tfVeh && tfVeh.id === v.id;
     const card = document.createElement('div');
-    card.className = 'veh-card' + (isSel ? ' sel' : '') + (disabled ? ' disabled' : '');
-    
-    // ปรับการผูกฟังก์ชันคลิกให้ชัดเจน ไม่รันถ้าติดเงื่อนไขความจุ
-    card.onclick = (e) => { 
-      e.preventDefault();
-      if(!disabled){ 
-        selectVehicle(v); 
-      } 
-    };
-    
+    card.className = 'veh-card' + (isSel?' sel':'') + (disabled?' disabled':'');
+    card.onclick = () => { if(!disabled){ selectVehicle(v); } };
     let warnText = '';
     if(overPax) warnText = `Max ${v.maxPax} pax`;
     else if(overLug) warnText = `Max ${v.maxLug} bags`;
-    
+    // ราคาจาก matrix ตาม airport ที่เลือก
     const matrixPrice = getPrice(v.id, tfAP.code);
     card.innerHTML = `
       <div class="veh-card-icon">${v.icon}</div>
       <div class="veh-card-name">${vName(v)}</div>
       <div class="veh-card-model">${v.model}</div>
       <div class="veh-caps">
-        <span class="veh-cap">👤 ${t('max_pax') || 'Max'} ${v.maxPax}</span>
-        <span class="veh-cap">🧳 ${t('max_lug') || 'Max'} ${v.maxLug}</span>
+        <span class="veh-cap"><span class="veh-cap-icon">👤</span> ${t('max_pax')||'Max'} ${v.maxPax}</span>
+        <span class="veh-cap"><span class="veh-cap-icon">🧳</span> ${t('max_lug')||'Max'} ${v.maxLug}</span>
       </div>
-      <div class="veh-card-price">฿${matrixPrice.toLocaleString()} <span>/ ${t('per_trip') || 'trip'}</span></div>
+      <div class="veh-card-price">฿${matrixPrice.toLocaleString()} <span>/ ${t('per_trip')||'trip'}</span></div>
       ${disabled ? `<div style="margin-top:6px;font-size:9px;color:var(--red);letter-spacing:1px">${warnText}</div>` : ''}`;
     grid.appendChild(card);
   });
-  
+  // ถ้ายังไม่มีรถที่เลือก หรือรถที่เลือกอยู่ไม่ available ให้ auto-select ตัวแรกที่ได้
+  const firstOk = VEHICLES.find(v => v.active && activePax <= v.maxPax && activeLug <= v.maxLug);
+  if(!tfVeh || !firstOk || (tfVeh && (activePax > tfVeh.maxPax || activeLug > tfVeh.maxLug))){
+    if(firstOk) selectVehicle(firstOk, true);
+  }
   updateTFPrice();
 }
 
-function selectVehicle(v){
+function selectVehicle(v, silent){
   tfVeh = v;
+  // คำนวณราคาจาก matrix ตาม airport ปัจจุบัน
   tfVeh._currentPrice = getPrice(v.id, tfAP.code);
-  
-  // 🔥 แทนที่จะล้างโดมใหม่ทั้งหมด ให้สลับ Class 'sel' แค่ที่หน้าจอเพื่อความลื่นไหล ไม่หน่วงคลิก
-  const cards = document.querySelectorAll('#veh-grid-tf .veh-card');
-  VEHICLES.forEach((item, idx) => {
-    if(cards[idx]) {
-      cards[idx].classList.toggle('sel', item.id === v.id);
-    }
-  });
-  
-  updateTFPrice();
+  if(!silent) updateTFPrice();
 }
 let photoPkgIdx=null;
 let lastRef='';
@@ -2053,14 +2042,7 @@ function pDesc(p){if(curLang==='th')return(p.descT?.trim())||p.desc;if(curLang==
 function genRef(prefix){return prefix+'-'+new Date().getFullYear()+'-'+Math.random().toString(36).substring(2,7).toUpperCase();}
 
 // Contact helpers
-function openLine(){ 
-  let lineId = loadSettings().line.replace('@', ''); // เอา @ ออกเพื่อไม่ให้ลิงก์เสีย
-  window.open('https://line.me/R/ti/p/~' + lineId, '_blank'); 
-}
-function openLineWithRef(){ 
-  let lineId = loadSettings().line.replace('@', '');
-  window.open('https://line.me/R/ti/p/~' + lineId + '?text=BookingRef:' + encodeURIComponent(lastRef), '_blank'); 
-}
+function openLine(){window.open('https://line.me/R/ti/p/'+getS('line'),'_blank');}
 function callPhone(){
   const ph = getS('phone');
   window.location.href = 'tel:'+ph.replace(/[^0-9+]/g,'');
@@ -2069,44 +2051,31 @@ function updateContactUI(){
   try{
     const s = loadSettings();
     const set = (id,val)=>{ const el=document.getElementById(id); if(el) el.textContent=val; };
-    
-    // อัปเดตหน้าแรกและ Footer
-    set('contact-line-id', s.line);
-    set('contact-wechat-id', s.wechat || '(ยังไม่พร้อม)');
-    set('contact-phone-display', s.phone);
-    set('footer-line', 'LINE: ' + s.line);
-    set('footer-whatsapp', 'WhatsApp: ' + s.phone);
-    set('footer-email', s.email);
-    
+    const hide = (id,show)=>{ const el=document.getElementById(id); if(el) el.style.display=show?'':'none'; };
+    set('contact-line-id',    s.line);
+    set('contact-wechat-id',  s.wechat||'(ยังไม่พร้อม)');
+    set('contact-phone-display', s.phone||'Call Us');
     const wBtn = document.getElementById('contact-wechat-btn');
     if(wBtn) wBtn.style.opacity = s.wechat ? '1' : '0.45';
-    
-    // 🔥 สั่งผูกข้อมูลเข้าหน้า Booking สำเร็จ (ทัวร์)
-    set('confirm-line-id', s.line);
-    set('confirm-wechat-id', s.wechat || 'SiamRoyalJourney');
-    set('confirm-wa-id', s.phone);
-
-    // 🔥 สั่งผูกข้อมูลเข้าหน้าจองสำเร็จ (รถรับส่งสนามบิน)
-    set('tf-confirm-line-id', s.line);
-    set('tf-confirm-wechat-id', s.wechat || 'SiamRoyalJourney');
-    set('tf-confirm-wa-id', s.phone);
-  }catch(e){ console.log("Contact UI Sync Error: ", e); }
+    set('footer-line',      'LINE: '+s.line);
+    set('footer-whatsapp',  'WhatsApp: '+s.phone);
+    set('footer-email',     s.email);
+    if(document.getElementById('footer-wechat')){
+      if(s.wechat){ document.getElementById('footer-wechat').textContent='WeChat: '+s.wechat; hide('footer-wechat',true); }
+      else hide('footer-wechat',false);
+    }
+    set('confirm-line-id',  s.line);
+    set('confirm-wa-id',    s.phone);
+  }catch(e){}
 }
 function openWhatsApp(){window.open('https://wa.me/'+getS('whatsapp'),'_blank');}
 function openWeChatInfo(){
-  const wc = loadSettings().wechat;
-  if(!wc || wc.trim() === ""){ 
-    alert('WeChat is currently unavailable. Please contact us via LINE or WhatsApp instead.'); 
-    return; 
-  }
-  alert('Our WeChat ID is: ' + wc + '\n\nPlease add us on WeChat and mention your booking reference: ' + lastRef);
+  const wc = getS('wechat');
+  if(!wc){ alert('WeChat ยังไม่พร้อมให้บริการในขณะนี้ กรุณาติดต่อผ่าน LINE หรือ WhatsApp'); return; }
+  alert('WeChat ID: '+wc+'\n\nPlease add us on WeChat and mention your booking reference.');
 }
 function openLineWithRef(){window.open('https://line.me/R/ti/p/'+getS('line')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
-function openWhatsAppWithRef(){
-  // ดึงเบอร์ WhatsApp ใน Settings ตัดเครื่องหมาย + หรือช่องว่างออกให้เหลือแต่ตัวเลขล้วน
-  let waNum = loadSettings().whatsapp.replace(/[^0-9]/g, ''); 
-  window.open('https://wa.me/' + waNum + '?text=Hi, my booking reference is: ' + encodeURIComponent(lastRef), '_blank');
-}
+function openWhatsAppWithRef(){window.open('https://wa.me/'+getS('whatsapp')+'?text=Hi, my booking reference is: '+encodeURIComponent(lastRef),'_blank');}
 function scrollContact(){showPage('home');setTimeout(()=>document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}),120);}
 
 // ════════════════════════════════════════════════
@@ -2129,18 +2098,9 @@ function showPage(p){
 const BG=['linear-gradient(135deg,#1a1208,#2d1f05)','linear-gradient(135deg,#051a1a,#092828)','linear-gradient(135deg,#0a1a08,#122a0e)','linear-gradient(135deg,#160a1a,#28102a)'];
 function renderPkgGrid(){
   const g=document.getElementById('pkg-grid-home');if(!g)return;
-  // 🔥 ดึงข้อมูลสดใหม่ล่าสุดจาก LocalStorage ทุกครั้งก่อนรีเฟรชหน้าแรก เพื่อแก้ไขปัญหารูป admin แก้แล้วไม่เปลี่ยน
-  if(localStorage.getItem('srj_packages')){
-    try { PKG = JSON.parse(localStorage.getItem('srj_packages')); } catch(e){}
-  }
-  
   const active=PKG.filter(p=>p.active);
   g.innerHTML=active.slice(0,3).map((p,i)=>{
-    // 🔥 แก้ไข Logic การตรวจจับรูปภาพให้แม่นยำ: เช็คทั้ง photos array และ image fallback
-    const hasPhoto = p.photos && p.photos.length > 0;
-    const imgSrc = hasPhoto ? p.photos[0] : (p.image || '');
-    const img = imgSrc ? `<img src="${imgSrc}" alt="${pName(p)}" loading="lazy" style="width:100%; height:100%; object-fit:cover;">` : '';
-    
+    const img=p.photos?.length>0?`<img src="${p.photos[0]}" alt="${pName(p)}">`:'';
     return`<div class="pc" onclick="showPage('booking')">
       <div class="pi" style="${!img?'background:'+BG[i%4]:''}">${img}
         <div class="pb">${i===0?'Popular':'New'}</div>
@@ -2195,51 +2155,35 @@ function selectPkg(id){
 function renderBkVehicles(){
   const g = document.getElementById('bk-veh-grid');
   if(!g) return;
-  const guests = parseInt(document.getElementById('bk-guests')?.value) || 1;
+  const guests = parseInt(document.getElementById('bk-guests')?.value)||1;
   const activeVehs = VEHICLES.filter(v => v.active && guests <= v.maxPax);
-  
   g.innerHTML = activeVehs.map(v => {
-    const _pkg = PKG.find(x => x.id === bkSelected);
+    const _pkg = PKG.find(x=>x.id===bkSelected);
     const tripPrice = getPkgVehiclePrice(_pkg, v.id);
-    
-    // เช็คสถานะการเลือกปัจจุบัน
     const isSel = bkVehicle && bkVehicle.id === v.id;
-    return `
-      <div class="bk-veh-card${isSel ? ' sel' : ''}" onclick="selectBkVehicle('${v.id}')">
-        <div class="bk-veh-icon">${v.icon}</div>
-        <div class="bk-veh-name">${vName(v)}</div>
-        <div class="bk-veh-model">${v.model}</div>
-        <div class="bk-veh-cap">👤 Max ${v.maxPax} · 🧳 Max ${v.maxLug}</div>
-        <div class="bk-veh-price">฿${tripPrice.toLocaleString()} <span>/ ทริป</span></div>
-      </div>`;
+    return `<div class="bk-veh-card${isSel?' sel':''}" onclick="selectBkVehicle('${v.id}')">
+      <div class="bk-veh-icon">${v.icon}</div>
+      <div class="bk-veh-name">${vName(v)}</div>
+      <div class="bk-veh-model">${v.model}</div>
+      <div class="bk-veh-cap">👤 Max ${v.maxPax} · 🧳 Max ${v.maxLug}</div>
+      <div class="bk-veh-price">฿${tripPrice.toLocaleString()} <span>/ ทริป</span></div>
+    </div>`;
   }).join('');
-  
-  // ถ้ายังไม่ได้เลือกรถ หรือจำนวนคนเกินขีดจำกัดของรถที่เลือกไว้ ให้รีเซ็ตเลือกคันแรกที่รองรับทันที
+  // auto-select ถ้ายังไม่ได้เลือก หรือรถที่เลือกเกินจำนวนคน
   if(!bkVehicle || guests > bkVehicle.maxPax){
-    if(activeVehs.length > 0) {
-      bkVehicle = activeVehs[0];
-      // ไฮไลต์สีทองคันแรก
-      const firstCard = g.querySelector('.bk-veh-card');
-      if(firstCard) firstCard.classList.add('sel');
-    }
+    const first = activeVehs[0];
+    if(first){ bkVehicle = first; }
+    document.querySelectorAll('.bk-veh-card').forEach((el,i)=>{
+      el.classList.toggle('sel', activeVehs[i]?.id === bkVehicle?.id);
+    });
   }
   updateBkPrice();
 }
 
 function selectBkVehicle(id){
-  bkVehicle = VEHICLES.find(v => v.id === id) || null;
-  
-  // 🔥 ใช้คำสั่งสลับ Active Class แบบแมนนวล แทนการยิง HTML ใหม่ ทำให้ปุ่มไม่กระตุกและติดนิ้วทันที
-  const cards = document.querySelectorAll('#bk-veh-grid .bk-veh-card');
-  const guests = parseInt(document.getElementById('bk-guests')?.value) || 1;
-  const activeVehs = VEHICLES.filter(v => v.active && guests <= v.maxPax);
-  
-  activeVehs.forEach((v, idx) => {
-    if(cards[idx]) {
-      cards[idx].classList.toggle('sel', v.id === id);
-    }
-  });
-  
+  bkVehicle = VEHICLES.find(v=>v.id===id)||null;
+  document.querySelectorAll('.bk-veh-card').forEach(el=>el.classList.remove('sel'));
+  event.currentTarget.classList.add('sel');
   updateBkPrice();
 }
 
@@ -2869,41 +2813,57 @@ function closeModal(){document.getElementById('modal').classList.remove('open');
 // INIT
 // ════════════════════════════════════════════════
 setLang('en');
-// Try to sync packages from backend
-fetch(API_BASE+'/api/packages').then(r=>r.json()).then(data=>{
-  if(!data||!data.length)return;
-  
-  // 🔥 ดึงข้อมูลรูปภาพและราคารถล่าสุดที่แก้ใน Admin จาก localStorage มารอก่อน
-  let localData = [];
-  try { localData = JSON.parse(localStorage.getItem('srj_packages')) || []; } catch(e){}
-
-  data.forEach(sp => {
-    const local = PKG.find(p => p.id === sp.id);
-    if(local){
-      local.name=sp.name||local.name;local.nameT=sp.name_th||local.nameT;local.nameZ=sp.name_zh||local.nameZ;
-      local.price=sp.price||local.price;local.dest=sp.dest||local.dest;
-      local.dur=sp.duration||local.dur;local.durT=sp.duration_th||local.durT;local.durZ=sp.duration_zh||local.durZ;
-      local.active=sp.active!==false;
-      
-      // 🔥 ดึงรูปภาพ (.photos) และราคารถ (.vehicles) ล่าสุดจากหน้า Admin มาใส่ร่วมกัน ไม่ให้โดนเคลียร์ทิ้ง
-      const adminPkg = localData.find(x => x.id === sp.id);
-      if(adminPkg) {
-        if(adminPkg.photos) local.photos = adminPkg.photos;
-        if(adminPkg.vehicles) local.vehicles = adminPkg.vehicles;
-      }
-    }
-  });
-  
-  // เซฟทับลงตัวแปรหลักและสั่งวาดหน้าจอใหม่
-  localStorage.setItem('srj_packages', JSON.stringify(PKG));
-  renderPkgGrid();renderPkgSelect();
-}).catch(()=>{
-  // หากเชื่อมต่อ server ไม่สำเร็จ ให้ดึงจาก localStorage ดิบๆ ขึ้นมาแสดงผลแทนเพื่อไม่ให้หน้าเว็บว่าง
-  if(localStorage.getItem('srj_packages')){
-    try { PKG = JSON.parse(localStorage.getItem('srj_packages')); } catch(e){}
-    renderPkgGrid();renderPkgSelect();
+// ════════════════════════════════════════════════
+// โหลด packages จาก Server — Server คือ source of truth
+// ════════════════════════════════════════════════
+async function loadPKGFromServer(){
+  try{
+    const res = await fetch(API_BASE+'/api/packages');
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    if(!data||!data.length) return false;
+    // Map Supabase field names → JS fields
+    const mapped = data.map(sp=>({
+      id:           sp.id,
+      supabase_id:  sp.id,
+      name:         sp.name,
+      nameT:        sp.name_th   ||'',
+      nameZ:        sp.name_zh   ||'',
+      dest:         sp.dest      ||'',
+      desc:         sp.description||sp.desc||'',
+      descT:        sp.desc_th   ||'',
+      descZ:        sp.desc_zh   ||'',
+      price:        sp.price     ||0,
+      dur:          sp.duration  ||sp.dur||'',
+      durT:         sp.dur_th    ||'',
+      durZ:         sp.dur_zh    ||'',
+      ticketPerPax: sp.ticket_per_pax||0,
+      guidePerHour: sp.guide_per_hour||0,
+      guideHours:   sp.guide_hours   ||0,
+      vehicles:     sp.vehicles  ||{},
+      photos:       sp.photos    ||[],
+      active:       sp.active!==false,
+      sortOrder:    sp.sort_order||0,
+    }));
+    PKG.length=0; mapped.forEach(p=>PKG.push(p));
+    try{localStorage.setItem('srj_packages',JSON.stringify(PKG));}catch{}
+    console.log('✅ Loaded',PKG.length,'packages from server');
+    return true;
+  }catch(e){
+    console.warn('⚠️ Cannot load packages from server:',e.message);
+    return false;
   }
+}
+
+loadPKGFromServer().then(ok=>{
+  if(!ok){
+    const cached=localStorage.getItem('srj_packages');
+    if(cached){try{const d=JSON.parse(cached);if(d.length){PKG.length=0;d.forEach(p=>PKG.push(p));}}catch{}}
+  }
+  renderPkgGrid();renderPkgSelect();
 });
+  renderPkgGrid();renderPkgSelect();
+}).catch(()=>{});
 
 // ════════════════════════════════════════════════
 // CUSTOM TRIP BUILDER
