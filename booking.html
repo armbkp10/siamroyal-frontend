@@ -131,7 +131,7 @@ select.sf{cursor:pointer}
 .tf-banner-s{font-size:11px;color:var(--muted);margin-top:3px}
 /* BOOKING */
 .bk-page{background:var(--dark2);padding:48px 4%}
-.bk-header{text-align:center;margin-bottom:40px}
+.bk-er{text-align:center;margin-bottom:40px}
 .bk-steps{display:flex;justify-content:center;margin-bottom:40px;flex-wrap:wrap;gap:0}
 .bk-step{display:flex;align-items:center;gap:8px;padding:0 16px}
 .bk-step-num{width:28px;height:28px;border:1px solid rgba(201,169,110,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);transition:all 0.3s}
@@ -218,7 +218,7 @@ select.finput{cursor:pointer}
 .adm-logout{display:block;padding:10px 20px;font-size:12px;color:var(--red);cursor:pointer;transition:all 0.2s;border-left:2px solid transparent;border-top:1px solid rgba(201,169,110,0.08);margin-top:8px;background:none;border-right:none;border-bottom:none;width:100%;text-align:left;font-family:inherit}
 .adm-logout:hover{background:rgba(224,92,92,0.05);border-left-color:var(--red)}
 .adm-content{flex:1;padding:28px;overflow:auto;min-width:0}
-.adm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.adm-er{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px}
 .adm-title{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--cream)}
 .adm-sub{font-size:11px;color:var(--muted);margin-top:3px}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
@@ -228,7 +228,7 @@ select.finput{cursor:pointer}
 .metric-change{font-size:10px;margin-top:4px}
 .metric-change.up{color:var(--green)}.metric-change.dn{color:var(--red)}
 .adm-table-wrap{background:var(--dark3);border:1px solid rgba(201,169,110,0.1);overflow:auto}
-.adm-table-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(201,169,110,0.1);flex-wrap:wrap;gap:8px}
+.adm-table-{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(201,169,110,0.1);flex-wrap:wrap;gap:8px}
 .adm-table-title{font-size:13px;color:var(--cream);font-weight:500}
 .adm-add-btn{background:var(--gold);border:none;color:#0a0a0a;padding:8px 16px;font-size:10px;letter-spacing:1.5px;cursor:pointer;font-weight:500;font-family:inherit}
 table.bt{width:100%;border-collapse:collapse;font-size:11px;min-width:600px}
@@ -437,6 +437,14 @@ table.bt tr:hover td{background:rgba(201,169,110,0.02)}
 .ct-success-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:10px}
 .ct-success-sub{font-size:13px;color:var(--muted);line-height:1.8;max-width:440px;margin:0 auto 28px}
 </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18283077247"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18283077247');
+</script>
 </head>
 <body>
 
@@ -2379,8 +2387,15 @@ async function submitBooking(){
   }catch(e){lastRef=ref;}
   BOOKINGS.unshift({ref:lastRef,pkg:p.name,price:p.price,date:document.getElementById('bk-date').value,fname:document.getElementById('bk-fname').value,lname:document.getElementById('bk-lname').value,email:document.getElementById('bk-email').value,phone:document.getElementById('bk-phone').value,contact:document.getElementById('bk-contact').value,status:'pending'});
   document.getElementById('bk-ref').textContent=lastRef;
-  btn.textContent=t('btn_confirm'); btn.disabled=false;
+ btn.textContent=t('btn_confirm'); btn.disabled=false;
   bkStep=4;renderBkStep();
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18283077247/WWqHCJO9x8ccEP-8ho5E',
+      'value': calc.grandTotal,
+      'currency': 'THB',
+      'transaction_id': lastRef
+  });
+}
 }
 
 // ════════════════════════════════════════════════
@@ -2465,9 +2480,15 @@ async function submitTransfer(){
   TRANSFERS.unshift({ref:finalRef,airport:tfAP.code,direction:tfDir,vehicle:tfVeh.name,price:tfVeh.price,date:document.getElementById('tf-date').value,name:document.getElementById('tf-name').value,email:document.getElementById('tf-email').value,status:'pending'});
   document.getElementById('tf-ref').textContent=finalRef;
   btn.textContent=t('tf_confirm_btn'); btn.disabled=false;
-  document.getElementById('tf-form-wrap').style.display='none';
+document.getElementById('tf-form-wrap').style.display='none';
   document.getElementById('tf-success').style.display='block';
   window.scrollTo(0,0);
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18283077247/WWqHCJO9x8ccEP-8ho5E',
+      'value': tfVeh._currentPrice||getPrice(tfVeh.id,tfAP.code),
+      'currency': 'THB',
+      'transaction_id': lastRef
+  });
 }
 
 // ════════════════════════════════════════════════
@@ -3099,9 +3120,15 @@ async function submitCustomTrip(){
       body:JSON.stringify(payload)
     });
   }catch(e){ console.warn('API error', e); }
-  document.getElementById('ct-form-wrap').style.display='none';
+   document.getElementById('ct-form-wrap').style.display='none';
   document.getElementById('ct-success').style.display='block';
   btn.disabled=false;
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18283077247/WWqHCJO9x8ccEP-8ho5E',
+      'value': estTotal,
+      'currency': 'THB',
+      'transaction_id': ref
+  });
 }
 
 // ════════════════════════════════════════════════
